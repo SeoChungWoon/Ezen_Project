@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "Nanum Gothic";
+    src: url(Nanum_Gothic/NanumGothic-Regular.ttf);
+    /* woff, otf 파일도 가능함
+        JSP에서는 절대경로 적용해야 함.
+        (현재는 상대경로)
+    */
+}
+* {
+    color: #222;
+    font-family: "Nanum Gothic", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 배경색 필요할 경우 사용함
+    body {
+        
+    }
+*/
+
+a:link {
+    color: #333;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #333;
+}
+
+a:hover {
+    color: #777;
+}
+
+a:active {
+    color: #777;
+}
+
+ul {
+    list-style: none;
+}
+
+.dFlex {
+    display: flex;
+}
+
+.disabled {
+	
+}
+
+div#wrap {
+    width: 1200px;
+    padding: 10px;
+    border: 6px solid #aaa;
+    border-radius: 6px;
+    margin: 20px auto;
+}
+
+hr#headHR {
+    margin-bottom: 40px;
+}
