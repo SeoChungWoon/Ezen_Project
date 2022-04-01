@@ -1,16 +1,8 @@
 @charset "UTF-8";
 
-@font-face {
-    font-family: "Nanum Gothic";
-    src: url(Nanum_Gothic/NanumGothic-Regular.ttf);
-    /* woff, otf 파일도 가능함
-        JSP에서는 절대경로 적용해야 함.
-        (현재는 상대경로)
-    */
-}
 * {
     color: #222;
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
