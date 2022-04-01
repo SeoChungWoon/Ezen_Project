@@ -43,6 +43,10 @@ ul {
 	
 }
 
+.hidden {
+	display: none;
+}
+
 div#wrap {
     width: 1200px;
     padding: 10px;
