@@ -51,18 +51,18 @@ $(function() {
 		let memberid = $("#memberid").val();
 		let memberpw = $("#memberpw").val();
 		$.ajax({
-		type: "post",
-		url: "/member/loginProc.jsp",
-		data: { "memberid": memberid, "memberpw": memberpw },
-		success: function(txt) {
-			$("#loginErrMsg").html(txt);
-			$("#loginErrMsg").css({
-				"text-align": "center",
-				"color": "red",
-				"margin-bottom": "10px"
-			});
-		}
-	});
+			type: "post",
+			url: "/member/loginProc.jsp",
+			data: { "memberid": memberid, "memberpw": memberpw },
+			success: function(txt) {
+				$("#loginErrMsg").html(txt);
+				$("#loginErrMsg").css({
+					"text-align": "center",
+					"color": "red",
+					"margin-bottom": "10px"
+				});
+			}
+		});
 
 	});
 /* 로그인 유효성 검사 */

@@ -6,6 +6,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 /* 배경색 필요할 경우 사용함
@@ -15,20 +16,20 @@
 */
 
 a:link {
-    color: #333;
+    color: #222;
     text-decoration: none;
 }
 
 a:visited {
-    color: #333;
+    color: #222;
 }
 
 a:hover {
-    color: #777;
+    color: #222;
 }
 
 a:active {
-    color: #777;
+    color: #222;
 }
 
 ul {
@@ -37,32 +38,4 @@ ul {
 
 .dFlex {
     display: flex;
-}
-
-.disabled {
-	
-}
-
-.match {
-	background-color: #c8fe3b;
-}
-
-.mismatch {
-	background-color: #e64a44;
-}
-
-.hidden {
-	display: none;
-}
-
-div#wrap {
-    width: 1200px;
-    padding: 10px;
-    border: 6px solid #aaa;
-    border-radius: 6px;
-    margin: 20px auto;
-}
-
-hr#headHR {
-    margin-bottom: 40px;
 }

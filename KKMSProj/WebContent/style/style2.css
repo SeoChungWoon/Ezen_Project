@@ -1,22 +1,5 @@
 @charset "UTF-8";
-@import url(/source/style_Reset.css);
 
-#header > * {
-	padding: 10px;
-	border: 1px solid #000;
-	flex: 1;
-	text-align: center;
-}
-
-#header > nav#gnb {
-	flex:3;
-}
-
-#gnb > div {
-	margin: 20px auto;
-}
-
-/* 회원가입 영역 시작 */
 
 #joinArea {
 	margin: 20px auto;
