@@ -9,7 +9,7 @@ $(function() {
 	/* 우편번호 찾기 새창 띄우기 */
 
 
-	/* 약관 모두 동의 기능 */
+/* 약관 모두 동의 기능 */
 	$("#chkAll").click(function() {
 
 		let chkAll = $("#chkAll").is(':checked');
@@ -28,7 +28,7 @@ $(function() {
 	/* 약관 모두 동의 기능 */
 
 
-	/* 약관 필수항목 체크 확인 */
+/* 약관 필수항목 체크 확인 */
 	$("#termsBtn").click(function() {
 		let chkService = $("#chkService").is(':checked');
 		let chkPrivacy = $("#chkPrivacy").is(':checked');
@@ -43,7 +43,29 @@ $(function() {
 			$("#termsForm").submit();
 		}
 	});
-	/* 약관 필수항목 체크 확인 */
+/* 약관 필수항목 체크 확인 */
+
+
+/* 로그인 유효성 검사 */
+	$("#loginBtn").click(function(){
+		let memberid = $("#memberid").val();
+		let memberpw = $("#memberpw").val();
+		$.ajax({
+		type: "post",
+		url: "/member/loginProc.jsp",
+		data: { "memberid": memberid, "memberpw": memberpw },
+		success: function(txt) {
+			$("#loginErrMsg").html(txt);
+			$("#loginErrMsg").css({
+				"text-align": "center",
+				"color": "red",
+				"margin-bottom": "10px"
+			});
+		}
+	});
+
+	});
+/* 로그인 유효성 검사 */
 
 
 });

@@ -1,0 +1,84 @@
+@charset "UTF-8";
+@import url(/source/style_Reset.css);
+
+#header > * {
+	padding: 10px;
+	border: 1px solid #000;
+	flex: 1;
+	text-align: center;
+}
+
+#header > nav#gnb {
+	flex:3;
+}
+
+#gnb > div {
+	margin: 20px auto;
+}
+
+/* 회원가입 영역 시작 */
+
+#joinArea {
+	margin: 20px auto;
+	text-align: center;
+}
+
+#joinArea > div.joinRow>input {
+	padding: 10px;
+	height: 10%;
+	width: 20%;
+}
+
+#joinArea > div.joinRow>input#uZipcode {
+	width: 10%;
+}
+
+#joinArea > div.joinRow>button#zipChk {
+	padding: 10px;
+	height: 10%;
+	margin: 0 0 4px 2px;
+}
+
+.joinRow span.joinTitle {
+	padding: 5px;
+	font-weight: bold;
+	width: 20%;
+	text-align-last: left;
+	display: inline-block;
+}
+
+.joinRow:last-child > button {
+	margin: 15px 0;
+	padding: 10px;
+	height: 8%;
+	width: 10%;
+}
+
+/* 회원가입 영역 끝 */
+
+/* 로그인 영역 시작 */
+
+div#loginArea {
+	margin: 10px auto;
+	justify-content: center;
+}
+
+#loginArea > div#idPwArea input {
+	padding: 10px;
+	height: 10%;
+	margin: 5px;
+}
+
+#loginArea > div#loginBtnArea button {
+	padding: 10px;
+	height: 90%;
+	margin: 5px;
+}
+
+div#utilArea {
+	text-align: center;
+}
+
+
+
+/* 로그인 영역 끝 */

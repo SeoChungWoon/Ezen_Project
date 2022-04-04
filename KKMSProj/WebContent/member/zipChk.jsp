@@ -25,7 +25,7 @@ List<ZipcodeBean> zList = null;
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>우편번호 찾기</title>
-<link rel="stylesheet" href="/style/style_Member.css">
+<link rel="stylesheet" href="/style/style2.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/script/memberScript.js"></script>
 </head>
