@@ -13,19 +13,27 @@ $(function() {
 	$("#chkAll").click(function() {
 
 		let chkAll = $("#chkAll").is(':checked');
-
 		if (chkAll == true) {
-			$("#chkService").prop('checked', true);
-			$("#chkPrivacy").prop('checked', true);
-			$("#termsAds").prop('checked', true);
+			$(".termsRow input").prop('checked', true);
 		} else {
-			$("#chkService").prop('checked', false);
-			$("#chkPrivacy").prop('checked', false);
-			$("#termsAds").prop('checked', false);
+			$(".termsRow input").prop('checked', false);
 		}
-
 	});
 /* 약관 모두 동의 기능 */
+
+
+/* 약관 체크 기능 */
+	$(".usingTerms input").click(function(){
+		let chkService = $("#chkService").is(':checked');
+		let chkPrivacy = $("#chkPrivacy").is(':checked');
+		let chkAds = $("#termsAds").is(':checked');
+		if (chkService && chkPrivacy && chkAds) {
+			$("#chkAll").prop('checked', true);
+		} else {
+			$("#chkAll").prop('checked', false);
+		}
+	});
+/* 약관 체크 기능 */
 
 
 /* 약관 필수항목 체크 확인 */
