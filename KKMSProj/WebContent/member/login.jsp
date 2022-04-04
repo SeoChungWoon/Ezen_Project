@@ -21,8 +21,6 @@
 		<%@ include file="/include/header.jsp"%>
 		<div class="sub-body">
 			<div class="inner">
-				<h1>로그인</h1>
-				<hr id="headHR">
 				<form action="/member/loginProc.jsp" id="loginForm" method="post">
 					<div id="loginArea" class="dFlex">
 						<div id="idPwArea">

@@ -41,7 +41,6 @@ if (TermsAds == null) {
 		
 		<div class="sub-body">
 			<div class="inner">
-				<h1>회원가입</h1>
 				<form action="/member/joinProc.jsp" id="joinForm" method="get">
 					<div id="joinArea">
 

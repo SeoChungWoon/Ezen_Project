@@ -19,8 +19,6 @@
 	<div id="wrap">
 		<div class="sub-body">
 			<div class="inner">
-				<h1>로고</h1>
-				<hr id="headHR">
 				<form action="/member/join.jsp" id="termsForm" method="get">
 					<div id="termsArea">
 						<div class="termsRow">
