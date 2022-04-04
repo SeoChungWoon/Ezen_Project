@@ -2,11 +2,11 @@
 
 $(function() {
 
-	/* 우편번호 찾기 새창 띄우기 */
+/* 우편번호 찾기 새창 띄우기 */
 	$("#zipChk").click(function() {
 		window.open("/member/zipChk.jsp", "_blank");
 	});
-	/* 우편번호 찾기 새창 띄우기 */
+/* 우편번호 찾기 새창 띄우기 */
 
 
 /* 약관 모두 동의 기능 */
@@ -25,7 +25,7 @@ $(function() {
 		}
 
 	});
-	/* 약관 모두 동의 기능 */
+/* 약관 모두 동의 기능 */
 
 
 /* 약관 필수항목 체크 확인 */
@@ -66,6 +66,24 @@ $(function() {
 
 	});
 /* 로그인 유효성 검사 */
+
+
+/* 로그인 아이디 공백 제거 */
+	$("#memberid").keyup(function(){
+		let memberid = $("#memberid").val();
+		memberid = memberid.trim();
+		$("#memberid").val(memberid);
+	});
+/* 로그인 아이디 공백 제거 */
+
+
+/* 로그인 패스워드 공백 제거 */
+	$("#memberpw").keyup(function(){
+		let memberpw = $("#memberpw").val();
+		memberpw = memberpw.trim();
+		$("#memberpw").val(memberpw);
+	});
+/* 로그인 패스워드 공백 제거 */
 
 
 });
