@@ -21,33 +21,40 @@
 		<%@ include file="/include/header.jsp"%>
 		<div class="sub-body">
 			<div class="inner">
+				<div class="tit-cont"> <!--  title -->
+					<p class="tit">로그인</p>
+				</div>
+			
 				<form action="/member/loginProc.jsp" id="loginForm" method="post">
-					<div id="loginArea" class="dFlex">
-						<div id="idPwArea">
-							<div id="idArea">
-								<input type="text" id="memberid" name="memberid" maxlength="15"
-									placeholder="아이디">
+					<div class="login-desc">
+						<div id="loginArea" class="dFlex">
+							<div id="idPwArea">
+								<div id="idArea">
+									<input type="text" id="memberid" name="memberid" maxlength="15"
+										placeholder="아이디">
+								</div>
+	
+								<div id="pwArea">
+									<input type="password" id="memberpw" name="memberpw"
+										maxlength="16" placeholder="비밀번호">
+								</div>
+	
 							</div>
-
-							<div id="pwArea">
-								<input type="password" id="memberpw" name="memberpw"
-									maxlength="16" placeholder="비밀번호">
+							<!-- div#idPwArea -->
+	
+							<div id="loginBtnArea">
+								<button type="button" id="loginBtn">로그인</button>
 							</div>
-
 						</div>
-						<!-- div#idPwArea -->
-
-						<div id="loginBtnArea">
-							<button type="button" id="loginBtn">로그인</button>
+						<!-- div#loginArea -->
+						<div id="loginResArea">
+							<p id="loginErrMsg"></p>
 						</div>
-					</div>
-					<!-- div#loginArea -->
-					<div id="loginResArea">
-						<p id="loginErrMsg"></p>
-					</div>
-					<div id="utilArea">
-						<a href="/member/join.jsp">회원가입</a> <span> / </span> <a href="">아이디
-							찾기</a> <span> / </span> <a href="">비밀번호 찾기</a>
+						<ul id="utilArea">
+							<li><a href="/member/termsChk.jsp">회원가입</a> </li>
+							<li><a href="javascript:">아이디 찾기</a></li>
+							<li><a href="javascript:">비밀번호 찾기</a></li>
+						</ul>
 					</div>
 				</form>
 				<!-- loginForm -->

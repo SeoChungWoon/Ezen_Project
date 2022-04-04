@@ -20,6 +20,10 @@
 	<%@ include file="/include/header.jsp"%>
 		<div class="sub-body">
 			<div class="inner">
+				<div class="tit-cont"> <!--  title -->
+					<p class="tit">회원가입</p>
+				</div>
+				
 				<form action="/member/join.jsp" id="termsForm" method="get">
 					<div id="termsArea">
 						<div class="termsRow">

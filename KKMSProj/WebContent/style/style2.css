@@ -36,13 +36,16 @@
 	height: 8%;
 	width: 10%;
 }
+#termsArea{
+	padding-top: 50px;
+}
 
 /* 회원가입 영역 끝 */
 
 /* 로그인 영역 시작 */
 
 div#loginArea {
-	margin: 10px auto;
+	margin: 0 auto 20px;
 	justify-content: center;
 }
 
@@ -57,9 +60,30 @@ div#loginArea {
 	height: 90%;
 	margin: 5px;
 }
-
-div#utilArea {
+.login-desc{
+	width: 500px;
+	margin: 0 auto;	
+}
+#utilArea {
 	text-align: center;
+}
+.login-desc #utilArea li{
+	position: relative;
+	display: inline-block;
+}
+.login-desc #utilArea li:not(:last-child){
+	padding-right: 20px;	
+	margin-right: 20px;
+}
+.login-desc #utilArea li:not(:last-child)::after{
+	content:"";
+	display: block;
+	position: absolute;
+	top: 6px;
+	right: 0;
+	width: 1px;
+	height: 15px;
+	background: #222;
 }
 
 

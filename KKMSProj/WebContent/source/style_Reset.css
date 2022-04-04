@@ -39,3 +39,6 @@ ul {
 .dFlex {
     display: flex;
 }
+button{
+	cursor: pointer;
+}

@@ -54,8 +54,8 @@ $(window).on("load", function() {
 		});
 	}
 
-	if ($("#wrap.main .sub-body").length != 0) {
-		$("#wrap.main .sub-body").css("min-height", "100vh");
+	if ($("#wrap .sub-body").length != 0) {
+		$("#wrap .sub-body").css("min-height", "100vh");
 	}
 });
 

@@ -16,6 +16,16 @@
 .sub-body{
 	padding: 100px 0;
 }
+.sub-body .tit-cont{
+	padding: 150px 0 50px;
+}
+.sub-body .tit-cont{
+	text-align: center;
+}
+.sub-body .tit-cont .tit{
+	font-size: 48px;
+	font-weight: bold;
+}
 
 /* pc :1500px */
 .inner {
