@@ -11,6 +11,10 @@ import pack_DBCP.DBConnectionMgr;
 public class MemberMgr {
 
 	private DBConnectionMgr pool = null;
+	private Connection objConn = null;
+	private PreparedStatement objPstmt = null;
+	private ResultSet objRS = null;
+	private String sql = "";
 
 	public MemberMgr() {
 
@@ -22,10 +26,6 @@ public class MemberMgr {
 	}
 
 	public boolean chkId(String uId) {
-		Connection objConn = null;
-		PreparedStatement objPstmt = null;
-		ResultSet objRS = null;
-		String sql = "";
 		boolean flag = false;
 
 		try {
@@ -54,11 +54,9 @@ public class MemberMgr {
 	}
 
 	public List<ZipcodeBean> zipChk(String area3) {
-		Connection objConn = null;
-		PreparedStatement objPstmt = null;
-		ResultSet objRS = null;
-		String sql = "";
+		
 		List<ZipcodeBean> zipList = new Vector<ZipcodeBean>();
+		
 		try {
 			objConn = pool.getConnection();
 			sql = "select * from tblZipcode where area3 like ?";
@@ -84,9 +82,7 @@ public class MemberMgr {
 	}
 
 	public boolean joinMember(RegisterBean rBean) {
-		Connection objConn = null;
-		PreparedStatement objPstmt = null;
-		String sql = "";
+		
 		boolean flag = false;
 
 		try {
@@ -116,10 +112,7 @@ public class MemberMgr {
 	}
 
 	public String loginChk(String mId, String mPw) {
-		Connection objConn = null;
-		PreparedStatement objPstmt = null;
-		ResultSet objRS = null;
-		String sql = "";
+		
 		String uName = "";
 
 		System.out.println("id : "+mId+"   mPw : "+mPw);
@@ -142,4 +135,86 @@ public class MemberMgr {
 		}
 		return uName;
 	}
+	
+	public boolean mPwChk(String mId, String mPw) {
+		
+		boolean flag = false;
+		System.out.println(mId + " " + mPw);
+		try {
+			objConn = pool.getConnection();
+			sql = "select count(*) from member where uId = ? and uPw = ?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, mId);
+			objPstmt.setString(2, mPw);
+			objRS = objPstmt.executeQuery();
+			objRS.next();
+			if(objRS.getInt("count(*)") > 0){
+				flag = true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		
+		return flag;
+	}
+	
+	public List<ZipcodeBean> myPage(String mId) {
+
+		String sql = "";
+		List mList = new Vector();
+
+		try {
+			objConn = pool.getConnection();
+			sql = "select * from member where uId=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, mId);
+			objRS = objPstmt.executeQuery();
+			
+			while(objRS.next()) {
+				RegisterBean rBean = new RegisterBean();
+				rBean.setuId(objRS.getString("uId"));
+				rBean.setuName(objRS.getString("uName"));
+				rBean.setuBirthday(objRS.getString("uBirthday"));
+				rBean.setuGender(objRS.getString("uGender"));
+				rBean.setuEmail(objRS.getString("uEmail"));
+				rBean.setuPhone(objRS.getString("uPhone"));
+				rBean.setuZipcode(objRS.getString("uZipcode"));
+				rBean.setuAddr(objRS.getString("uAddr"));
+				mList.add(rBean);
+			}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return mList;
+	}
+	
+	public boolean withdraw (String wId, String wPw) {
+		
+		boolean flag = false;
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "delete from member where uId = ? and uPw = ?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, wId);
+			objPstmt.setString(2, wPw);
+			if (objPstmt.executeUpdate()>0)
+			flag = true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		
+		return flag;
+		
+	}
+	
 }
