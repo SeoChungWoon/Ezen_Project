@@ -9,6 +9,7 @@ $(function() {
 /* 우편번호 찾기 새창 띄우기 */
 
 
+/****** 약관 동의 영역 *****/
 /* 약관 모두 동의 기능 */
 	$("#chkAll").click(function() {
 
@@ -52,8 +53,10 @@ $(function() {
 		}
 	});
 /* 약관 필수항목 체크 확인 */
+/****** 약관 동의 영역 *****/
 
 
+/****** 로그인 영역 *****/
 /* 로그인 유효성 검사 */
 	$("#loginBtn").click(function(){
 		let memberid = $("#memberid").val();
@@ -92,6 +95,29 @@ $(function() {
 		$("#memberpw").val(memberpw);
 	});
 /* 로그인 패스워드 공백 제거 */
+/****** 로그인 영역 *****/
+
+
+/****** 마이페이지 영역 *****/
+/* 마이페이지 비밀번호 유효성 검사 */
+	$("#modifyPwBtn").click(function(){
+		let modifyPw = $("#modifyPw").val();
+		$.ajax({
+			type: "post",
+			url: "/member/modifyChk.jsp",
+			data: { "modifyPw": modifyPw },
+			success: function(txt) {
+				$("#modifyErrMsg").html(txt);
+				$("#modifyErrMsg").css({
+					"text-align": "center",
+					"color": "red",
+					"margin-bottom": "10px"
+				});
+			}
+		});
+
+	});
+/* 마이페이지 비밀번호 유효성 검사 */
 
 
 });
@@ -103,6 +129,7 @@ $(function() {
 
 /****** JS 영역 시작 ******/
 
+/****** 회원가입 영역 *****/
 /* 아이디 유효성 검사 */
 function idChk(formName) {
 
@@ -186,6 +213,11 @@ function birthChk(formName) {
 	let uBirthday = formName.uBirthday.value;
 	uBirthday = uBirthday.trim();
 	formName.uBirthday.value = uBirthday;
+	let regexp = /[^0-9]/g;
+	if (regexp.test(uBirthday)) {
+		$("#uBirthday").val($("#uBirthday").val().replace(regexp, ""));
+		alert("숫자만 입력할 수 있습니다.");
+	}
 }
 /* 생년월일 유효성 검사 */
 
@@ -297,6 +329,8 @@ function join(formName) {
 	formName.submit();
 }
 /* 입력 정보 확인 및 회원가입 */
+/****** 회원가입 영역 *****/
+
 
 
 /****** JS 영역 끝 ******/
