@@ -47,6 +47,7 @@
 					if (memberId != null) {
 					%>
 					<li id="loginId"><%=memberId%>님 안녕하세요.</li>
+					<li id="myPage"><a href="/member/mypage.jsp">My page</a></li>
 					<li id="logout"><a href="/member/logout.jsp">로그아웃</a></li>
 					<%
 					} else {

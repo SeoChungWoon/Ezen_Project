@@ -99,7 +99,7 @@ $(function() {
 
 
 /****** 마이페이지 영역 *****/
-/* 마이페이지 비밀번호 유효성 검사 */
+/* 회원정보 수정 비밀번호 유효성 검사 */
 	$("#modifyPwBtn").click(function(){
 		let modifyPw = $("#modifyPw").val();
 		$.ajax({
@@ -108,7 +108,7 @@ $(function() {
 			data: { "modifyPw": modifyPw },
 			success: function(txt) {
 				$("#modifyErrMsg").html(txt);
-				$("#modifyErrMsg").css({
+				$("#modifyErrMsg *").css({
 					"text-align": "center",
 					"color": "red",
 					"margin-bottom": "10px"
@@ -117,7 +117,44 @@ $(function() {
 		});
 
 	});
-/* 마이페이지 비밀번호 유효성 검사 */
+/* 회원정보 수정 비밀번호 유효성 검사 */
+
+
+/* 회원탈퇴 비밀번호 유효성 검사 */
+	$("#withdrawPwBtn").click(function(){
+		let withdrawPw = $("#withdrawPw").val();
+		$.ajax({
+			type: "post",
+			url: "/member/withdrawChk.jsp",
+			data: { "withdrawPw": withdrawPw },
+			success: function(txt) {
+				$("#withdrawErrMsg").html(txt);
+				$("#withdrawErrMsg *").css({
+					"text-align": "center",
+					"color": "red",
+					"margin-bottom": "10px"
+				});
+			}
+		});
+	});
+/* 회원탈퇴 비밀번호 유효성 검사 */
+
+/* 회원탈퇴 동의/비동의 버튼 */
+/* 동의 */
+$("#withdrawAgree").click(function(){
+	let wPw = $("#withdrawPw").val();
+	location.href="/member/withdrawOK.jsp?wPw="+wPw;
+});
+/* 동의 */
+
+
+/* 동의하지 않음 */
+$("#withdrawDisagree").click(function(){
+	location.href="/member/mypage.jsp";
+});
+/* 동의하지 않음 */
+
+/* 회원탈퇴 동의/비동의 버튼 */
 
 
 });
