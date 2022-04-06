@@ -1,0 +1,91 @@
+@charset "UTF-8";
+@import url(../source/style_Reset.css);
+@import url(/source/style_fonts.css);
+@import url(/style/style_fonts.css);
+
+/* header 영역 시작 */
+#header {
+    width: 100%;
+}
+#header > * {
+	padding: 10px;
+	border: 1px solid #000;
+	flex: 1;
+	text-align: center;
+}
+
+#header > nav#gnb {
+	flex:3;
+}
+
+#gnb > div {
+	margin: 20px auto;
+}
+
+/* header 영역 끝 */
+
+/* main#main 영역 시작 */
+#main {
+    width: 100%;
+    position: relative;
+    border: 1px solid #000;
+}
+#main > #main_show {
+    width: 90%;
+    margin: auto;
+    height: 500px;
+    border: 1px solid #000;
+}
+.main_bg{  /* 슬라이드 이미지 영역 임시확인용 편집예정. */
+    background-image: url(/image/뮤지컬_모차르트.jpg);
+    background-size: cover;
+    background-repeat : no-repeat;
+}
+
+.amount{
+    position: relative;
+    top: -30px;
+    display: flex;
+    width: 75%;
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+.amount > li{
+    flex: 1;
+    height: 130px;
+    /* background: skyblue; */
+}
+.amount > li > div{
+    text-align: center;
+    /* background: green; */
+    height: 68px;
+    line-height: 68px;
+    margin-top: 30px;
+    /* border: 1px solid #000; */
+}
+.amount>li:not(:last-child)>div{
+    border-right: 1px solid rgba(170, 170, 170, 0.4);
+}
+.main_hot{
+    width: 90%;
+    display: flex;
+    margin: auto;
+    
+}
+.main_hot > .hot_list{
+    width: 20%;
+    flex: 1;
+    background: skyblue;
+    text-align: center;
+    box-sizing: border-box;
+}
+.hot_list > .showbox{
+    height: 437px;
+}
+.showbox > li{
+    width: 100%;
+    display: inline-block;
+    border: 1px solid #000;
+}
+/* main#main 영역 끝 */
