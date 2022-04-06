@@ -10,7 +10,6 @@ if (memName != "") {
 	session.setAttribute("memID", memberId);
 %>
 <script>
-		alert("<%=memName%>님 환영합니다.");
 	location.href = "/index.jsp";
 </script>
 <%

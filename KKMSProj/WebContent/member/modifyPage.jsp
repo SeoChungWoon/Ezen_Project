@@ -31,12 +31,12 @@
 			location.href = "/index.jsp";
 		</script>
 		<%
-		}
+		} else {
 		List objList = mMgr.myPage(memberId);
 		RegisterBean mList = (RegisterBean) objList.get(0);
 		%>
 		<div class="sub-body dFlex">
-		<%@ include file="/include/myPageAside.jsp"%>
+			<%@ include file="/include/myPageAside.jsp"%>
 			<div class="inner">
 				<div id="mypageArea">
 					<div class="mypageRow dFlex">
@@ -141,7 +141,9 @@
 						<!-- div.modifyVal -->
 					</div>
 					<!-- div.mypageRow -->
-
+					<%
+					}
+					%>
 
 				</div>
 			</div>

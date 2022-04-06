@@ -4,7 +4,7 @@ $(function() {
 
 /* 우편번호 찾기 새창 띄우기 */
 	$("#zipChk").click(function() {
-		window.open("/member/zipChk.jsp", "_blank");
+		window.open("/member/zipChk.jsp","우편번호 찾기","_blank");
 	});
 /* 우편번호 찾기 새창 띄우기 */
 
@@ -85,6 +85,11 @@ $(function() {
 		memberid = memberid.trim();
 		$("#memberid").val(memberid);
 	});
+	$("#memberid").keypress(function(event){
+		if(event.which == 13) {
+			$("#loginBtn").click();
+		}
+	});
 /* 로그인 아이디 공백 제거 */
 
 
@@ -93,6 +98,11 @@ $(function() {
 		let memberpw = $("#memberpw").val();
 		memberpw = memberpw.trim();
 		$("#memberpw").val(memberpw);
+	});
+	$("#memberpw").keypress(function(event){
+		if(event.which == 13) {
+			$("#loginBtn").click();
+		}
 	});
 /* 로그인 패스워드 공백 제거 */
 /****** 로그인 영역 *****/
@@ -117,6 +127,11 @@ $(function() {
 		});
 
 	});
+	$("#modifyPw").keypress(function(event){
+		if(event.which == 13) {
+			$("#modifyPwBtn").click();
+		}
+	});
 /* 회원정보 수정 비밀번호 유효성 검사 */
 
 
@@ -137,9 +152,15 @@ $(function() {
 			}
 		});
 	});
+	$("#withdrawPw").keypress(function(event){
+		if(event.which == 13) {
+			$("#withdrawPwBtn").click();
+		}
+	});
 /* 회원탈퇴 비밀번호 유효성 검사 */
 
-/* 회원탈퇴 동의/비동의 버튼 */
+
+/* 회원탈퇴 동의, 비동의 버튼 */
 /* 동의 */
 $("#withdrawAgree").click(function(){
 	let wPw = $("#withdrawPw").val();
@@ -153,9 +174,12 @@ $("#withdrawDisagree").click(function(){
 	location.href="/member/mypage.jsp";
 });
 /* 동의하지 않음 */
+/* 회원탈퇴 동의, 비동의 버튼 */
 
-/* 회원탈퇴 동의/비동의 버튼 */
 
+
+
+/****** 마이페이지 영역 *****/
 
 });
 
@@ -183,7 +207,8 @@ function idChk(formName) {
 	} else {
 		$("#idChkRes").addClass("hidden");
 	}
-
+	let uIdL = uId.length;
+	if ( uIdL > 4 ) {
 	$.ajax({
 		type: "post",
 		url: "/member/idChk.jsp",
@@ -203,6 +228,12 @@ function idChk(formName) {
 			} 
 		}
 	});
+	} else {
+		$("#idChkMsg").html("5자 이상의 아이디를 입력해주세요.");
+		$("#uIdChk").val("N");
+		$("#uId").removeClass("mismatch");
+		$("#uId").removeClass("match");
+	}
 }
 /* 아이디 유효성 검사 */
 
@@ -241,6 +272,11 @@ function nameChk(formName) {
 	let uName = formName.uName.value;
 	uName = uName.trim();
 	formName.uName.value = uName;
+	let regexp = /[0-9]/g;
+	if (regexp.test(uName)) {
+		$("#uName").val($("#uName").val().replace(regexp, ""));
+		alert("숫자는 입력할 수 없습니다.");
+	}
 }
 /* 이름 유효성 검사 */
 

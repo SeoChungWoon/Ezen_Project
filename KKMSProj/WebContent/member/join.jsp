@@ -1,22 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%!public String getParam(HttpServletRequest req, String param) {
 
-		if (req.getParameter(param) != null) {
-			return req.getParameter(param);
-		} else {
-			return "";
-		}
-	} // 전송된 데이터request.getParameter("매개변수") 가 있다면 그대로 반환하고
-		// 전송된 데이터가 없다면 공백을 반환%>
 
 
 
 <%
 request.setCharacterEncoding("UTF-8");
 String TermsAds = request.getParameter("termsAds");
+String chkAll = request.getParameter("chkAll");
 if (TermsAds == null) {
 	TermsAds = "N";
+}
+if (chkAll == null) {
+	%>
+	<script>
+	location.href="/member/termsChk.jsp";
+	</script>
+	<%
 }
 %>
 
@@ -157,7 +157,7 @@ if (TermsAds == null) {
 
 						<div class="joinRow">
 							<input type="hidden" id="TermsAds" name="TermsAds"
-								value="<%=getParam(request, "TermsAds")%>">
+								value="<%=TermsAds%>">
 						</div>
 
 
