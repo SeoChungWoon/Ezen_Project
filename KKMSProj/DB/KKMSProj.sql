@@ -47,6 +47,17 @@ area4 char(20)
 );
 
 
+/*게시판용 테이블*/
+create table bbsList (
+no		int	auto_increment	not null,
+division	char(20)	not null,
+title		char(50)	not null,
+wName	char(20)	not null,				/*wName = writerName*/
+postDate	date	not null,
+count	int	not null,
+constraint primary key (no)
+);
+
 
 
 
