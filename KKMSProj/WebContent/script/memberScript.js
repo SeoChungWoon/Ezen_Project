@@ -200,7 +200,7 @@ function idChk(formName) {
 				$("#uIdChk").val(txt);
 				$("#uId").addClass("mismatch");
 				$("#uId").removeClass("match");
-			}
+			} 
 		}
 	});
 }
@@ -216,18 +216,18 @@ function pwChk(formName) {
 	formName.uPw.value = uPw;
 	formName.uPwChk.value = uPwChk;
 	if (uPw == "" || uPwChk == "") {
-		$("#uPwChk").removeClass("mismatch");
-		$("#uPwChk").removeClass("match");
+		$(".joinPw").removeClass("mismatch");
+		$(".joinPw").removeClass("match");
 		$("#pwChkRes").addClass("hidden");
 		formName.pwMatch.value = "N";
 	} else if (uPw == uPwChk) {
-		$("#uPwChk").addClass("match");
-		$("#uPwChk").removeClass("mismatch");
+		$(".joinPw").addClass("match");
+		$(".joinPw").removeClass("mismatch");
 		$("#pwChkRes").addClass("hidden");
 		formName.pwMatch.value = "Y";
 	} else {
-		$("#uPwChk").addClass("mismatch");
-		$("#uPwChk").removeClass("match");
+		$(".joinPw").addClass("mismatch");
+		$(".joinPw").removeClass("match");
 		$("#pwChkRes").removeClass("hidden");
 		formName.pwMatch.value = "N";
 	}

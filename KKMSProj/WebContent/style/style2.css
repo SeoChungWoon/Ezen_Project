@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-
+/* 회원가입 영역 시작 */
 #joinArea {
 	margin: 20px auto;
 	text-align: center;
@@ -89,3 +89,45 @@ div#loginArea {
 
 
 /* 로그인 영역 끝 */
+
+/* 마이페이지 영역 시작 */
+
+#mypageArea {
+	margin: 20px auto;
+	text-align: center;
+	border: 1px solid #000;
+}
+.mypageRow {
+	justify-content: center;
+	border: 1px solid #000;
+}
+
+.mypageRow > div {
+	width: 20%;
+}
+
+#mypageArea > div.mypageRow input {
+	padding: 10px;
+	height: 50%;
+	width: 100%;
+}
+
+#mypageArea > div.mypageRow input#uZipcode {
+	width: 10%;
+}
+
+#mypageArea > div.mypageRow button#zipChk {
+	padding: 10px;
+	height: 10%;
+	margin: 0 0 4px 2px;
+}
+
+.mypageRow div.modifyTitle {
+	padding: 5px;
+	font-weight: bold;
+	width: 20%;
+	text-align-last: left;
+	display: inline-block;
+}
+
+/* 마이페이지 영역 끝 */

@@ -63,7 +63,7 @@ if (TermsAds == null) {
 							<span class="joinTitle">비밀번호</span>
 						</div>
 						<div class="joinRow">
-							<input type="password" name="uPw" maxlength="16"
+							<input type="password" class="joinPw" name="uPw" maxlength="16"
 								onkeyup="pwChk(this.form)">
 						</div>
 
@@ -71,7 +71,7 @@ if (TermsAds == null) {
 							<span class="joinTitle">비밀번호 확인</span>
 						</div>
 						<div class="joinRow">
-							<input type="password" id="uPwChk" name="uPwChk" maxlength="16"
+							<input type="password" id="uPwChk" class="joinPw" name="uPwChk" maxlength="16"
 								onkeyup="pwChk(this.form)"> <input type="hidden"
 								id="pwMatch">
 							<div id="pwChkRes" class="hidden">
