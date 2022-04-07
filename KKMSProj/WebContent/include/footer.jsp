@@ -14,7 +14,7 @@
 			<div class="fInfo">
 				<div class="fLeft">
 					<div class="fLogo">
-						<a href="/index.jsp">fLOGO</a>
+						<a href="/index.jsp"><img src="/images/f-logo.png" alt="LOGO" /></a>
 					</div>
 
 					<div class="fTxt">

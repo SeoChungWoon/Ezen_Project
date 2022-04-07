@@ -88,9 +88,16 @@ header>.inner {
 
 header .hLogo {
 	position: absolute;
-	top: 35px;
+	top: 10px;
 	left: 10px;
 	z-index: 2;
+}
+header .hLogo a{
+	display: block;
+	width: 130px;	
+}
+header .hLogo img{
+	width: 100%;
 }
 
 header nav {
@@ -285,15 +292,19 @@ footer .fInfo .fLeft {
 }
 
 footer .fInfo .fLeft .fLogo {
-	padding: 0 8%;
+	padding: 0 5%;
 	text-align: center;
 	margin-right: 10px;
 }
 
 footer .fInfo .fLeft .fLogo a {
 	color: #fff;
+	display: block;
+	width: 120px;
 }
-
+footer .fInfo .fLeft .fLogo a img{
+	width: 100%;
+}
 footer .fInfo .fLeft .fTxt .txt, footer .fInfo .fLeft .fTxt .txt a {
 	color: #888;
 	font-size: 14px;
