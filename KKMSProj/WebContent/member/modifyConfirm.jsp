@@ -1,5 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="mMgr" class="pack_Member.MemberMgr" />
+
+<%
+request.setCharacterEncoding("UTF-8");
+String memberId = (String) session.getAttribute("memID");
+String nPw = request.getParameter("nPw");
+String nEmail = request.getParameter("nEmail");
+String nZipcode = request.getParameter("nZipcode");
+String nAddr = request.getParameter("nAddr");
+String nPhone = request.getParameter("nPhone");
+boolean modifyRes = mMgr.modify(memberId, nPw, nEmail, nZipcode, nAddr, nPhone);
+if(modifyRes) {
+	%>
+	<script>
+	alert("회원정보 수정이 완료되었습니다.");
+	location.href="/member/mypage.jsp";
+	</script>
+	<%
+} else {
+	%>
+	<script>
+	alert("회원정보가 수정되지 않았습니다.");
+	location.href="/member/mypage.jsp";
+	</script>
+	<%
+}
+
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,19 +45,5 @@
 <script src="/script/memberScript.js"></script>
 </head>
 <body>
-	<div id="wrap">
-	<%@ include file="/include/header.jsp"%>
-		<div class="sub-body">
-			<div class="inner">
-				<form action="/member/join.jsp" id="termsForm" method="get">
-					
-				</form>
-				<!-- termsForm -->
-			</div>
-		</div>
-		<%@ include file="/include/footer.jsp"%>
-	</div>
-	<!-- div#wrap -->
-
 </body>
 </html>

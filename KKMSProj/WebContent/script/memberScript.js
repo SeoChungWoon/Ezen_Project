@@ -178,13 +178,29 @@ $("#withdrawDisagree").click(function(){
 
 
 /* 마이페이지 정보 수정 버튼 */
-$(".modifyBtn").click(function(){
-
-	$(".modifyBtn").parent();
-
+$(".modifyBtn").on("click", function(){
+	$(this).parent().siblings(".modifyVal").children("input[type=text]").attr("readonly", false).val('');
+	$(this).parent().siblings(".modifyVal").children("input[type=text]").focus();
 });
 /* 마이페이지 정보 수정 버튼 */
 
+
+/* 마이페이지 주소 수정 버튼 */
+$(".modifyAddrBtn").on("click", function(){
+	$("#changeAddr").removeClass("hidden");
+	$(".modifyAddrArea"). addClass("hidden");
+	$("#uZipcode").val(null);
+	$("#uAddr").val(null);
+});
+/* 마이페이지 주소 수정 버튼 */
+
+
+/* 마이페이지 리셋 버튼 */
+$("#modifyResetBtn").on("click", function(){
+	$("#changeAddr").addClass("hidden");
+	$(".modifyAddrArea").removeClass("hidden");
+});
+/* 마이페이지 리셋 버튼 */
 
 
 /****** 마이페이지 영역 *****/
@@ -197,6 +213,35 @@ $(".modifyBtn").click(function(){
 
 
 /****** JS 영역 시작 ******/
+
+/* 마이페이지 수정사항 저장 버튼*/
+function modifyConfirm(formName) {
+	if (formName.uPw.value != formName.uPwChk.value) {
+		alert("비밀번호를 확인해 주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.nEmail.value == "") {
+		alert("이메일 주소를 입력해 주세요.");
+		formName.nEmail.focus();
+		return;
+	}
+	if (formName.uZipcode.value == "") {
+		alert("주소를 확인해 주세요.");
+		formName.addr2.focus();
+		return;
+	}	
+	uPhone = formName.uPhone.value;
+	if (uPhone == "" || uPhone.length < 11) {
+		alert("휴대폰 번호를 확인해 주세요.");
+		formName.uPhone.focus();
+		return;
+	}
+	
+	formName.submit();
+}
+/* 마이페이지 수정사항 저장 버튼*/
+
 
 /****** 회원가입 영역 *****/
 /* 아이디 유효성 검사 */
@@ -254,7 +299,7 @@ function pwChk(formName) {
 	uPwChk = uPwChk.trim();
 	formName.uPw.value = uPw;
 	formName.uPwChk.value = uPwChk;
-	if (uPw == "" || uPwChk == "") {
+	if (uPwChk == "") {
 		$(".joinPw").removeClass("mismatch");
 		$(".joinPw").removeClass("match");
 		$("#pwChkRes").addClass("hidden");
@@ -363,7 +408,7 @@ function join(formName) {
 		formName.uId.focus();
 		return;
 	}
-	if (formName.uPw.value == "" || formName.pwMatch.value == "N") {
+	if (formName.uPw.value == "" || formName.uPwChk.value == "" || formName.pwMatch.value == "N") {
 		alert("비밀번호를 확인해 주세요.");
 		formName.uPw.focus();
 		return;

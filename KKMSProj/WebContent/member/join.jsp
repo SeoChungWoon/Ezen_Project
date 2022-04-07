@@ -10,6 +10,8 @@ String TermsAds = request.getParameter("termsAds");
 String chkAll = request.getParameter("chkAll");
 if (TermsAds == null) {
 	TermsAds = "N";
+} else {
+	TermsAds = "Y";
 }
 if (chkAll == null) {
 	%>
@@ -41,7 +43,7 @@ if (chkAll == null) {
 		
 		<div class="sub-body">
 			<div class="inner">
-				<form action="/member/joinProc.jsp" id="joinForm" method="get">
+				<form action="/member/joinProc.jsp" id="joinForm" method="post">
 					<div id="joinArea">
 
 						<div class="joinRow">
@@ -63,7 +65,7 @@ if (chkAll == null) {
 							<span class="joinTitle">비밀번호</span>
 						</div>
 						<div class="joinRow">
-							<input type="password" class="joinPw" name="uPw" maxlength="16"
+							<input type="password" id="uPw" class="joinPw" name="uPw" maxlength="16"
 								onkeyup="pwChk(this.form)">
 						</div>
 
@@ -156,7 +158,7 @@ if (chkAll == null) {
 
 
 						<div class="joinRow">
-							<input type="hidden" id="TermsAds" name="TermsAds"
+							<input type="hidden" id="TermsAds" name="termsAds"
 								value="<%=TermsAds%>">
 						</div>
 

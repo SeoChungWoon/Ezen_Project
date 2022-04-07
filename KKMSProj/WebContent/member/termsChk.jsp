@@ -24,7 +24,7 @@
 					<p class="tit">회원가입</p>
 				</div>
 				
-				<form action="/member/join.jsp" id="termsForm" method="get">
+				<form action="/member/join.jsp" id="termsForm" method="post">
 					<div id="termsArea">
 						<div class="termsRow">
 							<p>

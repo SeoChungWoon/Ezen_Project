@@ -100,7 +100,6 @@ public class MemberMgr {
 			objPstmt.setString(8, rBean.getuZipcode());
 			objPstmt.setString(9, rBean.getuAddr());
 			objPstmt.setString(10, rBean.getTermsAds());
-
 			if (objPstmt.executeUpdate() == 1)
 				flag = true;
 		} catch (Exception e) {
@@ -162,7 +161,6 @@ public class MemberMgr {
 	
 	public List<ZipcodeBean> myPage(String mId) {
 
-		String sql = "";
 		List mList = new Vector();
 
 		try {
@@ -215,6 +213,42 @@ public class MemberMgr {
 		
 		return flag;
 		
+	}
+	
+	public boolean modify (String uId, String nPw, String nEmail, String nZipcode, String nAddr, String nPhone) {
+		boolean flag = false;
+		
+		try {
+			objConn = pool.getConnection();
+			if(nPw == "") {
+				sql = "update member set uEmail = ?, uZipcode = ?, uAddr = ?, uPhone = ? where uId=?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, nEmail);
+				objPstmt.setString(2, nZipcode);
+				objPstmt.setString(3, nAddr);
+				objPstmt.setString(4, nPhone);
+				objPstmt.setString(5, uId);
+				if (objPstmt.executeUpdate()>0)
+					flag = true;
+			} else if (nPw != "") {
+				sql = "update member set uPw = ?, uEmail = ?, uZipcode = ?, uAddr = ?, uPhone = ? where uId=?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, nPw);
+				objPstmt.setString(2, nEmail);
+				objPstmt.setString(3, nZipcode);
+				objPstmt.setString(4, nAddr);
+				objPstmt.setString(5, nPhone);
+				objPstmt.setString(6, uId);
+				if (objPstmt.executeUpdate()>0)
+					flag = true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		
+		return flag;
 	}
 	
 	
