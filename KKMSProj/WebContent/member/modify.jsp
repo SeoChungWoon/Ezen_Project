@@ -19,28 +19,29 @@
 	<div id="wrap">
 		<%@ include file="/include/header.jsp"%>
 		<%
-		if (memberId == null){
-			%>
-			<script>
-			location.href="/index.jsp";
-			</script>
-			<%
+		if (memberId == null) {
+		%>
+		<script>
+			location.href = "/index.jsp";
+		</script>
+		<%
 		}
 		%>
-		<div class="sub-body dFlex">
-			<%@ include file="/include/myPageAside.jsp"%>
+		<div class="sub-body">
 			<div class="inner">
+				<div class="mypageinner dFlex">
+					<%@ include file="/include/myPageAside.jsp"%>
 
-				<div id="modifyChkArea">
-					<input type="password" id="modifyPw" name="modifyPw"
-						placeholder="비밀번호 입력" maxlength="16">
-					<button type="button" id="modifyPwBtn">확인</button>
+					<div id="modifyChkArea">
+						<input type="password" id="modifyPw" name="modifyPw"
+							placeholder="비밀번호 입력" maxlength="16">
+						<button type="button" id="modifyPwBtn">확인</button>
+					</div>
+					<!-- div#modifyChkArea -->
+					<div id="modifyChkRes">
+						<p id="modifyErrMsg"></p>
+					</div>
 				</div>
-				<!-- div#modifyChkArea -->
-				<div id="modifyChkRes">
-					<p id="modifyErrMsg"></p>
-				</div>
-
 			</div>
 		</div>
 		<%@ include file="/include/footer.jsp"%>

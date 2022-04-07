@@ -177,6 +177,14 @@ $("#withdrawDisagree").click(function(){
 /* 회원탈퇴 동의, 비동의 버튼 */
 
 
+/* 마이페이지 정보 수정 버튼 */
+$(".modifyBtn").click(function(){
+
+	$(".modifyBtn").parent();
+
+});
+/* 마이페이지 정보 수정 버튼 */
+
 
 
 /****** 마이페이지 영역 *****/

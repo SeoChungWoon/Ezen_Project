@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet" href="/style/style_bbs.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/source/gsap.min.js"></script>
 <script src="/script/script.js"></script>

@@ -39,6 +39,7 @@
 			<%@ include file="/include/myPageAside.jsp"%>
 			<div class="inner">
 				<div id="mypageArea">
+				<form action="modifyConfirm" id="modifyForm"></form>
 					<div class="mypageRow dFlex">
 						<div id="modifyTitle">
 							<span>아이디</span>
@@ -58,7 +59,19 @@
 						</div>
 						<!-- div.modifyTitle -->
 						<div class="modifyVal">
-							<input type="text">
+							<div class="modifyValTitle">
+								<span>변경할 비밀번호</span>
+							</div>
+							<!-- div.modifyValTitle -->
+							<input type="text" name="nPw" id="nPw">
+						</div>
+						<!-- div.modifyVal -->
+						<div class="modifyVal">
+							<div class="modifyValTitle">
+								<span>변경할 비밀번호 확인</span>
+							</div>
+							<!-- div.modifyValTitle -->
+							<input type="text" name="nPwChk" id="nPwChk">
 						</div>
 						<!-- div.modifyVal -->
 					</div>
@@ -100,6 +113,10 @@
 							<input type="text" value="<%=mList.getuEmail()%>" readonly>
 						</div>
 						<!-- div.modifyVal -->
+						<div class="modifyBtnArea">
+							<input type="button" class="modifyBtn">
+						</div>
+						<!-- div.modifyBtn -->
 					</div>
 					<!-- div.mypageRow -->
 
@@ -113,6 +130,10 @@
 							<input type="text" value="<%=mList.getuZipcode()%>" readonly>
 						</div>
 						<!-- div.modifyVal -->
+						<div class="modifyBtnArea">
+							<input type="button" class="modifyBtn">
+						</div>
+						<!-- div.modifyBtn -->
 					</div>
 					<!-- div.mypageRow -->
 
@@ -126,6 +147,10 @@
 							<input type="text" value="<%=mList.getuAddr()%>" readonly>
 						</div>
 						<!-- div.modifyVal -->
+						<div class="modifyBtnArea">
+							<input type="button" class="modifyBtn">
+						</div>
+						<!-- div.modifyBtn -->
 					</div>
 					<!-- div.mypageRow -->
 
@@ -139,6 +164,10 @@
 							<input type="text" value="<%=mList.getuPhone()%>" readonly>
 						</div>
 						<!-- div.modifyVal -->
+						<div class="modifyBtnArea">
+							<input type="button" class="modifyBtn">
+						</div>
+						<!-- div.modifyBtn -->
 					</div>
 					<!-- div.mypageRow -->
 					<%

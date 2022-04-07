@@ -27,9 +27,9 @@
 			<%
 		}
 		%>
-		<div class="sub-body dFlex">
-			<%@ include file="/include/myPageAside.jsp"%>
+		<div class="sub-body">
 			<div class="inner">
+			<%@ include file="/include/myPageAside.jsp"%>
 
 				
 
