@@ -28,8 +28,9 @@
 				</div>
 
 				<div class="fRight fSns">
-					<a href="javascript:">Icon</a> <a href="javascript:">Icon</a> <a
-						href="javascript:">Icon</a>
+					<a href="javascript:"><img src="/images/icon-instagram.png" alt="" /></a> 
+					<a href="javascript:"><img src="/images/icon-facebook.png" alt="" /></a> 
+					<a href="javascript:"><img src="/images/icon-youtube.png" alt="" /></a>
 				</div>
 			</div>
 			<!-- //fInfo -->

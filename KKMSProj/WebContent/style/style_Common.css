@@ -1,5 +1,7 @@
 @charset "UTF-8";
+
 @import url(/source/style_Reset.css);
+
 @import url(/style/style_fonts.css);
 
 /* common */
@@ -13,16 +15,19 @@
 }
 
 /* sub-body */
-.sub-body{
+.sub-body {
 	padding: 100px 0;
 }
-.sub-body .tit-cont{
+
+.sub-body .tit-cont {
 	padding: 150px 0 50px;
 }
-.sub-body .tit-cont{
+
+.sub-body .tit-cont {
 	text-align: center;
 }
-.sub-body .tit-cont .tit{
+
+.sub-body .tit-cont .tit {
 	font-size: 48px;
 	font-weight: bold;
 }
@@ -94,7 +99,8 @@ header nav {
 	padding: 0 0 50px 0;
 	z-index: 1;
 }
-header nav .menu{
+
+header nav .menu {
 	display: flex;
 }
 
@@ -121,8 +127,9 @@ header nav .one-dep>a {
 	align-items: center;
 	height: 100px;
 	padding: 0 10px;
-	font-size: 18px;
+	font-size: 20px;
 }
+
 header nav .one-dep>a:after {
 	content: "";
 	position: absolute;
@@ -137,20 +144,25 @@ header nav .one-dep>a:after {
 	transition: width .4s ease;
 	transform: translateX(-50%);
 }
-header nav .one-dep>a:hover{
+
+header nav .one-dep>a:hover {
 	color: #0080c0;
 	font-weight: bold;
 }
-header nav .one-dep>a.on{
+
+header nav .one-dep>a.on {
 	color: #0080c0;
 	font-weight: bold;
 }
-header nav .one-dep>a:hover:after{
+
+header nav .one-dep>a:hover:after {
 	width: 100%;
 }
-header nav .one-dep>a.on::after{
+
+header nav .one-dep>a.on::after {
 	width: 100%;
 }
+
 header nav .two-dep {
 	padding-top: 20px;
 }
@@ -159,12 +171,14 @@ header nav .two-dep li:not(:first-child) {
 	margin-top: 10px;
 }
 
-header nav .two-dep li a{
+header nav .two-dep li a {
 	display: block;
 }
-header nav .two-dep li a span{
+
+header nav .two-dep li a span {
 	position: relative;
 }
+
 header nav .two-dep li a span::after {
 	content: "";
 	position: absolute;
@@ -179,12 +193,15 @@ header nav .two-dep li a span::after {
 	transform: translateX(-50%);
 	color: #0099bf;
 }
-header nav .two-dep li a:hover span{
+
+header nav .two-dep li a:hover span {
 	color: #0099bf;
 }
-header nav .two-dep li a:hover span::after  {
+
+header nav .two-dep li a:hover span::after {
 	width: 100%;
 }
+
 header .hUtil {
 	display: flex;
 	position: absolute;
@@ -192,6 +209,7 @@ header .hUtil {
 	right: 10px;
 	z-index: 2;
 }
+
 @media all and (max-width: 1280px) {
 	header nav {
 		width: 800px;
@@ -232,66 +250,70 @@ header .hUtil .login li a span {
 footer {
 	position: relative;
 	width: 100%;
-	padding-bottom: 40px;
-	background: #fff;
-	border-top: 1px solid #ddd;
+	padding-bottom: 60px;
+	background: #222;
 }
-footer .fnb{ 
+
+footer .fnb {
 	display: block;
 	width: 100%;
-	padding: 20px 0;
+	padding: 40px 0;
 }
-footer .fnb li{
+
+footer .fnb li {
 	display: inline-block;
 }
-footer .fnb li:not(:last-child){
+
+footer .fnb li:not(:last-child) {
 	margin-right: 20px;
 }
-footer .fInfo{
+
+footer .fnb li a {
+	color: #fff;
+}
+
+footer .fInfo {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 }
-footer .fInfo .fLeft{
+
+footer .fInfo .fLeft {
 	display: flex;
 	width: 100%;
 	padding-right: 20%;
 }
-footer .fInfo .fLeft .fLogo{
-	padding: 0 5%;
+
+footer .fInfo .fLeft .fLogo {
+	padding: 0 8%;
 	text-align: center;
 	margin-right: 10px;
 }
-footer .fInfo .fLeft .fTxt .txt, footer .fInfo .fLeft .fTxt .txt a{
-	color: #666;
+
+footer .fInfo .fLeft .fLogo a {
+	color: #fff;
+}
+
+footer .fInfo .fLeft .fTxt .txt, footer .fInfo .fLeft .fTxt .txt a {
+	color: #888;
 	font-size: 14px;
 	line-height: 24px;
 }
-footer .fInfo .fRight{
+
+footer .fInfo .fRight {
 	position: absolute;
 	top: 0;
 	right: 0;
 	z-index: 2;
 }
-footer .fInfo .fSns a:not(:last-child){
+footer .fInfo .fSns a{
+	color: #fff;
+	width: 40px;
+	display: inline-block;
+}
+footer .fInfo .fSns a:not(:last-child) {
 	margin-right: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+footer .fInfo .fSns a img{
+	width: 100%;
+}

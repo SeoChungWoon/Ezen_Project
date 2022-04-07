@@ -81,10 +81,10 @@
 									<p class="price">
 										<span class="original"> 
 											<span class="rate-sale">30%</span> 
-											<del>20000<span>원</span></del>
+											<del>20000</del><span>원</span>
 										</span> 
 										<span class="discount-price">
-											<ins>14000<span>원</span></ins>
+											<ins>14000</ins><span>원</span>
 										</span>
 									</p>
 								</div>
@@ -117,10 +117,10 @@
 									<p class="price">
 										<span class="original"> 
 											<span class="rate-sale">10%</span> 
-											<del>15000<span>원</span></del>
+											<del>15000</del><span>원</span>
 										</span> 
 										<span class="discount-price">
-											<ins>13500<span>원</span></ins>
+											<ins>13500</ins><span>원</span>
 										</span>
 									</p>
 								</div>
@@ -152,10 +152,10 @@
 									<p class="price">
 										<span class="original"> 
 											<span class="rate-sale">8%</span> 
-											<del>13000<span>원</span></del>
+											<del>13000</del><span>원</span>
 										</span> 
 										<span class="discount-price">
-											<ins>11900<span>원</span></ins>
+											<ins>11900</ins><span>원</span>
 										</span>
 									</p>
 								</div>
@@ -188,10 +188,10 @@
 									<p class="price">
 										<span class="original"> 
 											<span class="rate-sale">50%</span> 
-											<del>10000<span>원</span></del>
+											<del>10000</del><span>원</span>
 										</span> 
 										<span class="discount-price">
-											<ins>5000<span>원</span></ins>
+											<ins>5000</ins><span>원</span>
 										</span>
 									</p>
 								</div>
@@ -223,10 +223,10 @@
 									<p class="price">
 										<span class="original"> 
 											<span class="rate-sale">58%</span> 
-											<del>20000<span>원</span></del>
+											<del>20000</del><span>원</span>
 										</span> 
 										<span class="discount-price">
-											<ins>8500<span>원</span></ins>
+											<ins>8500</ins><span>원</span>
 										</span>
 									</p>
 								</div>

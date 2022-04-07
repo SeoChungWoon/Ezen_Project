@@ -1,45 +1,56 @@
 @charset "UTF-8";
 
 * {
-    color: #222;
-    font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-size: 16px;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
-/* 배경색 필요할 경우 사용함
-    body {
-        
-    }
-*/
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+	position: relative;
+	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+	font-size: 16px;
+	color: #222;
+	letter-spacing: -0.025em;
+	line-height: 1.2;
+	-webkit-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-overflow-scrolling: touch;
+	-ms-text-size-adjust: 100%
+}
 
 a:link {
-    color: #222;
-    text-decoration: none;
+	color: #222;
+	text-decoration: none;
 }
 
 a:visited {
-    color: #222;
+	color: #222;
 }
 
 a:hover {
-    color: #222;
+	color: #222;
 }
 
 a:active {
-    color: #222;
+	color: #222;
 }
 
 ul {
-    list-style: none;
+	list-style: none;
 }
 
 .dFlex {
-    display: flex;
+	display: flex;
 }
-button{
+
+button {
 	cursor: pointer;
 }
 
@@ -62,6 +73,7 @@ select {
 	border-left: 2px solid #000;
 	border-bottom: 2px solid #000;
 }
-.select-group select{
+
+.select-group select {
 	appearance: none;
 }

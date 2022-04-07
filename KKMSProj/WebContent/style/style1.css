@@ -167,7 +167,7 @@
 	display: block;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info{
-	padding: 20px 10px;
+	padding: 20px;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .flag{
 	margin-bottom: 15px;
@@ -204,7 +204,7 @@
 	white-space: nowrap;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .sub-txt ~ p{
-	margin-top: 10px;
+	margin-top: 15px;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span{
 	color: #666;
@@ -227,6 +227,9 @@
 	height: 14px;
 	background: #999;
 }
+.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt .date{
+	padding-bottom: 5px;
+}
 .exhibit-cont .exhibit-list .listBox .txt-info .explain-txt > span{
 	color: #999;
 	display: block;
@@ -234,11 +237,13 @@
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .price > span, 
 .exhibit-cont .exhibit-list .listBox .txt-info .price del,
-.exhibit-cont .exhibit-list .listBox .txt-info .price del span{
+.exhibit-cont .exhibit-list .listBox .txt-info .price del + span{
 	color: #999;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price{
 	display: block;
+	padding-top: 5px;
+	color: #222;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price ins{
 	text-decoration: none;
@@ -249,7 +254,7 @@
 	font-size: 16px;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .price del,
-.exhibit-cont .exhibit-list .listBox .txt-info .price del span{
+.exhibit-cont .exhibit-list .listBox .txt-info .price del + span{
 	font-size: 12px;
 }
 @media all and (max-width: 1440px) {

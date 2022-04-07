@@ -9,8 +9,8 @@ var headerHeight = $("header").outerHeight();
 var headerTabHeight = 110;
 var WindowInHeight = $(window).innerHeight();
 var scrollTop = $(window).scrollTop();
-		
-		
+
+
 $(function() {
 	// header
 	if ($("header").length != 0) {
@@ -35,11 +35,18 @@ $(function() {
 			}
 		}, 50);
 	}
-	
-	
-	
-	
 
+	// product list
+	if ($(".exhibit-cont").length != 0) {
+		$(".exhibit-cont .exhibit-list .listBox .txt-info .price").each(function(e) {
+			let oriPrice = parseInt($(this).find("del").text());
+			let disCPrice = parseInt($(this).find("ins").text());
+			oriPrice = oriPrice.toLocaleString();
+			disCPrice = disCPrice.toLocaleString();
+			$(this).find("del").text(oriPrice);
+			$(this).find("ins").text(disCPrice);
+		});
+	}
 });
 
 
@@ -77,14 +84,14 @@ function hasScrolled() {
 			gsap.to($("header"), 0.4, { top: 0, ease: Power3.easeOut });
 
 			if (st < 100) {
-					$("header").removeClass("scroll_up");
+				$("header").removeClass("scroll_up");
 			} else {
-					$("header").addClass("scroll_up");
+				$("header").addClass("scroll_up");
 			}
 		}
 	}
 	lastScrollTop = st;
 }
 /**
- * 
+ *
  */
