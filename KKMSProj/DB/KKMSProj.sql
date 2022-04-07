@@ -28,8 +28,6 @@ select count(*) from member where uId = 'a';
 
 select * from member;
 
-update member set uEmail = 'abc@naver.com', uPhone = '11111111111' where uId='admin';
-
 drop table member;
 
 
@@ -59,8 +57,6 @@ postDate	date	not null,
 count	int	not null,
 constraint primary key (no)
 );
-
-select * from bbsList;
 
 
 

@@ -65,29 +65,7 @@ if(cnt != 0){
   		<!-- div.searchArea -->
         <hr id="headHR">
 	<%
-			DBConnectionMgr pool = DBConnectionMgr.getInstance();
 	
-	    	Connection 		objConn = null;     	// DB 접속 담당
-	    	Statement			objStmt = null; 		// SQL(=쿼리문) 담당
-	    	                                                    // Select에 사용
-	    	ResultSet 			objRS = null; 			// 반환된 데이터셋 담당
-	    	
-	    	try {
-		    /*	Class.forName("com.mysql.cj.jdbc.Driver");   // MySQL에서 만든 Driver 클래스 등록하기
-		    	
-		    	String url = "jdbc:mysql://localhost:3306/bbs?";
-		         url += "serverTimezone=UTC&";
-		         url += "useSSL=false&";
-		         url += "useUnicode=true&";
-		         url += "setCharacterEncoding=UTF-8";	    	
-		        String user = "root";	    	
-		        String password = "1234";    	*/
-		        objConn = pool.getConnection();
-	    		//out.print("DB 접속 성공!");
-	    		
-	    		String sql = "select * from bbsList order by no desc";
-	    		objStmt = objConn.createStatement();
-	    		objRS = objStmt.executeQuery(sql);
 	    		
 	    		if(cnt != 0){
 	    			int pageCount = cnt/pageSize + (cnt%pageSize == 0?0:1);
@@ -228,14 +206,6 @@ if(cnt != 0){
 		      		<%
 		      			}
 			
-	    		
-	    	}catch (ClassNotFoundException e){
-	    		out.print("CNFE : " + e.getMessage());
-	    	}catch (SQLException e){
-	    		out.print("SQLException : " + e.getMessage());
-	    	}finally{
-	    		pool.freeConnection(objConn, objStmt, objRS);
-	    	}
 	    	 %>
 	    	 		
 </div>
