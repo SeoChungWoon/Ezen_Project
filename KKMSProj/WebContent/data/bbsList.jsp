@@ -34,26 +34,27 @@ if(cnt != 0){
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
+     <title>공지사항</title>
      <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style_bbs.css">
+     <link rel="stylesheet" href="/style/style1.css">
+	 <link rel="stylesheet" href="/style/style2.css">
+     <link rel="stylesheet" href="/style/style3.css">
      <script src="/source/jquery-3.6.0.min.js"></script>
-     <script src="/script/script.js"></script>
+	 <script src="/source/gsap.min.js"></script>
+	 <script src="/script/script.js"></script>
+	 <script src="/script/memberScript.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 
   <div id="wrap">
-  
-  	<div id="header">
-  		<nav id="gnb">
-  			<ul id="munuUl" class="dFlex">  			
-  				<li class="menuLi"><a href="javascript:">Main</a></li>
-  				<li class="menuLi"><a href="javascript:">FAQ</a></li>
-  				<li class="menuLi"><a href="javascript:">1:1문의</a></li>
-  				<li class="menuLi"><a href="javascript:"  id="noticeMenu">Notice</a></li>
-  			</ul>
-  		</nav>
+  	<%@ include file="/include/header.jsp"%>
+		<div class="sub-body">
+			<div class="inner">
+				<div class="tit-cont"> <!--  title -->
+					<p class="tit">공지게시판</p>
+				</div>
+				<!--div.tit-cont  -->
   		
   		<div class="searchArea">
   			<span>Search</span>
@@ -62,8 +63,6 @@ if(cnt != 0){
   			<button type="button" class="btnImg">검색</button>
   		</div>
   		<!-- div.searchArea -->
-  		</div>
-  		<!-- div#header -->
         <hr id="headHR">
 	<%
 			DBConnectionMgr pool = DBConnectionMgr.getInstance();
@@ -241,6 +240,11 @@ if(cnt != 0){
 	    	 		
 </div>
 <!-- div.footerArea -->
+</div>
+<!-- div.inner -->
+</div>
+<!-- div.subbody -->
+		<%@ include file="/include/footer.jsp"%>
   </div>
   <!-- div#wrap -->
 </body>

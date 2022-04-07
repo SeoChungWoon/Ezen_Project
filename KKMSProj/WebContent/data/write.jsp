@@ -18,16 +18,25 @@ boolean flag = memMgr.mtdWrite(regVO);
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
      <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style_bbs.css">
+     <link rel="stylesheet" href="/style/style1.css">
+	 <link rel="stylesheet" href="/style/style2.css">
+     <link rel="stylesheet" href="/style/style3.css">
      <script src="/source/jquery-3.6.0.min.js"></script>
-     <script src="/script/script.js"></script>
-<title>Insert title here</title>
+	 <script src="/source/gsap.min.js"></script>
+	 <script src="/script/script.js"></script>
+	 <script src="/script/memberScript.js"></script>
 </head>
 <body>
 
   <div id="wrap">
+  <%@ include file="/include/header.jsp"%>
+		<div class="sub-body">
+			<div class="inner">
+				<div class="tit-cont"> <!--  title -->
+					<p class="tit">글쓰기</p>
+				</div>
+				<!-- div.tit-cont -->
  		<div id="header">
-  		<h1 id="writeH2">글쓰기</h1>
         <hr id="headHR">
         </div>
         <!-- div#header -->
@@ -49,8 +58,8 @@ boolean flag = memMgr.mtdWrite(regVO);
         				<select name="division" id="division">
         					<option value="">구 분</option>
         					<option>공지사항</option>
-        					<option>1:1문의</option>
-        					<option>교환/환불 문의</option>
+        					<option>FAQ</option>
+        					<option>이용안내</option>
         				</select>
         			</td>
         		</tr>
@@ -101,7 +110,11 @@ boolean flag = memMgr.mtdWrite(regVO);
  		<!-- div#btnArea -->
          </form>
 
-
+</div>
+<!-- div.inner -->
+</div>
+<!-- div.sub-body -->
+	<%@ include file="/include/footer.jsp"%>
   </div>
   <!-- div#wrap -->
 </body>
