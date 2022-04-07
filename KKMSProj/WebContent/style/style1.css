@@ -1,3 +1,277 @@
 @charset "UTF-8";
 
 /* 서청운 작업용 css */
+/* list */
+.exhibit-cont .exhibit-tab {
+	text-align: center;
+}
+
+.exhibit-cont .exhibit-tab li {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+.exhibit-cont .exhibit-tab li a {
+	display: block;
+	padding: 10px 30px;
+	border: 1px solid #ebe8e5;
+	background: #f4f3f1;
+	border-radius: 30px;
+}
+
+.exhibit-cont .exhibit-tab li a span{
+	font-size: 18px;
+}
+.exhibit-cont .exhibit-tab li.on a {
+	background: linear-gradient(117deg, #28d4dd 1%, #0080c0);
+}
+
+.exhibit-cont .exhibit-tab li.on a span {
+	color: #fff;
+}
+
+.exhibit-cont .area-desc {
+	margin: 100px 0 50px;
+	padding-bottom: 50px;
+	border-bottom: 1px solid #ddd;
+}
+
+.exhibit-cont .area-desc .desc-type {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.exhibit-cont .area-desc .desc-type>.txt {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.exhibit-cont .area-desc .desc-type .right-srh {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.exhibit-cont .area-desc .desc-type .right-srh .select-group {
+	margin-right: 5px;
+}
+.exhibit-cont .area-desc .desc-type .right-srh .select-group select{
+	width: 100px;
+	height: 30px;
+	font-size: 14px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #222;
+}
+.exhibit-cont .area-desc .desc-type .right-srh>button {
+	width: 50px;
+	height: 30px;
+	font-size: 14px;
+	background: #333;
+	border: none;
+	color: #fff;
+	box-sizing: border-box;
+}
+
+.exhibit-cont .area-desc .desc-type .right-srh>button:hover {
+	background: #0080c0
+}
+
+.exhibit-cont .area-desc .area-tab {
+	display: flex;
+	flex-wrap: nowrap;
+	margin-top: 30px;
+}
+
+.exhibit-cont .area-desc .area-tab li {
+	display: inline-block;
+	min-width: 100px;
+	text-align: center;
+	border: 1px solid #1386BF;
+	box-sizing: border-box;
+	background: #fff;
+}
+
+.exhibit-cont .area-desc .area-tab li:not(:last-child) {
+	margin-right: 10px;
+}
+
+.exhibit-cont .area-desc .area-tab li a {
+	display: block;
+	padding: 10px 50px;
+	color: #333;
+}
+
+.exhibit-cont .area-desc .area-tab li.on {
+	background: #1386BF;
+}
+
+.exhibit-cont .area-desc .area-tab li.on a {
+	color: #fff;
+}
+
+.exhibit-cont .exhibit-list {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+.exhibit-cont .exhibit-list .listBox {
+	margin-right: 30px;
+	width: calc(( 100% - 90px)/4);
+	border: 1px solid #e2e2e2;
+	transition: all 0.4s ease-out;
+}
+
+.exhibit-cont .exhibit-list .listBox:nth-child(4n) {
+	margin-right: 0;
+}
+
+.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+4)) {
+	margin-top: 30px;
+}
+
+.exhibit-cont .exhibit-list .listBox:hover {
+	border: 1px solid #630560;
+	box-shadow: 10px 10px 20px 0px rgb(0 0 0/ 30%);
+}
+.exhibit-cont .exhibit-list .listBox .img {
+	position: relative;
+	width: 100%;
+	height: 400px;
+	overflow: hidden;
+}
+
+.exhibit-cont .exhibit-list .listBox .img img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) scale(1.0);
+	width: 100%;
+	height: 100%;
+	transition: transform 0.6s ease-out;
+}
+.exhibit-cont .exhibit-list .listBox:hover .img img{
+	transform: translate(-50%,-50%) scale(1.1);
+}
+.exhibit-cont .exhibit-list .list-none{
+	text-align: center;
+	padding: 50px 0 100px;
+	width: 100%;
+}
+.exhibit-cont .exhibit-list .listBox > a{
+	display: block;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info{
+	padding: 20px 10px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag{
+	margin-bottom: 15px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event{
+	font-size: 12px;
+	padding: 2px 5px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.today{
+	border: 1px solid #9266ef;
+	color: #9266ef;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.md{
+	border: 1px solid #28d4dd ;
+	color: #28d4dd ;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.now{
+	border: 1px solid #d3002b;
+	color: #d3002b;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.coupon{
+	border: 1px solid #f27935;
+	color: #f27935;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event + span.event{
+	margin-left: 5px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span.info{
+	white-space: nowrap;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt ~ p{
+	margin-top: 10px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span{
+	color: #666;
+	font-size: 14px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location{
+	position: relative;
+	padding-left: 20px;
+	padding-right: 10px;
+	margin-right: 10px;
+	background: url(/images/product-list-icon1.jpg)no-repeat 0 center / 18px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location::after{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 4px;
+	right: 0;
+	width:1px;
+	height: 14px;
+	background: #999;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt > span{
+	color: #999;
+	display: block;
+	font-size: 14px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .price > span, 
+.exhibit-cont .exhibit-list .listBox .txt-info .price del,
+.exhibit-cont .exhibit-list .listBox .txt-info .price del span{
+	color: #999;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price{
+	display: block;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price ins{
+	text-decoration: none;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .price .original .rate-sale{
+	color: #e55;
+	margin-right: 5px;
+	font-size: 16px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .price del,
+.exhibit-cont .exhibit-list .listBox .txt-info .price del span{
+	font-size: 12px;
+}
+@media all and (max-width: 1440px) {
+	.exhibit-cont .exhibit-list .listBox {
+		margin-right: 20px;
+	}
+	.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+4)) {
+		margin-top: 20px;
+	}
+}
+
+@media all and (max-width: 1280px) {
+	.exhibit-cont .exhibit-list .listBox {
+		width: calc(( 100% - 90px)/3);
+	}
+	.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+4)) {
+		margin-top: 0;
+	}
+	.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+3)) {
+		margin-top: 20px;
+	}
+	.exhibit-cont .exhibit-list .listBox:nth-child(4n) {
+		margin-right: 20px;
+	}
+}

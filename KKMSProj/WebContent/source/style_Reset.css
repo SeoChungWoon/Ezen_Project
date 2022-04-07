@@ -42,3 +42,26 @@ ul {
 button{
 	cursor: pointer;
 }
+
+select {
+	padding: 0 5px;
+}
+
+.select-group {
+	position: relative;
+}
+
+.select-group::after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	right: 7px;
+	transform: rotate(-45deg);
+	width: 5px;
+	height: 5px;
+	border-left: 2px solid #000;
+	border-bottom: 2px solid #000;
+}
+.select-group select{
+	appearance: none;
+}
