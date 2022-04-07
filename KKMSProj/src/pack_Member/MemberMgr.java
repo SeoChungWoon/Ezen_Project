@@ -31,7 +31,7 @@ public class MemberMgr {
 		try {
 			objConn = pool.getConnection();
 
-			System.out.println("uId : " + uId);
+			
 			sql = "select count(*) from member where uId = ?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, uId);
@@ -114,7 +114,7 @@ public class MemberMgr {
 		
 		String uName = "";
 
-		System.out.println("id : "+mId+"   mPw : "+mPw);
+		
 		try {
 			objConn = pool.getConnection();
 			sql = "select count(*), uName from member where uId = ? and uPw = ?";
@@ -126,7 +126,7 @@ public class MemberMgr {
 			if (objRS.getInt("count(*)") > 0) {
 				uName = objRS.getString("uName");
 			}
-			System.out.println("uName : "+uName);
+			
 		} catch (Exception e) {
 			System.out.println("e : " + e.getMessage());
 		} finally {
@@ -138,7 +138,7 @@ public class MemberMgr {
 	public boolean mPwChk(String mId, String mPw) {
 		
 		boolean flag = false;
-		System.out.println(mId + " " + mPw);
+		
 		try {
 			objConn = pool.getConnection();
 			sql = "select count(*) from member where uId = ? and uPw = ?";

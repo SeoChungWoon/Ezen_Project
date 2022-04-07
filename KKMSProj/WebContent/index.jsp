@@ -18,7 +18,6 @@
 </head>
 <body>
 	<div id="wrap" class="main">
-	
 	<%@ include file="/include/header.jsp"%>
 	
 		<div class="sub-body">

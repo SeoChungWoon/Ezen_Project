@@ -5,6 +5,7 @@
 <jsp:useBean id="mMgr" class="pack_Member.MemberMgr" />
 
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -74,7 +75,8 @@
 								<!-- div.modifyValTitle -->
 								<input type="password" id="uPwChk" class="joinPw" name="nPwChk"
 									maxlength="16" onkeyup="pwChk(this.form)">
-								<input	type="hidden" id="pwMatch">
+								<input type="hidden" id="pwMatch">
+								<input type="hidden" id="mPw" name="mPw" value="<%=mPw%>">
 								
 								<div id="pwChkRes" class="hidden">
 									<p id="pwChkMsg">비밀번호가 일치하지 않습니다.</p>

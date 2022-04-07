@@ -205,6 +205,12 @@ $("#modifyResetBtn").on("click", function(){
 
 /****** 마이페이지 영역 *****/
 
+
+$("").on("load", function(){
+	$("#modifyConfirm").submit();
+});
+
+
 });
 
 /****** JQuery 영역 끝 ******/
@@ -218,6 +224,11 @@ $("#modifyResetBtn").on("click", function(){
 function modifyConfirm(formName) {
 	if (formName.uPw.value != formName.uPwChk.value) {
 		alert("비밀번호를 확인해 주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.uPw.value == formName.mPw.value) {
+		alert("기존과 동일한 비밀번호는 사용하실 수 없습니다.");
 		formName.uPw.focus();
 		return;
 	}
