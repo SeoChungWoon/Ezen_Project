@@ -22,10 +22,11 @@
 		<%@ include file="/include/header.jsp"%>
 		<div class="sub-body">
 			<div class="inner">
-				<div class="tit-cont"> <!--  title -->
+				<div class="tit-cont">
+					<!--  title -->
 					<p class="tit">로그인</p>
 				</div>
-			
+
 				<form action="/member/loginProc.jsp" id="loginForm" method="post">
 					<div class="login-desc">
 						<div id="loginArea" class="dFlex">
@@ -34,15 +35,15 @@
 									<input type="text" id="memberid" name="memberid" maxlength="15"
 										placeholder="아이디">
 								</div>
-	
+
 								<div id="pwArea">
 									<input type="password" id="memberpw" name="memberpw"
 										maxlength="16" placeholder="비밀번호">
 								</div>
-	
+
 							</div>
 							<!-- div#idPwArea -->
-	
+
 							<div id="loginBtnArea">
 								<button type="button" id="loginBtn">로그인</button>
 							</div>
@@ -52,10 +53,24 @@
 							<p id="loginErrMsg"></p>
 						</div>
 						<ul id="utilArea">
-							<li><a href="/member/termsChk.jsp">회원가입</a> </li>
+							<li><a href="/member/termsChk.jsp">회원가입</a></li>
 							<li><a href="javascript:">아이디 찾기</a></li>
 							<li><a href="javascript:">비밀번호 찾기</a></li>
 						</ul>
+						<div class="otherLoginArea dFlex">
+							<div class="otherLoginBtn">
+								<a href="javascript:"><img src="/images/googleLogo.png" alt="구글" /></a>
+							</div>
+							<div class="otherLoginBtn">
+								<a href="javascript:"><img src="/images/naverLogo.png" alt="네이버" /></a>
+							</div>
+							<div class="otherLoginBtn">
+								<a href="javascript:"><img src="/images/kakaoLogo.png" alt="카카오톡" /></a>
+							</div>
+							<div class="otherLoginBtn">
+								<a href="javascript:"><img src="/images/facebookLogo.png" alt="페이스북" /></a>
+							</div>
+						</div>
 					</div>
 				</form>
 				<!-- loginForm -->

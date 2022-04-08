@@ -36,190 +36,209 @@
 		List objList = mMgr.myPage(memberId);
 		RegisterBean mList = (RegisterBean) objList.get(0);
 		%>
-		<div class="sub-body dFlex">
-			<%@ include file="/include/myPageAside.jsp"%>
+		<div class="sub-body">
 			<div class="inner">
-				<div id="mypageArea">
-					<form action="/member/modifyConfirm.jsp" id="modifyForm" method="post">
-						<div class="mypageRow dFlex">
-							<div class="modifyTitle">
-								<span>아이디</span>
-							</div>
-							<!-- div.modifyTitle -->
-							<div class="modifyVal">
-								<input type="text" value="<%=mList.getuId()%>" readonly>
-							</div>
-							<!-- div.modifyVal -->
+				<div class="mypageInner dFlex">
+					<%@ include file="/include/myPageAside.jsp"%>
+
+					<div class="mypageArea">
+						<div class="mypageTit">
+							<h1>회원정보 수정</h1>
 						</div>
-						<!-- div.mypageRow -->
-
-
-						<div class="mypageRow dFlex">
-							<div class="modifyTitle">
-								<span>비밀번호</span>
-							</div>
-							<!-- div.modifyTitle -->
-							<div class="modifyVal">
-								<div class="modifyValTitle">
-									<span>변경할 비밀번호</span>
-								</div>
-								<!-- div.modifyValTitle -->
-								<input type="password" id="uPw" class="joinPw" name="nPw"
-									maxlength="16" onkeyup="pwChk(this.form)">
-							</div>
-							<!-- div.modifyVal -->
-							<div class="modifyVal">
-								<div class="modifyValTitle">
-									<span>변경할 비밀번호 확인</span>
-								</div>
-								<!-- div.modifyValTitle -->
-								<input type="password" id="uPwChk" class="joinPw" name="nPwChk"
-									maxlength="16" onkeyup="pwChk(this.form)">
-								<input type="hidden" id="pwMatch">
-								<input type="hidden" id="mPw" name="mPw" value="<%=mPw%>">
-								
-								<div id="pwChkRes" class="hidden">
-									<p id="pwChkMsg">비밀번호가 일치하지 않습니다.</p>
-								</div>
-							</div>
-							<!-- div.modifyVal -->
-						</div>
-						<!-- div.mypageRow -->
-
-
-						<div class="mypageRow dFlex">
-							<div class="modifyTitle">
-								<span>이름</span>
-							</div>
-							<!-- div.modifyTitle -->
-							<div class="modifyVal">
-								<input type="text" value="<%=mList.getuName()%>" readonly>
-							</div>
-							<!-- div.modifyVal -->
-						</div>
-						<!-- div.mypageRow -->
-
-
-						<div class="mypageRow dFlex">
-							<div class="modifyTitle">
-								<span>생년월일</span>
-							</div>
-							<!-- div.modifyTitle -->
-							<div class="modifyVal">
-								<input type="text" value="<%=mList.getuBirthday()%>" readonly>
-							</div>
-							<!-- div.modifyVal -->
-						</div>
-						<!-- div.mypageRow -->
-
-
-						<div class="mypageRow dFlex">
-							<div class="modifyTitle">
-								<span>이메일 주소</span>
-							</div>
-							<!-- div.modifyTitle -->
-							<div class="modifyVal">
-								<input type="text" id="nEmail" name="nEmail" value="<%=mList.getuEmail()%>"
-									readonly>
-							</div>
-							<!-- div.modifyVal -->
-							<div class="modifyBtnArea">
-								<button type="button" class="modifyBtn">수정</button>
-							</div>
-							<!-- div.modifyBtn -->
-						</div>
-						<!-- div.mypageRow -->
-
-						<div class="modifyAddrArea">
-							<div class="mypageRow dFlex">
+						<form action="/member/modifyConfirm.jsp" id="modifyForm"
+							method="post">
+							<div class="modifyRow">
 								<div class="modifyTitle">
-									<span>주소</span>
+									<span>아이디</span>
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" value="<%=mList.getuZipcode()%>" readonly>
+									<input type="text" value="<%=mList.getuId()%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
 							</div>
-							<!-- div.mypageRow -->
+							<!-- div.modifyRow -->
 
 
-							<div class="mypageRow dFlex">
+							<div class="modifyRow">
 								<div class="modifyTitle">
-									<span>상세 주소</span>
+									<span>비밀번호 변경</span>
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" value="<%=mList.getuAddr()%>" readonly>
+									<div class="modifyPwTitle">
+										<span>변경할 비밀번호</span>
+									</div>
+									<!-- div.modifyValTitle -->
+									<input type="password" id="uPw" class="joinPw" name="nPw"
+										maxlength="16" onkeyup="pwChk(this.form)">
+								</div>
+								<!-- div.modifyVal -->
+								<div class="modifyVal">
+									<div class="modifyPwTitle">
+										<span>변경할 비밀번호 확인</span>
+									</div>
+									<!-- div.modifyValTitle -->
+									<input type="password" id="uPwChk" class="joinPw" name="nPwChk"
+										maxlength="16" onkeyup="pwChk(this.form)"> <input
+										type="hidden" id="pwMatch"> <input type="hidden"
+										id="mPw" name="mPw" value="<%=mPw%>">
+
+								</div>
+								<!-- div.modifyVal -->
+								<div id="pwChkRes" class="hidden">
+									<p id="pwChkMsg">* 비밀번호가 일치하지 않습니다.</p>
+								</div>
+							</div>
+							<!-- div.modifyRow -->
+
+
+							<div class="modifyRow">
+								<div class="modifyTitle">
+									<span>이름</span>
+								</div>
+								<!-- div.modifyTitle -->
+								<div class="modifyVal">
+									<input type="text" value="<%=mList.getuName()%>" readonly>
+								</div>
+								<!-- div.modifyVal -->
+							</div>
+							<!-- div.modifyRow -->
+
+
+							<div class="modifyRow">
+								<div class="modifyTitle">
+									<span>생년월일</span>
+								</div>
+								<!-- div.modifyTitle -->
+								<div class="modifyVal">
+									<input type="text" value="<%=mList.getuBirthday()%>" readonly>
+								</div>
+								<!-- div.modifyVal -->
+							</div>
+							<!-- div.modifyRow -->
+
+
+							<div class="modifyRow">
+								<div class="modifyTitle">
+									<span>이메일 주소</span>
+								</div>
+								<!-- div.modifyTitle -->
+								<div class="modifyVal">
+									<input type="text" id="nEmail" name="nEmail"
+										value="<%=mList.getuEmail()%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
 								<div class="modifyBtnArea">
-									<button type="button" class="modifyAddrBtn">수정</button>
+									<button type="button" class="modifyBtn">수정</button>
 								</div>
 								<!-- div.modifyBtn -->
 							</div>
-							<!-- div.mypageRow -->
-						</div>
-						<!-- div.modifyAddrArea -->
-						
-						<div id="changeAddr" class="hidden">
-							<div class="mypageRow">
+							<!-- div.modifyRow -->
 
-								<span class="modifyTitle">주소</span>
-							</div>
-							<div class="mypageRow">
-
-								<input type="text" id="uZipcode" name="nZipcode" value="<%=mList.getuZipcode() %>" readonly>
-
-								<button type="button" id="zipChk">우편번호 찾기</button>
-
-							</div>
+							<div class="modifyAddrArea">
+								<div class="modifyRow">
+									<div class="modifyTitle">
+										<span>주소</span>
+									</div>
+									<!-- div.modifyTitle -->
+									<div class="modifyVal">
+										<input type="text" value="<%=mList.getuZipcode()%>" readonly>
+									</div>
+									<!-- div.modifyVal -->
+								</div>
+								<!-- div.modifyRow -->
 
 
-							<div class="mypageRow">
-								<input type="text" id="addr1" name="addr1" readonly>
+								<div class="modifyRow">
+									<div class="modifyTitle">
+										<span>상세 주소</span>
+									</div>
+									<!-- div.modifyTitle -->
+									<div class="modifyVal">
+										<input type="text" value="<%=mList.getuAddr()%>" readonly>
+									</div>
+									<!-- div.modifyVal -->
+									<div class="modifyBtnArea">
+										<button type="button" class="modifyAddrBtn">수정</button>
+									</div>
+									<!-- div.modifyBtn -->
+								</div>
+								<!-- div.modifyRow -->
+							</div>
+							<!-- div.modifyAddrArea -->
+
+							<div id="changeAddr" class="hidden">
+								<div class="modifyRow">
+									<div class="modifyTitle">
+										<span>주소</span>
+									</div>
+								</div>
+								<div class="modifyRow">
+									<div class="modifyVal">
+										<input type="text" id="uZipcode" name="nZipcode"
+											value="<%=mList.getuZipcode()%>" readonly>
+									</div>
+									<div class="modifyBtnArea">
+										<button type="button" id="zipChk">우편번호 찾기</button>
+									</div>
+								</div>
+
+
+								<div class="modifyRow">
+									<input type="text" id="addr1" name="addr1" readonly>
+								</div>
+
+								<div class="modifyRow">
+									<div class="modifyTitle">
+										<span>상세 주소</span>
+									</div>
+								</div>
+								<div class="modifyRow">
+									<input type="text" id="addr2" name="addr2"
+										onkeyup="addr(this.form)">
+								</div>
+								<input type="hidden" id="uAddr" name="nAddr"
+									value="<%=mList.getuAddr()%>">
 							</div>
 
-							<div class="mypageRow">
-								<span class="modifyTitle">상세 주소</span>
+							<div class="modifyRow">
+								<div class="modifyTitle">
+									<span>휴대전화 번호</span>
+								</div>
+								<!-- div.modifyTitle -->
+								<div class="modifyVal">
+									<input type="text" id="uPhone" name="nPhone" maxlength="11"
+										placeholder="숫자만 입력" onkeyup="pNum(this.form)"
+										value="<%=mList.getuPhone()%>" readonly>
+								</div>
+								<!-- div.modifyVal -->
+								<div class="modifyBtnArea">
+									<button type="button" class="modifyBtn">수정</button>
+								</div>
+								<!-- div.modifyBtn -->
 							</div>
-							<div class="mypageRow">
-								<input type="text" id="addr2" name="addr2"
-									onkeyup="addr(this.form)">
+							<!-- div.modifyRow -->
+							<%
+							}
+							%>
+							<div class="modifyRow">
+								<div class="modifyFinal">
+									<button type="button" class="modifyFinalBtn"
+										onclick="modifyConfirm(this.form)">저장</button>
+									<button type="reset" id="modifyResetBtn" class="modifyFinalBtn">취소</button>
+								</div>
+								<!-- div.modifyBtn -->
 							</div>
-							<input type="hidden" id="uAddr" name="nAddr" value="<%=mList.getuAddr()%>" >
-						</div>
-
-						<div class="mypageRow dFlex">
-							<div class="modifyTitle">
-								<span>휴대전화 번호</span>
-							</div>
-							<!-- div.modifyTitle -->
-							<div class="modifyVal">
-								<input type="text" id="uPhone" name="nPhone" maxlength="11" placeholder="숫자만 입력" onkeyup="pNum(this.form)" value="<%=mList.getuPhone()%>"
-									readonly>
-							</div>
-							<!-- div.modifyVal -->
-							<div class="modifyBtnArea">
-								<button type="button" class="modifyBtn">수정</button>
-							</div>
-							<!-- div.modifyBtn -->
-						</div>
-						<!-- div.mypageRow -->
-						<%
-						}
-						%>
-						<div class="mypageRow dFlex">
-							<div class="modifyFinal">
-								<button type="button" class="modifyFinalBtn" onclick="modifyConfirm(this.form)">저장</button>
-								<button type="reset" id="modifyResetBtn" class="modifyFinalBtn">취소</button>
-							</div>
-							<!-- div.modifyBtn -->
-						</div>
-					</form>
+						</form>
+					</div>
+					<!-- div.mypageArea -->
 				</div>
+				<!-- div.mypageInner -->
 			</div>
+			<!-- div.inner -->
 		</div>
+		<!-- div.sub-body -->
 		<%@ include file="/include/footer.jsp"%>
 	</div>
 	<!-- div#wrap -->

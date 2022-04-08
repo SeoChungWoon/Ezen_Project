@@ -33,15 +33,25 @@
 		<%
 		}
 		%>
-		<div class="sub-body dFlex">
-		<%@ include file="/include/myPageAside.jsp"%>
+		<div class="sub-body">
 			<div class="inner">
-				정말로 회원 탈퇴 할거니?
-				<button type="button" id="withdrawAgree">응할거야</button>
-				<input type="hidden" id="withdrawPw" value="<%=mPw%>">
-				<button type="button" id="withdrawDisagree">아니 안할거야</button>
+				<div class="mypageInner dFlex">
+					<%@ include file="/include/myPageAside.jsp"%>
+					<div class="mypageArea">
+						<div class="withdrawChkMsg">
+						정말로 회원 탈퇴를 진행하시겠습니까?
+						</div>
+						<button type="button" id="withdrawAgree">응할거야</button>
+						<input type="hidden" id="withdrawPw" value="<%=mPw%>">
+						<button type="button" id="withdrawDisagree">아니 안할거야</button>
+					</div>
+					<!-- div.mypageArea -->
+				</div>
+				<!-- div.mypageInner -->
 			</div>
+			<!-- div.inner -->
 		</div>
+		<!-- div.sub-body -->
 		<%@ include file="/include/footer.jsp"%>
 	</div>
 	<!-- div#wrap -->

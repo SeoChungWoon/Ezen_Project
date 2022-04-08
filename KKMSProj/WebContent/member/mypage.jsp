@@ -19,20 +19,26 @@
 	<div id="wrap">
 		<%@ include file="/include/header.jsp"%>
 		<%
-		if (memberId == null){
-			%>
-			<script>
-			location.href="/index.jsp";
-			</script>
-			<%
+		if (memberId == null) {
+		%>
+		<script>
+			location.href = "/index.jsp";
+		</script>
+		<%
 		}
 		%>
 		<div class="sub-body">
 			<div class="inner">
-			<%@ include file="/include/myPageAside.jsp"%>
+				<div class="mypageInner dFlex">
+					<%@ include file="/include/myPageAside.jsp"%>
+					<div class="mypageArea">
+					<div class="mypageTit">
+							<h1>My page</h1>
+						</div>
+					여기가 내정보
+					</div>
 
-				
-
+				</div>
 			</div>
 		</div>
 		<%@ include file="/include/footer.jsp"%>

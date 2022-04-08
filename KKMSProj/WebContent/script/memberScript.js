@@ -125,6 +125,14 @@ $(function() {
 
 
 /****** 마이페이지 영역 *****/
+
+/* 마이페이지 LNB on/off */
+	$(".mypageMenu a").on("click", function(){
+		$(this).addClass("mypageMenuOn");
+	});
+/* 마이페이지 LNB on/off */
+
+
 /* 회원정보 수정 비밀번호 유효성 검사 */
 	$("#modifyPwBtn").click(function(){
 		let modifyPw = $("#modifyPw").val();
