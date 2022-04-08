@@ -7,13 +7,14 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String TermsAds = request.getParameter("termsAds");
+String reqChk = request.getParameter("chkService");
 String chkAll = request.getParameter("chkAll");
 if (TermsAds == null) {
 	TermsAds = "N";
 } else {
 	TermsAds = "Y";
 }
-if (chkAll == null) {
+if (reqChk == null) {
 	%>
 	<script>
 	location.href="/member/termsChk.jsp";

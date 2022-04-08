@@ -16,22 +16,31 @@ $(function() {
 		let chkAll = $("#chkAll").is(':checked');
 		if (chkAll == true) {
 			$(".termsRow input").prop('checked', true);
+			$(".termsRow label").attr("class", "checked");
 		} else {
 			$(".termsRow input").prop('checked', false);
+			$(".termsRow label").attr("class", "unchecked");
 		}
 	});
 /* 약관 모두 동의 기능 */
 
-
 /* 약관 체크 기능 */
 	$(".usingTerms input").click(function(){
+		let thisChk = $(this).is(':checked');
+		if (thisChk == true) {
+			$(this).next().attr("class", "checked");
+		} else {
+			$(this).next().attr("class", "unchecked");
+		}
 		let chkService = $("#chkService").is(':checked');
 		let chkPrivacy = $("#chkPrivacy").is(':checked');
 		let chkAds = $("#termsAds").is(':checked');
 		if (chkService && chkPrivacy && chkAds) {
 			$("#chkAll").prop('checked', true);
+			$("#chkAll").next().attr("class", "checked");
 		} else {
 			$("#chkAll").prop('checked', false);
+			$("#chkAll").next().attr("class", "unchecked");
 		}
 	});
 /* 약관 체크 기능 */
@@ -41,18 +50,25 @@ $(function() {
 	$("#termsBtn").click(function() {
 		let chkService = $("#chkService").is(':checked');
 		let chkPrivacy = $("#chkPrivacy").is(':checked');
-
 		let reqChk = (chkService && chkPrivacy) ? "on" : "off";
 
 
 		if (reqChk == "off") {
 			alert("필수항목을 체크해주세요");
 			$("#chkService").focus();
-		} else {
+		} else if (reqChk == "on") {
 			$("#termsForm").submit();
 		}
 	});
 /* 약관 필수항목 체크 확인 */
+
+
+/* 약관 페이지 취소 버튼 */
+	$("#termsReset").on("click", function(){
+		location.href="/index.jsp";
+	});
+/* 약관 페이지 취소 버튼 */
+
 /****** 약관 동의 영역 *****/
 
 

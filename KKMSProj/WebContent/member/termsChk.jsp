@@ -28,37 +28,40 @@
 					<div id="termsArea">
 						<div class="termsRow">
 							<p>
-								<span> <input type="checkbox" id="chkAll" name="chkAll">
-									<label for="chkAll"> <span class="chkAllTxt">
-											이용약관, 개인정보 수집(필수), 프로모션 정보 수신(선택)에 모두 동의합니다.--내용수정필요 </span>
+								<span>
+								<input type="checkbox" id="chkAll" class="hidden" name="chkAll">
+								<label for="chkAll" class="unchecked">
+								<span class="chkAllTxt">
+											E-Ticket 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신<span class="smallFont">(선택)</span>에 모두 동의합니다.
+								</span>
 								</label>
 								</span>
 							</p>
 						</div>
-						<div class="termsRow">
+						<div class="termsRow usingTerms">
 							<p>
-								<input type="checkbox" id="chkService" name="chkService">
-								<label for="chkService"> <span class="termsTitle">
-										사이트 이용약관 동의<span class="req">(필수)</span>
+								<input type="checkbox" id="chkService" class="hidden" name="chkService">
+								<label for="chkService" class="unchecked"> <span class="termsTitle">
+										E-Ticket 이용약관 동의<span class="req">(필수)</span>
 								</span>
 								</label>
 							</p>
 							<iframe src="/include/usingAgree.jsp" class="termsTxt"></iframe>
 						</div>
-						<div class="termsRow">
+						<div class="termsRow usingTerms">
 							<p>
-								<input type="checkbox" id="chkPrivacy" name="chkPrivacy">
-								<label for="chkPrivacy"> <span class="termsTitle">
-										개인정보 이용 동의<span class="req">(필수)</span>
+								<input type="checkbox" id="chkPrivacy" class="hidden" name="chkPrivacy">
+								<label for="chkPrivacy" class="unchecked"> <span class="termsTitle">
+										개인정보 수집 및 이용 동의<span class="req">(필수)</span>
 								</span>
 								</label>
 							</p>
 							<iframe src="/include/privacyAgree.jsp" class="termsTxt"></iframe>
 						</div>
-						<div class="termsRow">
+						<div class="termsRow usingTerms">
 							<p>
-								<input type="checkbox" id="termsAds" value="Y" name="termsAds">
-								<label for="termsAds"> <span class="termsTitle">
+								<input type="checkbox" id="termsAds" class="hidden" name="termsAds">
+								<label for="termsAds" class="unchecked"> <span class="termsTitle">
 										프로모션 정보 수신 동의<span class="termsOption">(선택)</span>
 								</span>
 								</label>
@@ -68,8 +71,8 @@
 					</div>
 					<!-- div#termsArea -->
 					<div id="termsBtnArea">
-						<button id="termsBtn" type="button" onclick="termsChk(this.form)">확인</button>
-						<button type="reset">취소</button>
+						<button type="button" id="termsBtn" >확인</button>
+						<button type="button" id="termsReset">취소</button>
 					</div>
 				</form>
 				<!-- termsForm -->
