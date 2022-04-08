@@ -15,11 +15,11 @@ if (TermsAds == null) {
 	TermsAds = "Y";
 }
 if (reqChk == null) {
-	%>
-	<script>
-	location.href="/member/termsChk.jsp";
-	</script>
-	<%
+%>
+<script>
+	location.href = "/member/termsChk.jsp";
+</script>
+<%
 }
 %>
 
@@ -41,14 +41,18 @@ if (reqChk == null) {
 <body>
 	<div id="wrap">
 		<%@ include file="/include/header.jsp"%>
-		
+
 		<div class="sub-body">
 			<div class="inner">
+				<div class="tit-cont">
+					<!--  title -->
+					<p class="tit">회원가입</p>
+				</div>
 				<form action="/member/joinProc.jsp" id="joinForm" method="post">
 					<div id="joinArea">
 
 						<div class="joinRow">
-							<span class="joinTitle">아이디</span>
+							<span class="joinTitle">아이디 <span class="smallFont">(5~15자, 영문자와 숫자로만 입력)</span><span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 							<input type="text" id="uId" name="uId" maxlength="15"
@@ -56,35 +60,35 @@ if (reqChk == null) {
 								id="uIdChk">
 							<div id="idChkRes" class="hidden">
 
-								<span id="idChkMsg"> </span>
+								<p id="idChkMsg"></p>
 							</div>
 							<!-- div#idChkRes -->
 						</div>
 
 
 						<div class="joinRow">
-							<span class="joinTitle">비밀번호</span>
+							<span class="joinTitle">비밀번호 <span class="smallFont">(8~16자 사이의 비밀번호를 설정)</span><span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
-							<input type="password" id="uPw" class="joinPw" name="uPw" maxlength="16"
-								onkeyup="pwChk(this.form)">
+							<input type="password" id="uPw" class="joinPw" name="uPw"
+								maxlength="16" onkeyup="pwChk(this.form)">
 						</div>
 
 						<div class="joinRow">
 							<span class="joinTitle">비밀번호 확인</span>
 						</div>
 						<div class="joinRow">
-							<input type="password" id="uPwChk" class="joinPw" name="uPwChk" maxlength="16"
-								onkeyup="pwChk(this.form)"> <input type="hidden"
-								id="pwMatch">
+							<input type="password" id="uPwChk" class="joinPw" name="uPwChk"
+								maxlength="16" onkeyup="pwChk(this.form)"> <input
+								type="hidden" id="pwMatch">
 							<div id="pwChkRes" class="hidden">
-								<p id="pwChkMsg">비밀번호가 일치하지 않습니다.</p>
+								<p id="pwChkMsg">* 비밀번호가 일치하지 않습니다.</p>
 							</div>
 						</div>
 
 
 						<div class="joinRow">
-							<span class="joinTitle">이름</span>
+							<span class="joinTitle">이름<span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 							<input type="text" id="uName" name="uName"
@@ -93,7 +97,7 @@ if (reqChk == null) {
 
 
 						<div class="joinRow">
-							<span class="joinTitle">생년월일</span>
+							<span class="joinTitle">생년월일 <span class="smallFont">(ex. 20220102)</span><span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 							<input type="text" id="uBirthday" maxlength="8" name="uBirthday"
@@ -102,21 +106,21 @@ if (reqChk == null) {
 
 
 						<div class="joinRow">
-							<span class="joinTitle">성별</span>
+							<span class="joinTitle">성별<span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 							<div id="genderArea">
-								<input type="radio" id="male" name="uGender" value="male">
-								<label for="male"> <span class="genderTxt">남성</span>
-								</label> <input type="radio" id="female" name="uGender" value="female">
-								<label for="female"> <span class="genderTxt">여성</span>
+								<input type="radio" id="male" class="hidden" name="uGender" value="male">
+								<label for="male" class="genderUnchecked"> <span class="genderTxt">남성</span>
+								</label> <input type="radio" id="female" class="hidden" name="uGender" value="female">
+								<label for="female" class="genderUnchecked"> <span class="genderTxt">여성</span>
 								</label>
 							</div>
 						</div>
 
 
 						<div class="joinRow">
-							<span class="joinTitle">이메일 주소</span>
+							<span class="joinTitle">이메일 주소<span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 							<input type="text" name="uEmail">
@@ -124,7 +128,7 @@ if (reqChk == null) {
 
 
 						<div class="joinRow">
-							<span class="joinTitle">주소</span>
+							<span class="joinTitle">주소<span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 
@@ -135,14 +139,14 @@ if (reqChk == null) {
 						</div>
 
 
-						<div class="joinRow">
+						<div class="joinRow joinAddrRow">
 							<input type="text" id="addr1" name="addr1" readonly>
 						</div>
 
 						<div class="joinRow">
 							<span class="joinTitle">상세 주소</span>
 						</div>
-						<div class="joinRow">
+						<div class="joinRow joinAddrRow">
 							<input type="text" id="addr2" name="addr2"
 								onkeyup="addr(this.form)">
 						</div>
@@ -150,7 +154,7 @@ if (reqChk == null) {
 
 
 						<div class="joinRow">
-							<span class="joinTitle">휴대전화 번호</span>
+							<span class="joinTitle">휴대전화 번호<span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 							<input type="text" id="uPhone" name="uPhone" maxlength="11"

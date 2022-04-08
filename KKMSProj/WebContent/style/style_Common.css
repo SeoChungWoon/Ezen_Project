@@ -53,16 +53,16 @@
 	}
 }
 
-.disabled {
-	
+.point {
+	color: #e64949;
 }
 
 .match {
-	background-color: #c8fe3b;
+	border: 1px solid #0086b8;
 }
 
 .mismatch {
-	background-color: #e64a44;
+	border: 1px solid #e64949;
 }
 
 .hidden {

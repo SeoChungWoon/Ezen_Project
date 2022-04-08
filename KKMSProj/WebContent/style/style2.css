@@ -118,31 +118,110 @@ span.smallFont {
 	font-weight: normal;
 }
 
-
 /* 약관동의 영역 끝*/
 
 
 /* 회원가입 영역 시작 */
 #joinArea {
 	margin: 20px auto;
-	text-align: center;
+	width: 600px;
 }
 
-#joinArea > div.joinRow>input {
+#joinArea > div.joinRow {
+	padding-left: 10px;
+	padding-bottom: 10px;
+	margin: 0 auto;
+	width: 80%;
+}
+
+#joinArea > .joinRow > span {
+	width: 100%;
+	display: inline-block;
+}
+
+span.joinTitle {
+	font-size: 21px;
+}
+
+p#pwChkMsg {
+	margin-top: 7px;
+	padding-left: 10px;
+	color: red;
+}
+
+div#idChkRes {
+	margin-top: 7px;
+	padding-left: 10px;
+}
+
+#joinArea > .joinRow>input {
+	font-size: 18px;
 	padding: 10px;
-	height: 10%;
-	width: 20%;
+	height: 49px;
+	width: 100%;
 }
 
 #joinArea > div.joinRow>input#uZipcode {
-	width: 10%;
+	width: 72%;
+	transform: translateY(-1px);
+}
+
+#joinArea > .joinRow>input::placeholder {
+	font-size: 18px;
+}
+
+div#genderArea label{
+	font-size: 18px;
+	display: inline-block;
+	width: 200px;
+	height: 40px;
+}
+
+div#genderArea label:hover {
+	cursor: pointer;
+}
+
+.genderChecked::before {
+	content:" ";
+	position: relative;
+	top: 6px;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: url(/images/radioChecked.png) no-repeat;
+	background-size: 30px 30px;
+}
+
+.genderUnchecked::before {
+	content:" ";
+	position: relative;
+	top: 6px;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: url(/images/radioUnchecked.png) no-repeat;
+	background-size: 30px 30px;
+}
+
+
+radio:fisrt-child {
+	margin-right: 20px;
 }
 
 #joinArea > div.joinRow>button#zipChk {
+	font-size: 16px;
 	padding: 10px;
-	height: 10%;
-	margin: 0 0 4px 2px;
+	height: 50px;
+	margin: 0 0 3px 6px;
+	background: #333;
+	border: none;
+	color: #fff;
 }
+
+input#addr1, input#addr2 {
+	width: 80%;	
+}
+
 
 .joinRow span.joinTitle {
 	padding: 5px;
@@ -152,14 +231,35 @@ span.smallFont {
 	display: inline-block;
 }
 
-.joinRow:last-child > button {
-	margin: 15px 0;
-	padding: 10px;
-	height: 8%;
-	width: 10%;
+.joinRow:last-child {
+	padding-top: 20px;
+	text-align: center;
 }
-#termsArea{
-	padding-top: 50px;
+
+.joinRow:last-child button {
+	font-size: 20px;
+	padding: 20px 10px;
+	font-weight: bold;
+	width: 45%;
+}
+
+.joinRow:last-child button:first-child {
+	margin-right: 20px;
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+.joinRow:last-child button:first-child:hover {
+	background: #444;
+}
+
+.joinRow:last-child button:last-child {
+	border: 1px solid #aaa;
+}
+
+.joinRow:last-child button:last-child:hover {
+	border: 1px solid #ccc;
 }
 
 /* 회원가입 영역 끝 */

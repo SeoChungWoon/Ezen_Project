@@ -222,9 +222,21 @@ $("#modifyResetBtn").on("click", function(){
 /****** 마이페이지 영역 *****/
 
 
-$("").on("load", function(){
-	$("#modifyConfirm").submit();
-});
+/* 성별 라디오박스 체크/언체크 */
+$("#genderArea input").click(function(){
+		let male = $("#male").is(':checked');
+		let female = $("#female").is(':checked');
+		if(male==true) {
+			$("#male").next().attr("class", "genderChecked");
+			$("#female").next().attr("class", "genderUnchecked");	
+		}
+		if(female==true) {
+			$("#female").next().attr("class", "genderChecked");
+			$("#male").next().attr("class", "genderUnchecked");
+		}
+	});
+/* 성별 라디오박스 체크/언체크 */
+
 
 
 });
@@ -296,12 +308,14 @@ function idChk(formName) {
 		success: function(txt) {
 			txt = txt.trim();
 			if (txt == "Y") {
-				$("#idChkMsg").html("사용 가능한 아이디 입니다.");
+				$("#idChkMsg").html("* 사용 가능한 아이디 입니다.");
+				$("#idChkMsg").css({"color": "#0086b8"});
 				$("#uIdChk").val(txt);
 				$("#uId").addClass("match");
 				$("#uId").removeClass("mismatch");
 			} else if (txt == "N") {
-				$("#idChkMsg").html("이미 사용중인 아이디 입니다.");
+				$("#idChkMsg").html("* 이미 사용중인 아이디 입니다.");
+				$("#idChkMsg").css({"color": "#e64949"});
 				$("#uIdChk").val(txt);
 				$("#uId").addClass("mismatch");
 				$("#uId").removeClass("match");
@@ -309,7 +323,8 @@ function idChk(formName) {
 		}
 	});
 	} else {
-		$("#idChkMsg").html("5자 이상의 아이디를 입력해주세요.");
+		$("#idChkMsg").html("* 5자 이상의 아이디를 입력해주세요.");
+		$("#idChkMsg").css({"color": "#000"});
 		$("#uIdChk").val("N");
 		$("#uId").removeClass("mismatch");
 		$("#uId").removeClass("match");
