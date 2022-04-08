@@ -119,7 +119,8 @@ if(cnt != 0){
 		      					<tr>
 		      						<td><a href="bbsList.jsp?no=<%=objVO.getNo() %>&pageNum=<%=pageNum %>"><%=objVO.getNo() %></a></td>
 		      						<td><%=objVO.getDivision() %></td>
-		      						<td><%=objVO.getTitle() %></td>
+		      						<td>
+		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&count=<%=objVO.getCount() %>"><%=objVO.getTitle() %></a></td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
