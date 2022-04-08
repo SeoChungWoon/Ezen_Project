@@ -37,10 +37,14 @@ zList = zipChk.zipChk(area3);
 		<div class="sub-body">
 			<div class="inner">
 				<form method="post" name="zipFrm">
-
+					<div class="tit-cont">
+						<!--  title -->
+						<p class="tit">우편번호 검색</p>
+					</div>
 					<div id="findArea">
-						<input type="text" id="findTxt" name="area3" placeholder="동 이름 입력">
-						<input type="button" id="findBtn" value="검색" onclick="dongChk()">
+						<input type="text" id="findTxt" name="area3"
+							placeholder="동 이름 입력">
+						<button type="button" id="findBtn" onclick="dongChk()">검색</button>
 					</div>
 
 
@@ -56,8 +60,10 @@ zList = zipChk.zipChk(area3);
 						} else {
 						%>
 						<div class="resMsg">
-							<span>※검색 후, 아래 우편번호를 클릭하면 자동으로 입력됩니다.</span>
+							<span>'<%=area3%>' 검색 결과, 아래의 주소를 클릭하면 자동으로 입력됩니다.
+							</span>
 						</div>
+						<hr>
 						<%
 						for (int i = 0; i < zList.size(); i++) {
 							ZipcodeBean zBean = zList.get(i);

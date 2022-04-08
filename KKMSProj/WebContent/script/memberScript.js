@@ -4,7 +4,7 @@ $(function() {
 
 /* 우편번호 찾기 새창 띄우기 */
 	$("#zipChk").click(function() {
-		window.open("/member/zipChk.jsp","우편번호 찾기","_blank");
+		window.open("/member/zipChk.jsp","우편번호 찾기","width=700, height=700, left=600, _blank");
 	});
 /* 우편번호 찾기 새창 띄우기 */
 
@@ -394,6 +394,7 @@ function birthChk(formName) {
 function dongChk() {
 	frm = document.zipFrm;
 	if (frm.area3.value == "") {
+		alert("동 이름을 입력해주세요.");
 		frm.area3.focus();
 		return;
 	}
