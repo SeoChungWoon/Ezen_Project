@@ -241,7 +241,7 @@ header .hUtil .login li:not(:last-child)::after {
 	content: "";
 	display: block;
 	position: absolute;
-	top: 7px;
+	top: 5px;
 	right: 0;
 	width: 1px;
 	height: 12px;

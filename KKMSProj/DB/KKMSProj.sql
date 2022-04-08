@@ -47,23 +47,42 @@ area4 char(20)
 );
 
 
-/*게시판용 테이블*/
+/*게시판용 테이블 시작*/
 create table bbsList (
 no		int	auto_increment	not null,
 division	char(20)	not null,
 title		char(50)	not null,
 wName	char(20)	not null,				/*wName = writerName*/
+content char(100),
 postDate	date	not null,
-count	int	not null,
+count	int,
 constraint primary key (no)
 );
 
+desc bbsList;
 
 
+drop table bbsList;
 
 
+insert into bbsList (no, division, title, wName, postDate) values
+(1, '공지사항', '반품/교환 신청 및 조회 서비스 오픈!', '관리자', date_format(now(), '%Y-%m-%d'));
 
+insert into bbsList (no, division, title, wName, postDate) values
+(2, '공지사항', '이용약관 개정안','관리자',date_format(now(), '%Y-%m-%d'));
 
+insert into bbsList (no, division, title, wName, postDate) values
+(3, 'FAQ', '도서정가제란 무엇인가요?', '관리자', date_format(now(), '%Y-%m-%d'));
+
+select * from bbsList order by no limit 0,10;
+
+set sql_safe_updates=0;
+update bbsList set division = '공지사항'
+where no=3; 
+update bbsList set title = '택배사 변경안내'
+where no=3;
+
+/*게시판용 테이블 끝*/
 
 
 

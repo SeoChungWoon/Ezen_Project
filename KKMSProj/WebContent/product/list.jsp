@@ -37,16 +37,6 @@
 					<div class="area-desc">
 						<div class="desc-type">
 							<p class="txt">지역별 보기</p>
-							<div class="right-srh">
-								<div class="select-group">
-									<select name="area-select" id="">
-										<option value="추천순">추천순</option>
-										<option value="최신순">최신순</option>
-										<option value="인기순">인기순</option>
-									</select>
-								</div>
-								<button type="button" class="srh-btn">검색</button>
-							</div>
 						</div>
 
 						<ul class="area-tab">
@@ -55,6 +45,14 @@
 							<li><a href="javascript:">경기/인천</a></li>
 							<li><a href="javascript:">대전/충청/강원</a></li>
 						</ul>
+						
+						<div class="right-srh">
+							<ul class="rank-tab">
+								<li class="on"><a href="javascript">추천순</a></li>
+								<li><a href="javascript:">최신순</a></li>
+								<li><a href="javascript:">인기순</a></li>
+							</ul>
+						</div>
 					</div>
 
 					<div class="exhibit-list">
