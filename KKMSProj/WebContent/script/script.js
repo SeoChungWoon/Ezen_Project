@@ -35,7 +35,12 @@ $(function() {
 			}
 		}, 50);
 	}
-
+	
+	//product price calcs
+	if($(".exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price").length != 0){
+		priceCalc();
+	}
+	
 	// product list
 	if ($(".exhibit-cont").length != 0) {
 		$(".exhibit-cont .exhibit-list .listBox .txt-info .price").each(function(e) {
@@ -45,6 +50,47 @@ $(function() {
 			disCPrice = disCPrice.toLocaleString();
 			$(this).find("del").text(oriPrice);
 			$(this).find("ins").text(disCPrice);
+		});
+		
+		labeTxt();
+		
+		// price original evt 
+		$(".exhibit-cont .exhibit-list .listBox .txt-info .price .original").each(function(e){
+			if($(this).hasClass("keep")){
+				$(this).children(".rate-sale").detach();
+				$(this).siblings().detach();
+			}
+		});
+	}
+	
+	// product list category tab
+	if($(".exhibit-cont .exhibit-tab").length != 0){
+		
+		$(".exhibit-cont .exhibit-tab li").each(function(e){
+			$(this).find("a").on("click", function(){
+				$(".exhibit-cont .exhibit-tab li").removeClass("on");
+				$(this).parent().addClass("on");
+			});
+		});
+	}
+	// product list area tab
+	if($(".exhibit-cont .area-desc .area-tab").length != 0){
+		
+		$(".exhibit-cont .area-desc .area-tab li").each(function(e){
+			$(this).find("a").on("click", function(){
+				$(".exhibit-cont .area-desc .area-tab li").removeClass("on");
+				$(this).parent().addClass("on");
+			});
+		});
+	}
+	// product list area tab
+	if($(".exhibit-cont .area-desc .right-srh .rank-tab").length != 0){
+		
+		$(".exhibit-cont .area-desc .right-srh .rank-tab li").each(function(e){
+			$(this).find("a").on("click", function(){
+				$(".exhibit-cont .area-desc .right-srh .rank-tab li").removeClass("on");
+				$(this).parent().addClass("on");
+			});
 		});
 	}
 });
@@ -92,6 +138,43 @@ function hasScrolled() {
 	}
 	lastScrollTop = st;
 }
-/**
- *
- */
+
+// product list : flag txt evt
+function labeTxt(){
+	var getText = $(".exhibit-cont .exhibit-list .listBox .txt-info .flag span.event");
+	
+	getText.each(function(g){
+		if ($.trim(getText.eq(g).text()) == '바로사용') {
+            getText.eq(g).addClass("now");
+        }
+        else if ($.trim(getText.eq(g).text()) == '투데이특가') {
+            getText.eq(g).addClass("today");
+        }
+        else if ($.trim(getText.eq(g).text()) == '쿠폰할인') {
+            getText.eq(g).addClass("coupon");
+        }
+        else if ($.trim(getText.eq(g).text()) == 'MD추천') {
+            getText.eq(g).addClass("md");
+        }else{
+            getText.eq(g).detach();
+        }
+	});
+}
+
+// product list : discount price evt
+function priceCalc(){
+	$(".exhibit-cont .exhibit-list .listBox .txt-info .price").each(function(e){
+		//cost price
+		var costPrice = $(this).find(".original del").text();
+		costPrice = parseInt(costPrice);
+		//sale price %
+		var sale = $(this).find(".original .rate-sale em").text();
+		sale = parseInt(sale);
+		sale = sale / 100;
+		// calc
+		var priceCalc = costPrice - (costPrice * sale);
+		// discounted price
+		$(this).find("span.discount-price ins").text(priceCalc);
+		
+	});
+}

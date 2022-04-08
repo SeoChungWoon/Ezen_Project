@@ -196,21 +196,25 @@
 	font-size: 12px;
 	padding: 2px 5px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.today{
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.today{
 	border: 1px solid #9266ef;
 	color: #9266ef;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.md{
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.md{
 	border: 1px solid #28d4dd ;
 	color: #28d4dd ;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.now{
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.now{
 	border: 1px solid #d3002b;
 	color: #d3002b;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.coupon{
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.coupon{
 	border: 1px solid #f27935;
 	color: #f27935;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.etc{
+	border: 1px solid #666;
+	color: #666;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .flag span.event + span.event{
 	margin-left: 5px;
@@ -272,6 +276,12 @@
 	color: #e55;
 	margin-right: 5px;
 	font-size: 16px;
+}
+.exhibit-cont .exhibit-list .listBox .txt-info .price .original.keep del,
+.exhibit-cont .exhibit-list .listBox .txt-info .price .original.keep del + span{
+	color: #222;
+	font-size: 16px;
+	text-decoration: none;
 }
 .exhibit-cont .exhibit-list .listBox .txt-info .price del,
 .exhibit-cont .exhibit-list .listBox .txt-info .price del + span{

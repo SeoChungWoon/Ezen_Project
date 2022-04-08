@@ -81,3 +81,7 @@ select {
 .select-group select {
 	appearance: none;
 }
+
+em{
+	font-style: normal;
+}
