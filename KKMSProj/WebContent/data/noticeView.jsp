@@ -5,7 +5,15 @@
  
 <jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
+
 <%
+request.setCharacterEncoding("UTF-8");
+int no = Integer.parseInt(request.getParameter("no"));
+int count = Integer.parseInt(request.getParameter("count"));
+
+int nowCnt = regDAO.viewCnt(count, no);
+
+
 
 %>
 
@@ -33,7 +41,7 @@
 				<!--div.tit-cont  -->
         <hr id="headHR">
        		<div id="cnt">
-       			<a href="noticeView.jsp?cnt=<%=count %>">아</a>
+       			<a href="">아</a>
        		</div>
         </div>
         <!-- div.inner -->
