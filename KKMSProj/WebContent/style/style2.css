@@ -444,22 +444,22 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 	margin-bottom: 20px;
 }
 
-.modifyRow {
+.modifyRow , .mypageRow {
 	margin-bottom: 10px;
 }
 
-.modifyRow > div {
+.modifyRow > div , .mypageRow > div {
 	width: 60%;
 }
 
-.mypageArea div.modifyRow input {
+.mypageArea div.modifyRow input , .mypageRow input {
 	font-size: 18px;
 	padding: 10px;
 	height: 50%;
 	width: 80%;
 }
 
-div.modifyBtnArea, div.modifyVal {
+div.modifyBtnArea, div.modifyVal , .mypageVal {
 	display: inline;
 }
 
@@ -485,7 +485,7 @@ div.modifyPwTitle {
 	width: 20%;
 }
 
-.modifyRow .modifyTitle {
+.modifyRow .modifyTitle , .mypageTitle {
 	font-size: 19px;
 	padding: 10px;
 	font-weight: bold;
@@ -543,5 +543,60 @@ div#modifyChkArea button, div#withdrawChkArea button {
 	border: none;
 	color: #fff;
 }
+
+div.withdrawChkMsg {
+	margin-bottom: 15px;
+}
+
+div.withdrawTxt {
+	background-color: #eee;
+	padding: 15px;
+	line-height: 30px;
+	margin-bottom: 20px;
+}
+
+div.withdrawTxt > h3 {
+	margin-bottom: 15px;
+}
+
+div.withdrawTxt li {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+
+div.withdrawTxt hr {
+	margin: 20px 0;
+}
+
+div#withdrawBtnArea {
+	text-align: center;
+}
+
+#withdrawBtnArea button {
+	font-size: 16px;
+	padding: 20px 10px;
+	font-weight: bold;
+	width: 18%;
+}
+
+#withdrawBtnArea button:first-child {
+	margin-right: 20px;
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+#withdrawBtnArea button:first-child:hover {
+	background: #444;
+}
+
+#withdrawBtnArea button:last-child {
+	border: 1px solid #aaa;
+}
+
+#withdrawBtnArea button:last-child:hover {
+	border: 1px solid #ccc;
+}
+
 
 /* 마이페이지 영역 끝 */
