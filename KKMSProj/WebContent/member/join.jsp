@@ -158,7 +158,7 @@ if (reqChk == null) {
 						</div>
 						<div class="joinRow">
 							<input type="text" id="uPhone" name="uPhone" maxlength="11"
-								placeholder="숫자만 입력" onkeyup="pNum(this.form)">
+								placeholder=" '-' 없이 숫자만 입력" onkeyup="pNum(this.form)">
 						</div>
 
 

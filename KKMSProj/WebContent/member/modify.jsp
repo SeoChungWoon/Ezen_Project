@@ -29,21 +29,29 @@
 		%>
 		<div class="sub-body">
 			<div class="inner">
-				<div class="mypageinner dFlex">
+				<div class="mypageInner dFlex">
 					<%@ include file="/include/myPageAside.jsp"%>
-
-					<div id="modifyChkArea">
-						<input type="password" id="modifyPw" name="modifyPw"
-							placeholder="비밀번호 입력" maxlength="16">
-						<button type="button" id="modifyPwBtn">확인</button>
+					<div class="mypageArea">
+					<div class="mypageTit">
+							<h1>회원정보 수정</h1>
+						</div>
+						<div id="modifyChkArea">
+							<input type="password" id="modifyPw" name="modifyPw"
+								placeholder="비밀번호 입력" maxlength="16">
+							<button type="button" id="modifyPwBtn">확인</button>
+						</div>
+						<!-- div#modifyChkArea -->
+						<div id="modifyChkRes">
+							<p id="modifyErrMsg"></p>
+						</div>
 					</div>
-					<!-- div#modifyChkArea -->
-					<div id="modifyChkRes">
-						<p id="modifyErrMsg"></p>
-					</div>
+					<!-- div.mypageArea -->
 				</div>
+				<!-- div.mypageInner -->
 			</div>
+			<!-- div.inner -->
 		</div>
+		<!-- div.sub-body -->
 		<%@ include file="/include/footer.jsp"%>
 	</div>
 	<!-- div#wrap -->

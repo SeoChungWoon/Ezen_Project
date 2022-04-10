@@ -19,30 +19,39 @@
 	<div id="wrap">
 		<%@ include file="/include/header.jsp"%>
 		<%
-		if (memberId == null){
-			%>
-			<script>
-			location.href="/index.jsp";
-			</script>
-			<%
+		if (memberId == null) {
+		%>
+		<script>
+			location.href = "/index.jsp";
+		</script>
+		<%
 		}
 		%>
-		<div class="sub-body dFlex">
-			<%@ include file="/include/myPageAside.jsp"%>
+		<div class="sub-body">
 			<div class="inner">
-
-				<div id="withdrawChkArea">
-					<input type="password" id="withdrawPw" name="withdrawPw"
-						placeholder="비밀번호 입력" maxlength="16">
-					<button type="button" id="withdrawPwBtn">확인</button>
+				<div class="mypageInner dFlex">
+					<%@ include file="/include/myPageAside.jsp"%>
+					<div class="mypageArea">
+						<div class="mypageTit">
+							<h1>회원 탈퇴</h1>
+						</div>
+						<div id="withdrawChkArea">
+							<input type="password" id="withdrawPw" name="withdrawPw"
+								placeholder="비밀번호 입력" maxlength="16">
+							<button type="button" id="withdrawPwBtn">확인</button>
+						</div>
+						<!-- div#withdrawChkArea -->
+						<div id="withdrawChkRes">
+							<p id="withdrawErrMsg"></p>
+						</div>
+					</div>
+					<!-- div.mypageArea -->
 				</div>
-				<!-- div#withdrawChkArea -->
-				<div id="withdrawChkRes">
-					<p id="withdrawErrMsg"></p>
-				</div>
-
+				<!-- div.mypageInner -->
 			</div>
+			<!-- div.inner -->
 		</div>
+		<!-- div.sub-body -->
 		<%@ include file="/include/footer.jsp"%>
 	</div>
 	<!-- div#wrap -->

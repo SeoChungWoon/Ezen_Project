@@ -7,7 +7,7 @@
 /* common */
 #wrap {
 	position: relative;
-	widht: 100%;
+	width: 100%;
 }
 
 #wrap.main .sub-body {
@@ -28,7 +28,7 @@
 }
 
 .sub-body .tit-cont .tit {
-	font-size: 48px;
+	font-size: 52px;
 	font-weight: bold;
 }
 
