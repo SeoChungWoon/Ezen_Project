@@ -13,12 +13,12 @@ $(function() {
 /* 약관 모두 동의 기능 */
 	$("#chkAll").click(function() {
 
-		let chkAll = $("#chkAll").is(':checked');
+		let chkAll = $("#chkAll").is(":checked");
 		if (chkAll == true) {
-			$(".termsRow input").prop('checked', true);
+			$(".termsRow input").prop("checked", true);
 			$(".termsRow label").attr("class", "checked");
 		} else {
-			$(".termsRow input").prop('checked', false);
+			$(".termsRow input").prop("checked", false);
 			$(".termsRow label").attr("class", "unchecked");
 		}
 	});
@@ -26,20 +26,20 @@ $(function() {
 
 /* 약관 체크 기능 */
 	$(".usingTerms input").click(function(){
-		let thisChk = $(this).is(':checked');
+		let thisChk = $(this).is(":checked");
 		if (thisChk == true) {
 			$(this).next().attr("class", "checked");
 		} else {
 			$(this).next().attr("class", "unchecked");
 		}
-		let chkService = $("#chkService").is(':checked');
-		let chkPrivacy = $("#chkPrivacy").is(':checked');
-		let chkAds = $("#termsAds").is(':checked');
+		let chkService = $("#chkService").is(":checked");
+		let chkPrivacy = $("#chkPrivacy").is(":checked");
+		let chkAds = $("#termsAds").is(":checked");
 		if (chkService && chkPrivacy && chkAds) {
-			$("#chkAll").prop('checked', true);
+			$("#chkAll").prop("checked", true);
 			$("#chkAll").next().attr("class", "checked");
 		} else {
-			$("#chkAll").prop('checked', false);
+			$("#chkAll").prop("checked", false);
 			$("#chkAll").next().attr("class", "unchecked");
 		}
 	});
@@ -48,8 +48,8 @@ $(function() {
 
 /* 약관 필수항목 체크 확인 */
 	$("#termsBtn").click(function() {
-		let chkService = $("#chkService").is(':checked');
-		let chkPrivacy = $("#chkPrivacy").is(':checked');
+		let chkService = $("#chkService").is(":checked");
+		let chkPrivacy = $("#chkPrivacy").is(":checked");
 		let reqChk = (chkService && chkPrivacy) ? "on" : "off";
 
 
@@ -122,6 +122,48 @@ $(function() {
 	});
 /* 로그인 패스워드 공백 제거 */
 /****** 로그인 영역 *****/
+
+
+/****** 아이디 / 비밀번호 찾기 영역 *****/
+/* 아이디 / 비밀번호 찾기 방식 토글 버튼 */
+	$(".fToggle").on("click", function(){
+		let toggle = $(this).is(":checked");
+		if (toggle) {
+			$(".howToFind").next().addClass("hidden");
+			$(".fToggle").not(this).prop("checked", false);
+			$(this).parent().next().removeClass("hidden");	
+		} else {
+			$(this).parent().next().addClass("hidden");
+		}
+	});
+/* 아이디 / 비밀번호 찾기 방식 토글 버튼 */
+
+
+/* 입력사항 체크 */
+	$(".idFindBtnArea button").on("click", function(){
+		let data1 = $(this).parent().prev().prev().val();
+		let data2 = $(this).parent().prev().val();
+		if(data1=="") {
+			$(this).parent().prev().prev().focus();
+			return;
+		}
+		if(data2=="") {
+			$(this).parent().prev().focus();
+			return;
+		}
+	});
+
+/* 입력사항 체크 */
+
+
+/* 아이디 / 비밀번호 찾기 input창 유효성 검사 */
+	$(".idFindIdPwArea input").keyup(function(){
+		let data = $(this).val();
+		data = data.trim();
+		$(this).val(data);
+	});
+/* 아이디 / 비밀번호 찾기 input창 유효성 검사 */
+/****** 아이디 / 비밀번호 찾기 영역 *****/
 
 
 /****** 마이페이지 영역 *****/

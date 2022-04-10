@@ -54,8 +54,8 @@
 						</div>
 						<ul id="utilArea">
 							<li><a href="/member/termsChk.jsp">회원가입</a></li>
-							<li><a href="javascript:">아이디 찾기</a></li>
-							<li><a href="javascript:">비밀번호 찾기</a></li>
+							<li><a href="/member/findId.jsp">아이디 찾기</a></li>
+							<li><a href="/member/findPw.jsp">비밀번호 찾기</a></li>
 						</ul>
 						<div class="otherLoginArea dFlex">
 							<div class="otherLoginBtn">

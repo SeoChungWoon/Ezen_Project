@@ -600,3 +600,67 @@ div#withdrawBtnArea {
 
 
 /* 마이페이지 영역 끝 */
+
+
+/* 아이디 / 비밀번호 찾기 영역 시작 */
+
+.findIdPwArea {
+	padding: 10px;
+	margin: 10px auto;
+	width: 60%;
+}
+
+.findIdPwRow {
+	padding: 10px;
+	margin: 20px auto;
+	border: 1px solid #aaa;
+	width: 60%;
+}
+
+.howToFind {
+	font-size: 19px;
+}
+
+.findIdPwRow label {
+	padding: 10px;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+
+.findIdPwRow label:hover {
+	cursor: pointer;
+}
+
+.findIdPwRow input[type=text] {
+	margin-top: 15px;
+	padding: 10px;
+	width: 100%;
+	font-size: 16px;
+	display: block;
+}
+
+.idFindBtnArea button {
+	font-size: 15px;
+	width: 100%;
+	height: 46px;
+	margin-top: 15px;	
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+.otherFindBtnArea button {
+	font-size: 15px;
+	width: 45%;
+	height: 46px;
+	margin-top: 15px;
+	margin-left: 15px;
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+
+
+/* 아이디 / 비밀번호 찾기 영역 끝 */
