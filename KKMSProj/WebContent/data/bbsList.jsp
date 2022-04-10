@@ -9,6 +9,7 @@
     pageEncoding="UTF-8" import="pack_EzPro.BoardDAO" import="pack_EzPro.BoardVO"%>
 
 <%
+request.setCharacterEncoding("UTF-8");
 BoardDAO objDAO = new BoardDAO();
 int cnt = objDAO.BoardCount();		//데이터 갯수
 int pageSize = 10;
@@ -41,7 +42,7 @@ if(cnt != 0){
      <link rel="stylesheet" href="/style/style3.css">
      <script src="/source/jquery-3.6.0.min.js"></script>
 	 <script src="/source/gsap.min.js"></script>
-	 <script src="/script/script.js"></script>
+	 <script src="/script/script_bbs.js"></script>
 	 <script src="/script/memberScript.js"></script>
 <title>Insert title here</title>
 </head>
@@ -120,7 +121,7 @@ if(cnt != 0){
 		      						<td><a href="bbsList.jsp?no=<%=objVO.getNo() %>&pageNum=<%=pageNum %>"><%=objVO.getNo() %></a></td>
 		      						<td><%=objVO.getDivision() %></td>
 		      						<td>
-		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&count=<%=objVO.getCount() %>"><%=objVO.getTitle() %></a></td>
+		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>"><%=objVO.getTitle() %></a></td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>

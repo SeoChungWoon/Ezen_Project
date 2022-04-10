@@ -120,6 +120,53 @@ div.footerArea>.pageArea a.nowPage{
 }
 /*/////////////////////write.jsp 영역 끝///////////////////////*/
 
+/*/////////////////////noticeView.jsp 영역 시작///////////////////////*/
+
+#wrap>form#noticeFrm>.sub-body>.inner>#ntcViewInner{
+	width: 80%;
+	height: 600px;
+	margin: 0 auto;
+}
+
+#wrap>form#noticeFrm>.sub-body>.inner>#ntcViewInner>.header>.headerTop{
+	justify-content: space-between;
+	border: 1px solid #000;
+	padding: 30px 10px;
+	background-color:#416486;
+}
+.headerTop>.headerTop-right{
+		transform: translateY(27px);
+}
+.headerTop>.headerTop-left>span{
+	font-size: 23px;
+	font-weight: bold;
+	color: #eaeaea;
+}
+.headerTop>.headerTop-right>span{
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+}
+.header>.ntcTitle{
+	padding: 30px 10px;
+	border: 1px solid #000;
+	border-top: none;
+	background-color:#f1f3f5;
+}
+.header>.ntcTitle>span{
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.content{
+	width: 100%;
+	border: 1px solid #000;
+	padding: 10px;
+	font-size: 12px;
+	height: 70%;
+}
+
+/*/////////////////////noticeView.jsp 영역 끝///////////////////////*/
 
 
 
