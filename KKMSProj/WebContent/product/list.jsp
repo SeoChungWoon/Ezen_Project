@@ -38,9 +38,13 @@
 						<li><a href="javascript:"><span>전시</span></a></li>
 						<li><a href="javascript:"><span>체험/행사</span></a></li>
 						<li><a href="javascript:"><span>기타</span></a></li>
+						<li class="area-color"><a href="javascript:"><span>서울</span></a></li>
+						<li class="area-color"><a href="javascript:"><span>경기/인천</span></a></li>
+						<li class="area-color"><a href="javascript:"><span>대전/충청/강원</span></a></li>
 					</ul>
 
 					<div class="area-desc">
+						<!-- 
 						<div class="desc-type">
 							<p class="txt">지역별 보기</p>
 						</div>
@@ -51,10 +55,11 @@
 							<li><a href="javascript:">경기/인천</a></li>
 							<li><a href="javascript:">대전/충청/강원</a></li>
 						</ul>
-						
+						 -->
 						<div class="right-srh">
 							<ul class="rank-tab">
 								<li class="on"><a href="javascript:">인기순</a></li>
+								<li><a href="javascript:">할인순</a></li>
 								<li><a href="javascript:">최신순</a></li>
 								<li><a href="javascript:">종료임박순</a></li>
 							</ul>

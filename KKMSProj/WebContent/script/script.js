@@ -62,33 +62,56 @@ $(function() {
 			}
 		});
 	}
-	
+
 	// product list category tab
-	if($(".exhibit-cont .exhibit-tab").length != 0){
-		
-		$(".exhibit-cont .exhibit-tab li").each(function(e){
-			$(this).find("a").on("click", function(){
+	if ($(".exhibit-cont .exhibit-tab").length != 0) {
+		$(".exhibit-cont .exhibit-tab li").each(function(a) {
+			$(this).find("a").on("click", function() {
 				$(".exhibit-cont .exhibit-tab li").removeClass("on");
 				$(this).parent().addClass("on");
 			});
 		});
+
+		$(".exhibit-cont .exhibit-list .listBox").each(function(e) {
+			var listTxt = $.trim($(".exhibit-cont .exhibit-list .listBox").eq(e).find(".txt-info .tit .group").text());
+			var listAreaTxt = $.trim($(".exhibit-cont .exhibit-list .listBox").eq(e).find(".txt-info .tit .area").text());
+			
+			$(".exhibit-cont .exhibit-tab li a").on("click", function() {
+				var tabTxt = $.trim($(this).text());
+				
+				if (tabTxt == "전체") {
+					$(".exhibit-cont .exhibit-list .listBox").show();
+				} else if (tabTxt.includes(listTxt)) {
+					$(".exhibit-cont .exhibit-list .listBox").hide();
+					setTimeout(function() {
+						$(".exhibit-cont .exhibit-list .listBox").eq(e).show();
+					}, 1);
+				}else if(tabTxt.includes(listAreaTxt)) {
+					$(".exhibit-cont .exhibit-list .listBox").hide();
+					setTimeout(function() {
+						$(".exhibit-cont .exhibit-list .listBox").eq(e).show();
+					}, 1);
+				}else{
+					$(".exhibit-cont .exhibit-list .listBox").hide();
+				}
+			});
+		});
 	}
 	// product list area tab
-	if($(".exhibit-cont .area-desc .area-tab").length != 0){
-		
-		$(".exhibit-cont .area-desc .area-tab li").each(function(e){
-			$(this).find("a").on("click", function(){
+	if ($(".exhibit-cont .area-desc .area-tab").length != 0) {
+		$(".exhibit-cont .area-desc .area-tab li").each(function(e) {
+			$(this).find("a").on("click", function() {
 				$(".exhibit-cont .area-desc .area-tab li").removeClass("on");
 				$(this).parent().addClass("on");
 			});
 		});
 	}
-	// product list area tab
-	if($(".exhibit-cont .area-desc .right-srh .rank-tab").length != 0){
-		
-		$(".exhibit-cont .area-desc .right-srh .rank-tab li").each(function(e){
-			$(this).find("a").on("click", function(){
-				$(".exhibit-cont .area-desc .right-srh .rank-tab li").removeClass("on");
+	
+	// product list rank tab
+	if ($(".exhibit-cont .area-desc .rank-tab").length != 0) {
+		$(".exhibit-cont .area-desc .rank-tab li").each(function(e) {
+			$(this).find("a").on("click", function() {
+				$(".exhibit-cont .area-desc .rank-tab li").removeClass("on");
 				$(this).parent().addClass("on");
 			});
 		});

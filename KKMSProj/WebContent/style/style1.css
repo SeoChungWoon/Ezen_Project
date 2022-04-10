@@ -4,11 +4,14 @@
 /* list */
 .exhibit-cont .exhibit-tab {
 	text-align: center;
+	width: 600px;
+	margin: 50px auto 0;
 }
 
 .exhibit-cont .exhibit-tab li {
 	display: inline-block;
 	margin: 0 10px;
+	padding: 10px 0;
 }
 
 .exhibit-cont .exhibit-tab li a {
@@ -19,11 +22,16 @@
 	border-radius: 30px;
 }
 
-.exhibit-cont .exhibit-tab li a span{
+.exhibit-cont .exhibit-tab li a span {
 	font-size: 18px;
 }
+
 .exhibit-cont .exhibit-tab li.on a {
 	background: linear-gradient(117deg, #28d4dd 1%, #0080c0);
+}
+
+.exhibit-cont .exhibit-tab li.area-color.on a {
+	background: linear-gradient(117deg, #ffc4a3 1%, #cd4a00);
 }
 
 .exhibit-cont .exhibit-tab li.on a span {
@@ -31,7 +39,7 @@
 }
 
 .exhibit-cont .area-desc {
-	margin: 100px 0 50px;
+	margin: 50px 0;
 	padding-bottom: 50px;
 	border-bottom: 1px solid #ddd;
 }
@@ -50,7 +58,8 @@
 .exhibit-cont .area-desc .right-srh .select-group {
 	margin-right: 5px;
 }
-.exhibit-cont .area-desc .right-srh .select-group select{
+
+.exhibit-cont .area-desc .right-srh .select-group select {
 	width: 100px;
 	height: 30px;
 	font-size: 14px;
@@ -59,18 +68,23 @@
 	border-right: none;
 	border-bottom: 1px solid #222;
 }
-.exhibit-cont .area-desc .right-srh .rank-tab{
+
+.exhibit-cont .area-desc .right-srh .rank-tab {
 	margin-top: 20px;
 }
-.exhibit-cont .area-desc .right-srh .rank-tab li{
+
+.exhibit-cont .area-desc .right-srh .rank-tab li {
 	display: inline-block;
 	position: relative;
 }
-.exhibit-cont .area-desc .right-srh .rank-tab li:not(:last-child){
+
+.exhibit-cont .area-desc .right-srh .rank-tab li:not(:last-child) {
 	margin-right: 20px;
-	padding-right:20px;
+	padding-right: 20px;
 }
-.exhibit-cont .area-desc .right-srh .rank-tab li:not(:last-child)::after{
+
+.exhibit-cont .area-desc .right-srh .rank-tab li:not(:last-child)::after
+	{
 	content: "";
 	display: block;
 	position: absolute;
@@ -78,9 +92,10 @@
 	top: 3px;
 	width: 1px;
 	height: 15px;
-	background: #222;	
+	background: #222;
 }
-.exhibit-cont .area-desc .right-srh .rank-tab li.on a{
+
+.exhibit-cont .area-desc .right-srh .rank-tab li.on a {
 	color: #0cb4cf;
 	font-weight: bold;
 }
@@ -142,23 +157,23 @@
 
 .exhibit-cont .exhibit-list .listBox {
 	margin-right: 30px;
-	width: calc(( 100% - 90px)/4);
+	width: calc(( 100% - 120px)/4);
+	padding-top: 30px;
+}
+
+.exhibit-cont .exhibit-list .listBox a {
+	display: block;
 	border: 1px solid #e2e2e2;
 	transition: all 0.4s ease-out;
+	width: 100%;
+	height: 100%;
 }
 
-.exhibit-cont .exhibit-list .listBox:nth-child(4n) {
-	margin-right: 0;
-}
-
-.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+4)) {
-	margin-top: 30px;
-}
-
-.exhibit-cont .exhibit-list .listBox:hover {
+.exhibit-cont .exhibit-list .listBox a:hover {
 	border: 1px solid #630560;
 	box-shadow: 10px 10px 20px 0px rgb(0 0 0/ 30%);
 }
+
 .exhibit-cont .exhibit-list .listBox .img {
 	position: relative;
 	width: 100%;
@@ -170,143 +185,162 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%,-50%) scale(1.0);
+	transform: translate(-50%, -50%) scale(1.0);
 	width: 100%;
 	height: 100%;
 	transition: transform 0.6s ease-out;
 }
-.exhibit-cont .exhibit-list .listBox:hover .img img{
-	transform: translate(-50%,-50%) scale(1.1);
+
+.exhibit-cont .exhibit-list .listBox:hover .img img {
+	transform: translate(-50%, -50%) scale(1.1);
 }
-.exhibit-cont .exhibit-list .list-none{
+
+.exhibit-cont .exhibit-list .list-none {
 	text-align: center;
 	padding: 50px 0 100px;
 	width: 100%;
 }
-.exhibit-cont .exhibit-list .listBox > a{
+
+.exhibit-cont .exhibit-list .listBox>a {
 	display: block;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info{
+
+.exhibit-cont .exhibit-list .listBox .txt-info {
 	padding: 20px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag {
 	margin-bottom: 15px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event {
 	font-size: 12px;
 	padding: 2px 5px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.today{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.today {
 	border: 1px solid #9266ef;
 	color: #9266ef;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.md{
-	border: 1px solid #28d4dd ;
-	color: #28d4dd ;
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.md {
+	border: 1px solid #28d4dd;
+	color: #28d4dd;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.now{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.now {
 	border: 1px solid #d3002b;
 	color: #d3002b;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.coupon{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.coupon {
 	border: 1px solid #f27935;
 	color: #f27935;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.etc{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event.etc {
 	border: 1px solid #666;
 	color: #666;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event + span.event{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag span.event+span.event
+	{
 	margin-left: 5px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span.info{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span.info {
 	white-space: nowrap;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt ~ p{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt ~ p {
 	margin-top: 15px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span {
 	color: #666;
 	font-size: 14px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location {
 	position: relative;
 	padding-left: 20px;
 	padding-right: 10px;
 	margin-right: 10px;
-	background: url(/images/product-list-icon1.jpg)no-repeat 0 center / 18px;
+	background: url(/images/product-list-icon1.jpg) no-repeat 0 center/18px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location::after{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location::after
+	{
 	content: "";
 	display: block;
 	position: absolute;
 	top: 4px;
 	right: 0;
-	width:1px;
+	width: 1px;
 	height: 14px;
 	background: #999;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt .date{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt .date {
 	padding-bottom: 5px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt > span{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt>span {
 	color: #999;
 	display: block;
 	font-size: 14px;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .price > span, 
-.exhibit-cont .exhibit-list .listBox .txt-info .price del,
-.exhibit-cont .exhibit-list .listBox .txt-info .price del + span{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price>span,
+	.exhibit-cont .exhibit-list .listBox .txt-info .price del,
+	.exhibit-cont .exhibit-list .listBox .txt-info .price del+span {
 	color: #999;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price
+	{
 	display: block;
 	padding-top: 5px;
 	color: #222;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price ins{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price ins
+	{
 	text-decoration: none;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .price .original .rate-sale{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price .original .rate-sale
+	{
 	color: #e55;
 	margin-right: 5px;
 	font-size: 16px;
 }
+
 .exhibit-cont .exhibit-list .listBox .txt-info .price .original.keep del,
-.exhibit-cont .exhibit-list .listBox .txt-info .price .original.keep del + span{
+	.exhibit-cont .exhibit-list .listBox .txt-info .price .original.keep del+span
+	{
 	color: #222;
 	font-size: 16px;
 	text-decoration: none;
 }
-.exhibit-cont .exhibit-list .listBox .txt-info .price del,
-.exhibit-cont .exhibit-list .listBox .txt-info .price del + span{
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price del, .exhibit-cont .exhibit-list .listBox .txt-info .price del+span
+	{
 	font-size: 12px;
 }
+
 @media all and (max-width: 1440px) {
 	.exhibit-cont .exhibit-list .listBox {
-		margin-right: 20px;
+		width: calc(( 100% - 60px)/3);
 	}
-	.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+4)) {
-		margin-top: 20px;
-	}
-}
-
-@media all and (max-width: 1280px) {
 	.exhibit-cont .exhibit-list .listBox {
-		width: calc(( 100% - 90px)/3);
-	}
-	.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+4)) {
-		margin-top: 0;
-	}
-	.exhibit-cont .exhibit-list .listBox:not(:nth-child(-n+3)) {
-		margin-top: 20px;
-	}
-	.exhibit-cont .exhibit-list .listBox:nth-child(4n) {
 		margin-right: 20px;
+		padding-top: 20px;
 	}
 }

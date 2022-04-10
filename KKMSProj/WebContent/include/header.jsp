@@ -14,9 +14,6 @@
 						<a href="javascript:">전시</a>
 						<ul class="two-dep">
 							<li><a href="/product/list.jsp"><span>전체보기</span></a></li>
-							<li><a href="javascript:"><span>전시</span></a></li>
-							<li><a href="javascript:"><span>체험/행사</span></a></li>
-							<li><a href="javascript:"><span>기타</span></a></li>
 						</ul>
 					</div>
 					<div class="one-dep">
