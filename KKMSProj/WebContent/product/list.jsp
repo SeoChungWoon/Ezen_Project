@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>전시 목록</title>
+<title>전시 리스트</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
@@ -77,7 +77,7 @@
 							proListBean mList = (proListBean) objList.get(i);
 						%>
 						<div class="listBox">
-							<a href="javascript:">
+							<a href="/product/listView.jsp?pNo=<%=mList.getpNo() %>">
 								<p class="img">
 									<img src="/images/product-list-img<%= i+1 %>.jpg" alt="" />
 								</p>
