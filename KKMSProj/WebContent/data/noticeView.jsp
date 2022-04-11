@@ -10,10 +10,10 @@
 <%
 request.setCharacterEncoding("UTF-8");
 int no = Integer.parseInt(request.getParameter("no"));
-int count = Integer.parseInt(request.getParameter("count"));
+int prevNext = 1;
 
 //조회수 가져오기
-int nowCnt = regDAO.viewCnt(count, no);
+int nowCnt = regDAO.viewCnt(no);
 
 //no 가져오기
 List ntcList = regDAO.mtdSelect(no);
@@ -80,9 +80,9 @@ List ntcList = regDAO.mtdSelect(no);
         		<!-- div.content -->
         		<div class="ntcFooter">        		
 
-					<a href="noticeView.jsp?=no<%=objVO.getNo() %>-1">이전글</a>
+					<a href="noticeView.jsp?no=<%=no-prevNext %>">이전글</a>
 
-        			<a href="noticeView.jsp?no=<%=objVO.getNo() %>+1">다음글</a>
+        			<a href="noticeView.jsp?no=<%=no+prevNext %>">다음글</a>
 
         		</div>
         		<!-- div.ntcFooter -->

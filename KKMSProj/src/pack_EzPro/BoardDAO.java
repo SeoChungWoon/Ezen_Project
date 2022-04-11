@@ -107,14 +107,22 @@ public class BoardDAO {
 		return res;
 }
 	//공지사항 조회수
-	public int viewCnt(int count, int no) {
+	public int viewCnt(int no) {
 		
-		count++;
-		
+		String sql="";
+		int count = 0;
 		try{
 			objConn = pool.getConnection();
 			
-			String sql = "update bbsList set count=? where no=?";
+			sql = "select count from bbsList where no=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, no);
+			objRS = objPstmt.executeQuery();
+			objRS.next();
+			count = objRS.getInt("count");
+			count++;
+			
+			sql = "update bbsList set count=? where no=?";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, count);
