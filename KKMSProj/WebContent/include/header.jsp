@@ -5,7 +5,7 @@
 	<header id="header" class="dFlex">
 		<div class="inner">
 			<div class="hLogo">
-				<a href="/index.jsp"><img src="" alt="" />LOGO</a>
+				<a href="/index.jsp"><img src="/images/h-logo.png" alt="LOGO" /></a>
 			</div>
 
 			<nav id="gnb">
@@ -13,10 +13,7 @@
 					<div class="one-dep">
 						<a href="javascript:">전시</a>
 						<ul class="two-dep">
-							<li><a href="javascript:"><span>전체보기</span></a></li>
-							<li><a href="javascript:"><span>전시</span></a></li>
-							<li><a href="javascript:"><span>체험/행사</span></a></li>
-							<li><a href="javascript:"><span>기타</span></a></li>
+							<li><a href="/product/list.jsp"><span>전체보기</span></a></li>
 						</ul>
 					</div>
 					<div class="one-dep">
@@ -46,9 +43,9 @@
 					String memberId = (String) session.getAttribute("memID");
 					if (memberId != null) {
 					%>
-					<li id="loginId"><%=memberId%>님 안녕하세요.</li>
-					<li id="myPage"><a href="/member/mypage.jsp">My page</a></li>
-					<li id="logout"><a href="/member/logout.jsp">로그아웃</a></li>
+					<li><a href="javascript:"><span><%=memberId%>님</span></a></li>
+					<li><a href="/member/mypage.jsp"><span>My page</span></a></li>
+					<li><a href="/member/logout.jsp"><span>로그아웃</span></a></li>
 					<%
 					} else {
 					%>
