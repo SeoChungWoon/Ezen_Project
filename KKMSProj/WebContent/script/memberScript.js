@@ -131,9 +131,11 @@ $(function() {
 		if (toggle) {
 			$(".howToFind").next().addClass("hidden");
 			$(".fToggle").not(this).prop("checked", false);
-			$(this).parent().next().removeClass("hidden");	
+			$(this).parent().next().removeClass("hidden");
+			$(".findValArea input").val("");
 		} else {
 			$(this).parent().next().addClass("hidden");
+			$(this).parent().next().children().val("");
 		}
 	});
 /* 아이디 / 비밀번호 찾기 방식 토글 버튼 */
@@ -151,9 +153,72 @@ $(function() {
 			$(this).parent().prev().focus();
 			return;
 		}
+		$("#idFindForm").submit();
+	});
+	
+	$(".pwFindBtnArea button").on("click", function(){
+		let data1 = $(this).parent().prev().prev().prev().val();
+		let data2 = $(this).parent().prev().prev().val();
+		let data3 = $(this).parent().prev().val();
+		if(data1=="") {
+			$(this).parent().prev().prev().prev().focus();
+			return;
+		}
+		if(data2=="") {
+			$(this).parent().prev().prev().focus();
+			return;
+		}
+		if(data3=="") {
+			$(this).parent().prev().focus();
+			return;
+		}
+		$("#pwFindForm").submit();
+	});
+/* 입력사항 체크 */
+
+
+/****** 비밀번호 재설정 ******/
+/* 비밀번호 유효성 검사 */
+	$(".findResVal input").on("keyup", function(){
+		let fPw = $("#fPw").val();
+		let fPwChk = $("#fPwChk").val();
+		fPw = fPw.trim();
+		fPwChk = fPwChk.trim();
+		$("#fPw").val(fPw);
+		$("#fPwChk").val(fPwChk);
+		
+		if (fPwChk == "") {
+		$(".findPw").removeClass("mismatch");
+		$(".findPw").removeClass("match");
+		$("#pwChkRes").addClass("hidden");
+		$("#pwMatch").val("N");
+		} else if (fPw == fPwChk) {
+		$(".findPw").addClass("match");
+		$(".findPw").removeClass("mismatch");
+		$("#pwChkRes").addClass("hidden");
+		$("#pwMatch").val("Y");
+		} else {
+		$(".findPw").addClass("mismatch");
+		$(".findPw").removeClass("match");
+		$("#pwChkRes").removeClass("hidden");
+		$("#pwMatch").val("N");
+		}
+	});
+/* 비밀번호 유효성 검사 */
+
+
+/* 비밀번호 재설정 버튼 */
+	$("#fPwSubmit").on("click", function(){
+		if($("#pwMatch").val()=="Y"){
+			$("#fPwForm").submit();
+		} else {
+			$("#fPw").focus();
+			return;
+		}
 	});
 
-/* 입력사항 체크 */
+/* 비밀번호 재설정 버튼 */
+/****** 비밀번호 재설정 ******/
 
 
 /* 아이디 / 비밀번호 찾기 input창 유효성 검사 */

@@ -251,5 +251,88 @@ public class MemberMgr {
 		return flag;
 	}
 	
+	public String findId (String fName, String fData, String howTo) {
+		
+		String id = "";
+		
+		try {
+			objConn = pool.getConnection();
+			if(howTo == "eId") {				
+				sql = "select uId from member where uName=? and uEmail=?";
+			} else if (howTo == "pId") {
+				sql = "select uId from member where uName=? and uPhone=?";
+			}
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, fName);
+			objPstmt.setString(2, fData);
+			objRS = objPstmt.executeQuery();
+			if(objRS.next()) {
+			id = objRS.getString("uId");
+			} else {
+				id="";
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		
+		return id;
+		
+	}
+	
+public boolean findPw (String fId, String fName, String fData, String howTo) {
+		
+		String id = "";
+		boolean flag = false;
+		
+		try {
+			objConn = pool.getConnection();
+			if(howTo == "ePw") {				
+				sql = "select count(*) from member where uId=? and uName=? and uEmail=?";
+			} else if (howTo == "pPw") {
+				sql = "select count(*) from member where uId=? and uName=? and uPhone=?";
+			}
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, fId);
+			objPstmt.setString(2, fName);
+			objPstmt.setString(3, fData);
+			objRS = objPstmt.executeQuery();
+			objRS.next();
+			if(objRS.getInt("count(*)")>0) {
+				flag = true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		
+		return flag;
+		
+	}
+	
+public boolean fChangePw (String uId, String uPw) {
+	boolean flag = false;
+	
+	System.out.println(uId + " " + uPw);
+	try {
+		objConn = pool.getConnection();
+			sql = "update member set uPw = ? where uId=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uPw);
+			objPstmt.setString(2, uId);
+			if (objPstmt.executeUpdate()>0)
+				flag = true;
+		
+	} catch (Exception e) {
+		System.out.println(e.getMessage());
+	} finally {
+		pool.freeConnection(objConn, objPstmt);
+	}
+	
+	return flag;
+}
 	
 }

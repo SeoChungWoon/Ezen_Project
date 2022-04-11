@@ -1,12 +1,11 @@
-<%@page import="pack_DBCP.DBConnectionMgr"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="pack_EzPro.BoardDAO"%>
+<%@page import="pack_EzPro.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="pack_EzPro.BoardDAO" import="pack_EzPro.BoardVO"%>
+    pageEncoding="UTF-8"%>
+    
+<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
+<jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -29,13 +28,14 @@ if(cnt != 0){
 	objList = objDAO.BoardList(firstData,pageSize);
 }
 %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>공지사항</title>
+     <title>Document</title>
      <link rel="stylesheet" href="/style/style_Common.css">
      <link rel="stylesheet" href="/style/style1.css">
 	 <link rel="stylesheet" href="/style/style2.css">
@@ -53,7 +53,7 @@ if(cnt != 0){
 		<div class="sub-body">
 			<div class="inner">
 				<div class="tit-cont"> <!--  title -->
-					<p class="tit">공지게시판</p>
+					<p class="tit">FAQ게시판</p>
 				</div>
 				<!--div.tit-cont  -->
   		
@@ -105,7 +105,7 @@ if(cnt != 0){
 		      					<th>제목</th>
 		      					<th>작성자</th>
 		      					<th>게시일</th>
-		      					<th>조회수</th>
+		      					<th>내용보기</th>
 		      				</tr>
 		      			</thead>
 		      				<tbody>
@@ -118,10 +118,12 @@ if(cnt != 0){
 		      						<td><a href="bbsList.jsp?no=<%=objVO.getNo() %>&pageNum=<%=pageNum %>"><%=objVO.getNo() %></a></td>
 		      						<td><%=objVO.getDivision() %></td>
 		      						<td>
-		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>"><%=objVO.getTitle() %></a></td>
+		      						</td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
-		      						<td><%=objVO.getCount() %></td>
+		      						<td>
+		      						<img src="/images/detailIcon.png" alt="내용보기">
+		      						</td>
 		      					</tr>
 		      				
 		      				<% 
