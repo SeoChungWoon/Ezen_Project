@@ -35,15 +35,22 @@ $(function() {
 			}
 		}, 50);
 	}
+	// checkbox
+	$(".chk-group").each(function (k) {
+       $(this).find("label").off("click").on("click",  function(){
+            if(!$(this).parent(".chk-group").hasClass("checked")){
+                $(this).parent(".chk-group").addClass("checked");
+            }else{
+                $(this).parent(".chk-group").removeClass("checked");
+			}
+        });
+    });
 	
-	//product price calcs
-	if($(".exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price").length != 0){
+	//product price calc
+	if($(".price.sale").length != 0){
 		priceCalc();
-	}
-	
-	// product list
-	if ($(".exhibit-cont").length != 0) {
-		$(".exhibit-cont .exhibit-list .listBox .txt-info .price").each(function(e) {
+		
+		$(".price.sale").each(function(e) {
 			let oriPrice = parseInt($(this).find("del").text());
 			let disCPrice = parseInt($(this).find("ins").text());
 			oriPrice = oriPrice.toLocaleString();
@@ -51,8 +58,10 @@ $(function() {
 			$(this).find("del").text(oriPrice);
 			$(this).find("ins").text(disCPrice);
 		});
-		
-		labeTxt();
+	}
+	
+	// product list
+	if ($(".exhibit-cont").length != 0) {
 		
 		// price original evt 
 		$(".exhibit-cont .exhibit-list .listBox .txt-info .price .original").each(function(e){
@@ -116,6 +125,37 @@ $(function() {
 			});
 		});
 	}
+	
+	// product flag
+	if($(".flag-desc").length != 0){
+		labeTxt();
+	}
+	
+	// product view
+	if($(".proList-view").length != 0){
+		// sns
+		$(".proList-view .top-cont .txt-desc .sns > a").on("click", function(){
+			console.log("Aa")
+			if(!$(this).hasClass("on")){
+				$(this).addClass("on");
+				$(this).next().width("auto");
+			}else{
+				$(this).removeClass("on");
+				$(this).next().width(0);
+			}
+		});		
+		
+		// sns url clk evt
+		$(".proList-view .top-cont .sns a.url").on("click", function(){
+			urlCopy();
+		});
+		$(".proList-view .top-cont .sns a.facebook").on("click", function(){
+			alert("URL 복사만 가능합니다.");
+		});
+		$(".proList-view .top-cont .sns a.twitter").on("click", function(){
+			alert("URL 복사만 가능합니다.");
+		});
+	}
 });
 
 
@@ -164,7 +204,7 @@ function hasScrolled() {
 
 // product list : flag txt evt
 function labeTxt(){
-	var getText = $(".exhibit-cont .exhibit-list .listBox .txt-info .flag span.event");
+	var getText = $(".flag-desc .flag span.event");
 	
 	getText.each(function(g){
 		if ($.trim(getText.eq(g).text()) == '바로사용') {
@@ -186,7 +226,7 @@ function labeTxt(){
 
 // product list : discount price evt
 function priceCalc(){
-	$(".exhibit-cont .exhibit-list .listBox .txt-info .price").each(function(e){
+	$(".price.sale").each(function(e){
 		//cost price
 		var costPrice = $(this).find(".original del").text();
 		costPrice = parseInt(costPrice);
@@ -200,4 +240,17 @@ function priceCalc(){
 		$(this).find("span.discount-price ins").text(priceCalc);
 		
 	});
+}
+
+// sns url clk evt
+function urlCopy(){
+	var url = "";
+	var textarea = document.createElement("textarea");
+	document.body.appendChild(textarea);
+	url = window.document.location.href;
+	textarea.value = url;
+	textarea.select();
+	document.execCommand("copy");
+	document.body.removeChild(textarea);
+	alert("URL이 복사되었습니다.");
 }

@@ -50,6 +50,9 @@ public class productMgr {
 				pLBean.setpOriPrice(objRS.getInt("pOriPrice"));
 				pLBean.setpSalePercent(objRS.getInt("pSalePercent"));
 				pLBean.setpGroup(objRS.getString("pGroup"));
+				pLBean.setpViewTime(objRS.getString("pViewTime"));
+				pLBean.setpClass(objRS.getString("pClass"));
+				pLBean.setpDelivery(objRS.getString("pDelivery"));
 				pList.add(pLBean);
 			}
 		} catch (Exception e) {

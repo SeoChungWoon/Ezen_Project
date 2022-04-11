@@ -14,6 +14,9 @@ public class proListBean {
 	private	int			pOriPrice;
 	private	int			pSalePercent;
 	private	String		pGroup;
+	private	String		pViewTime;	// 관람시간
+	private	String		pClass;		// 관람등급
+	private	String		pDelivery;	// 배송정보
 	
 	public int getpNo() {
 		return pNo;
@@ -92,6 +95,24 @@ public class proListBean {
 	}
 	public void setpGroup(String pGroup) {
 		this.pGroup = pGroup;
+	}
+	public String getpViewTime() {
+		return pViewTime;
+	}
+	public void setpViewTime(String pViewTime) {
+		this.pViewTime = pViewTime;
+	}
+	public String getpClass() {
+		return pClass;
+	}
+	public void setpClass(String pClass) {
+		this.pClass = pClass;
+	}
+	public String getpDelivery() {
+		return pDelivery;
+	}
+	public void setpDelivery(String pDelivery) {
+		this.pDelivery = pDelivery;
 	}
 	
 }

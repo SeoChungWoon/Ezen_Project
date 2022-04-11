@@ -82,10 +82,12 @@
 									<img src="/images/product-list-img<%= i+1 %>.jpg" alt="" />
 								</p>
 								<div class="txt-info">
-									<p class="flag">
-										<span class="event"><%= mList.getpFlag1()%></span>
-										<span class="event"><%= mList.getpFlag2()%></span>
-									</p>
+									<div class="flag-desc">
+										<p class="flag">
+											<span class="event"><%= mList.getpFlag1()%></span>
+											<span class="event"><%= mList.getpFlag2()%></span>
+										</p>
+									</div>
 
 									<p class="sub-txt">
 										<span class="location"><%= mList.getpArea()%></span> 
@@ -98,7 +100,7 @@
 										<span class="date"><%= mList.getpDate1()%> - <%= mList.getpDate2()%></span> 
 										<span class="content"><%= mList.getpContent()%></span>
 									</p>
-									<p class="price">
+									<p class="price sale">
 										<span class="original"> 
 											<span class="rate-sale"><em><%= mList.getpSalePercent()%></em>%</span> 
 											<del><%= mList.getpOriPrice()%></del><span>원</span>

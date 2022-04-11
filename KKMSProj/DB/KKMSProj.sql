@@ -117,6 +117,7 @@ where no=3;
 
 
 
+
 /* 상품 리스트 */
 ## flag : 투데이특가, 바로사용, 쿠폰할인, MD추천 (최대 3개까지 가능)
 ## pArea : 지역별 선택 탭 (전체, 서울, 경기/인천, 대전/충청/강원)
@@ -141,29 +142,33 @@ pOriPrice			int				not null,
 pSalePercent 		int				,
 pRegDate			date				not null,
 pViewCnt			int				,
+pViewTime			char(100)		not null,
+pClass				char(10)		not null,
+pDelivery			char(10)		not null,
 constraint primary key (pNo)
 );
 
-insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate) values 
+insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
  ('바로사용', '강원', '동해', '전시', '온라인 예매 시 당일사용가능', '앤서니 브라운의 원더랜드 뮤지엄展 - 예술의전당', '2022.04.28', '2022.05.31', 
- '예술의 전당 한가람미술관 2층', 20000, 58, date_format(now(), '%Y-%m-%d'));
-insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate) values 
+ '예술의 전당 한가람미술관 2층', 20000, 58, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장마감: 18:00) / 매주 월요일 휴관', '전체관람가', '현장수령');
+insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
  ('투데이특가', '바로사용', '대전', '도룡동', '기타', '오늘 마지막!! 온라인 예매 투데이 특가 할인 당일사용가능', '빈센트 반 고흐: 향기를 만나다展', 
- '2022.04.16', '2022.08.28', '갤러리 헤이리스', 10000, 50, date_format(now(), '%Y-%m-%d'));
-insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate) values 
+ '2022.04.16', '2022.08.28', '갤러리 헤이리스', 10000, 50, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장 마감 18:00) / 매주 월요일 휴관(공휴일일 경우 정상 운영, 홈페이지 참조)', '전체관람가', '현장수령');
+insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
  ('MD추천', '쿠폰할인', '인천', '센트럴로', '행사', '온라인 예매 쿠폰 할인 전시 정상 운영중', '어느 봄날, 테레사 프레이타스 사진전', 
- '2022.01.29', '2022.04.24', '더현대 서울 ALT.1', 13000, 8, date_format(now(), '%Y-%m-%d'));
-insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate) values 
+ '2022.01.29', '2022.04.24', '더현대 서울 ALT.1', 13000, 8, date_format(now(), '%Y-%m-%d'), '10:30 ~ 20:00(입장마감 19:00) / 더현대 서울 월별 휴무일 휴관 (별도공지)', '전체관람가', '현장수령');
+insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
  ('바로사용', '쿠폰할인', '경기', '안산시', '체험', '온라인 예매할인 당일사용가능', '로그아웃 - 지금 당신에게 필요한 순간', 
- '2021.12.21', '2023.03.01', '뚝섬미술관', 15000, 10, date_format(now(), '%Y-%m-%d'));
-insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate) values 
+ '2021.12.21', '2023.03.01', '뚝섬미술관', 15000, 10, date_format(now(), '%Y-%m-%d'), '11: 00 ~ 19:00 (입장 마감 18:20)', '전체관람가', '현장수령');
+insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
  ('투데이특가', '서울', '용산', '전시', '온라인 예매 투데이 특가 할인', '영국 현대미술의 거장, 마이클 크레이그 마틴展', 
- '2022.04.08', '2022.05.22', '예술의 전당 한가람미술관 1층', 20000, 30, date_format(now(), '%Y-%m-%d'));
+ '2022.04.08', '2022.05.22', '예술의 전당 한가람미술관 1층', 20000, 30, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00  (입장마감: 18:00) / 매주 월요일 휴관', '전체관람가', '현장수령');
 
 drop table proList;
 desc proList;
 truncate proList;
 alter table proList drop column pFlag3;
+select * from proList;
 select * from proList order by pNo Asc;
 
 /* // 상품 리스트 */
