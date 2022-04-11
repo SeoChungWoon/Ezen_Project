@@ -27,7 +27,7 @@
 					<p class="tit">아이디 찾기<span class="smallFont">/ <a href="/member/findPw.jsp">비밀번호 찾기</a></span></p>
 				</div>
 					<div class="findIdPwArea">
-						<form action="/member/findIdProc.jsp" id="findForm" method="get">
+						<form action="/member/findIdProc.jsp" id="idFindForm" method="post">
 							<div class="findIdPwRow">
 								<div class="howToFind">
 									<label for="pIdFind">
@@ -35,9 +35,9 @@
 									</label>
 									<input type="checkbox" id="pIdFind" class="fToggle hidden">
 								</div>
-								<div class="hidden">
+								<div class="findValArea hidden">
 									<input type="text" name="pIdName" placeholder="이름 입력">
-									<input type="text" name="pIdPhone" placeholder="휴대전화 번호 입력">
+									<input type="text" name="pIdPhone" placeholder="휴대전화 번호 입력('-'없이 숫자만 입력)">
 									<div class="idFindBtnArea">
 										<button type="button">확인</button>
 									</div>
@@ -53,7 +53,7 @@
 									<input type="checkbox" id="eIdFind" class="fToggle hidden">
 								</div>
 	
-								<div class="hidden">
+								<div class="findValArea hidden">
 									<input type="text" name="eIdName" placeholder="이름 입력">
 									<input type="text" name="eIdEmail" placeholder="이메일 주소 입력">
 									<div class="idFindBtnArea">
@@ -70,7 +70,7 @@
 									<input type="checkbox" id="iIdFind" class="fToggle hidden">
 								</div>
 	
-								<div class="hidden">
+								<div class="findValArea hidden">
 									<div class="otherFindBtnArea">
 										<button type="button">휴대전화 인증</button>
 										<button type="button">I-Pin 인증</button>

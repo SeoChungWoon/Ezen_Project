@@ -640,7 +640,7 @@ div#withdrawBtnArea {
 	display: block;
 }
 
-.idFindBtnArea button {
+.idFindBtnArea button , .pwFindBtnArea button {
 	font-size: 15px;
 	width: 100%;
 	height: 46px;
@@ -661,6 +661,53 @@ div#withdrawBtnArea {
 	color: #fff;
 }
 
+.findResRow , .findResBtnArea {
+	padding: 10px;
+	padding-left: 20%;
+}
+
+.findResRow > .findResTitle > span {
+	display: inline-block;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.findResVal {
+	margin-top: 15px;
+}
+
+.findResVal input {
+	margin-top: 10px;
+	padding: 10px;
+	font-size: 16px;
+	width: 60%;
+}
+
+.findResBtnArea button {
+	font-size: 16px;
+	padding: 10px 5px;
+	font-weight: bold;
+	width: 14%;
+}
+
+.findResBtnArea button:first-child {
+	margin-right: 20px;
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+.findResBtnArea button:first-child:hover {
+	background: #444;
+}
+
+.findResBtnArea button:last-child {
+	border: 1px solid #aaa;
+}
+
+.findResBtnArea button:last-child:hover {
+	border: 1px solid #ccc;
+}
 
 
 /* 아이디 / 비밀번호 찾기 영역 끝 */

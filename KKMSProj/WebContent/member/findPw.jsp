@@ -27,7 +27,7 @@
 					<p class="tit">비밀번호 찾기<span class="smallFont">/ <a href="/member/findId.jsp">아이디 찾기</a></span></p>
 				</div>
 					<div class="findIdPwArea">
-						<form action="/member/findPwProc.jsp" id="findForm" method="get">
+						<form action="/member/findPwProc.jsp" id="pwFindForm" method="post">
 							<div class="findIdPwRow">
 								<div class="howToFind">
 									<label for="pPwFind">
@@ -38,8 +38,8 @@
 								<div class="hidden">
 									<input type="text" name="pPwId" placeholder="아이디 입력">
 									<input type="text" name="pPwName" placeholder="이름 입력">
-									<input type="text" name="pPwPhone" placeholder="휴대전화 번호 입력">
-									<div class="idFindBtnArea">
+									<input type="text" name="pPwPhone" placeholder="휴대전화 번호 입력('-'없이 숫자만 입력)">
+									<div class="pwFindBtnArea">
 										<button type="button">확인</button>
 									</div>
 								</div>
@@ -58,7 +58,7 @@
 									<input type="text" name="ePwId" placeholder="아이디 입력">
 									<input type="text" name="ePwName" placeholder="이름 입력">
 									<input type="text" name="ePwEmail" placeholder="이메일 주소 입력">
-									<div class="idFindBtnArea">
+									<div class="pwFindBtnArea">
 										<button type="button">확인</button>
 									</div>
 								</div>
