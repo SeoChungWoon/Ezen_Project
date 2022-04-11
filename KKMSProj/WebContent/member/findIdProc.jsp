@@ -56,7 +56,10 @@ if (fId == "") {
 					<div class="findIdPwArea">
 						<div class="findResArea">
 						일치하는 정보의 아이디는 <strong>' <%=fId %> '</strong> 입니다.
-						
+						</div>
+						<div class="findResBtnArea">
+						<a href="/member/login.jsp">로그인</a>
+						<a href="/index.jsp">메인으로</a>
 						</div>
 					</div>
 					<!-- div.findIdPwArea -->
