@@ -1,0 +1,340 @@
+@charset "UTF-8";
+
+@import url(/source/style_Reset.css);
+
+@import url(/style/style_fonts.css);
+
+/* common */
+#wrap {
+	position: relative;
+	width: 100%;
+}
+
+#wrap.main .sub-body {
+	height: 100%;
+}
+
+/* sub-body */
+.sub-body {
+	padding: 100px 0;
+}
+
+.sub-body .tit-cont {
+	padding: 150px 0 50px;
+}
+
+.sub-body .tit-cont {
+	text-align: center;
+}
+
+.sub-body .tit-cont .tit {
+	font-size: 52px;
+	font-weight: bold;
+}
+
+/* pc :1500px */
+.inner {
+	width: 1500px;
+	max-width: calc(100% - 403px);
+	margin: 0 auto;
+}
+
+@media all and (max-width: 1700px) {
+	.inner {
+		width: calc(100% - 123px);
+		max-width: calc(100% - 123px);
+	}
+}
+
+@media all and (max-width: 1024px) {
+	.inner {
+		width: 92%;
+		max-width: 92%;
+	}
+}
+
+.point {
+	color: #e64949;
+}
+
+.match {
+	border: 1px solid #0086b8;
+}
+
+.mismatch {
+	border: 1px solid #e64949;
+}
+
+.hidden {
+	display: none;
+}
+
+/* header */
+header {
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100px;
+	background: #fff;
+	border-bottom: 1px solid #ddd;
+}
+
+header>.inner {
+	position: relative;
+}
+
+header .hLogo {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 2;
+}
+header .hLogo a{
+	display: block;
+	width: 130px;	
+}
+header .hLogo img{
+	width: 100%;
+}
+
+header nav {
+	width: 1100px;
+	margin: 0 auto;
+	padding: 0 0 50px 0;
+	z-index: 1;
+}
+
+header nav .menu {
+	display: flex;
+}
+
+header::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 99px;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background: #ddd;
+}
+
+header nav .one-dep {
+	min-width: 120px;
+	text-align: center;
+}
+
+header nav .one-dep>a {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
+	padding: 0 10px;
+	font-size: 20px;
+}
+
+header nav .one-dep>a:after {
+	content: "";
+	position: absolute;
+	top: 99px;
+	left: 50%;
+	width: 0;
+	display: block;
+	overflow: hidden;
+	height: 3px;
+	background: #0099bf;
+	-webkit-transition: width .4s ease;
+	transition: width .4s ease;
+	transform: translateX(-50%);
+}
+
+header nav .one-dep>a:hover {
+	color: #0080c0;
+	font-weight: bold;
+}
+
+header nav .one-dep>a.on {
+	color: #0080c0;
+	font-weight: bold;
+}
+
+header nav .one-dep>a:hover:after {
+	width: 100%;
+}
+
+header nav .one-dep>a.on::after {
+	width: 100%;
+}
+
+header nav .two-dep {
+	padding-top: 20px;
+}
+
+header nav .two-dep li:not(:first-child) {
+	margin-top: 10px;
+}
+
+header nav .two-dep li a {
+	display: block;
+}
+
+header nav .two-dep li a span {
+	position: relative;
+}
+
+header nav .two-dep li a span::after {
+	content: "";
+	position: absolute;
+	bottom: -3px;
+	left: 50%;
+	width: 0;
+	display: block;
+	overflow: hidden;
+	height: 1px;
+	background: #0099bf;
+	transition: width .4s ease;
+	transform: translateX(-50%);
+	color: #0099bf;
+}
+
+header nav .two-dep li a:hover span {
+	color: #0099bf;
+}
+
+header nav .two-dep li a:hover span::after {
+	width: 100%;
+}
+
+header .hUtil {
+	display: flex;
+	position: absolute;
+	top: 35px;
+	right: 10px;
+	z-index: 2;
+}
+
+@media all and (max-width: 1440px) {
+	header nav {
+		width: 900px;
+	}
+}
+@media all and (max-width: 1280px) {
+	header nav {
+		width: 800px;
+	}
+}
+@media all and (max-width: 1100px) {
+	header nav {
+		width: 600px;
+	}
+}
+
+header .hUtil .login {
+	display: flex;
+}
+
+header .hUtil .login li {
+	position: relative;
+	display: inline-block;
+}
+
+header .hUtil .login li:not(:last-child) {
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+header .hUtil .login li:not(:last-child)::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 5px;
+	right: 0;
+	width: 1px;
+	height: 12px;
+	background: #aaa;
+}
+
+header .hUtil .login li a span {
+	color: #aaa;
+	font-size: 14px;
+}
+
+/* footer */
+footer {
+	position: relative;
+	width: 100%;
+	padding-bottom: 60px;
+	background: #222;
+}
+
+footer .fnb {
+	display: block;
+	width: 100%;
+	padding: 40px 0;
+}
+
+footer .fnb li {
+	display: inline-block;
+}
+
+footer .fnb li:not(:last-child) {
+	margin-right: 20px;
+}
+
+footer .fnb li a {
+	color: #fff;
+}
+
+footer .fInfo {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+}
+
+footer .fInfo .fLeft {
+	display: flex;
+	width: 100%;
+	padding-right: 20%;
+}
+
+footer .fInfo .fLeft .fLogo {
+	padding: 0 5%;
+	text-align: center;
+	margin-right: 10px;
+}
+
+footer .fInfo .fLeft .fLogo a {
+	color: #fff;
+	display: block;
+	width: 120px;
+}
+footer .fInfo .fLeft .fLogo a img{
+	width: 100%;
+}
+footer .fInfo .fLeft .fTxt .txt, footer .fInfo .fLeft .fTxt .txt a {
+	color: #888;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+footer .fInfo .fRight {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+}
+footer .fInfo .fSns a{
+	color: #fff;
+	width: 40px;
+	display: inline-block;
+}
+footer .fInfo .fSns a:not(:last-child) {
+	margin-right: 10px;
+}
+footer .fInfo .fSns a img{
+	width: 100%;
+}

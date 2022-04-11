@@ -1,0 +1,549 @@
+@charset "UTF-8";
+
+/* 서청운 작업용 css */
+/* list */
+.exhibit-cont .exhibit-tab {
+	text-align: center;
+	width: 600px;
+	margin: 50px auto 0;
+}
+
+.exhibit-cont .exhibit-tab li {
+	display: inline-block;
+	margin: 0 10px;
+	padding: 10px 0;
+}
+
+.exhibit-cont .exhibit-tab li a {
+	display: block;
+	padding: 10px 30px;
+	border: 1px solid #ebe8e5;
+	background: #f4f3f1;
+	border-radius: 30px;
+}
+
+.exhibit-cont .exhibit-tab li a span {
+	font-size: 18px;
+}
+
+.exhibit-cont .exhibit-tab li.on a {
+	background: linear-gradient(117deg, #28d4dd 1%, #0080c0);
+}
+
+.exhibit-cont .exhibit-tab li.area-color.on a {
+	background: linear-gradient(117deg, #ffc4a3 1%, #cd4a00);
+}
+
+.exhibit-cont .exhibit-tab li.on a span {
+	color: #fff;
+}
+
+.exhibit-cont .area-desc {
+	margin: 50px 0;
+	padding-bottom: 50px;
+	border-bottom: 1px solid #ddd;
+}
+
+.exhibit-cont .area-desc .desc-type>.txt {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.exhibit-cont .area-desc .right-srh {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+}
+
+.exhibit-cont .area-desc .right-srh .select-group {
+	margin-right: 5px;
+}
+
+.exhibit-cont .area-desc .right-srh .select-group select {
+	width: 100px;
+	height: 30px;
+	font-size: 14px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #222;
+}
+
+.exhibit-cont .area-desc .right-srh .rank-tab {
+	margin-top: 20px;
+}
+
+.exhibit-cont .area-desc .right-srh .rank-tab li {
+	display: inline-block;
+	position: relative;
+}
+
+.exhibit-cont .area-desc .right-srh .rank-tab li:not(:last-child) {
+	margin-right: 20px;
+	padding-right: 20px;
+}
+
+.exhibit-cont .area-desc .right-srh .rank-tab li:not(:last-child)::after
+	{
+	content: "";
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 3px;
+	width: 1px;
+	height: 15px;
+	background: #222;
+}
+
+.exhibit-cont .area-desc .right-srh .rank-tab li.on a {
+	color: #0cb4cf;
+	font-weight: bold;
+}
+/* button 기본
+.exhibit-cont .area-desc .desc-type .right-srh>button {
+	width: 50px;
+	height: 30px;
+	font-size: 14px;
+	background: #333;
+	border: none;
+	color: #fff;
+	box-sizing: border-box;
+}
+
+.exhibit-cont .area-desc .desc-type .right-srh>button:hover {
+	background: #0080c0;
+}
+*/
+.exhibit-cont .area-desc .area-tab {
+	display: flex;
+	flex-wrap: nowrap;
+	margin-top: 30px;
+}
+
+.exhibit-cont .area-desc .area-tab li {
+	display: inline-block;
+	min-width: 100px;
+	text-align: center;
+	border: 1px solid #1386BF;
+	box-sizing: border-box;
+	background: #fff;
+}
+
+.exhibit-cont .area-desc .area-tab li:not(:last-child) {
+	margin-right: 10px;
+}
+
+.exhibit-cont .area-desc .area-tab li a {
+	display: block;
+	padding: 10px 50px;
+	color: #333;
+}
+
+.exhibit-cont .area-desc .area-tab li.on {
+	background: #1386BF;
+}
+
+.exhibit-cont .area-desc .area-tab li.on a {
+	color: #fff;
+}
+
+.exhibit-cont .exhibit-list {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+.exhibit-cont .exhibit-list .listBox {
+	margin-right: 30px;
+	width: calc(( 100% - 120px)/4);
+	padding-top: 30px;
+}
+
+.exhibit-cont .exhibit-list .listBox a {
+	display: block;
+	border: 1px solid #e2e2e2;
+	transition: all 0.4s ease-out;
+	width: 100%;
+	height: 100%;
+}
+
+.exhibit-cont .exhibit-list .listBox a:hover {
+	border: 1px solid #630560;
+	box-shadow: 10px 10px 20px 0px rgb(0 0 0/ 30%);
+}
+
+.exhibit-cont .exhibit-list .listBox .img {
+	position: relative;
+	width: 100%;
+	height: 400px;
+	overflow: hidden;
+}
+
+.exhibit-cont .exhibit-list .listBox .img img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1.0);
+	width: 100%;
+	height: 100%;
+	transition: transform 0.6s ease-out;
+}
+
+.exhibit-cont .exhibit-list .listBox:hover .img img {
+	transform: translate(-50%, -50%) scale(1.1);
+}
+
+.exhibit-cont .exhibit-list .list-none {
+	text-align: center;
+	padding: 50px 0 100px;
+	width: 100%;
+}
+
+.exhibit-cont .exhibit-list .listBox>a {
+	display: block;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info {
+	padding: 20px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .flag {
+	margin-bottom: 15px;
+}
+
+/* flag */
+.flag-desc .flag span.event{
+	font-size: 12px;
+	padding: 2px 5px;
+}
+
+.flag-desc .flag span.event.today {
+	border: 1px solid #9266ef;
+	color: #9266ef;
+}
+
+.flag-desc .flag span.event.md {
+	border: 1px solid #28d4dd;
+	color: #28d4dd;
+}
+
+.flag-desc .flag span.event.now {
+	border: 1px solid #d3002b;
+	color: #d3002b;
+}
+
+.flag-desc .flag span.event.coupon {
+	border: 1px solid #f27935;
+	color: #f27935;
+}
+
+.flag-desc .flag span.event.etc {
+	border: 1px solid #666;
+	color: #666;
+}
+
+.flag-desc .flag span.event+span.event
+	{
+	margin-left: 5px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span.info {
+	white-space: nowrap;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt ~ p {
+	margin-top: 15px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt span {
+	color: #666;
+	font-size: 14px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location {
+	position: relative;
+	padding-left: 20px;
+	padding-right: 10px;
+	margin-right: 10px;
+	background: url(/images/product-list-icon1.jpg) no-repeat 0 center/18px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .sub-txt .location::after
+	{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 4px;
+	right: 0;
+	width: 1px;
+	height: 14px;
+	background: #999;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt .date {
+	padding-bottom: 5px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .explain-txt>span {
+	color: #999;
+	display: block;
+	font-size: 14px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price>span,
+	.exhibit-cont .exhibit-list .listBox .txt-info .price del,
+	.exhibit-cont .exhibit-list .listBox .txt-info .price del+span {
+	color: #999;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price
+	{
+	display: block;
+	padding-top: 5px;
+	color: #222;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price span.discount-price ins
+	{
+	text-decoration: none;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price .original .rate-sale
+	{
+	color: #e55;
+	margin-right: 5px;
+	font-size: 16px;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price .original.keep del,
+	.exhibit-cont .exhibit-list .listBox .txt-info .price .original.keep del+span
+	{
+	color: #222;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.exhibit-cont .exhibit-list .listBox .txt-info .price del, .exhibit-cont .exhibit-list .listBox .txt-info .price del+span
+	{
+	font-size: 12px;
+}
+
+@media all and (max-width: 1440px) {
+	.exhibit-cont .exhibit-list .listBox {
+		width: calc(( 100% - 60px)/3);
+	}
+	.exhibit-cont .exhibit-list .listBox {
+		margin-right: 20px;
+		padding-top: 20px;
+	}
+}
+
+/* product info */
+.proList-view{
+	padding-top: 100px;
+}
+.proList-view .top-cont{
+	padding-bottom: 30px;
+	border-bottom: 2px solid #333;;
+}
+.proList-view .top-cont .flag-desc{
+	width: 100%;
+}
+.proList-view .top-cont .txt-desc{
+	position: relative;
+	margin-top: 10px;
+	font-size: 35px;
+	font-weight: bold;
+}
+.proList-view .top-cont .txt-desc::after{
+	content:"";
+	display: block;
+	clear: both;
+}
+.proList-view .top-cont .txt-desc .tit{
+	float: left;
+}
+.proList-view .top-cont .txt-desc .sns{
+	position: relative;
+	float: right;
+}
+.proList-view .top-cont .txt-desc .sns > a{
+	display: block;
+	width: 48px;
+	height: 48px;
+}
+.proList-view .top-cont .txt-desc .sns .sns-list{
+	position: absolute;
+	right: 50px;
+	top: 5px;
+	display: flex;
+	flex-wrap: nowrap;
+	width: 0;
+}
+.proList-view .top-cont .txt-desc .sns .sns-list a{
+	width: 30px;
+	display: block;
+	margin-right: 10px;
+}
+.proList-view .top-cont .txt-desc .sns .sns-list a img {
+	width: 100%;
+}
+
+.proList-view .detail-cont{
+	margin-top: 50px;
+}
+.proList-view .detail-cont .infoBox{
+	display: flex;
+	flex-wrap: nowrap;
+}
+.proList-view .detail-cont .infoBox .left{
+	width: 35%;
+	padding-right: 50px;
+	padding-bottom: 20px;
+}
+.proList-view .detail-cont .infoBox .left .img img{
+	width: 100%;
+}
+.proList-view .detail-cont .infoBox .left .likeClk{
+	position: relative;
+	margin-top: 10px;
+}
+.proList-view .detail-cont .infoBox .left .likeClk input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	width: 30px;
+	height: 30px;
+	opacity: .01;
+}
+.proList-view .detail-cont .infoBox .left .likeClk .chk-group label{
+	padding: 5px 0 5px 40px;
+	font-size: 14px;
+	background: url("/images/icon-like-off.png")no-repeat 0 0 / 30px;
+}
+.proList-view .detail-cont .infoBox .left .likeClk .chk-group.checked label{
+	background: url("/images/icon-like-on.png")no-repeat 0 0 / 30px;
+}
+.proList-view .detail-cont .infoBox .left .likeClk .chk-group.checked::before{
+	display: none;
+}
+.proList-view .detail-cont .infoBox .right{
+	width: calc(100% - 35%);
+}
+.proList-view .detail-cont .infoBox .right .info-desc{
+	padding-bottom: 30px;
+	border-bottom: 1px solid #ddd;
+	width: 100%;
+	margin-bottom: 30px;
+}
+.proList-view .detail-cont .infoBox .right .info-desc dl{
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+}
+.proList-view .detail-cont .infoBox .right .info-desc dl + dl{
+	margin-top: 40px;
+}
+.proList-view .detail-cont .infoBox .right .info-desc dt{
+	font-weight: bold;
+	font-size: 24px;
+	min-width: 150px;
+	margin-right: 20px;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc dd{
+	font-size: 20px;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc dl{
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc dl + dl{
+	margin-top: 40px;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc dt{
+	font-weight: bold;
+	font-size: 24px;
+	min-width: 150px;
+	margin-right: 20px;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc dd{
+	font-size: 20px;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc .price del,
+.proList-view .detail-cont .infoBox .right .detail-desc .price del + span{
+	color: #999;
+	font-size: 14px;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc .price .original{
+	display: block;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc .price .original .rate-sale{
+	color: #e55;
+	margin-right: 5px;	
+}
+.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price{
+	display: block;
+	padding-top: 5px;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price ins{
+	text-decoration: none;
+}
+.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price ins,
+.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price span{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.proList-view .detail-cont .reserveBox{
+	margin-top: 100px;
+	display: flex;
+	flex-wrap: nowrap;
+	width: 100%;
+}
+.proList-view .detail-cont .reserveBox > div{
+	flex: 1;
+	border: 1px solid #ddd;
+	padding: 20px;
+}
+.proList-view .detail-cont .reserveBox > div.on{
+	border: 1px solid #cd4a00;
+}
+.proList-view .detail-cont .reserveBox > div + div{
+	margin-left: 10px;
+}
+.proList-view .detail-cont .reserveBox > div > p.txt{
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #222;
+	font-weight: bold;
+	font-size: 24px;
+}
+.proList-view .detail-cont .reserveBox .selDate .date-desc{
+	display: flex;
+	flex-wrap: nowrap;
+}
+.proList-view .detail-cont .reserveBox .selDate .date-desc > div{
+	flex: 1;
+}
+.proList-view .detail-cont .reserveBox .selDate .date-desc > div + div{
+	margin-left: 10px;
+	padding-left: 20px;
+	border-left: 1px solid #ddd;
+}
+
+
+
+
+
+
