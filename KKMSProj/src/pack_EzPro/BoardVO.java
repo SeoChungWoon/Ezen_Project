@@ -6,6 +6,13 @@ public class BoardVO {
 	String title;
 	String wName;
 	String postDate;
+	String content;
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	int count;
 	
 	public String getPostDate() {

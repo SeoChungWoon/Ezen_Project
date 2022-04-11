@@ -3,6 +3,7 @@ package pack_EzPro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Vector;
 
@@ -14,6 +15,7 @@ public class BoardDAO {
 	private Connection objConn = null;
 	private PreparedStatement objPstmt = null;
 	private ResultSet objRS = null;
+	private Statement objStmt = null;
 	private DBConnectionMgr pool = null;
 	
 	public BoardDAO() {
@@ -129,7 +131,37 @@ public class BoardDAO {
 		
 		return count;
 	}
-	
+	public List mtdSelect(int no) {
+		List objList = new Vector();
+		
+		try {
+			objConn = pool.getConnection();
+			
+			String sql = "select * from bbsList where no=?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, no);
+			objRS = objPstmt.executeQuery();
+			while(objRS.next()) {
+				BoardVO objVO = new BoardVO();
+				
+				objVO.setNo(objRS.getInt("no"));
+				objVO.setDivision(objRS.getString("division"));
+				objVO.setTitle(objRS.getString("title"));
+				objVO.setwName(objRS.getString("wName"));
+				objVO.setPostDate(objRS.getString("postDate"));
+				objVO.setCount(objRS.getInt("count"));
+				objVO.setContent(objRS.getString("content"));
+				
+				objList.add(objVO);
+			}
+		}catch(Exception e) {
+			System.out.println("Exception: " + e.getMessage());
+		}finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		return objList;
+	}
 }
 
 

@@ -11,17 +11,12 @@
 request.setCharacterEncoding("UTF-8");
 int no = Integer.parseInt(request.getParameter("no"));
 int count = Integer.parseInt(request.getParameter("count"));
-String nowTitle = request.getParameter("title");
-String postDate =request.getParameter("postDate");
-String content = request.getParameter("content");
 
 //조회수 가져오기
 int nowCnt = regDAO.viewCnt(count, no);
 
-//등록일 가져오기
-String nowDate = regDAO.postDate(postDate);
-
-
+//no 가져오기
+List ntcList = regDAO.mtdSelect(no);
 
 %>
 
@@ -61,7 +56,12 @@ String nowDate = regDAO.postDate(postDate);
         						<span>공지사항</span>
         					</div>
         					<div class="headerTop-right">
-        						<span>등록일 : <%=nowDate %>&ensp;|&ensp;</span>
+        					<%
+        					for(int i=0; i<ntcList.size(); i++){
+        						BoardVO objVO = (BoardVO)ntcList.get(i);
+        		
+        					%>
+        						<span>등록일 : <%=objVO.getPostDate()%>&ensp;|&ensp;</span>
         						
         						<span>조회수 : <%=nowCnt %></span>	
         					</div>
@@ -69,27 +69,24 @@ String nowDate = regDAO.postDate(postDate);
         				</div>
         				<!-- div.headerTop -->
         				<div class="ntcTitle">
-        				<%
-        				
-        				%>
-        					<span><%=nowTitle %></span>
+        					<span><%=objVO.getTitle() %></span>
         				</div>
         				<!-- div.ntcTitle -->
         		</div>
         		<!-- div.header -->
         		<div class="content">
-        			<pre><%=nowCont %></pre>
+        			<pre><%=objVO.getContent() %></pre>
         		</div>
         		<!-- div.content -->
         		<div class="ntcFooter">        		
 
-					<a href="noticeView.jsp?no="<%=no %>-1>이전글</a>
+					<a href="noticeView.jsp?=no<%=objVO.getNo() %>-1">이전글</a>
 
-
-        			<a href="noticeView.jsp?no="<%=no %>+1>다음글</a>
+        			<a href="noticeView.jsp?no=<%=objVO.getNo() %>+1">다음글</a>
 
         		</div>
         		<!-- div.ntcFooter -->
+        		<%} %>
         	</div>
         	<!-- div.ntcViewInner -->
         </div>
