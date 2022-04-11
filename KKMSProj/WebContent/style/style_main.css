@@ -47,15 +47,23 @@ header#header {
   max-width: 1200px;
 }
 
+
+
+/* 메인 슬라이드 영역 */
 .section_slide {
   background: pink;
   padding: 0;
+  height: 80%;
 }
 .swiper {
   width: 100%;
-  height: 680px;
+  height: 100%;
 }
-.swiper > img {
+.swiper-wrapper{
+	width: 100%;
+	height: 100%;
+}
+.swiper> .swiper-wrapper> .swiper-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
