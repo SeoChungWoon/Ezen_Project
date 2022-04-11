@@ -18,6 +18,10 @@ int nowCnt = regDAO.viewCnt(no);
 //no 가져오기
 List ntcList = regDAO.mtdSelect(no);
 
+//데이터 갯수 가져오기
+int cnt = regDAO.BoardCount();
+
+
 %>
 
 <!DOCTYPE html>
@@ -78,12 +82,25 @@ List ntcList = regDAO.mtdSelect(no);
         			<pre><%=objVO.getContent() %></pre>
         		</div>
         		<!-- div.content -->
-        		<div class="ntcFooter">        		
-
+        		<div class="ntcFooter dFlex">
+        
+        		       <div class="footerLeft">
+					<%if(no==1){ %>
+					<a class="noData">이전글</a>
+					<%}else{ %>
 					<a href="noticeView.jsp?no=<%=no-prevNext %>">이전글</a>
-
+					<%} %>
+					<%if(no==cnt) {%>
+					<a class="noData">다음글</a>
+					<%}else{ %>
         			<a href="noticeView.jsp?no=<%=no+prevNext %>">다음글</a>
-
+        			<%} %>
+        				</div>
+        				<!-- div.footerLeft -->
+        				<div class="footerRight">
+        					<a href="/data/bbsList.jsp">목록으로</a>
+        				</div>
+        				<!-- div.footerRight -->
         		</div>
         		<!-- div.ntcFooter -->
         		<%} %>
