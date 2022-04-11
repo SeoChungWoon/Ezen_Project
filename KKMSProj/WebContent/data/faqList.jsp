@@ -42,6 +42,7 @@ if(cnt != 0){
      <link rel="stylesheet" href="/style/style3.css">
      <script src="/source/jquery-3.6.0.min.js"></script>
 	 <script src="/source/gsap.min.js"></script>
+	<script src="/script/script.js"></script>
 	 <script src="/script/script_bbs.js"></script>
 	 <script src="/script/memberScript.js"></script>
 <title>Insert title here</title>
