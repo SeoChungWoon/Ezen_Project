@@ -53,7 +53,7 @@ no		int	auto_increment	not null,
 division	char(20)	not null,
 title		char(50)	not null,
 wName	char(20)	not null,				/*wName = writerName*/
-content char(100),
+content varchar(1000),
 postDate	date	not null,
 count	int,
 constraint primary key (no)
@@ -65,22 +65,51 @@ desc bbsList;
 drop table bbsList;
 
 
-insert into bbsList (no, division, title, wName, postDate) values
-(1, '공지사항', '반품/교환 신청 및 조회 서비스 오픈!', '관리자', date_format(now(), '%Y-%m-%d'));
+insert into bbsList (no, division, title, wName,content,postDate) values
+(1, '공지사항', '반품/교환 신청 및 조회 서비스 오픈!', '관리자',
+'E-Ticket에서 상품을 구매하신 후 반품이나 교환을 원하시거나 주문하신 상품이 누락되었을 때
+사이트에서 직접 신청하실 수 있는 반품/교환 신청 및 조회 메뉴가 마이페이지에 추가되었습니다.
 
-insert into bbsList (no, division, title, wName, postDate) values
-(2, '공지사항', '이용약관 개정안','관리자',date_format(now(), '%Y-%m-%d'));
+메뉴 바로가기
+'
+, date_format(now(),'%Y-%m-%d'));
 
-insert into bbsList (no, division, title, wName, postDate) values
-(3, 'FAQ', '도서정가제란 무엇인가요?', '관리자', date_format(now(), '%Y-%m-%d'));
+insert into bbsList (no, division, title, wName,content,postDate) values
+(2, '공지사항', '이용약관 개정안','관리자',
+'시행일자 : 2022년 04월 09일
+
+주요 개정 내용
+
+개정조항 : 제2조(용어의 정리)
+
+개정내용 :
+
+- 6. 디지털상품 : 동영상, eTicket, e러닝, E-Ticket 클럽 및 음원과 같이 VOD, 스트리밍, 다운로드 등의 형태로 제공되는 무배송 상품을 말합니다.
+
+- 8. 라.캐시 : 디지털상품 중 웹소설/코믹을 구매할 때, 현금처럼 사용할 수 있는 사이버머니
+
+- 11. sey코인 : 회사의 웹소설/코믹에서 운영하는 가상화폐로 회사가 정한 기준에 따라 지급'
+,date_format(now(), '%Y-%m-%d'));
+
+insert into bbsList (no, division, title, wName,content,postDate) values
+(3, '공지사항', '택배사 변경안내', '관리자',
+'04월 11일부터 하루배송 택배사가 CJ 대한통운으로 변경되어 안내 드립니다.
+
+▶ 배송 대행 업체 변경
+
+1) 당일 배송 대행 : GTX -> 한진택배
+
+2) 일반 배송 (하루배송) 대행  : KG로지스 -> CJ 대한통운'
+, date_format(now(), '%Y-%m-%d'));
 
 select * from bbsList order by no limit 0,10;
 
-set sql_safe_updates=0;
+/*set sql_safe_updates=0;
 update bbsList set division = '공지사항'
 where no=3; 
 update bbsList set title = '택배사 변경안내'
 where no=3;
+*/
 
 /*게시판용 테이블 끝*/
 
