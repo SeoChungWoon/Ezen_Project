@@ -190,6 +190,13 @@ constraint primary key(eNo)
 
 drop table eventList;
 
+select * from eventList;
+
 insert into eventList (eTitle, eContent, eMainImg, eStart, eEnd, eRes, eTag, eType) values ('이벤트 제목', '이벤트 내용', 'product-list-img', '2022-04-12', '2022-04-26', '2022-05-02', '종료', '예매이벤트');
 
+create table event (
+	uId char(15) not null,
+    eNo int not null
+);
 
+select * from event;

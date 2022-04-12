@@ -3,15 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="eMgr" class="pack_Event.eventMgr" />
-<jsp:useBean id="eBean" class="pack_Event.eventBean" />
 <%
 int eCount = eMgr.eListCnt();
 
-List eList = eMgr.allEvent();
-
-if (eList.size() < 1) {
-	String empty = "진행중인 이벤트가 없습니다.";
-}
+List eList = eMgr.eventList();
 %>
 
 <!DOCTYPE html>
@@ -29,6 +24,7 @@ if (eList.size() < 1) {
 <script src="/source/gsap.min.js"></script>
 <script src="/script/script.js"></script>
 <script src="/script/memberScript.js"></script>
+<script src="/script/eventScript.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -43,14 +39,14 @@ if (eList.size() < 1) {
 				</div>
 				<div class="eventPageArea">
 					<ul class="event-tab dFlex">
-						<li class="on"><a href="javascript:"> <span
-								class="eventTabTitle">전체</span></a></li>
+						<li class="on"><a href="javascript:"><span
+								class="eventTabTitle">전체</span></a> <input type="hidden" value="전체"></li>
 						<li><a href="javascript:"><span class="eventTabTitle">진행
-									중 이벤트</span></a></li>
+									중 이벤트</span></a> <input type="hidden" value="진행중"></li>
 						<li><a href="javascript:"><span class="eventTabTitle">당첨자
-									발표</span></a></li>
+									발표</span></a> <input type="hidden" value="당첨자발표"></li>
 						<li><a href="javascript:"><span class="eventTabTitle">종료된
-									이벤트</span></a></li>
+									이벤트</span></a> <input type="hidden" value="종료"></li>
 					</ul>
 					<hr class="eventHR">
 					<div class="eventInner dFlex">
@@ -62,35 +58,39 @@ if (eList.size() < 1) {
 						</div>
 						<%
 						} else {
-							for (int i = 0; i < eList.size(); i++) {
+						for (int i = eList.size()-1; i >= 0; i--) {
 							eventBean evList = (eventBean) eList.get(i);
 						%>
 
 						<div class="eventRow">
-							<div class="eventBanner">
-								<img src="/images/<%=evList.geteMainImg()%>1.jpg" alt="메인이미지">
-							</div>
-							<div class="eventType">
-								<%=evList.geteType()%>
-							</div>
-							<div class="eventTag">
-								<%=evList.geteTag() %>
-							</div>
-							
-							<div class="eventTitle">
-								<%=evList.geteTitle()%>
-							</div>
-							<div class="eventDate">
-								<span class="eDate"><%=evList.geteStart()%> ~ </span> <span
-									class="eDate"><%=evList.geteEnd()%> | </span> <span
-									class="eDate"><%=evList.geteRes()%> 발표</span>
-							</div>
-						</div>
+							<a href="/event/eventView.jsp?eNo=<%=evList.geteNo()%>">
+								<div class="eventLink">
+									<div class="eventBanner">
+										<img src="/images/<%=evList.geteMainImg()%>1.jpg" alt="메인이미지">
+									</div>
+									<div class="eventType">
+										<%=evList.geteType()%>
+									</div>
+									<div class="eventTag">
+										<%=evList.geteTag()%>
+									</div>
 
+									<div class="eventTitle">
+										<%=evList.geteTitle()%>
+									</div>
+									<div class="eventDate">
+										<span class="eDate"><%=evList.geteStart()%> ~ </span> <span
+											class="eDate"><%=evList.geteEnd()%> | </span> <span
+											class="eDate"><%=evList.geteRes()%> 발표</span>
+									</div>
+								</div>
+							</a>
+						</div>
 						<%
-							}
+						}
 						}
 						%>
+
 					</div>
 					<!-- div.eventInner -->
 				</div>
