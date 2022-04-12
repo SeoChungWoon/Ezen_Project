@@ -61,6 +61,7 @@ constraint primary key (no)
 
 desc bbsList;
 
+select * from bbsList where title like '%택배%';
 
 drop table bbsList;
 
@@ -173,6 +174,22 @@ select * from proList order by pNo Asc;
 
 /* // 상품 리스트 */
 
+create table eventList (
+eNo int auto_increment not null,
+eTitle char(40) not null,
+eContent varchar(300),
+eMainImg char(20),
+eInnerImg char(20),
+eStart char(20),
+eEnd char(20),
+eRes char(20),
+eTag char(10) not null,
+eType char(10) not null,
+constraint primary key(eNo)
+);
 
+drop table eventList;
+
+insert into eventList (eTitle, eContent, eMainImg, eStart, eEnd, eRes, eTag, eType) values ('이벤트 제목', '이벤트 내용', 'product-list-img', '2022-04-12', '2022-04-26', '2022-05-02', '종료', '예매이벤트');
 
 

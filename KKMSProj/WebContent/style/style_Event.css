@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+@import url(/source/style_Reset.css);
+
+.eventInner {
+	flex-wrap: wrap;
+	justify-content: center;
+	border: 1px solid #000;
+}
+
+.eventRow {
+	margin: 15px 10px;
+	width: calc ((100%-80px)/4);
+	border: 1px solid blue;
+}
+
+.eventRow Img {
+	width: 100%;
+}
+
+.eventPageArea .event-tab {
+	text-align: center;
+	width: 600px;
+	margin: 50px auto 0;
+}
+
+.eventPageArea .event-tab li {
+	display: inline-block;
+	margin: 0 10px;
+	padding: 10px 0;
+}
+
+.eventPageArea .event-tab li a {
+	display: block;
+	padding: 10px 30px;
+	border: 1px solid #ebe8e5;
+	background: #f4f3f1;
+	border-radius: 30px;
+}
+
+.eventPageArea .event-tab li a span {
+	font-size: 15px;
+}
+
+.eventPageArea .event-tab li.on a {
+	background: linear-gradient(117deg, #28d4dd 1%, #0080c0);
+}
+
+hr.eventHR {
+	margin: 20px auto;
+}
+
+.eventType {
+	font-size: 14px; color : #1bb8d3;
+	display: inline-block;
+	padding: 3px 5px;
+	margin: 5px 0;
+	border: 2px solid #1bb8d3;
+	color: #1bb8d3;
+}
+
+.eventTag {
+	font-size: 14px;
+	color: #2a853f;
+	display: inline-block;
+	padding: 3px 5px;
+	margin: 5px 0;
+	border: 2px solid #2a853f;
+}
+
+.eventTitle {
+	font-size: 19px;
+	padding: 0 5px;
+	margin-bottom: 5px;
+}
+
+.eventDate {
+	padding-left: 5px;
+}
+
+.eventDate .eDate {
+	color: grey;
+}
