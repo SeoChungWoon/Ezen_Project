@@ -1,15 +1,17 @@
+<%@page import="pack_FAQ.FaqVO"%>
+<%@page import="pack_FAQ.FaqDAO"%>
 <%@page import="pack_EzPro.BoardDAO"%>
 <%@page import="pack_EzPro.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
-<jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
+<jsp:useBean id="regDAO" class="pack_FAQ.FaqDAO" />
+<jsp:useBean id="regVO" class="pack_FAQ.FaqVO" />
 
 <%
 request.setCharacterEncoding("UTF-8");
-BoardDAO objDAO = new BoardDAO();
+FaqDAO objDAO = new FaqDAO();
 int cnt = objDAO.BoardCount();		//데이터 갯수
 int pageSize = 10;
 
@@ -25,7 +27,7 @@ int lastData = nowPage * pageSize-1;
 List objList = null;
 
 if(cnt != 0){
-	objList = objDAO.BoardList(firstData,pageSize);
+	objList = objDAO.FaqList(firstData,pageSize);
 }
 %>
 
@@ -57,14 +59,20 @@ if(cnt != 0){
 					<p class="tit">FAQ게시판</p>
 				</div>
 				<!--div.tit-cont  -->
-  		
+  	<form action="faqScRes.jsp" method="post" name="search">
   		<div class="searchArea">
   			<span>Search</span>
-  			<input type="text" placeholder="제목 및 내용을 검색해보세요" id="searchBox" size="30"
+  			<select name="searchField" class="searchDV">
+  				<option value="0">선택</option>
+  				<option value="fTitle">제목</option>
+  				<option value="fContent">내용</option>
+  			</select>
+  			<input type="text" placeholder="제목 및 내용을 검색해보세요" id="searchBox" name="searchText" size="30"
   			  onfocus="this.placeholder=''" onblur="this.placeholder='제목 및 내용을 검색해보세요'">
-  			<button type="button" class="btnImg">검색</button>
+  			<button type="submit" class="btnImg">검색</button>
   		</div>
   		<!-- div.searchArea -->
+  		</form>
 	<%
 	
 	    		
@@ -85,27 +93,20 @@ if(cnt != 0){
 		      <!-- HTML 코드 시작  -->
 		      <div class="tblArea">
 		      	<div class="tblTop">
-		      		<span>전체 게시물 : <%=cnt %>개</span>
 		      		<span>페이지 : <%=nowPage %> / <%=pageCount %></span>
 		      	</div>
 		      	<!-- div.tblTop 끝 -->
 		      	
 		      	<table>
 		      		<colgroup>
-		      			<col width="8%" />
-		      			<col width="10%"/>
-		      			<col width="40%"/>
-		      			<col width="12%"/>
-		      			<col width="15%"/>
-		      			<col width="15%"/>
+		      			<col width="20%" />
+		      			<col width="60%"/>
+		      			<col width="20%"/>
 		      		</colgroup>
 		      			<thead>
 		      				<tr>
-		      					<th>번호</th>
 		      					<th>구분</th>
 		      					<th>제목</th>
-		      					<th>작성자</th>
-		      					<th>게시일</th>
 		      					<th>내용보기</th>
 		      				</tr>
 		      			</thead>
@@ -113,24 +114,28 @@ if(cnt != 0){
 		      				<%
 		      				// JSP 코드 영역
 		      				for(int i=0; i<objList.size(); i++){
-		      					BoardVO objVO = (BoardVO)objList.get(i);
+		      					FaqVO objVO = (FaqVO)objList.get(i);
 		      				%>
 		      					<tr>
-		      						<td><a href="bbsList.jsp?no=<%=objVO.getNo() %>&pageNum=<%=pageNum %>"><%=objVO.getNo() %></a></td>
-		      						<td><%=objVO.getDivision() %></td>
+		      						<td><%=objVO.getfDivision() %></td>
 		      						<td>
+		      						<a href="noticeView.jsp?no=<%=objVO.getfNo() %>&title=<%=objVO.getfTitle() %>"><%=objVO.getfTitle() %></a>
 		      						</td>
-		      						<td><%=objVO.getwName() %></td>
-		      						<td><%=objVO.getPostDate() %></td>
 		      						<td>
-		      						<img src="/images/detailIcon.png" alt="내용보기">
+		      						<label for="faqRow<%=i+1%>">
+		      						<img src="/images/detailIcon.png" alt="펼침버튼" class="detailIcon">
+		      						</label>
+		      						<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
 		      						</td>
 		      					</tr>
-		      				
+		      					<tr class="hidden">
+		      						<td class="hide" colspan="3">
+		      							<pre><%=objVO.getfContent() %></pre>
+		      						</td>
+		      					</tr>		      		
 		      				<% 
 		      				}
 		      				%>
-		      		
 		      				</tbody>
 		      	</table>
 		      </div>
@@ -142,7 +147,7 @@ if(cnt != 0){
 		      		//처음 페이지 이동 할 때
 		      			if(startPage > pageBlock){
 		      				%>
-		      				<a href="bbsList.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
+		      				<a href="faqList.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
 		      				<%
 		      			}else{
 		      				%>
@@ -152,12 +157,12 @@ if(cnt != 0){
 		      		// 이전 페이지 이동 할 때 
 		      		if(nowPage > 1){
 		      		%>
-		      		<a href="bbsList.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
+		      		<a href="faqList.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
 		      		<%
 		      			
 		      		}else if(nowPage == startPage){
 		      		%>
-		      		<a href="bbsList.jsp?pageNum=<%=nowPage %>">&lt;</a>
+		      		<a href="faqList.jsp?pageNum=<%=nowPage %>">&lt;</a>
 		      		<%
 		      		}
 		      		
@@ -168,18 +173,18 @@ if(cnt != 0){
 		      			pageCnt++;
 		      			if(i == nowPage){		//현재 페이지 일때
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
+		      			<a href="faqList.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
 		      		<%
 		      			}else{		//현재 페이지가 아닐때
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=i %>"><%=i %></a>
+		      			<a href="faqList.jsp?pageNum=<%=i %>"><%=i %></a>
 		      		<%
 		      			}
 		      		}
 		      		//다음 페이지 이동 할 때
 		      		if(nowPage < pageCount){
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
+		      			<a href="faqList.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
 		      		<%
 		      		}else{
 		      		%>
@@ -190,7 +195,7 @@ if(cnt != 0){
 		      		// 끝 페이지로 이동 할 때
 		      		if(endPage < pageCount){
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
+		      			<a href="faqList.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
 		      		<%
 		      		}else{
 		      		%>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -169,6 +170,35 @@ public class BoardDAO {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
 		return objList;
+	}
+	public ArrayList getSearch(String searchField, String searchText){
+			ArrayList	list = new ArrayList();
+			String sql = "select * from bbsList where "+searchField.trim();
+			try {
+				objConn = pool.getConnection();
+				if(searchText != null && !searchText.equals("")) {
+					sql += " like '%"+searchText.trim()+"%' order by no desc";
+				}
+					objPstmt = objConn.prepareStatement(sql);
+					objRS = objPstmt.executeQuery();
+					while(objRS.next()) {
+						BoardVO objVO = new BoardVO();
+						
+						objVO.setNo(objRS.getInt("no"));
+						objVO.setDivision(objRS.getString("division"));
+						objVO.setTitle(objRS.getString("title"));
+						objVO.setwName(objRS.getString("wName"));
+						objVO.setPostDate(objRS.getString("postDate"));
+						objVO.setCount(objRS.getInt("count"));
+						objVO.setContent(objRS.getString("content"));
+						
+						list.add(objVO);
+					
+					}
+			} catch (Exception e) {
+				System.out.println("Exception :" +e.getMessage());
+			}
+			return list;
 	}
 }
 

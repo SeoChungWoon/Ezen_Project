@@ -57,14 +57,20 @@ if(cnt != 0){
 					<p class="tit">공지게시판</p>
 				</div>
 				<!--div.tit-cont  -->
-  		
+  		<form action="searchRes.jsp" method="post" name="search">
   		<div class="searchArea">
   			<span>Search</span>
-  			<input type="text" placeholder="제목 및 내용을 검색해보세요" id="searchBox" size="30"
+  			<select name="searchField" class="searchDV">
+  				<option value="0">선택</option>
+  				<option value="title">제목</option>
+  				<option value="content">내용</option>
+  			</select>
+  			<input type="text" placeholder="제목 및 내용을 검색해보세요" name='searchText' id="searchBox" size="30"
   			  onfocus="this.placeholder=''" onblur="this.placeholder='제목 및 내용을 검색해보세요'">
-  			<button type="button" class="btnImg">검색</button>
+  			<button type="submit" class="btnImg">검색</button>
   		</div>
   		<!-- div.searchArea -->
+  		</form>
 	<%
 	
 	    		

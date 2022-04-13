@@ -47,7 +47,7 @@ area4 char(20)
 );
 
 
-/*게시판용 테이블 시작*/
+/*공지게시판용 테이블 시작*/
 create table bbsList (
 no		int	auto_increment	not null,
 division	char(20)	not null,
@@ -61,7 +61,6 @@ constraint primary key (no)
 
 desc bbsList;
 
-select * from bbsList where title like '%택배%';
 
 drop table bbsList;
 
@@ -105,6 +104,8 @@ insert into bbsList (no, division, title, wName,content,postDate) values
 
 select * from bbsList order by no limit 0,10;
 
+set global max_connections=500;
+set wait_timeout=50;
 /*set sql_safe_updates=0;
 update bbsList set division = '공지사항'
 where no=3; 
@@ -112,11 +113,40 @@ update bbsList set title = '택배사 변경안내'
 where no=3;
 */
 
-/*게시판용 테이블 끝*/
+/*공지게시판용 테이블 끝*/
+
+/* FAQ게시판용 테이블 시작*/
+create table faqList(
+fNo	int	auto_increment	not null,
+fDivision char(20)	not null,
+fTitle		char(50)	not null,				
+fContent varchar(1000)	not null,
+constraint primary key (fNo)
+);
+
+insert into faqList (fNo, fDivision, fTitle, fContent) values
+(1, '주문/결제', '주문내역은 어디서 확인하나요?',
+'  ▷ 주문내역은 로그인 후, 마이페이지>예매내역에서 확인 하실 수 있습니다.');
+insert into faqList values
+(2, '취소/교환', '휴대폰으로 결제한 경우 취소시 환불은 어떻게 되나요?',
+' ▷  휴대폰결제를 통한 주문 시 결제대금이 다음 달 휴대폰요금과 함께 청구되며,
+      이동통신사 정책에 따라 결제 승인 취소는 해당 월 내에만 가능합니다.
+
+      ※ 휴대폰 결제 취소는 주문한 달의 말일까지만 가능
+
+      익월 취소시에는 예치금으로 환불 (통신사 정책에 따라 승인취소 불가능)');
+insert into faqList values
+(3, '회원정보', '아이디,비밀번호를 잊어버렸어요. 어떻게 해야 하나요?',
+' ▷  아이디 찾기
+	  회원 로그인 화면에서 [아이디 찾기]를 클릭하여 인증을 통해 확인이 가능합니다.
+
+	  비밀번호 찾기
+	  회원 로그인 화면에서 [비밀번호 찾기]를 클릭 하여 아이디 와 가입 시 기입한 이메일 주소 또는 휴대폰번호를 입력 하여 임시비밀번호 발급이 가능합니다.
+	  위의 정보로 받을 수 없는 경우 본인인증 후 새 비밀번호로 변경해주세요.');
 
 
-
-
+drop table faqList;
+/* FAQ게시판용 테이블 끝*/
 
 
 /* 상품 리스트 */
