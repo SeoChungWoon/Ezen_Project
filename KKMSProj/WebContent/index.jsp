@@ -7,8 +7,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메인페이지</title>
+<!-- main 용 -->
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style_main.css">
+
 <!-- main 용 -->
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
@@ -16,6 +18,7 @@
 <script src="/source/gsap.min.js"></script>
 <script src="/script/script.js"></script>
 <script src="/script/memberScript.js"></script>
+<script src="/script/script_maintab.js"></script>
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -27,7 +30,7 @@
 		<div class="section_slide section">
 			<div class="swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="/images/main_images/01.jpeg" alt="뮤지컬 공연 포스터"></div>
+					<div class="swiper-slide"><img src="/images/main_images/01.jpeg" alt="뮤지컬 공연 포스터">`</div>
 					<div class="swiper-slide"><img src="/images/main_images/02.jpeg" alt="뮤지컬 공연 포스터"></div>
 					<div class="swiper-slide"><img src="/images/main_images/03.jpeg" alt="뮤지컬 공연 포스터"></div>
 					<div class="swiper-slide"><img src="/images/main_images/04.jpeg" alt="뮤지컬 공연 포스터"></div>
@@ -40,7 +43,7 @@
 			</div>
 		</div>
 		
-		
+	<!--  	
 	<div class="section_sub-menu section">
 		<div class="sub-menu-wrapper">
 			<div>공지사항</div>
@@ -48,7 +51,8 @@
 			<div>게시판</div>
 			<div>게시판</div>
 		</div>
-	</div>
+	</div> 
+	-->
 	<div class="section_hot section">
 		<h1>WHAT'S HOT</h1>
 		<article>
@@ -83,6 +87,43 @@
 			</div>
 		</article>
 	</div>
+	
+	
+<!-- 탭메뉴 -->	
+
+
+<div class="tab_container">
+
+  <ul class="tabs">
+    <li class="tab-link current" data-tab="tab-1">전체</li>
+    <li class="tab-link" data-tab="tab-2">전시</li>
+    <li class="tab-link" data-tab="tab-3">체험/행사</li>
+    <li class="tab-link" data-tab="tab-4">기타</li>
+  </ul>
+
+  <div id="tab-1" class="tab-content current">전체</div>
+  <div id="tab-2" class="tab-content">전시</div>
+  <div id="tab-3" class="tab-content">체험/행사</div>
+  <div id="tab-4" class="tab-content">기타</div>
+
+</div>
+	
+<!-- 탭메뉴 -->
+
+
+	<div class="section_musical section">
+        <h1>Musical & Play</h1>
+        <div class="product_list">
+          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
+          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
+          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
+          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
+          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
+          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
+        </div>
+	
+	</div>
+	
 	<div class="section_notice section">
 		<h1>NOTICE</h1>
 		<article>
@@ -112,9 +153,9 @@
 	</div>
 	<!-- div.sub-body -->
 
+	
 	<%@ include file="/include/footer.jsp"%>
 
-	</div>
 	
 	
 	<!-- div#wrap -->
