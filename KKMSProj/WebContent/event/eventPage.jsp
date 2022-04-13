@@ -58,7 +58,7 @@ List eList = eMgr.eventList();
 						</div>
 						<%
 						} else {
-						for (int i = eList.size()-1; i >= 0; i--) {
+						for (int i = eList.size() - 1; i >= 0; i--) {
 							eventBean evList = (eventBean) eList.get(i);
 						%>
 
@@ -66,7 +66,7 @@ List eList = eMgr.eventList();
 							<a href="/event/eventView.jsp?eNo=<%=evList.geteNo()%>">
 								<div class="eventLink">
 									<div class="eventBanner">
-										<img src="/images/<%=evList.geteMainImg()%>1.jpg" alt="메인이미지">
+										<img src="/images/<%=evList.geteMainImg()%>" alt="메인이미지">
 									</div>
 									<div class="eventType">
 										<%=evList.geteType()%>
@@ -80,8 +80,14 @@ List eList = eMgr.eventList();
 									</div>
 									<div class="eventDate">
 										<span class="eDate"><%=evList.geteStart()%> ~ </span> <span
-											class="eDate"><%=evList.geteEnd()%> | </span> <span
-											class="eDate"><%=evList.geteRes()%> 발표</span>
+											class="eDate"><%=evList.geteEnd()%></span>
+										<%
+										if (evList.geteRes() != null) {
+										%>
+										<span class="eDate"> | <%=evList.geteRes()%> 발표</span>
+										<%
+										}
+										%>
 									</div>
 								</div>
 							</a>

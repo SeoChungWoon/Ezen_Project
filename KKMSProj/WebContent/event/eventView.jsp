@@ -9,7 +9,10 @@ int eNo = Integer.parseInt(request.getParameter("eNo"));
 List eList = eMgr.eventList();
 eventBean evList = (eventBean) eList.get(eNo-1);
 String tag = evList.geteTag();
+String type = evList.geteType();
 tag = tag.trim();
+type = type.trim();
+
 %>
 
 <!DOCTYPE html>
@@ -63,22 +66,37 @@ tag = tag.trim();
 					</div>
 					<!-- // top-cont -->
 					<div class="eventContent">
-					이벤트 내용 영역
+					<img src="/images/<%=evList.geteInnerImg() %>" alt="" />
+					<div class="eventRef">
+					<span class="eventRefTitle">참고해주세요</span>
+					<hr class="eventRefHR">
+					<span class="eventRefTxt">
+					<ul>
+						<li>본 이벤트는 ID 1개당 1회 참여만 가능합니다.</li>
+						<li>중복으로 참여하시더라도 당첨 확률에는 영향을 미치지 않습니다.</li>
+						<li>본 이벤트는 예고없이 사전에 종료될 수 있습니다.</li>
+						<li>본 이벤트는 부적절한 행위 확인 시 당첨이 취소될 수 있습니다.</li>
+						<li>기타 이벤트 관련 문의사항은 1:1문의 게시판을 이용해주세요.</li>
+					</ul>
+					</span>
+					<hr class="eventRefHR">
+					</div>
+					<!-- div.eventRef -->
 					</div>
 					<div class="eventBtnArea">
 					<%
-					if(memberId == null){
-					%>
-					<p>로그인 후 이벤트 참여가 가능합니다.</p>
-					<%
-						
-					} else if (tag.equals("종료") || tag.equals("당첨자발표")) {
+					if (tag.equals("종료") || tag.equals("당첨자발표")) {
 						%>
 						<p>
 						이미 종료된 이벤트입니다.
 						</p>
 						<%
+					} else if(memberId == null){
+						%>
+						<p>로그인 후 이벤트 참여가 가능합니다.</p>
+						<%
 					} else {
+						if(type.equals("응모이벤트")) {
 					%>
 					<form action="/event/eventProc.jsp" id="eventForm">
 					<input type="hidden" name="uId" value="<%=memberId%>">
@@ -86,6 +104,15 @@ tag = tag.trim();
 					<button type="submit">응모하기</button>
 					</form>
 					<%
+						} else if(type.equals("기대평이벤트")) {
+							%>
+							<input type="textarea" class="eventReplyTxt">
+							<%
+						} else {
+							%>
+							버튼or댓글창 없는거
+							<%
+						}
 					}
 					%>
 					</div>

@@ -4,7 +4,7 @@
 session.invalidate();
 %>
 <script>
-	location.href = "/index.jsp";
+	window.location = document.referrer;
 </script>
 <!DOCTYPE html>
 <html lang="ko">

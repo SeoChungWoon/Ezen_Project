@@ -6,11 +6,12 @@
 String memberId = request.getParameter("memberid");
 String memberPw = request.getParameter("memberpw");
 String memName = mMgr.loginChk(memberId, memberPw);
+String url = request.getHeader("REFERER");
 if (memName != "") {
 	session.setAttribute("memID", memberId);
 %>
 <script>
-	history.back();
+	window.location = document.referrer;
 </script>
 <%
 } else {

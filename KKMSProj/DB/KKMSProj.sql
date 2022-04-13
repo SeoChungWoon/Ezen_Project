@@ -178,8 +178,8 @@ create table eventList (
 eNo int auto_increment not null,
 eTitle char(40) not null,
 eContent varchar(300),
-eMainImg char(20),
-eInnerImg char(20),
+eMainImg char(100),
+eInnerImg char(100),
 eStart char(20),
 eEnd char(20),
 eRes char(20),
@@ -192,7 +192,11 @@ drop table eventList;
 
 select * from eventList;
 
-insert into eventList (eTitle, eContent, eMainImg, eStart, eEnd, eRes, eTag, eType) values ('이벤트 제목', '이벤트 내용', 'product-list-img', '2022-04-12', '2022-04-26', '2022-05-02', '종료', '예매이벤트');
+insert into eventList (eTitle, eContent, eMainImg, eInnerImg, eStart, eEnd, eTag, eType) values ('크리스마스 예매 이벤트', '이벤트 내용', 'event-christmas-gift.png', 'event-christmas-gift.png', '2021-12-20', '2021-12-30', '종료', '예매이벤트');
+
+insert into eventList (eTitle, eContent, eMainImg, eInnerImg, eStart, eEnd, eRes, eTag, eType) values ('설레이는 봄, 전시회 봄', '이벤트 내용', 'event-spring-booking.png', 'event-spring-booking.png', '2022-04-01', '2022-04-30', '2022-05-03', '진행중', '응모이벤트');
+
+insert into eventList (eTitle, eContent, eMainImg, eInnerImg, eStart, eEnd, eRes, eTag, eType) values ('앤서니 브라운의 원더랜드 뮤지엄 기대평 이벤트', '이벤트 내용', 'event-reply.jpg', 'event-reply.jpg', '2022-04-01', '2022-04-08', '2022-05-03', '진행중', '기대평이벤트');
 
 create table event (
 	uId char(15) not null,

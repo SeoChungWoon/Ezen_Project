@@ -90,7 +90,6 @@ hr.eventHR {
 }
 
 .eventContent {
-	border: 1px solid blue;
 	margin-top: 15px;
 	padding: 5px;
 }
@@ -106,4 +105,25 @@ hr.eventHR {
 
 .eventBtnArea button:hover {
 	background: #444;
+}
+
+.eventContent img {
+	display: block;
+	margin: 0 auto;
+	width: 70%;
+}
+
+.eventRef {
+	width: 50%;
+	margin: 10px auto;
+	line-height: 30px;
+}
+
+.eventRefTitle {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.eventRefHR {
+	margin: 10px 0;
 }

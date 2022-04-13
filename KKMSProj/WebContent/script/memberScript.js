@@ -129,12 +129,12 @@ $(function() {
 	$(".fToggle").on("click", function(){
 		let toggle = $(this).is(":checked");
 		if (toggle) {
-			$(".howToFind").next().addClass("hidden");
 			$(".fToggle").not(this).prop("checked", false);
-			$(this).parent().next().removeClass("hidden");
+			$(".fToggle").not(this).parent().next().slideUp(200);
+			$(this).parent().next().slideDown(200);
 			$(".findValArea input").val("");
 		} else {
-			$(this).parent().next().addClass("hidden");
+			$(this).parent().next().slideUp(200);
 			$(this).parent().next().children().val("");
 		}
 	});
