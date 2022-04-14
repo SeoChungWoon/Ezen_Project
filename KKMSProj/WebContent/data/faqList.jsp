@@ -119,7 +119,9 @@ if(cnt != 0){
 		      					<tr>
 		      						<td><%=objVO.getfDivision() %></td>
 		      						<td>
-		      						<a href="noticeView.jsp?no=<%=objVO.getfNo() %>&title=<%=objVO.getfTitle() %>"><%=objVO.getfTitle() %></a>
+		      						<label for="faqRow<%=i+1 %>" class="faqTitle">
+		      						<%=objVO.getfTitle() %>
+		      						</label>
 		      						</td>
 		      						<td>
 		      						<label for="faqRow<%=i+1%>">

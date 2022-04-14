@@ -261,7 +261,9 @@ div.footerArea>.pageArea a.nowPage{
 .tblArea>table>tbody>tr>td.hide pre{
 	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
 }
-
+.tblArea>table>tbody>tr>td>label.faqTitle:hover{
+	cursor: pointer;
+}
 /*/////////////////////faqList.jsp 영역 끝///////////////////////*/
 /*/////////////////////faqList.jsp 영역 시작///////////////////////*/
 
