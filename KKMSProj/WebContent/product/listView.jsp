@@ -184,8 +184,8 @@ int price = 0;
 
 							<div class="detailBox">
 								<div class="detail-tab">
-									<a href="javascript:"><span>상세정보</span></a> <a
-										href="javascript:" class="on"><span>판매자 문의</span></a> <a
+									<a href="javascript:" class="on"><span>상세정보</span></a> <a
+										href="javascript:"><span>판매자 문의</span></a> <a
 										href="javascript:"><span>관람후기</span></a> <a href="javascript:"><span>예매안내</span></a>
 								</div>
 
