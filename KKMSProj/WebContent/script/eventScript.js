@@ -64,7 +64,7 @@ $(function() {
 
 /* 이벤트 기대평 이벤트 탭 */
 	$(".eventDetailTab").on("click", function(){
-		
+		$("html, body").animate({ scrollTop: 0}, 400);
 	});
 	$(".eventReplyTab").on("click", function(){
 		$("#eventReplyTxt").focus();
