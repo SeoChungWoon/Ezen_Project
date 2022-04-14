@@ -41,7 +41,7 @@ $(function() {
 
 				if ($(window).scrollTop() > 100) {
 					$(".quick_div .top_btn").fadeIn(300);
-				} else  {
+				} else {
 					$(".quick_div .top_btn").fadeOut(300);
 				}
 
@@ -74,6 +74,34 @@ $(function() {
 			}
 		});
 	});
+
+	//popup
+	if ($(".btn.open-modal").length != 0) {
+		$(document).on("click", ".btn.open-modal", function(e) {
+			var id = '#' + $(this).attr("data-target");
+
+			$(this).addClass("modal-opened").attr("tabindex", "-1");
+
+			$("html, body").css("overflow", "hidden");
+			$("header").css("z-index", 1);
+			$(".sub-body").css("z-index", "auto");
+
+			modalOpen(id);
+			return false;
+		});
+
+		$(document).on("click", ".close-modal", function() {
+			var id = "#" + $(this).closest(".modal").attr("id");
+
+			$("html, body").css("overflow", "visible");
+
+			modalClose(id);
+
+			if (confirm("창을 닫으시겠습니까? 내용이 초기화됩니다.") == true) {
+				$(this).parent().siblings(".pop_div").find("textarea").val("");
+			}
+		});
+	}
 
 	//product price calc
 	if ($(".price.sale").length != 0) {
@@ -203,16 +231,34 @@ $(function() {
 	}
 
 	//product view textarea info
-	if ($("#qnaConts").length != 0)  {
-		$("#qnaConts").on("change keyup", function() {
-			$(".inquiry-txt .txtLength em").text($(this).val().length);
+	if ($(".txtLength").length != 0) {
+		var txtLength = 500;
 
-			if ($(this).val().length > 500) {
+		// 판매자 문의 등록
+		$("#qnaConts").on("change keyup", function() {
+			$(this).next(".txtLength").find("em").text($(this).val().length);
+
+			if ($(this).val().length > txtLength) {
 				alert("최대 500자까지 입력 가능합니다.");
-				$(this).val($(this).val().substring(0, 500));
-				$(".inquiry-txt .txtLength em").text(500);
+				$(this).val($(this).val().substring(0, txtLength));
+				$(this).next(".txtLength").find("em").text(txtLength);
+				console.log($(this))
 			}
 		});
+
+		// 판매자 문의 수정
+		$("#qnaContsWrite").on("change keyup", function() {
+			$(this).next(".txtLength").find("em").text($(this).val().length);
+
+			if ($(this).val().length > txtLength) {
+				alert("최대 500자까지 입력 가능합니다.");
+				$(this).val($(this).val().substring(0, txtLength));
+				$(this).next(".txtLength").find("em").text(txtLength);
+			}
+		});
+	}
+
+	if ($("#qnaConts").length != 0) {
 
 		$(".inquiryBtn").on("click", function() {
 			var qnaConts = $("#qnaConts").val().trim();
@@ -222,7 +268,6 @@ $(function() {
 				$("#qnaConts").focus();
 			} else {
 				if (confirm("문의를 등록하시겠습니까?") == true) {
-					alert("문의가 등록되었습니다.");
 					$("#qnaContsWrite").text(qnaConts);
 					$(".listViewForm").submit();
 					$("#qnaConts").val("");
@@ -230,10 +275,52 @@ $(function() {
 				}
 			}
 		});
+		$(".inquiryBtn + .reset").on("click", function() {
+			var qnaConts = $("#qnaConts").val().trim();
+			if (qnaConts == "") {
+				alert("내용을 입력해주세요.");
+				$("#qnaConts").focus();
+			} else {
+				if (confirm("작성글을 초기화하시겠습니까?") == true) {
+					$("#qnaConts").val("");
+					$("#qnaConts").focus();
+				}
+			}
+		});
 	}
-	
-	
-	
+	if ($("#qnaContsWrite").length != 0) {
+		var data = $(".modBtn").parent().siblings("textarea").val().trim();
+
+		$(".modBtn").parent().siblings("textarea").on("change keyup", function() {
+			data = $(this).text();
+			$(this).text(data.trim());
+		});
+
+		// 수정 버튼
+		$(".modBtn").on("click", function() {
+			if (!($(this).parent().siblings("textarea").attr("disabled", false).hasClass("on"))) {
+				$(this).parent().siblings("textarea").attr("disabled", false).addClass("on").focus();
+				$(this).text("확인");
+
+			} else {
+				if (confirm("수정하시겠습니까?") == true) {
+					$(this).parent().siblings("textarea").attr("disabled", false).removeClass("on");
+					$(".modBtn").parent().siblings("textarea").text(data);
+					$(".listViewFormRe").submit();
+					$(this).text("수정");
+				}
+			}
+		});
+
+		// 삭제 버튼
+		$(".delBtn").on("click", function() {
+			if (confirm("문의를 삭제하시겠습니까?") == true) {
+				
+			}
+		});
+	}
+
+
 });
 
 
@@ -331,4 +418,42 @@ function urlCopy() {
 	document.execCommand("copy");
 	document.body.removeChild(textarea);
 	alert("URL이 복사되었습니다.");
+}
+
+// popup //
+function modalOpen(id) {
+	var id = id;
+
+	$("body").addClass("modal-open");
+	$(id).addClass("in").show();
+
+	modalDimOpen(id); //dim show
+
+	//return false;
+}
+//dim show
+function modalDimOpen(id) {
+	var id = id;
+	$(".pop_dimd").addClass("in").fadeIn(400);
+	$("header").css("z-index", 1);
+	$(".sub-body").css("z-index", "auto");
+}
+
+function modalClose(id) {
+	var id = id;
+
+	if ($(".modal.in").length < 2) {
+		$("body").removeClass("modal-open");
+	}
+
+	modalDimClose(id);
+	$(id).removeClass("in").hide();
+
+	$(".modal-opened").focus().attr("tabindex", "0").removeClass("modal-opened");
+
+}
+// dim hide
+function modalDimClose(id) {
+	var id = id;
+	$(".pop_dimd").removeClass("in").fadeOut(400);
 }

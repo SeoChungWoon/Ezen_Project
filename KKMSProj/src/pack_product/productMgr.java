@@ -35,7 +35,7 @@ public class ProductMgr {
 			sql = "select * from proList order by pNo Asc";
 			objPstmt = objConn.prepareStatement(sql);
 			objRS = objPstmt.executeQuery();
-			while(objRS.next()){
+			while (objRS.next()) {
 				ProListBean pLBean = new ProListBean();
 				pLBean.setpNo(objRS.getInt("pNo"));
 				pLBean.setpFlag1(objRS.getString("pFlag1"));
@@ -53,6 +53,7 @@ public class ProductMgr {
 				pLBean.setpViewTime(objRS.getString("pViewTime"));
 				pLBean.setpClass(objRS.getString("pClass"));
 				pLBean.setpDelivery(objRS.getString("pDelivery"));
+				pLBean.setpWriteSel(objRS.getString("pWriteSel"));
 				pList.add(pLBean);
 			}
 		} catch (Exception e) {
@@ -63,53 +64,96 @@ public class ProductMgr {
 
 		return pList;
 	}
-	
+
 	// 데이터 있는 지 확인
 	public int proListCount() {
 		int count = 0;
-		
+
 		try {
 			objConn = pool.getConnection();
 			String sql = "select count(*) from proList";
 			objPstmt = objConn.prepareStatement(sql);
 			objRS = objPstmt.executeQuery();
-			
-			if(objRS.next()) {
+
+			if (objRS.next()) {
 				count = objRS.getInt(1);
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("proListCount e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
-		
+
 		return count;
 	}
+
+	// 판매자 문의
+	public boolean writeChk(int pNo, String pTextarea) {
+		boolean chk = false;
+
+		try {
+			objConn = pool.getConnection();
+			sql = "update proList set pWriteSel = ? where pNo = " + pNo;
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, pTextarea);
+			objPstmt.executeUpdate();
+			
+			if (objPstmt.executeUpdate() > 0) {
+				chk = true;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return chk;
+	}
+
+	// 판매자 문의 삭제
+	public boolean writeDelChk(int pNo) {
+		boolean chkDel = false;
+
+		try {
+			objConn = pool.getConnection();
+			sql = "update proList set pWriteSel = null where pNo = " + pNo;
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.executeUpdate();
+			
+			if (objPstmt.executeUpdate() > 0) {
+				chkDel = true;
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return chkDel;
+	}
 	
-	//판매자 문의
-	public boolean contactSel(int pNo, String pContactSel) {
-		boolean chk = false;		
+	// 데이터 있는 지 확인
+	public int writeListChk(int pNo) {
+		//boolean count = false;
+		int count = 0;
 		
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into proLDetail (pNo, pContactSel) values (?, ?)";
+			String sql = "select count(pWriteSel) from proList where pNo = " + pNo;
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setInt(1,pNo);
-			objPstmt.setString(2, pContactSel);
-			objPstmt.executeUpdate();
+			objRS = objPstmt.executeQuery();
 
-			if (objPstmt.executeUpdate() > 0)
-				chk = true;
-			
-			System.out.println("pNo : " +  pNo);
-			System.out.println("txtArea : " + pContactSel);
+			if (objRS.next()) {
+				count = objRS.getInt(1);
+			}
 		} catch (Exception e) {
-			System.out.println("contactSel e : " + e.getMessage());
+			System.out.println("proListCount e : " + e.getMessage());
 		} finally {
-			pool.freeConnection(objConn, objPstmt);
+			pool.freeConnection(objConn, objPstmt, objRS);
 		}
-		System.out.println("chk : " + chk);
-		System.out.println("====================================");
-		return chk;
+
+		return count;
 	}
 }

@@ -1,5 +1,5 @@
 package pack_Product;
- 
+
 public class ProListBean {
 	private	int			pNo;			// 번호
 	private	String		pFlag1;		// label
@@ -18,7 +18,7 @@ public class ProListBean {
 	private	String		pClass;		// 관람등급
 	private	String		pDelivery;	// 배송정보
 	
-	private	String		pContactSel;	// 판매자 문의
+	private	String		pWriteSel;	// 판매자 문의
 	
 	public int getpNo() {
 		return pNo;
@@ -117,11 +117,11 @@ public class ProListBean {
 		this.pDelivery = pDelivery;
 	}
 
-	
-	public String getpContactSel() {
-		return pContactSel;
+
+	public String getpWriteSel() {
+		return pWriteSel;
 	}
-	public void setpContactSel(String pContactSel) {
-		this.pContactSel = pContactSel;
+	public void setpWriteSel(String pWriteSel) {
+		this.pWriteSel = pWriteSel;
 	}
 }

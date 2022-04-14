@@ -396,3 +396,78 @@ footer .fInfo .fSns a img{
 .quick_div .top_btn:hover span {
   color: #0099bf;
 }
+
+
+
+/* 팝업 */
+.pop_dimd {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 21;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.pop_wrap {
+  display: none;
+  overflow: hidden;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+/*   max-height: 905px; */
+  z-index: 99;
+  background: #fff;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.pop_wrap .pop_body {
+  position: relative;
+  width: 680px;
+}
+.pop_wrap .pop_body .pop_tit{
+	font-size: 32px;
+	padding: 25px 0;
+	font-weight: bold;
+	color: #000;
+}
+.pop_wrap .pop_close {
+  position: absolute;
+  top: 32px;
+  left: auto;
+  width: 23px;
+  right: 10px;
+  width: 23px;
+  height: 23px;
+  z-index: 5;
+  background: url("/images/pop-close-icon.png") no-repeat center;
+}
+.pop_wrap .pop_close a {
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.pop_wrap .pop_body .inquiry-txt{
+	position: relative;
+	padding-bottom: 30px;
+}
+.pop_wrap .pop_body .inquiry-txt > textarea{
+	resize: none;
+	width: 100%;
+	height: 300px;
+}
+
+.pop_wrap .pop_body .inquiry-txt .txtLength{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+.pop_wrap .pop_body .inquiry-txt + .btn-cont button{
+	padding: 10px 20px;
+	font-size: 16px;
+}

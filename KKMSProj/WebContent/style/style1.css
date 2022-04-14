@@ -206,14 +206,15 @@
 	position: relative;
 }
 
-.exhibit-cont .exhibit-list .listBox .likeClk{
+.exhibit-cont .exhibit-list .listBox .likeClk {
 	position: absolute;
 	margin-top: 10px;
 	bottom: 20px;
 	right: 10px;
 	z-index: 2;
 }
-.exhibit-cont .exhibit-list .listBox .likeClk input{
+
+.exhibit-cont .exhibit-list .listBox .likeClk input {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -222,17 +223,22 @@
 	height: 1px;
 	opacity: .01;
 }
-.exhibit-cont .exhibit-list .listBox .likeClk .chk-group label{
+
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group label {
 	padding: 5px 0 5px 40px;
-/* 	font-size: 14px; */
-	background: url("/images/icon-like-off.png")no-repeat 0 0 / 30px;
+	/* 	font-size: 14px; */
+	background: url("/images/icon-like-off.png") no-repeat 0 0/30px;
 }
-.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked label{
-	background: url("/images/icon-like-on.png")no-repeat 0 0 / 30px;
+
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked label {
+	background: url("/images/icon-like-on.png") no-repeat 0 0/30px;
 }
-.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked::before{
+
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked::before
+	{
 	display: none;
 }
+
 .exhibit-cont .exhibit-list .listBox .txt-info {
 	padding: 20px;
 }
@@ -242,7 +248,7 @@
 }
 
 /* flag */
-.flag-desc .flag span.event{
+.flag-desc .flag span.event {
 	font-size: 12px;
 	padding: 2px 5px;
 }
@@ -272,8 +278,7 @@
 	color: #666;
 }
 
-.flag-desc .flag span.event+span.event
-	{
+.flag-desc .flag span.event+span.event {
 	margin-left: 5px;
 }
 
@@ -375,40 +380,48 @@
 }
 
 /* product info */
-.proList-view{
+.proList-view {
 	padding-top: 100px;
 }
-.proList-view .top-cont{
+
+.proList-view .top-cont {
 	padding-bottom: 30px;
 	border-bottom: 2px solid #333;;
 }
-.proList-view .top-cont .flag-desc{
+
+.proList-view .top-cont .flag-desc {
 	width: 100%;
 }
-.proList-view .top-cont .txt-desc{
+
+.proList-view .top-cont .txt-desc {
 	position: relative;
 	margin-top: 10px;
 	font-size: 35px;
 	font-weight: bold;
 }
-.proList-view .top-cont .txt-desc::after{
-	content:"";
+
+.proList-view .top-cont .txt-desc::after {
+	content: "";
 	display: block;
 	clear: both;
 }
-.proList-view .top-cont .txt-desc .tit{
+
+.proList-view .top-cont .txt-desc .tit {
 	float: left;
 }
-.proList-view .top-cont .txt-desc .sns{
+
+.proList-view .top-cont .txt-desc .sns {
 	position: relative;
 	float: right;
 }
-.proList-view .top-cont .txt-desc .sns > a{
+
+.proList-view .top-cont .txt-desc .sns>a {
 	display: block;
 	width: 48px;
 	height: 48px;
 }
-.proList-view .top-cont .txt-desc .sns .sns-list{
+
+.proList-view .top-cont .txt-desc .sns .sns-list {
 	position: absolute;
 	right: 50px;
 	top: 5px;
@@ -416,144 +429,181 @@
 	flex-wrap: nowrap;
 	width: 0;
 }
-.proList-view .top-cont .txt-desc .sns .sns-list a{
+
+.proList-view .top-cont .txt-desc .sns .sns-list a {
 	width: 30px;
 	display: block;
 	margin-right: 10px;
 }
+
 .proList-view .top-cont .txt-desc .sns .sns-list a img {
 	width: 100%;
 }
 
-.proList-view .detail-cont{
+.proList-view .detail-cont {
 	margin-top: 50px;
 }
-.proList-view .detail-cont .infoBox{
+
+.proList-view .detail-cont .infoBox {
 	display: flex;
 	flex-wrap: nowrap;
 }
-.proList-view .detail-cont .infoBox .left{
+
+.proList-view .detail-cont .infoBox .left {
 	width: 35%;
 	padding-right: 50px;
 	padding-bottom: 20px;
 }
-.proList-view .detail-cont .infoBox .left .img img{
+
+.proList-view .detail-cont .infoBox .left .img img {
 	width: 100%;
 }
-.proList-view .detail-cont .infoBox .right{
+
+.proList-view .detail-cont .infoBox .right {
 	width: calc(100% - 35%);
 }
-.proList-view .detail-cont .infoBox .right .info-desc{
+
+.proList-view .detail-cont .infoBox .right .info-desc {
 	padding-bottom: 30px;
 	border-bottom: 1px solid #ddd;
 	width: 100%;
 	margin-bottom: 30px;
 }
-.proList-view .detail-cont .infoBox .right .info-desc dl{
+
+.proList-view .detail-cont .infoBox .right .info-desc dl {
 	width: 100%;
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
 }
-.proList-view .detail-cont .infoBox .right .info-desc dl + dl{
+
+.proList-view .detail-cont .infoBox .right .info-desc dl+dl {
 	margin-top: 40px;
 }
-.proList-view .detail-cont .infoBox .right .info-desc dt{
+
+.proList-view .detail-cont .infoBox .right .info-desc dt {
 	font-weight: bold;
 	font-size: 24px;
 	min-width: 150px;
 	margin-right: 20px;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc dd{
+
+.proList-view .detail-cont .infoBox .right .detail-desc dd {
 	font-size: 20px;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc dl{
+
+.proList-view .detail-cont .infoBox .right .detail-desc dl {
 	width: 100%;
 	display: flex;
 	flex-wrap: nowrap;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc dl + dl{
+
+.proList-view .detail-cont .infoBox .right .detail-desc dl+dl {
 	margin-top: 40px;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc dt{
+
+.proList-view .detail-cont .infoBox .right .detail-desc dt {
 	font-weight: bold;
 	font-size: 24px;
 	min-width: 150px;
 	margin-right: 20px;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc dd{
+
+.proList-view .detail-cont .infoBox .right .detail-desc dd {
 	font-size: 20px;
 }
+
 .proList-view .detail-cont .infoBox .right .detail-desc .price del,
-.proList-view .detail-cont .infoBox .right .detail-desc .price del + span{
+	.proList-view .detail-cont .infoBox .right .detail-desc .price del+span
+	{
 	color: #999;
 	font-size: 14px;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc .price .original{
+
+.proList-view .detail-cont .infoBox .right .detail-desc .price .original
+	{
 	display: block;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc .price .original .rate-sale{
+
+.proList-view .detail-cont .infoBox .right .detail-desc .price .original .rate-sale
+	{
 	color: #e55;
-	margin-right: 5px;	
+	margin-right: 5px;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price{
+
+.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price
+	{
 	display: block;
 	padding-top: 5px;
 }
-.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price ins{
+
+.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price ins
+	{
 	text-decoration: none;
 }
+
 .proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price ins,
-.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price span{
+	.proList-view .detail-cont .infoBox .right .detail-desc .price span.discount-price span
+	{
 	font-size: 24px;
 	font-weight: bold;
 }
 
-.proList-view .detail-cont .reserveBox{
+.proList-view .detail-cont .reserveBox {
 	margin-top: 100px;
 	width: 100%;
 }
-.proList-view .detail-cont .reserveBox > .selDate{
+
+.proList-view .detail-cont .reserveBox>.selDate {
 	flex: 1;
 	border: 1px solid #cd4a00;
 	padding: 50px;
 }
-.proList-view .detail-cont .reserveBox > .selDate > p.txt{
+
+.proList-view .detail-cont .reserveBox>.selDate>p.txt {
 	padding-bottom: 20px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid #222;
 	font-weight: bold;
 	font-size: 24px;
 }
-.proList-view .detail-cont .reserveBox .selDate .date-desc{
+
+.proList-view .detail-cont .reserveBox .selDate .date-desc {
 	display: flex;
 	flex-wrap: nowrap;
 }
-.proList-view .detail-cont .reserveBox .selDate .date-desc > div{
+
+.proList-view .detail-cont .reserveBox .selDate .date-desc>div {
 	flex: 1;
 }
-.proList-view .detail-cont .reserveBox .selDate .date-desc > div + div{
+
+.proList-view .detail-cont .reserveBox .selDate .date-desc>div+div {
 	margin-left: 10px;
 	padding-left: 20px;
 	border-left: 1px solid #ddd;
 }
-.proList-view .detail-cont .reserveBox .btn-cont{
+
+.proList-view .detail-cont .reserveBox .btn-cont {
 	margin: 50px 0;
 }
-.proList-view .detail-cont .reserveBox .btn-cont button{
+
+.proList-view .detail-cont .reserveBox .btn-cont button {
 	font-size: 18px;
 	padding: 15px 100px;
 }
-.proList-view .detail-cont .detailBox{
+
+.proList-view .detail-cont .detailBox {
 	padding-top: 100px;
 }
-.proList-view .detail-cont .detailBox .detail-tab{
+
+.proList-view .detail-cont .detailBox .detail-tab {
 	position: relative;
 	display: flex;
-	flex-wrap: nowrap;	
+	flex-wrap: nowrap;
 	margin-bottom: 50px;
 }
-.proList-view .detail-cont .detailBox .detail-tab::after{
+
+.proList-view .detail-cont .detailBox .detail-tab::after {
 	content: "";
 	display: block;
 	position: absolute;
@@ -563,47 +613,57 @@
 	height: 2px;
 	background: #222;
 }
-.proList-view .detail-cont .detailBox .detail-tab a{
+
+.proList-view .detail-cont .detailBox .detail-tab a {
 	position: relative;
 	display: block;
 	padding: 20px 50px;
 	background: #fff;
 }
-.proList-view .detail-cont .detailBox .detail-tab a span{
+
+.proList-view .detail-cont .detailBox .detail-tab a span {
 	font-size: 18px;
 }
-.proList-view .detail-cont .detailBox .detail-tab a.on{
+
+.proList-view .detail-cont .detailBox .detail-tab a.on {
 	border-top: 2px solid #0cb4cf;
 }
-.proList-view .detail-cont .detailBox .detail-tab a.on span{
+
+.proList-view .detail-cont .detailBox .detail-tab a.on span {
 	font-weight: bold;
 	color: #0cb4cf;
 }
-.detailBox .detail-desc > section{
+
+.detailBox .detail-desc>section {
 	margin: 0 auto;
 	display: none;
 }
-.detailBox .detail-desc > section .img{
+
+.detailBox .detail-desc>section .img {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
-.detailBox .detail-desc > section > div > p.tit{
-    margin-bottom: 40px;
-    font-weight: bold;
-    font-size: 24px;
+
+.detailBox .detail-desc>section>div>p.tit {
+	margin-bottom: 40px;
+	font-weight: bold;
+	font-size: 24px;
 }
-.detailBox .detail-desc > section > div > p.txt{
+
+.detailBox .detail-desc>section>div>p.txt {
 	padding-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #333;
-    font-size: 18px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	color: #333;
+	font-size: 18px;
 }
-.detailBox .detail-desc > section > div > ul.sec-list + p.tit{
+
+.detailBox .detail-desc>section>div>ul.sec-list+p.tit {
 	margin-top: 60px;
 }
-.detailBox .detail-desc > section > div > ul.sec-list li{
+
+.detailBox .detail-desc>section>div>ul.sec-list li {
 	position: relative;
 	display: block;
 	line-height: 20px;
@@ -611,7 +671,8 @@
 	font-size: 14px;
 	padding-left: 15px;
 }
-.detailBox .detail-desc > section > div ul.sec-list li::before{
+
+.detailBox .detail-desc>section>div ul.sec-list li::before {
 	content: "";
 	display: block;
 	position: absolute;
@@ -622,74 +683,150 @@
 	height: 3px;
 	background: #666;
 }
-.detailBox .detail-desc > section > div ul.sec-list li + li{
+
+.detailBox .detail-desc>section>div ul.sec-list li+li {
 	margin-top: 10px;
 }
-.detailBox .detail-desc > section > div ul.sec-list li a{
+
+.detailBox .detail-desc>section>div ul.sec-list li a {
 	color: #666;
 }
-.detailBox .detail-desc > section > div .inquiry-txt{
+
+.detailBox .detail-desc>section>div .inquiry-txt {
 	width: 1000px;
-/* 	border: 1px solid #222;	 */
+	/* 	border: 1px solid #222;	 */
 	margin-top: 30px;
 }
-.detailBox .detail-desc > section .inquiryBox .inquiry-txt .desc-type{
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-txt .desc-type {
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: flex-end;
 	padding-top: 10px;
 }
-.detailBox .detail-desc > section .inquiryBox .inquiry-txt textarea{
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-txt textarea {
 	resize: none;
 	border: none;
 	width: 100%;
 	height: 200px;
 }
-.detailBox .detail-desc > section .inquiryBox .inquiry-txt .txtLength{
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-txt .txtLength {
 	text-align: right;
 	padding: 10px 10px 10px 0;
 }
-.detailBox .detail-desc > section .inquiryBox .inquiry-txt .desc-type .btn-cont button{
-	padding: 5px 20px;	
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-txt .desc-type .btn-cont button
+	{
+	padding: 5px 20px;
 }
-.detailBox .detail-desc > section .inquiryBox .btn-cont{
+
+.detailBox .detail-desc>section .inquiryBox .btn-cont {
 	margin-top: 20px;
 	justify-content: left;
 }
-.detailBox .detail-desc > section .inquiryBox .btn-cont button{
+
+.detailBox .detail-desc>section .inquiryBox .btn-cont button.write {
 	padding-right: 30px;
-	background: #333 url("/images/icon-write-btn-w.png")no-repeat right 5px center / 20px;
+	background: #333 url("/images/icon-write-btn-w.png") no-repeat right 5px
+		center/20px;
 }
-.detailBox .detail-desc > section .inquiryBox .btn-cont button:hover{
-	background: #0086b8 url("/images/icon-write-btn-w.png")no-repeat right 5px center / 20px;
+
+.detailBox .detail-desc>section .inquiryBox .btn-cont button.write:hover
+	{
+	background: #0086b8 url("/images/icon-write-btn-w.png") no-repeat right
+		5px center/20px;
 }
-.detailBox .detail-desc > section .bInfo-table{
+
+.detailBox .detail-desc>section .bInfo-table {
 	width: 800px;
 	margin-bottom: 20px;
 }
-.detailBox .detail-desc > section .bInfo-table tr th,
-.detailBox .detail-desc > section .bInfo-table tr td{
+
+.detailBox .detail-desc>section .bInfo-table tr th, 
+.detailBox .detail-desc>section .bInfo-table tr td
+	{
 	padding: 20px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
 }
-.detailBox .detail-desc > section .bInfo-table tr th{
+
+.detailBox .detail-desc>section .bInfo-table tr th {
 	background: #f5f5f5;
 }
-.detailBox .detail-desc > section .bInfo-table tbody tr th{
+
+.detailBox .detail-desc>section .bInfo-table tbody tr th {
 	font-weight: normal;
 }
-.detailBox .detail-desc > section .inquiryBox .inquiry-writeCont .write-cont{
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont {
+/* 	display: none; */
+	margin-top: 50px;
+}
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .tit {
+	position: relative; margin-bottom : 40px;
+	font-weight: bold;
+	font-size: 24px;
+	padding-top: 30px;
+	margin-bottom: 40px;
+}
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .tit::before{
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50px;
+	height: 1px;
+	background: #333;
+}
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont{
 	width: 1000px;
 }
-.detailBox .detail-desc > section .inquiryBox .inquiry-writeCont .write-cont textarea{
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont .btn-cont{
+	justify-content: flex-end;
+}
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont .btn-cont  button{
+	padding: 7px 20px;
+}
+
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont textarea{
 	resize: none;
 	border: none;
 	width: 100%;
 	height: 200px;
 	background: #e1e1e1;
 }
-
-
-
-
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont textarea.on{
+	background: #fff;
+	border: 1px solid #222;
+}
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont > p.txt{
+	position: relative;
+    display: block;
+    line-height: 20px;
+    color: #666;
+    font-size: 14px;
+    padding-left: 15px;
+    margin-top: 20px;
+}
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont > p.txt::before{
+	content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    background: #666;
+}
+.detailBox .detail-desc>section .inquiryBox .inquiry-writeCont .write-cont .txtLength{
+	text-align: right;
+}
