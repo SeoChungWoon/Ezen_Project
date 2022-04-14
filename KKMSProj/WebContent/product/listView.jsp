@@ -184,8 +184,8 @@ int price = 0;
 
 							<div class="detailBox">
 								<div class="detail-tab">
-									<a href="javascript:" class="on"><span>상세정보</span></a> <a
-										href="javascript:"><span>판매자 문의</span></a> <a
+									<a href="javascript:"><span>상세정보</span></a> <a
+										href="javascript:" class="on"><span>판매자 문의</span></a> <a
 										href="javascript:"><span>관람후기</span></a> <a href="javascript:"><span>예매안내</span></a>
 								</div>
 
@@ -214,14 +214,10 @@ int price = 0;
 													거래글은 예고없이 삭제될 수 있습니다.</li>
 											</ul>
 
-											<%
-											memberId = (String) session.getAttribute("memID");
-											if (memberId != null) {
-											%>
-											<button type="button">문의 작성하기</button>
-											<%
-											}
-											%>
+											<div class="btn-cont">
+												<button type="button">문의 작성하기</button>
+											</div>
+											
 											<div class="inquiry-txt">
 												<%
 												memberId = (String) session.getAttribute("memID");
@@ -229,15 +225,6 @@ int price = 0;
 												%>
 												<textarea name="qnaConts" id="qnaConts"
 													placeholder="후기를 작성해주세요."></textarea>
-												<%
-												} else {
-												%>
-												<textarea name="qnaConts" id="qnaConts"
-													placeholder="로그인 후 문의 작성할 수 있습니다." disabled></textarea>
-												<%
-												}
-												%>
-
 												<div class="desc-type">
 													<div class="txtLength">
 														<span><em>0</em> / 500</span>
@@ -247,7 +234,7 @@ int price = 0;
 														<button type="button" class="inquiryBtn">등록</button>
 													</div>
 												</div>
-											</div>
+											</div><!-- // inquiry-txt -->
 
 											<div class="inquiry-writeCont">
 												<p class="tit">나의 판매자 문의 내역</p>
@@ -262,7 +249,10 @@ int price = 0;
 
 													<p class="txt">판매자 문의 작성은 1개만 가능합니다. 다른 문의를 원하시면
 														마이페이지에서 1:1 문의를 작성해주세요.</p>
-												</div>
+												</div><!--  // write-cont -->
+												<%
+												}
+												%>
 											</div>
 											<!-- // inquiry-writeCont -->
 										</div>

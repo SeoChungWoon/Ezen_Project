@@ -12,6 +12,15 @@ var scrollTop = $(window).scrollTop();
 
 
 $(function() {
+
+	// top btn
+	if ($(".quick_div .top_btn").length != 0) {
+		$(".quick_div .top_btn").on("click", function() {
+			$("html, body").animate({ scrollTop: 0 }, 400);
+			return false;
+		});
+	}
+
 	// header
 	if ($("header").length != 0) {
 		$("header nav .menu").on("mouseenter", function() {
@@ -26,6 +35,23 @@ $(function() {
 		$(window).on("scroll", function() { // scroll
 			// header
 			didScroll = true;
+
+			// top btn
+			if ($(".quick_div .top_btn").length != 0) {
+
+				if ($(window).scrollTop() > 100) {
+					$(".quick_div .top_btn").fadeIn(300);
+				} else  {
+					$(".quick_div .top_btn").fadeOut(300);
+				}
+
+				if ($(window).scrollTop() >= $("footer").offset().top - WindowInHeight) {
+					$(".quick_div").css({ "position": "absolute", "bottom": $("footer").outerHeight() + 40 });
+				} else {
+					$(".quick_div").css({ "position": "fixed", "bottom": 40 });
+
+				}
+			}
 		}).scroll();
 
 		setInterval(function() {
@@ -35,23 +61,24 @@ $(function() {
 			}
 		}, 50);
 	}
+
 	// checkbox
-	$(".chk-group").each(function (k) {
-       $(this).find("label").off("click").on("click",  function(){
-            if(!$(this).parent(".chk-group").hasClass("checked")){
-                $(this).parent(".chk-group").addClass("checked");
+	$(".chk-group").each(function(k) {
+		$(this).find("label").off("click").on("click", function() {
+			if (!$(this).parent(".chk-group").hasClass("checked")) {
+				$(this).parent(".chk-group").addClass("checked");
 				alert("찜 목록에 추가되었습니다.");
-            }else{
-                $(this).parent(".chk-group").removeClass("checked");
+			} else {
+				$(this).parent(".chk-group").removeClass("checked");
 				alert("찜 목록에서 삭제되었습니다.");
 			}
-        });
-    });
-	
+		});
+	});
+
 	//product price calc
-	if($(".price.sale").length != 0){
+	if ($(".price.sale").length != 0) {
 		priceCalc();
-		
+
 		$(".price.sale").each(function(e) {
 			let oriPrice = parseInt($(this).find("del").text());
 			let disCPrice = parseInt($(this).find("ins").text());
@@ -61,13 +88,13 @@ $(function() {
 			$(this).find("ins").text(disCPrice);
 		});
 	}
-	
+
 	// product list
 	if ($(".exhibit-cont").length != 0) {
-		
+
 		// price original evt 
-		$(".exhibit-cont .exhibit-list .listBox .txt-info .price .original").each(function(e){
-			if($(this).hasClass("keep")){
+		$(".exhibit-cont .exhibit-list .listBox .txt-info .price .original").each(function(e) {
+			if ($(this).hasClass("keep")) {
 				$(this).children(".rate-sale").detach();
 				$(this).siblings().detach();
 			}
@@ -86,10 +113,10 @@ $(function() {
 		$(".exhibit-cont .exhibit-list .listBox").each(function(e) {
 			var listTxt = $.trim($(".exhibit-cont .exhibit-list .listBox").eq(e).find(".txt-info .tit .group").text());
 			var listAreaTxt = $.trim($(".exhibit-cont .exhibit-list .listBox").eq(e).find(".txt-info .tit .area").text());
-			
+
 			$(".exhibit-cont .exhibit-tab li a").on("click", function() {
 				var tabTxt = $.trim($(this).text());
-				
+
 				if (tabTxt == "전체") {
 					$(".exhibit-cont .exhibit-list .listBox").show();
 				} else if (tabTxt.includes(listTxt)) {
@@ -97,12 +124,12 @@ $(function() {
 					setTimeout(function() {
 						$(".exhibit-cont .exhibit-list .listBox").eq(e).show();
 					}, 1);
-				}else if(tabTxt.includes(listAreaTxt)) {
+				} else if (tabTxt.includes(listAreaTxt)) {
 					$(".exhibit-cont .exhibit-list .listBox").hide();
 					setTimeout(function() {
 						$(".exhibit-cont .exhibit-list .listBox").eq(e).show();
 					}, 1);
-				}else{
+				} else {
 					$(".exhibit-cont .exhibit-list .listBox").hide();
 				}
 			});
@@ -117,7 +144,7 @@ $(function() {
 			});
 		});
 	}
-	
+
 	// product list rank tab
 	if ($(".exhibit-cont .area-desc .rank-tab").length != 0) {
 		$(".exhibit-cont .area-desc .rank-tab li").each(function(e) {
@@ -127,12 +154,12 @@ $(function() {
 			});
 		});
 	}
-	
+
 	// product view tab
-	if($(".detailBox .detail-tab").length != 0){
-		$(".detailBox .detail-tab").each(function(e){
-			$(this).find("a").each(function(a){
-				if($(this).hasClass("on")){
+	if ($(".detailBox .detail-tab").length != 0) {
+		$(".detailBox .detail-tab").each(function(e) {
+			$(this).find("a").each(function(a) {
+				if ($(this).hasClass("on")) {
 					$(".detailBox .detail-desc > section").eq(a).show();
 				}
 				$(this).on("click", function() {
@@ -142,70 +169,71 @@ $(function() {
 					$(".detailBox .detail-desc > section").eq(a).show();
 				});
 			});
-		})
+		});
 	}
-	
+
 	// product flag
-	if($(".flag-desc").length != 0){
+	if ($(".flag-desc").length != 0) {
 		labeTxt();
 	}
-	
+
 	// product view
-	if($(".proList-view").length != 0){
+	if ($(".proList-view").length != 0) {
 		// sns
-		$(".proList-view .top-cont .txt-desc .sns > a").on("click", function(){
-			console.log("Aa")
-			if(!$(this).hasClass("on")){
+		$(".proList-view .top-cont .txt-desc .sns > a").on("click", function() {
+			if (!$(this).hasClass("on")) {
 				$(this).addClass("on");
 				$(this).next().width("auto");
-			}else{
+			} else {
 				$(this).removeClass("on");
 				$(this).next().width(0);
 			}
-		});		
-		
+		});
+
 		// sns url clk evt
-		$(".proList-view .top-cont .sns a.url").on("click", function(){
+		$(".proList-view .top-cont .sns a.url").on("click", function() {
 			urlCopy();
 		});
-		$(".proList-view .top-cont .sns a.facebook").on("click", function(){
+		$(".proList-view .top-cont .sns a.facebook").on("click", function() {
 			alert("URL 복사만 가능합니다.");
 		});
-		$(".proList-view .top-cont .sns a.twitter").on("click", function(){
+		$(".proList-view .top-cont .sns a.twitter").on("click", function() {
 			alert("URL 복사만 가능합니다.");
 		});
 	}
-	
+
 	//product view textarea info
-	if($("#qnaConts").length != 0){
-		$("#qnaConts").on("change keyup", function(){
+	if ($("#qnaConts").length != 0)  {
+		$("#qnaConts").on("change keyup", function() {
 			$(".inquiry-txt .txtLength em").text($(this).val().length);
-			
-			if($(this).val().length > 500){
+
+			if ($(this).val().length > 500) {
 				alert("최대 500자까지 입력 가능합니다.");
 				$(this).val($(this).val().substring(0, 500));
 				$(".inquiry-txt .txtLength em").text(500);
 			}
 		});
-				
-		$(".inquiryBtn").on("click", function(){
+
+		$(".inquiryBtn").on("click", function() {
 			var qnaConts = $("#qnaConts").val().trim();
-			
-			
-			if(qnaConts == ""){
+
+			if (qnaConts == "") {
 				alert("내용을 입력해주세요.");
 				$("#qnaConts").focus();
-			}else{
-				if(confirm("문의를 등록하시겠습니까?") == true){
+			} else {
+				if (confirm("문의를 등록하시겠습니까?") == true) {
 					alert("문의가 등록되었습니다.");
 					$("#qnaContsWrite").text(qnaConts);
-					//$(".listViewForm").submit();
+					$(".listViewForm").submit();
 					$("#qnaConts").val("");
 					$(".inquiry-txt .txtLength em").text(0);
 				}
 			}
 		});
 	}
+	
+	
+	
 });
 
 
@@ -253,30 +281,30 @@ function hasScrolled() {
 }
 
 // product list : flag txt evt
-function labeTxt(){
+function labeTxt() {
 	var getText = $(".flag-desc .flag span.event");
-	
-	getText.each(function(g){
+
+	getText.each(function(g) {
 		if ($.trim(getText.eq(g).text()) == '바로사용') {
-            getText.eq(g).addClass("now");
-        }
-        else if ($.trim(getText.eq(g).text()) == '투데이특가') {
-            getText.eq(g).addClass("today");
-        }
-        else if ($.trim(getText.eq(g).text()) == '쿠폰할인') {
-            getText.eq(g).addClass("coupon");
-        }
-        else if ($.trim(getText.eq(g).text()) == 'MD추천') {
-            getText.eq(g).addClass("md");
-        }else{
-            getText.eq(g).detach();
-        }
+			getText.eq(g).addClass("now");
+		}
+		else if ($.trim(getText.eq(g).text()) == '투데이특가') {
+			getText.eq(g).addClass("today");
+		}
+		else if ($.trim(getText.eq(g).text()) == '쿠폰할인') {
+			getText.eq(g).addClass("coupon");
+		}
+		else if ($.trim(getText.eq(g).text()) == 'MD추천') {
+			getText.eq(g).addClass("md");
+		} else {
+			getText.eq(g).detach();
+		}
 	});
 }
 
 // product list : discount price evt
-function priceCalc(){
-	$(".price.sale").each(function(e){
+function priceCalc() {
+	$(".price.sale").each(function(e) {
 		//cost price
 		var costPrice = $(this).find(".original del").text();
 		costPrice = parseInt(costPrice);
@@ -288,12 +316,12 @@ function priceCalc(){
 		var priceCalc = costPrice - (costPrice * sale);
 		// discounted price
 		$(this).find("span.discount-price ins").text(priceCalc);
-		
+
 	});
 }
 
 // sns url clk evt
-function urlCopy(){
+function urlCopy() {
 	var url = "";
 	var textarea = document.createElement("textarea");
 	document.body.appendChild(textarea);

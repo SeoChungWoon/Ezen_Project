@@ -630,7 +630,7 @@
 }
 .detailBox .detail-desc > section > div .inquiry-txt{
 	width: 1000px;
-	border: 1px solid #222;	
+/* 	border: 1px solid #222;	 */
 	margin-top: 30px;
 }
 .detailBox .detail-desc > section .inquiryBox .inquiry-txt .desc-type{
@@ -651,6 +651,17 @@
 }
 .detailBox .detail-desc > section .inquiryBox .inquiry-txt .desc-type .btn-cont button{
 	padding: 5px 20px;	
+}
+.detailBox .detail-desc > section .inquiryBox .btn-cont{
+	margin-top: 20px;
+	justify-content: left;
+}
+.detailBox .detail-desc > section .inquiryBox .btn-cont button{
+	padding-right: 30px;
+	background: #333 url("/images/icon-write-btn-w.png")no-repeat right 5px center / 20px;
+}
+.detailBox .detail-desc > section .inquiryBox .btn-cont button:hover{
+	background: #0086b8 url("/images/icon-write-btn-w.png")no-repeat right 5px center / 20px;
 }
 .detailBox .detail-desc > section .bInfo-table{
 	width: 800px;
