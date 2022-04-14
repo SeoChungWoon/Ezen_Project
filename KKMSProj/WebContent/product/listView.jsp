@@ -176,8 +176,8 @@ int chk = prodMgr.writeListChk(pNo);
 
 						<div class="detailBox">
 							<div class="detail-tab">
-								<a href="javascript:"><span>상세정보</span></a> <a
-									href="javascript:" class="on"><span>판매자 문의</span></a> <a
+								<a href="javascript:" class="on"><span>상세정보</span></a> <a
+									href="javascript:"><span>판매자 문의</span></a> <a
 									href="javascript:"><span>관람후기</span></a> <a href="javascript:"><span>예매안내</span></a>
 							</div>
 
@@ -236,27 +236,26 @@ int chk = prodMgr.writeListChk(pNo);
 										</div>
 										<!-- // inquiry-writeCont -->
 										<%
-										}
+											} else {
 										%>
 
 										<div class="btn-cont">
-											<%
-											if (chk == 0) {
-											%>
 											<button type="button" class="btn open-modal mobType1 write"
 												data-target="popup1">문의 작성하기</button>
-
+										</div>
 											<%
 											}
-											} else {
+										} else {
 											%>
+											
+										<div class="btn-cont">
 											<button type="button" class="btn write"
 												onclick="alert('로그인 후 작성가능합니다.'); location.href='/member/login.jsp'">문의
 												작성하기</button>
-											<%
-											}
-											%>
 										</div>
+										<% 
+										}
+										%>
 									</div>
 									<!-- // "inquiryBox" -->
 								</section>
@@ -400,10 +399,10 @@ int chk = prodMgr.writeListChk(pNo);
 		<%@ include file="/popup/productPop.jsp"%>
 	</div>
 	<!-- div#wrap -->
-	<script src="/source/jquery-3.6.0.min.js"></script>
-	<script src="/source/gsap.min.js"></script>
-	<script src="/script/script.js"></script>
-	<script src="/script/memberScript.js"></script>
-	<script src="/script/calendar.js"></script>
+		<script src="/source/jquery-3.6.0.min.js"></script>
+		<script src="/source/gsap.min.js"></script>
+		<script src="/script/script.js"></script>
+		<script src="/script/memberScript.js"></script>
+		<script src="/script/calendar.js"></script>
 </body>
 </html>
