@@ -202,7 +202,29 @@ alter table proList drop column pFlag3;
 select * from proList;
 select * from proList order by pNo Asc;
 
+## detail info
+## pContactSel : 판매자 문의 내용
+create table proLDetail(
+pNo					int				not null,
+pContactSel		VARCHAR(500)		,
+
+constraint foreign key(pNo) references proList(pNo)
+);
+
+drop table proLDetail;
+desc proLDetail;
+truncate proLDetail;
+select * from proLDetail;
 /* // 상품 리스트 */
+
+
+
+
+
+
+
+
+
 
 create table eventList (
 eNo int auto_increment not null,

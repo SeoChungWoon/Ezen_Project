@@ -1,4 +1,4 @@
-package pack_product;
+package pack_Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.Vector;
 
 import pack_DBCP.DBConnectionMgr;
 
-public class productMgr {
+public class ProductMgr {
 
 	private DBConnectionMgr pool = null;
 	private Connection objConn = null;
@@ -17,7 +17,7 @@ public class productMgr {
 	private ResultSet objRS = null;
 	private String sql = "";
 
-	public productMgr() {
+	public ProductMgr() {
 		try {
 			pool = DBConnectionMgr.getInstance();
 		} catch (Exception e) {
@@ -26,9 +26,9 @@ public class productMgr {
 	}
 
 	// 데이터 출력
-	public List<proListBean> listOutput() {
+	public List<ProListBean> listOutput() {
 
-		List<proListBean> pList = new Vector<proListBean>();
+		List<ProListBean> pList = new Vector<ProListBean>();
 
 		try {
 			objConn = pool.getConnection();
@@ -36,7 +36,7 @@ public class productMgr {
 			objPstmt = objConn.prepareStatement(sql);
 			objRS = objPstmt.executeQuery();
 			while(objRS.next()){
-				proListBean pLBean = new proListBean();
+				ProListBean pLBean = new ProListBean();
 				pLBean.setpNo(objRS.getInt("pNo"));
 				pLBean.setpFlag1(objRS.getString("pFlag1"));
 				pLBean.setpFlag2(objRS.getString("pFlag2"));
@@ -56,7 +56,7 @@ public class productMgr {
 				pList.add(pLBean);
 			}
 		} catch (Exception e) {
-			System.out.println("e : " + e.getMessage());
+			System.out.println("listOutput e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -78,11 +78,38 @@ public class productMgr {
 				count = objRS.getInt(1);
 			}
 		}catch(Exception e) {
-			System.out.println("Exception : " + e.getMessage());
+			System.out.println("proListCount e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
 		
 		return count;
+	}
+	
+	//판매자 문의
+	public boolean contactSel(int pNo, String pContactSel) {
+		boolean chk = false;		
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "insert into proLDetail (pNo, pContactSel) values (?, ?)";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1,pNo);
+			objPstmt.setString(2, pContactSel);
+			objPstmt.executeUpdate();
+
+			if (objPstmt.executeUpdate() > 0)
+				chk = true;
+			
+			System.out.println("pNo : " +  pNo);
+			System.out.println("txtArea : " + pContactSel);
+		} catch (Exception e) {
+			System.out.println("contactSel e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		System.out.println("chk : " + chk);
+		System.out.println("====================================");
+		return chk;
 	}
 }

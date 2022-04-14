@@ -24,6 +24,13 @@ body {
 	-webkit-overflow-scrolling: touch;
 	-ms-text-size-adjust: 100%
 }
+input, select, textarea, button{
+	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+textarea{
+	padding: 5px;
+	font-size: 16px;
+}
 
 a:link {
 	color: #222;
@@ -84,4 +91,11 @@ select {
 
 em{
 	font-style: normal;
+}
+table{
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+table caption{
+	display: none;
 }

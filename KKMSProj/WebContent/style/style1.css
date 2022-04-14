@@ -203,8 +203,36 @@
 
 .exhibit-cont .exhibit-list .listBox>a {
 	display: block;
+	position: relative;
 }
 
+.exhibit-cont .exhibit-list .listBox .likeClk{
+	position: absolute;
+	margin-top: 10px;
+	bottom: 20px;
+	right: 10px;
+	z-index: 2;
+}
+.exhibit-cont .exhibit-list .listBox .likeClk input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	width: 1px;
+	height: 1px;
+	opacity: .01;
+}
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group label{
+	padding: 5px 0 5px 40px;
+/* 	font-size: 14px; */
+	background: url("/images/icon-like-off.png")no-repeat 0 0 / 30px;
+}
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked label{
+	background: url("/images/icon-like-on.png")no-repeat 0 0 / 30px;
+}
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked::before{
+	display: none;
+}
 .exhibit-cont .exhibit-list .listBox .txt-info {
 	padding: 20px;
 }
@@ -412,30 +440,6 @@
 .proList-view .detail-cont .infoBox .left .img img{
 	width: 100%;
 }
-.proList-view .detail-cont .infoBox .left .likeClk{
-	position: relative;
-	margin-top: 10px;
-}
-.proList-view .detail-cont .infoBox .left .likeClk input{
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 2;
-	width: 30px;
-	height: 30px;
-	opacity: .01;
-}
-.proList-view .detail-cont .infoBox .left .likeClk .chk-group label{
-	padding: 5px 0 5px 40px;
-	font-size: 14px;
-	background: url("/images/icon-like-off.png")no-repeat 0 0 / 30px;
-}
-.proList-view .detail-cont .infoBox .left .likeClk .chk-group.checked label{
-	background: url("/images/icon-like-on.png")no-repeat 0 0 / 30px;
-}
-.proList-view .detail-cont .infoBox .left .likeClk .chk-group.checked::before{
-	display: none;
-}
 .proList-view .detail-cont .infoBox .right{
 	width: calc(100% - 35%);
 }
@@ -507,22 +511,14 @@
 
 .proList-view .detail-cont .reserveBox{
 	margin-top: 100px;
-	display: flex;
-	flex-wrap: nowrap;
 	width: 100%;
 }
-.proList-view .detail-cont .reserveBox > div{
+.proList-view .detail-cont .reserveBox > .selDate{
 	flex: 1;
-	border: 1px solid #ddd;
-	padding: 20px;
-}
-.proList-view .detail-cont .reserveBox > div.on{
 	border: 1px solid #cd4a00;
+	padding: 50px;
 }
-.proList-view .detail-cont .reserveBox > div + div{
-	margin-left: 10px;
-}
-.proList-view .detail-cont .reserveBox > div > p.txt{
+.proList-view .detail-cont .reserveBox > .selDate > p.txt{
 	padding-bottom: 20px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid #222;
@@ -541,8 +537,147 @@
 	padding-left: 20px;
 	border-left: 1px solid #ddd;
 }
-
-
+.proList-view .detail-cont .reserveBox .btn-cont{
+	margin: 50px 0;
+}
+.proList-view .detail-cont .reserveBox .btn-cont button{
+	font-size: 18px;
+	padding: 15px 100px;
+}
+.proList-view .detail-cont .detailBox{
+	padding-top: 100px;
+}
+.proList-view .detail-cont .detailBox .detail-tab{
+	position: relative;
+	display: flex;
+	flex-wrap: nowrap;	
+	margin-bottom: 50px;
+}
+.proList-view .detail-cont .detailBox .detail-tab::after{
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: #222;
+}
+.proList-view .detail-cont .detailBox .detail-tab a{
+	position: relative;
+	display: block;
+	padding: 20px 50px;
+	background: #fff;
+}
+.proList-view .detail-cont .detailBox .detail-tab a span{
+	font-size: 18px;
+}
+.proList-view .detail-cont .detailBox .detail-tab a.on{
+	border-top: 2px solid #0cb4cf;
+}
+.proList-view .detail-cont .detailBox .detail-tab a.on span{
+	font-weight: bold;
+	color: #0cb4cf;
+}
+.detailBox .detail-desc > section{
+	margin: 0 auto;
+	display: none;
+}
+.detailBox .detail-desc > section .img{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.detailBox .detail-desc > section > div > p.tit{
+    margin-bottom: 40px;
+    font-weight: bold;
+    font-size: 24px;
+}
+.detailBox .detail-desc > section > div > p.txt{
+	padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+    font-size: 18px;
+}
+.detailBox .detail-desc > section > div > ul.sec-list + p.tit{
+	margin-top: 60px;
+}
+.detailBox .detail-desc > section > div > ul.sec-list li{
+	position: relative;
+	display: block;
+	line-height: 20px;
+	color: #666;
+	font-size: 14px;
+	padding-left: 15px;
+}
+.detailBox .detail-desc > section > div ul.sec-list li::before{
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 10px;
+	border-radius: 50%;
+	width: 3px;
+	height: 3px;
+	background: #666;
+}
+.detailBox .detail-desc > section > div ul.sec-list li + li{
+	margin-top: 10px;
+}
+.detailBox .detail-desc > section > div ul.sec-list li a{
+	color: #666;
+}
+.detailBox .detail-desc > section > div .inquiry-txt{
+	width: 1000px;
+	border: 1px solid #222;	
+	margin-top: 30px;
+}
+.detailBox .detail-desc > section .inquiryBox .inquiry-txt .desc-type{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	padding-top: 10px;
+}
+.detailBox .detail-desc > section .inquiryBox .inquiry-txt textarea{
+	resize: none;
+	border: none;
+	width: 100%;
+	height: 200px;
+}
+.detailBox .detail-desc > section .inquiryBox .inquiry-txt .txtLength{
+	text-align: right;
+	padding: 10px 10px 10px 0;
+}
+.detailBox .detail-desc > section .inquiryBox .inquiry-txt .desc-type .btn-cont button{
+	padding: 5px 20px;	
+}
+.detailBox .detail-desc > section .bInfo-table{
+	width: 800px;
+	margin-bottom: 20px;
+}
+.detailBox .detail-desc > section .bInfo-table tr th,
+.detailBox .detail-desc > section .bInfo-table tr td{
+	padding: 20px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+.detailBox .detail-desc > section .bInfo-table tr th{
+	background: #f5f5f5;
+}
+.detailBox .detail-desc > section .bInfo-table tbody tr th{
+	font-weight: normal;
+}
+.detailBox .detail-desc > section .inquiryBox .inquiry-writeCont .write-cont{
+	width: 1000px;
+}
+.detailBox .detail-desc > section .inquiryBox .inquiry-writeCont .write-cont textarea{
+	resize: none;
+	border: none;
+	width: 100%;
+	height: 200px;
+	background: #e1e1e1;
+}
 
 
 

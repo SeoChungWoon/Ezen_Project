@@ -1,10 +1,10 @@
-<%@page import="pack_product.proListBean"%>
+<%@page import="pack_Product.ProListBean"%>
 <%@page import="java.util.List"%>
-<%@page import="pack_product.productMgr"%>
+<%@page import="pack_Product.ProductMgr"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<jsp:useBean id="prodMgr" class="pack_product.productMgr" />
+<jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />
 
 <!DOCTYPE html>
 <html>
@@ -73,11 +73,17 @@
 				 	int cnt = prodMgr.proListCount();
 					
 				 	if(cnt != 0){
-	      				for(int i = 0; i < objList.size(); i++){
-							proListBean mList = (proListBean) objList.get(i);
-						%>
+			      		for(int i = 0; i < objList.size(); i++){
+							ProListBean mList = (ProListBean) objList.get(i);
+					%>
 						<div class="listBox">
 							<a href="/product/listView.jsp?pNo=<%=mList.getpNo() %>">
+								<div class="likeClk">
+									<div class="chk-group">
+										<input type="checkbox" value="" id="like"/>
+										<label for="like"></label>
+									</div>
+								</div>
 								<p class="img">
 									<img src="/images/product-list-img<%= i+1 %>.jpg" alt="" />
 								</p>

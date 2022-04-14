@@ -52,9 +52,31 @@
 		max-width: 92%;
 	}
 }
-
+/*button*/
+.btn-cont{
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+.btn-cont button{
+	padding: 5px 10px;
+	background: #333;
+	border: 1px solid #333;
+	color: #fff;
+}
+.btn-cont button:hover{
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
+}
 .point {
 	color: #e64949;
+}
+.red {
+	color: #e64949;
+}
+.blue{
+	color: #0086b8;
 }
 
 .match {
