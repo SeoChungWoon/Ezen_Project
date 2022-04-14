@@ -111,6 +111,102 @@ public class eventMgr {
 		return flag;
 	}
 
+	public List eventReplyList (int eNo) {
 
+		List rList = new Vector();
+
+		try {
+			objConn = pool.getConnection();
+
+			sql = "select * from replyEvent where eNo=? order by rNo desc";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, eNo);
+			objRS = objPstmt.executeQuery();
+			while (objRS.next()) {
+				eventBean eBean = new eventBean();
+				eBean.setuId(objRS.getString("uId"));
+				eBean.seteNo(objRS.getInt("eNo"));
+				eBean.seteTxt(objRS.getString("eTxt"));
+				eBean.seteDate(objRS.getString("eDate"));
+				rList.add(eBean);
+			}
+
+		} catch (Exception e) {
+			System.out.println("e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return rList;
+	}
+	
+	public boolean eventReplyEnter (String uId, int eNo, String eTxt) {
+		boolean flag = false;
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "insert into replyEvent (uId, eNo, eTxt, eDate) values (?, ?, ?, now())";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uId);
+			objPstmt.setInt(2, eNo);
+			objPstmt.setString(3, eTxt);
+			if(objPstmt.executeUpdate()>0) {
+				flag = true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		
+		return flag;
+	}
+	
+	public boolean eventReplyDel (String uId, int eNo, String eTxt, String eDate) {
+		boolean flag = false;
+		
+		eDate = eDate.trim();
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "delete from replyEvent where uId = ? and eNo = ? and eTxt = ? and eDate = ?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uId);
+			objPstmt.setInt(2, eNo);
+			objPstmt.setString(3, eTxt);
+			objPstmt.setString(4, eDate);
+			if(objPstmt.executeUpdate()>0) {
+				flag = true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		
+		return flag;
+	}
+	
+	public int eventReplyCnt () {
+		int eCnt = 0;
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "select count(*) from replyEvent";
+			objStmt = objConn.createStatement();
+			objRS = objStmt.executeQuery(sql);
+			objRS.next();
+			eCnt = objRS.getInt("count(*)");
+		} catch (Exception e) {
+			
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		
+		
+		return eCnt;
+	}
 
 }

@@ -248,7 +248,7 @@ insert into eventList (eTitle, eContent, eMainImg, eInnerImg, eStart, eEnd, eTag
 
 insert into eventList (eTitle, eContent, eMainImg, eInnerImg, eStart, eEnd, eRes, eTag, eType) values ('설레이는 봄, 전시회 봄', '이벤트 내용', 'event-spring-booking.png', 'event-spring-booking.png', '2022-04-01', '2022-04-30', '2022-05-03', '진행중', '응모이벤트');
 
-insert into eventList (eTitle, eContent, eMainImg, eInnerImg, eStart, eEnd, eRes, eTag, eType) values ('앤서니 브라운의 원더랜드 뮤지엄 기대평 이벤트', '이벤트 내용', 'event-reply.jpg', 'event-reply.jpg', '2022-04-01', '2022-04-08', '2022-05-03', '진행중', '기대평이벤트');
+insert into eventList (eTitle, eContent, eMainImg, eInnerImg, eStart, eEnd, eRes, eTag, eType) values ('앤서니 브라운의 원더랜드 뮤지엄 기대평 이벤트', '이벤트 내용', 'event-reply-product1.jpg', 'event-reply-product1-detail.jpg', '2022-04-01', '2022-04-08', '2022-05-03', '진행중', '기대평이벤트');
 
 create table event (
 	uId char(15) not null,
@@ -256,3 +256,20 @@ create table event (
 );
 
 select * from event;
+
+create table replyEvent (
+	rNo int auto_increment not null,
+	uId char(15) not null,
+    eNo int not null,
+    eTxt char(255) not null,
+    eDate timestamp not null,
+    constraint primary key(rNo)
+);
+
+drop table replyEvent;
+
+insert into replyEvent (uId, eNo, eTxt, eDate) values ('아이디', 3, '너무 기대돼용~', now());
+
+select * from replyEvent;
+
+select * from replyEvent where eDate = '2022-04-14 12:18:39';

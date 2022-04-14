@@ -12,8 +12,28 @@ public class eventBean {
 	private String eRes;
 	private String eTag;
 	private String eType;
+	private String eTxt;
+	private String uId;
+	private String eDate;
 	
-	
+	public String geteTxt() {
+		return eTxt;
+	}
+	public void seteTxt(String eTxt) {
+		this.eTxt = eTxt;
+	}
+	public String getuId() {
+		return uId;
+	}
+	public void setuId(String uId) {
+		this.uId = uId;
+	}
+	public String geteDate() {
+		return eDate;
+	}
+	public void seteDate(String eDate) {
+		this.eDate = eDate;
+	}
 	public int geteNo() {
 		return eNo;
 	}
