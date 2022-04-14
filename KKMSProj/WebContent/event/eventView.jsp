@@ -86,7 +86,7 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 					<div class="eventViewTab">
 					<ul class="dFlex">
 						<li class="eventDetailTab">상세정보</li>
-						<li class="eventReplyTab">기대평 작성</li>
+						<li class="eventReplyTab">기대평 (<%=eCnt %>)</li>
 					</ul>
 					</div>
 					<!-- div.eventViewTab -->
@@ -115,7 +115,7 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 					<div class="eventViewTab">
 					<ul class="dFlex">
 						<li class="eventDetailTab">상세정보</li>
-						<li class="eventReplyTab">기대평 작성</li>
+						<li class="eventReplyTab">기대평 (<%=eCnt %>)</li>
 					</ul>
 					</div>
 					<!-- div.eventViewTab -->
