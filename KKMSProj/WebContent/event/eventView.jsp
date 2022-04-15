@@ -83,6 +83,9 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 					</div>
 					<!-- // top-cont -->
 					
+					<%
+					if(type.equals("기대평이벤트")) {
+					%>
 					<div class="eventViewTab">
 					<ul class="dFlex">
 						<li class="eventDetailTab">상세정보</li>
@@ -90,9 +93,6 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 					</ul>
 					</div>
 					<!-- div.eventViewTab -->
-					<%
-					if(type.equals("기대평이벤트")) {
-					%>
 					<div id="eventContent">
 						<img src="/images/<%=evList.geteInnerImg()%>" alt="" />
 						<div class="eventRef">
@@ -112,6 +112,9 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 						<!-- div.eventRef -->
 					</div>
 					<!-- div.eventContent -->
+					<%
+					if(type.equals("기대평이벤트")) {
+					%>
 					<div class="eventViewTab">
 					<ul class="dFlex">
 						<li class="eventDetailTab">상세정보</li>
@@ -119,6 +122,7 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 					</ul>
 					</div>
 					<!-- div.eventViewTab -->
+					<%} %>
 					<div class="eventBtnArea">
 						<%
 						if (tag.equals("종료") || tag.equals("당첨자발표")) {
