@@ -265,10 +265,82 @@ div.footerArea>.pageArea a.nowPage{
 	cursor: pointer;
 }
 /*/////////////////////faqList.jsp 영역 끝///////////////////////*/
-/*/////////////////////faqList.jsp 영역 시작///////////////////////*/
+/*/////////////////////useInfo.jsp 영역 시작///////////////////////*/
 
+#wrap>.sub-body>.inner>section.sec4 .img {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 
-/*/////////////////////faqList.jsp 영역 끝///////////////////////*/
+#wrap>.sub-body>.inner>section.sec4>div>p.tit {
+	margin-bottom: 40px;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+#wrap>.sub-body>.inner>section.sec4>div>p.txt {
+	padding-top: 20px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	color: #333;
+	font-size: 18px;
+}
+
+#wrap>.sub-body>.inner>section.sec4>div>ul.sec-list+p.tit {
+	margin-top: 60px;
+}
+
+#wrap>.sub-body>.inner>section.sec4>div>ul.sec-list li {
+	position: relative;
+	display: block;
+	line-height: 20px;
+	color: #666;
+	font-size: 14px;
+	padding-left: 15px;
+}
+
+#wrap>.sub-body>.inner>section.sec4>div ul.sec-list li::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 10px;
+	border-radius: 50%;
+	width: 3px;
+	height: 3px;
+	background: #666;
+}
+#wrap>.sub-body>.inner>section.sec4>div ul.sec-list li+li {
+	margin-top: 10px;
+}
+
+#wrap>.sub-body>.inner>section.sec4>div ul.sec-list li a {
+	color: #666;
+}
+
+#wrap>.sub-body>.inner>section.sec4 .bInfo-table {
+	width: 800px;
+	margin-bottom: 20px;
+}
+
+#wrap>.sub-body>.inner>section.sec4 .bInfo-table tr th, 
+#wrap>.sub-body>.inner>section.sec4 .bInfo-table tr td
+	{
+	padding: 20px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+#wrap>.sub-body>.inner>section.sec4 .bInfo-table tr th {
+	background: #f5f5f5;
+}
+
+#wrap>.sub-body>.inner>section.sec4 .bInfo-table tbody tr th {
+	font-weight: normal;
+}
+
+/*/////////////////////useInfo.jsp 영역 끝///////////////////////*/
 
 
 

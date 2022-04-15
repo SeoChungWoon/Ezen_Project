@@ -20,7 +20,7 @@
 						<a href="javascript:">고객지원</a>
 						<ul class="two-dep">
 							<li><a href="/data/bbsList.jsp"><span>공지사항</span></a></li>
-							<li><a href="javascript:"><span>이용안내</span></a></li>
+							<li><a href="/data/useInfo.jsp"><span>이용안내</span></a></li>
 							<li><a href="/data/faqList.jsp"><span>FAQ</span></a></li>
 						</ul>
 					</div>
