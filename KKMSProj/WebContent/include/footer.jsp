@@ -46,4 +46,8 @@
 	<a href="javascript:" class="top_btn" title="최상단으로 이동"> 
 		<span class="enTxt">TOP</span>
 	</a>
+	<a href="javascript:" class="reply_btn" title="기대평으로 이동"> 
+		<span class="enTxt">댓글</span>
+		<span class="enImg"><img src="/images/icon-arrow-down-blue.png"></span>
+	</a>
 </div>

@@ -20,6 +20,7 @@ $(function() {
 			return false;
 		});
 	}
+	
 
 	// header
 	if ($("header").length != 0) {
@@ -334,9 +335,19 @@ $(window).on("load", function() {
 			$("header nav .menu").width(menuWid * (e + 1));
 		});
 	}
+	
+	if ($("#eventReplyTxt").length != 0) {
+		$(".quick_div .reply_btn").show();
+	} else {
+		$(".quick_div .reply_btn").hide();
+	}
 
 	if ($("#wrap .sub-body").length != 0) {
 		$("#wrap .sub-body").css("min-height", "100vh");
+	}
+	
+	if ($("#idArea").length != 0) {
+		$("#memberid").focus();
 	}
 });
 

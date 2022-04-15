@@ -369,7 +369,7 @@ footer .fInfo .fSns a img{
   z-index: 8;
 }
 
-.quick_div .top_btn {
+.quick_div .top_btn , .reply_btn{
   display: block;
   position: relative;
   width: 60px;
@@ -382,14 +382,14 @@ footer .fInfo .fSns a img{
   box-shadow: 0px 5px 30px -5px rgb(0 0 0 / 30%);
 }
 
-.quick_div .top_btn span {
+.quick_div .top_btn span , .reply_btn span {
   font-size: 14px;
   font-weight: 700;
   color: #666;
   line-height: 1.5;
 }
 
-.quick_div .top_btn:hover {
+.quick_div .top_btn:hover , .reply_btn:hover {
   border: 1px solid #0099bf;
 }
 
@@ -397,7 +397,25 @@ footer .fInfo .fSns a img{
   color: #0099bf;
 }
 
+.quick_div .reply_btn span {
+	position: relative;
+	display: block;
+	top: 20px
+}
 
+.quick_div .reply_btn {
+	text-align: center;
+	overflow: hidden;
+}
+
+.quick_div .reply_btn .enImg {
+	top: 30px;
+	opacity: 0;
+}
+
+.quick_div .reply_btn .enImg img{
+	width: 25px;	
+}
 
 /* 팝업 */
 .pop_dimd {

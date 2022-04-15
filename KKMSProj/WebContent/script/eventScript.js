@@ -62,16 +62,27 @@ $(function() {
 /* 이벤트 기대평 이벤트 */
 
 
-/* 이벤트 기대평 이벤트 탭 */
-	$(".eventDetailTab").on("click", function(){
-		$("html, body").animate({ scrollTop: 0}, 400);
+/* 댓글 이동 버튼 */
+	$(".reply_btn").on("mouseenter", function(){
+		gsap.to($(".enImg "), 0.6, { opacity: 1, top: -5, ease: Power3.easeOut });
+		gsap.to($(".reply_btn .enTxt "), 0.4, { opacity: 0, ease: Power3.easeOut });
+		gsap.to($(".reply_btn .enTxt "), 0.8, { top:-20, ease: Power3.easeOut });
+		
 	});
-	$(".eventReplyTab").on("click", function(){
-		$("#eventReplyTxt").focus();
+	$(".reply_btn").on("mouseleave", function(){
+		gsap.to($(".enImg "), 0.6, { opacity: 0, top: 30, ease: Power3.easeOut });
+		gsap.to($(".reply_btn .enTxt "), 0.4, { opacity: 1, ease: Power3.easeOut });
+		gsap.to($(".reply_btn .enTxt "), 0.8, { top: 20, ease: Power3.easeOut });
 	});
 	
-/* 이벤트 기대평 이벤트 탭 */
-
+	$(".reply_btn").on("click", function(){
+		location.href="#eventRefTxt";
+	});
 	
+	$(".guest").on("click", function(){
+		alert("로그인 후 이용해주세요.");
+		location.href="/member/login.jsp";
+	});
+/* 댓글 이동 버튼 */
 
 });

@@ -6,7 +6,67 @@
 	flex-wrap: wrap;
 	justify-content: center;
 }
+<!--
+.eventViewArea {
+	padding-top: 100px;
+}
 
+.eventViewArea .eventTop {
+	padding-bottom: 30px;
+	border-bottom: 2px solid #333;;
+}
+
+.eventViewArea .eventTop .eventFlagDesc {
+	width: 100%;
+}
+
+.eventViewArea .eventTop .eventTxtDesc {
+	position: relative;
+	margin-top: 10px;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.eventViewArea .eventTop .eventTxtDesc::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.eventViewArea .eventTop .eventTxtDesc .tit {
+	float: left;
+}
+
+.eventViewArea .eventTop .eventTxtDesc .sns {
+	position: relative;
+	float: right;
+}
+
+.eventViewArea .eventTop .eventTxtDesc .sns>a {
+	display: block;
+	width: 48px;
+	height: 48px;
+}
+
+.eventViewArea .eventTop .eventTxtDesc .sns .sns-list {
+	position: absolute;
+	right: 50px;
+	top: 5px;
+	display: flex;
+	flex-wrap: nowrap;
+	width: 0;
+}
+
+.eventViewArea .eventTop .eventTxtDesc .sns .sns-list a {
+	width: 30px;
+	display: block;
+	margin-right: 10px;
+}
+
+.eventViewArea .eventTop .eventTxtDesc .sns .sns-list a img {
+	width: 100%;
+}
+-->
 .eventRow {
 	margin: 15px 10px;
 	width: calc((100% - 80px) / 4);
@@ -46,6 +106,8 @@
 
 .eventPageArea .event-tab li.on a {
 	background: linear-gradient(117deg, #28d4dd 1%, #0080c0);
+	color: #fff;
+	font-weight: bold;
 }
 
 hr.eventHR {
@@ -241,9 +303,4 @@ hr.eventHR {
 	padding: 10px;
 	margin: 0 20px;
 	font-size: 20px;
-}
-
-.eventViewTab > ul > li:hover{
-	background-color: #eee;
-	cursor: pointer;
 }
