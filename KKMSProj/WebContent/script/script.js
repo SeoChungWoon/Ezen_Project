@@ -206,10 +206,11 @@ $(function() {
 		labeTxt();
 	}
 
+
 	// product view
-	if ($(".proList-view").length != 0) {
+	if ($(".sns-line").length != 0) {
 		// sns
-		$(".proList-view .top-cont .txt-desc .sns > a").on("click", function() {
+		$(".sns-line .sns > a").on("click", function() {
 			if (!$(this).hasClass("on")) {
 				$(this).addClass("on");
 				$(this).next().width("auto");
@@ -220,13 +221,13 @@ $(function() {
 		});
 
 		// sns url clk evt
-		$(".proList-view .top-cont .sns a.url").on("click", function() {
+		$(".sns-line .sns a.url").on("click", function() {
 			urlCopy();
 		});
-		$(".proList-view .top-cont .sns a.facebook").on("click", function() {
+		$(".sns-line .sns a.facebook").on("click", function() {
 			alert("URL 복사만 가능합니다.");
 		});
-		$(".proList-view .top-cont .sns a.twitter").on("click", function() {
+		$(".sns-line .sns a.twitter").on("click", function() {
 			alert("URL 복사만 가능합니다.");
 		});
 	}
@@ -243,13 +244,13 @@ $(function() {
 				alert("최대 500자까지 입력 가능합니다.");
 				$(this).val($(this).val().substring(0, txtLength));
 				$(this).next(".txtLength").find("em").text(txtLength);
-				console.log($(this))
 			}
 		});
 
 		// 판매자 문의 수정
 		$("#qnaContsWrite").on("change keyup", function() {
 			$(this).next(".txtLength").find("em").text($(this).val().length);
+			console.log($(this).val().length)
 
 			if ($(this).val().length > txtLength) {
 				alert("최대 500자까지 입력 가능합니다.");
@@ -257,8 +258,12 @@ $(function() {
 				$(this).next(".txtLength").find("em").text(txtLength);
 			}
 		});
+		
+		$("#qnaContsWrite").each(function(e){
+			$(this).next(".txtLength").find("em").text($(this).val().length);
+		});
 	}
-
+	
 	if ($("#qnaConts").length != 0) {
 
 		$(".inquiryBtn").on("click", function() {
@@ -269,10 +274,14 @@ $(function() {
 				$("#qnaConts").focus();
 			} else {
 				if (confirm("문의를 등록하시겠습니까?") == true) {
-					$("#qnaContsWrite").text(qnaConts);
-					$(".listViewForm").submit();
-					$("#qnaConts").val("");
-					$(".inquiry-txt .txtLength em").text(0);
+					if($("#qnaContsWrite").text().length < 10){
+						alert("최소 10자이상 입력가능합니다.");
+					}else{
+						$("#qnaContsWrite").text(qnaConts);
+						$(".listViewForm").submit();
+						$("#qnaConts").val("");
+						$(".inquiry-txt .txtLength em").text(0);
+					}
 				}
 			}
 		});
@@ -316,7 +325,7 @@ $(function() {
 		// 삭제 버튼
 		$(".delBtn").on("click", function() {
 			if (confirm("문의를 삭제하시겠습니까?") == true) {
-				
+				$(".listViewFormRe").attr("action", "/product/listViewDelProc.jsp").submit();
 			}
 		});
 	}
@@ -335,20 +344,21 @@ $(window).on("load", function() {
 			$("header nav .menu").width(menuWid * (e + 1));
 		});
 	}
+
+	if ($("#wrap .sub-body").length != 0) {
+		$("#wrap .sub-body").css("min-height", "100vh");
+	}
 	
 	if ($("#eventReplyTxt").length != 0) {
 		$(".quick_div .reply_btn").show();
 	} else {
 		$(".quick_div .reply_btn").hide();
 	}
-
-	if ($("#wrap .sub-body").length != 0) {
-		$("#wrap .sub-body").css("min-height", "100vh");
-	}
 	
 	if ($("#idArea").length != 0) {
 		$("#memberid").focus();
 	}
+
 });
 
 
@@ -412,8 +422,14 @@ function priceCalc() {
 		sale = sale / 100;
 		// calc
 		var priceCalc = costPrice - (costPrice * sale);
+		
 		// discounted price
 		$(this).find("span.discount-price ins").text(priceCalc);
+		
+		// not sale
+		if($(this).children("span").length < 2){
+			$(this).find(".original").addClass("keep");
+		}
 
 	});
 }

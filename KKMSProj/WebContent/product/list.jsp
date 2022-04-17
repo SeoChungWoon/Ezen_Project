@@ -16,10 +16,6 @@
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
-<script src="/source/jquery-3.6.0.min.js"></script>
-<script src="/source/gsap.min.js"></script>
-<script src="/script/script.js"></script>
-<script src="/script/memberScript.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -107,6 +103,17 @@
 										<span class="content"><%= mList.getpContent()%></span>
 									</p>
 									<p class="price sale">
+										<%
+										request.setCharacterEncoding("UTF-8");
+										int salePrice = mList.getpSalePercent();
+										if (salePrice == 0) {
+										%>
+										<span class="original"> 
+											<del><%= mList.getpOriPrice()%></del><span>원</span>
+										</span> 
+										<%
+										} else{
+										%>
 										<span class="original"> 
 											<span class="rate-sale"><em><%= mList.getpSalePercent()%></em>%</span> 
 											<del><%= mList.getpOriPrice()%></del><span>원</span>
@@ -114,6 +121,9 @@
 										<span class="discount-price">
 											<ins></ins><span>원</span>
 										</span>
+										<%
+										}
+										%>
 									</p>
 								</div>
 							</a>
@@ -139,5 +149,9 @@
 
 	</div>
 	<!-- div#wrap -->
+<script src="/source/jquery-3.6.0.min.js"></script>
+<script src="/source/gsap.min.js"></script>
+<script src="/script/script.js"></script>
+<script src="/script/memberScript.js"></script>
 </body>
 </html>

@@ -47,7 +47,7 @@ int chk = prodMgr.writeListChk(pNo);
 							</div>
 						</div>
 
-						<div class="txt-desc">
+						<div class="txt-desc sns-line">
 							<p class="tit"><%=mList.getpTitle()%></p>
 							<div class="sns">
 								<a href="javascript:"><img src="/images/icon-share.png"
@@ -111,10 +111,24 @@ int chk = prodMgr.writeListChk(pNo);
 										<dt>가격</dt>
 										<dd>
 											<div class="price sale">
+											<%
+											int salePrice = mList.getpSalePercent();
+											if (salePrice == 0) {
+											%>
+												<span class="original"> 
+													<del><%=mList.getpOriPrice()%></del><span>원</span>
+												</span> 
+											<%
+											} else{
+											%>
 												<span class="original"> <span class="rate-sale"><em><%=mList.getpSalePercent()%></em>%</span>
 													<del><%=mList.getpOriPrice()%></del><span>원</span>
-												</span> <span class="discount-price"> <ins></ins><span>원</span>
+												</span> 
+												<span class="discount-price"> <ins></ins><span>원</span>
 												</span>
+											<%
+											}
+											%>
 											</div>
 										</dd>
 									</dl>
@@ -176,9 +190,10 @@ int chk = prodMgr.writeListChk(pNo);
 
 						<div class="detailBox">
 							<div class="detail-tab">
-								<a href="javascript:" class="on"><span>상세정보</span></a> <a
-									href="javascript:"><span>판매자 문의</span></a> <a
-									href="javascript:"><span>관람후기</span></a> <a href="javascript:"><span>예매안내</span></a>
+								<a href="javascript:"><span>상세정보</span></a> 
+								<a href="javascript:"><span>판매자 문의</span></a> 
+								<a href="javascript:" class="on"><span>관람후기</span></a> 
+								<a href="javascript:"><span>예매안내</span></a>
 							</div>
 
 							<div class="detail-desc">
@@ -221,7 +236,7 @@ int chk = prodMgr.writeListChk(pNo);
 													<textarea name="qnaContsWrite" id="qnaContsWrite"
 														placeholder="" disabled><%=mList.getpWriteSel()%></textarea>
 													<div class="txtLength">
-														<span><em>0</em> / 500</span>
+														<span><em></em> / 500</span>
 													</div>
 													<div class="btn-cont">
 														<button type="button" class="modBtn">수정</button>
@@ -240,7 +255,7 @@ int chk = prodMgr.writeListChk(pNo);
 										%>
 
 										<div class="btn-cont">
-											<button type="button" class="btn open-modal mobType1 write"
+											<button type="button" class="btn open-modal write"
 												data-target="popup1">문의 작성하기</button>
 										</div>
 											<%
@@ -262,27 +277,26 @@ int chk = prodMgr.writeListChk(pNo);
 								<section class="sec3">
 									<div class="reviewBox">
 										<p class="tit">관람후기</p>
-
-										<div class="choice-rate">
-											<div class="starBox">
-												<span class="star"></span>
+											
+										<%
+										memberId = (String) session.getAttribute("memID");
+										if (memberId != null) {
+										%>
+											<div class="btn-cont">
+												<button type="button" class="btn open-modal review"
+													data-target="popup2">관람리뷰 작성하기</button>
 											</div>
-											<%
-											memberId = (String) session.getAttribute("memID");
-											if (memberId != null) {
-											%>
-											<textarea name="starConts" id="starConts"
-												placeholder="후기를 작성해주세요."></textarea>
-											<%
-											} else {
-											%>
-											<textarea name="starConts" id="starConts"
-												placeholder="로그인 후 작성해주세요."></textarea>
-											<%
-											}
-											%>
-
+										<%
+										} else{
+										%>
+										<div class="btn-cont">
+											<button type="button" class="btn review"
+												onclick="alert('로그인 후 작성가능합니다.'); location.href='/member/login.jsp'">관람리뷰
+												작성하기</button>
 										</div>
+										<%
+										}
+										%>
 									</div>
 								</section>
 								<section class="sec4">

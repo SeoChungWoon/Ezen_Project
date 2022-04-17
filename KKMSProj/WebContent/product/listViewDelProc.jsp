@@ -8,15 +8,15 @@ request.setCharacterEncoding("UTF-8");
 int pNo = Integer.parseInt(request.getParameter("pNo"));
 String pTextarea = request.getParameter("qnaContsWrite");
 
-boolean chk = pMgr.writeChk(pNo, pTextarea);
+boolean delChk = pMgr.writeDelChk(pNo);
 
-if(chk) {
+
+if(delChk) {
 	%>
 	<script>
-	alert("수정되었습니다.");
+	alert("문의가 삭제되었습니다.");
 	window.location = document.referrer;
 	</script>
-	<%
+<%
 }
-
 %>
