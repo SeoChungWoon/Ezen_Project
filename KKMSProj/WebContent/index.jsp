@@ -27,14 +27,24 @@
 	<div id="wrap" class="main">
 		<%@ include file="/include/header.jsp"%>
 
-		<div class="section_slide section">
-			<div class="swiper">
-				<div class="swiper-wrapper">
-					<div class="swiper-slide"><img src="/images/main_images/01.jpeg" alt="뮤지컬 공연 포스터">`</div>
-					<div class="swiper-slide"><img src="/images/main_images/02.jpeg" alt="뮤지컬 공연 포스터"></div>
-					<div class="swiper-slide"><img src="/images/main_images/03.jpeg" alt="뮤지컬 공연 포스터"></div>
-					<div class="swiper-slide"><img src="/images/main_images/04.jpeg" alt="뮤지컬 공연 포스터"></div>
-					<div class="swiper-slide"><img src="/images/main_images/05.jpeg" alt="뮤지컬 공연 포스터"></div>
+		<div class="mainslide swiper">
+			<!-- 헤더 밑 메인 슬라이드 영역 -->
+			<div class="swiper-wrapper">
+				<!-- 슬라이드 이미지 삽입란 -->
+				<div class="swiper-slide">
+					<img src="/images/main_images/01.jpeg" alt="뮤지컬 공연 포스터">
+				</div>
+				<div class="swiper-slide">
+					<img src="/images/main_images/02.jpeg" alt="뮤지컬 공연 포스터">
+				</div>
+				<div class="swiper-slide">
+					<img src="/images/main_images/03.jpeg" alt="뮤지컬 공연 포스터">
+				</div>
+				<div class="swiper-slide">
+					<img src="/images/main_images/04.jpeg" alt="뮤지컬 공연 포스터">
+				</div>
+				<div class="swiper-slide">
+					<img src="/images/main_images/05.jpeg" alt="뮤지컬 공연 포스터">
 				</div>
 				<div class="swiper-pagination"></div>
 				<div class="swiper-button-prev"></div>
