@@ -264,6 +264,9 @@ create table event (
     eNo int not null
 );
 
+update eventList set eTag = '종료' where eNo = 3;
+
+drop table event;
 select * from event;
 
 create table replyEvent (
@@ -282,3 +285,12 @@ insert into replyEvent (uId, eNo, eTxt, eDate) values ('아이디', 3, '너무 �
 select * from replyEvent;
 
 select * from replyEvent where eDate = '2022-04-14 12:18:39';
+
+create table wishList (
+	uId char(15) not null,
+    pNo int not null
+);
+
+drop table wishList;
+
+select * from wishList;

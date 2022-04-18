@@ -56,16 +56,16 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 
 		<div class="sub-body">
 			<div class="inner">
-				<div class="proList-view">
-					<div class="top-cont">
-						<div class="flag-desc">
+				<div class="eventViewArea">
+					<div class="eventTop">
+						<div class="eventFlagDesc">
 							<div class="flag">
 								<span class="eventType"><%=evList.geteType()%></span> <span
 									class="eventTag"><%=tag%></span>
 							</div>
 						</div>
 
-						<div class="txt-desc">
+						<div class="eventTxtDesc sns-line">
 							<p class="tit"><%=evList.geteTitle()%></p>
 							<div class="sns">
 								<a href="javascript:"><img src="/images/icon-share.png"
@@ -81,18 +81,11 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 							</div>
 						</div>
 					</div>
-					<!-- // top-cont -->
+					<!-- // eventTop -->
 					
 					<%
 					if(type.equals("기대평이벤트")) {
 					%>
-					<div class="eventViewTab">
-					<ul class="dFlex">
-						<li class="eventDetailTab">상세정보</li>
-						<li class="eventReplyTab">기대평 (<%=eCnt %>)</li>
-					</ul>
-					</div>
-					<!-- div.eventViewTab -->
 					<div id="eventContent">
 						<img src="/images/<%=evList.geteInnerImg()%>" alt="" />
 						<div class="eventRef">
@@ -116,9 +109,8 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 					if(type.equals("기대평이벤트")) {
 					%>
 					<div class="eventViewTab">
-					<ul class="dFlex">
-						<li class="eventDetailTab">상세정보</li>
-						<li class="eventReplyTab">기대평 (<%=eCnt %>)</li>
+					<ul>
+						<li class="eventReplyTab">댓글 (<%=eCnt %>)</li>
 					</ul>
 					</div>
 					<!-- div.eventViewTab -->
@@ -130,7 +122,11 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 						<p>이미 종료된 이벤트입니다.</p>
 						<% } else if (memberId == null) {
 						%>
-						<p>로그인 후 이벤트 참여가 가능합니다.</p>
+						<div id="eventReplyArea">
+							<textarea name="eventReplyTxt" id="eventReplyTxt" class="guest" maxlength="255"
+								placeholder="로그인 후 기대평을 작성해주세요."></textarea>
+							<button type="button" id="eventReplyBtn">등록</button>
+						</div>
 						<% } else {%>
 						<div id="eventReplyArea">
 							<textarea name="eventReplyTxt" id="eventReplyTxt" maxlength="255"
@@ -140,6 +136,7 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 							<button type="button" id="eventReplyBtn">등록</button>
 							<span id="eventReplySize"></span>
 						</div>
+						<%} %>
 						<div class="eventReplyRes"></div>
 						<div class="eventReplyList">
 							<%
@@ -159,13 +156,15 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 									<pre><%=evReply.geteTxt()%></pre>
 								</div>
 								<%
-								if (memberId.equals(uId)) {
+								if (memberId!=null){
+									if (memberId.equals(uId)) {
 								%>
 								<div class="eventReplyDel">
 									<a href="javascript:"><img
 										src="/images/icon-delete-btn.png"></a>
 								</div>
 								<%
+									}
 								}
 								%>
 								<div class="eventReplyDate">
@@ -206,7 +205,7 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 							<div class="eventReplyRow">등록된 기대평이 없습니다.</div>
 							<%
 							}
-						}
+						
 							%>
 						</div>
 						<!-- div.eventReplyList -->

@@ -304,3 +304,17 @@ hr.eventHR {
 	margin: 0 20px;
 	font-size: 20px;
 }
+
+div.eventRow a .eventLink .eventTitle {
+	height: 50px;
+}
+
+.eventDday {
+	text-align: right;
+}
+
+.eventDdayBar > span.percentBar {
+	display: inline-block;
+	padding: 2px;
+	width: 0%;
+}
