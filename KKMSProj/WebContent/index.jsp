@@ -1,5 +1,12 @@
+<%@page import="pack_Product.ProListBean"%>
+<%@page import="java.util.List"%>
+<%@page import="pack_Product.ProductMgr"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />	
+	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -24,28 +31,31 @@
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 </head>
 <body>
-	<div id="wrap" class="main">
 		<%@ include file="/include/header.jsp"%>
+	 <div class="mainfront"> 
 
 		<div class="mainslide swiper">
 			<!-- 헤더 밑 메인 슬라이드 영역 -->
+			
 			<div class="swiper-wrapper">
 				<!-- 슬라이드 이미지 삽입란 -->
+                    <%
+					request.setCharacterEncoding("UTF-8");
+					List objList = prodMgr.listOutput();
+				 	int cnt = prodMgr.proListCount();
+					
+				 	if(cnt != 0){
+			      		for(int i = 0; i < objList.size(); i++){
+							ProListBean mList = (ProListBean) objList.get(i);
+					%>
 				<div class="swiper-slide">
-					<img src="/images/main_images/01.jpeg" alt="뮤지컬 공연 포스터">
+					<a href="/product/listView.jsp?pNo=<%=mList.getpNo() %>">
+					<img src="/images/main_images/product-list-slideimg<%= i+1%>.jpg" alt="뮤지컬 공연 포스터">
+					</a>
 				</div>
-				<div class="swiper-slide">
-					<img src="/images/main_images/02.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="swiper-slide">
-					<img src="/images/main_images/03.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="swiper-slide">
-					<img src="/images/main_images/04.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="swiper-slide">
-					<img src="/images/main_images/05.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
+				<%} }%>
+				
+				
 				<div class="swiper-pagination"></div>
 				<div class="swiper-button-prev"></div>
         		<div class="swiper-button-next"></div>
@@ -101,7 +111,7 @@
 	
 <!-- 탭메뉴 -->	
 
-
+<!-- 
 <div class="tab_container">
 
   <ul class="tabs">
@@ -117,8 +127,27 @@
   <div id="tab-4" class="tab-content">기타</div>
 
 </div>
-	
+	 -->
 <!-- 탭메뉴 -->
+
+
+<section class="mainprolist">
+	<div class="viewtitle">
+		<h1>TICKET OPEN</h1>
+	</div>
+	<!-- <div class="viewbox">
+		<div class="list_grid"></div>
+		<div class="list_grid"></div>
+		<div class="list_grid"></div>
+		<div class="list_grid"></div>
+		<div class="list_grid"></div>
+	</div> -->
+
+
+
+</section>
+
+
 
 
 	<div class="section_musical section">
@@ -160,6 +189,7 @@
 				</li>
 			</ul>
 		</article>
+	</div>
 	</div>
 	<!-- div.sub-body -->
 
