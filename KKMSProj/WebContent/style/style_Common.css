@@ -91,6 +91,20 @@
 	display: none;
 }
 
+/* 블라인드 텍스트 */
+.blind {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: auto;
+  width: auto;
+  height: 0;
+  font-size: .01px;
+  color: transparent;
+  opacity: .001;
+}
+
+
 /* header */
 header {
 	overflow: hidden;

@@ -5,9 +5,9 @@
 <footer id="footer">
 	<div class="inner">
 		<ul class="fnb">
-			<li><a href="javascript">이용약관</a></li>
-			<li><a href="javascript">개인정보처리방침</a></li>
-			<li><a href="javascript">티켓판매안내</a></li>
+			<li><a href="javascript:">이용약관</a></li>
+			<li><a href="javascript:">개인정보처리방침</a></li>
+			<li><a href="javascript:">티켓판매안내</a></li>
 		</ul>
 		<!--  // fnb -->
 

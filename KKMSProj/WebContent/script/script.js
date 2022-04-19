@@ -26,10 +26,10 @@ $(function() {
 	if ($("header").length != 0) {
 		$("header nav .menu").on("mouseenter", function() {
 			$(".hUtil").css("z-index", 9);
-			gsap.to($("header "), 0.4, { height: "auto", ease: Power3.easeOut });
+			gsap.to($("header"), 0.4, { height: "auto", ease: Power3.easeOut });
 		}).on("mouseleave", function() {
 			$(".hUtil").css("z-index", 2);
-			gsap.to($("header "), 0.4, { height: 100, ease: Power3.easeOut });
+			gsap.to($("header"), 0.4, { height: 100, ease: Power3.easeOut });
 		});
 
 
@@ -64,49 +64,79 @@ $(function() {
 	}
 
 	// checkbox
-	$(".chk-group").each(function(k) {
-		$(this).find("label").off("click").on("click", function() {
-			
-		});
-	});
-	
-	
-	//찜 목록 버튼
-	$(".likeClk label").on("click", function(){
-			
-			let wish = $(this).prev().is(":checked");
-			let pNo = $(this).prev().prev().val();
-			let uId = $(this).prev().prev().prev().val();
-			uId = uId.trim();
-			if(uId=="null") {
-				alert("로그인 후 이용 가능합니다.");
-				location.href="/member/login.jsp";
-				return;
-			} else {
-			
-				if(!wish){
+	if ($(".chk-group").length != 0) {
+		$(".chk-group").each(function(k) {
+			$(this).find("label").off("click").on("click", function() {
+				if (!$(this).parent(".chk-group").hasClass("checked")) {
 					$(this).parent(".chk-group").addClass("checked");
-					$.ajax({
-						type: "post",
-						url: "/product/wishProc.jsp",
-						data: { "uId": uId, "pNo": pNo, "wish": wish },
-						success: function(txt) {
-							alert("찜 목록에 추가되었습니다.");
-						}
-					});
+
+
+					if ($(this).parent(".chk-group").hasClass("like")) {
+						alert("찜 목록에 추가되었습니다.");
+					}
 				} else {
 					$(this).parent(".chk-group").removeClass("checked");
-					$.ajax({
-						type: "post",
-						url: "/product/wishProc.jsp",
-						data: { "uId": uId, "pNo": pNo, "wish": wish },
-						success: function(txt) {
-							alert("찜 목록에서 제거되었습니다.");
-						}
-					});
-				}	
-			}
-	});
+
+					if ($(this).parent(".chk-group").hasClass("like")) {
+						alert("찜 목록에서 삭제되었습니다.");
+					}
+				}
+			});
+		});
+	}
+	// checkbox star
+	if ($(".rateChk").length != 0) {
+		$(".rateCalc").find(".set").text($(this).parent(".chk-group.checked").length);
+
+		$(".rateChk .chk-group").each(function(e) {
+			$(this).find("label").off("click").on("click", function(a) {
+				$(this).parent(".chk-group").addClass("checked");
+				$(this).parent(".chk-group").prevAll().addClass("checked");
+				$(this).parent(".chk-group").nextAll().removeClass("checked");
+				$("#rateCalc").val($(".rateChk .chk-group.checked").length);
+			});
+		});
+	}
+
+	
+	//찜 목록 버튼
+	if ($(".likeClk").length != 0) {
+		$(".likeClk label").on("click", function(){
+				
+				let wish = $(this).prev().is(":checked");
+				let pNo = $(this).prev().prev().val();
+				let uId = $(this).prev().prev().prev().val();
+				uId = uId.trim();
+				if(uId=="null") {
+					alert("로그인 후 이용 가능합니다.");
+					location.href="/member/login.jsp";
+					return;
+				} else {
+				
+					if(!wish){
+						$(this).parent(".chk-group").addClass("checked");
+						$.ajax({
+							type: "post",
+							url: "/product/wishProc.jsp",
+							data: { "uId": uId, "pNo": pNo, "wish": wish },
+							success: function(txt) {
+								alert("찜 목록에 추가되었습니다.");
+							}
+						});
+					} else {
+						$(this).parent(".chk-group").removeClass("checked");
+						$.ajax({
+							type: "post",
+							url: "/product/wishProc.jsp",
+							data: { "uId": uId, "pNo": pNo, "wish": wish },
+							success: function(txt) {
+								alert("찜 목록에서 제거되었습니다.");
+							}
+						});
+					}	
+				}
+		});	
+	}
 
 	//popup
 	if ($(".btn.open-modal").length != 0) {
@@ -116,7 +146,7 @@ $(function() {
 			$(this).addClass("modal-opened").attr("tabindex", "-1");
 
 			$("html, body").css("overflow", "hidden");
-			$("header").css("z-index", 1);
+			$("header").css("z-index", 3);
 			$(".sub-body").css("z-index", "auto");
 
 			modalOpen(id);
@@ -127,12 +157,30 @@ $(function() {
 			var id = "#" + $(this).closest(".modal").attr("id");
 
 			$("html, body").css("overflow", "visible");
+			$("header").css("z-index", 10);
 
 			modalClose(id);
 
-			if (confirm("창을 닫으시겠습니까? 내용이 초기화됩니다.") == true) {
-				$(this).parent().siblings(".pop_div").find("textarea").val("");
+			if($(this).parents(".pop_wrap").find("textarea").length > 0){
+				if (confirm("창을 닫으시겠습니까? 내용이 초기화됩니다.") == true) {
+					$(this).parent().siblings(".pop_div").find("textarea").val("");
+				}
 			}
+		});
+	}
+	// review img 미리보기
+	if ($("a.btn.pPreview").length != 0) {
+		$("a.btn.pPreview").each(function(e){
+			$(this).on("click", function(){
+				var btnImg = $(this).children("img").attr("src");
+				var btnData = $(this).attr("data-target");
+				
+				
+				if($(".pop_wrap.modal").is("#"+btnData)){
+					console.log("22222");
+					$(".pop_wrap.modal#"+btnData).find(".img").find("img").attr("src", btnImg);
+				}
+			});
 		});
 	}
 
@@ -145,11 +193,12 @@ $(function() {
 			let disCPrice = parseInt($(this).find("ins").text());
 			oriPrice = oriPrice.toLocaleString();
 			disCPrice = disCPrice.toLocaleString();
+
 			$(this).find("del").text(oriPrice);
 			$(this).find("ins").text(disCPrice);
 		});
 	}
-
+	
 	// product list
 	if ($(".exhibit-cont").length != 0) {
 
@@ -239,7 +288,7 @@ $(function() {
 	}
 
 
-	// product view
+	// product view COMMON
 	if ($(".sns-line").length != 0) {
 		// sns
 		$(".sns-line .sns > a").on("click", function() {
@@ -264,92 +313,108 @@ $(function() {
 		});
 	}
 
+
 	//product view textarea info
-	if ($(".txtLength").length != 0) {
+	if ($(".qnaWrite").length != 0) {
 		var txtLength = 500;
 
-		// 판매자 문의 등록
-		$("#qnaConts").on("change keyup", function() {
-			$(this).next(".txtLength").find("em").text($(this).val().length);
+		// 상품내용 문의
+		$(".qnaWrite").each(function(e) {
+			$(this).on("change keyup", function() {
 
-			if ($(this).val().length > txtLength) {
-				alert("최대 500자까지 입력 가능합니다.");
-				$(this).val($(this).val().substring(0, txtLength));
-				$(this).next(".txtLength").find("em").text(txtLength);
-			}
+				$(this).next(".txtLength").find("em").text($(this).val().trim().length);
+
+				if ($(this).val().trim().length > txtLength) {
+					alert("최대 500자까지 입력 가능합니다.");
+					$(this).val($(this).val().substring(0, txtLength));
+					$(this).next(".txtLength").find("em").text(txtLength);
+				}
+			});
 		});
 
-		// 판매자 문의 수정
-		$("#qnaContsWrite").on("change keyup", function() {
-			$(this).next(".txtLength").find("em").text($(this).val().length);
-			console.log($(this).val().length)
+		$(".inquiryBtn").each(function(e) {
+			$(this).on("click", function() {
+				var writeTxt = $(this).parent().siblings(".inquiry-txt").children(".qnaWrite");
+				var qnaConts = writeTxt.val();
 
-			if ($(this).val().length > txtLength) {
-				alert("최대 500자까지 입력 가능합니다.");
-				$(this).val($(this).val().substring(0, txtLength));
-				$(this).next(".txtLength").find("em").text(txtLength);
-			}
-		});
-		
-		$("#qnaContsWrite").each(function(e){
-			$(this).next(".txtLength").find("em").text($(this).val().length);
-		});
-	}
-	
-	if ($("#qnaConts").length != 0) {
+				if (qnaConts == "") {
+					alert("내용을 입력해주세요.");
+					writeTxt.focus();
+				} else {
+					if (confirm("문의를 등록하시겠습니까?") == true) {
+						if (writeTxt.val().trim().length < 10) {
+							alert(writeTxt.val().length);
+							alert("최소 10자이상 입력가능합니다.");
+						} else {
 
-		$(".inquiryBtn").on("click", function() {
-			var qnaConts = $("#qnaConts").val().trim();
+							if ($(".inquiryBtn").eq(e).hasClass("qnaContsSubmit")) {
+								alert("판매자");
+								$("#qnaContsWrite").text(qnaConts);
+								$(".listViewForm").submit();
+							} else if ($(".inquiryBtn").eq(e).hasClass("qnaContRevSubmit")) {
+								alert("리뷰");
+								$(".listViewRevForm").submit();
+							}
 
-			if (qnaConts == "") {
-				alert("내용을 입력해주세요.");
-				$("#qnaConts").focus();
-			} else {
-				if (confirm("문의를 등록하시겠습니까?") == true) {
-					if($("#qnaContsWrite").text().length < 10){
-						alert("최소 10자이상 입력가능합니다.");
-					}else{
-						$("#qnaContsWrite").text(qnaConts);
-						$(".listViewForm").submit();
-						$("#qnaConts").val("");
-						$(".inquiry-txt .txtLength em").text(0);
+							writeTxt.val("");
+							$(".inquiryBtn").eq(e).parent().siblings("inquiry-txt").find(".txtLength em").text(0);
+						}
 					}
 				}
-			}
+			});
 		});
-		$(".inquiryBtn + .reset").on("click", function() {
-			var qnaConts = $("#qnaConts").val().trim();
+
+		$(".btn-cont .reset").on("click", function() {
+			var writeTxt = $(this).parent().siblings(".inquiry-txt").children(".qnaWrite");
+			var qnaConts = $(this).parent().siblings(".inquiry-txt").children(".qnaWrite").val().trim();
 			if (qnaConts == "") {
 				alert("내용을 입력해주세요.");
-				$("#qnaConts").focus();
+				writeTxt.focus();
 			} else {
 				if (confirm("작성글을 초기화하시겠습니까?") == true) {
-					$("#qnaConts").val("");
-					$("#qnaConts").focus();
+					writeTxt.val("");
+					writeTxt.focus();
 				}
 			}
 		});
 	}
+
+	// 판매자 문의 수정
 	if ($("#qnaContsWrite").length != 0) {
-		var data = $(".modBtn").parent().siblings("textarea").val().trim();
+
+		if ($("#qnaContsWrite").val() != "") {
+			$("#qnaContsWrite").siblings(".txtLength").find("em").text($("#qnaContsWrite").val().trim().length);
+		} else {
+			$("#qnaContsWrite").siblings(".txtLength").find("em").text(0);
+		}
 
 		$(".modBtn").parent().siblings("textarea").on("change keyup", function() {
-			data = $(this).text();
-			$(this).text(data.trim());
+			$(this).text($(this).text());
 		});
 
 		// 수정 버튼
 		$(".modBtn").on("click", function() {
+			var modData = $(".modBtn").parent().siblings("textarea").val().trim();
+
 			if (!($(this).parent().siblings("textarea").attr("disabled", false).hasClass("on"))) {
 				$(this).parent().siblings("textarea").attr("disabled", false).addClass("on").focus();
 				$(this).text("확인");
 
 			} else {
-				if (confirm("수정하시겠습니까?") == true) {
-					$(this).parent().siblings("textarea").attr("disabled", false).removeClass("on");
-					$(".modBtn").parent().siblings("textarea").text(data);
-					$(".listViewFormRe").submit();
-					$(this).text("수정");
+				if (modData == "" || modData.length == 0) {
+					alert("내용을 입력해주세요.");
+					$(".modBtn").parent().siblings("textarea").focus();
+				} else {
+					if (confirm("수정하시겠습니까?") == true) {
+						if (modData.length < 10) {
+							alert("최소 10자이상 작성해야합니다.");
+						} else {
+							$(this).parent().siblings("textarea").attr("disabled", false).removeClass("on");
+							$(".modBtn").parent().siblings("textarea").text(modData);
+							$(".listViewFormRe").submit();
+							$(this).text("수정");
+						}
+					}
 				}
 			}
 		});
@@ -361,7 +426,37 @@ $(function() {
 			}
 		});
 	}
+	// 리뷰 ID 가리기
+	if ($(".reviewInfo .txt-area .txtInfo .wUseId").length != 0) {
+		$(".reviewInfo .txt-area .txtInfo .wUseId").each(function(e){
+			var idTxt = $(".wUseId span").eq(e).text();
+	
+			if (idTxt.length) { 
+				var vResult = idTxt; 
+				vResult = vResult.substring(0, vResult.length - 2); 
+				vResult += "**";
+				 idTxt = vResult;
+			}
+			$(".wUseId span").eq(e).text(idTxt);
+		});
 
+	}
+
+
+	// swiper
+	// review
+	if ($(".photo-list").length != 0) {
+		var revSwiper = new Swiper('.photo-list', {
+			slidesPerView: "auto",
+			spaceBetween: 10,
+			observer: true,
+			observeParents: true,
+			navigation: {
+				nextEl: '.photo-list .swiper-button-next',
+				prevEl: '.photo-list .swiper-button-prev',
+			},
+		});
+	}
 
 });
 
@@ -533,7 +628,7 @@ function modalOpen(id) {
 function modalDimOpen(id) {
 	var id = id;
 	$(".pop_dimd").addClass("in").fadeIn(400);
-	$("header").css("z-index", 1);
+	$("header").css("z-index", 3);
 	$(".sub-body").css("z-index", "auto");
 }
 
@@ -548,6 +643,7 @@ function modalClose(id) {
 	$(id).removeClass("in").hide();
 
 	$(".modal-opened").focus().attr("tabindex", "0").removeClass("modal-opened");
+	$("header").css("z-index", 10);
 
 }
 // dim hide

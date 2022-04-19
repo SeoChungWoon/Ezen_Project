@@ -19,6 +19,8 @@ public class ProListBean {
 	private	String		pDelivery;	// 배송정보
 	
 	private	String		pWriteSel;	// 판매자 문의
+	private	String		pReview;	// 리뷰 문의
+
 	
 	public int getpNo() {
 		return pNo;
@@ -118,10 +120,16 @@ public class ProListBean {
 	}
 
 
-	public String getpWriteSel() {
+	public String getpWSeller() {
 		return pWriteSel;
 	}
-	public void setpWriteSel(String pWriteSel) {
+	public void setpWSeller(String pWriteSel) {
 		this.pWriteSel = pWriteSel;
+	}
+	public String getpReview() {
+		return pReview;
+	}
+	public void setpReview(String pReview) {
+		this.pReview = pReview;
 	}
 }

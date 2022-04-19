@@ -5,10 +5,10 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-int pNo = Integer.parseInt(request.getParameter("pNo"));
+String pWUId = request.getParameter("pWUId");
 String pTextarea = request.getParameter("qnaContsWrite");
 
-boolean chk = pMgr.writeChk(pNo, pTextarea);
+boolean chk = pMgr.writeModChk(pWUId, pTextarea);
 
 if(chk) {
 	%>

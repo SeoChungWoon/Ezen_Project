@@ -150,7 +150,7 @@ drop table faqList;
 
 
 /* 상품 리스트 */
-## flag : 투데이특가, 바로사용, 쿠폰할인, MD추천 (최대 3개까지 가능)
+## flag : 투데이특가, 바로사용, MD추천 (최대 3개까지 가능)
 ## pArea : 지역별 선택 탭 (전체, 서울, 경기/인천, 대전/충청/강원)
 ## pLocation : 리스트 안의 내용(위치)
 ## pGroup : 분류 (전체, 전시, 체험/행사, 기타)
@@ -176,7 +176,6 @@ pViewCnt			int				,
 pViewTime			char(100)		,
 pClass				char(10)		,
 pDelivery			char(10)		,
-pWriteSel 			varchar(500) ,
 constraint primary key (pNo)
 );
 
@@ -187,10 +186,10 @@ insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle,
  ('투데이특가', '바로사용', '대전', '도룡동', '기타', '오늘 마지막!! 온라인 예매 투데이 특가 할인 당일사용가능', '빈센트 반 고흐: 향기를 만나다展', 
  '2022.04.16', '2022.08.28', '갤러리 헤이리스', 10000, 50, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장 마감 18:00) / 매주 월요일 휴관(공휴일일 경우 정상 운영, 홈페이지 참조)', '전체관람가', '현장수령');
 insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
- ('MD추천', '쿠폰할인', '인천', '센트럴로', '행사', '온라인 예매 쿠폰 할인 전시 정상 운영중', '어느 봄날, 테레사 프레이타스 사진전', 
- '2022.01.29', '2022.04.24', '더현대 서울 ALT.1', 13000, 8, date_format(now(), '%Y-%m-%d'), '10:30 ~ 20:00(입장마감 19:00) / 더현대 서울 월별 휴무일 휴관 (별도공지)', '전체관람가', '현장수령');
-insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
- ('바로사용', '쿠폰할인', '경기', '안산시', '체험', '온라인 예매할인 당일사용가능', '로그아웃 - 지금 당신에게 필요한 순간', 
+ ('MD추천', '바로사용', '인천', '센트럴로', '행사', '온라인 예매 쿠폰 할인 전시 정상 운영중', '어느 봄날, 테레사 프레이타스 사진전', 
+ '2022.01.29', '2022.04.24', '더현대 서울 ALT.1', 13000, 0, date_format(now(), '%Y-%m-%d'), '10:30 ~ 20:00(입장마감 19:00) / 더현대 서울 월별 휴무일 휴관 (별도공지)', '전체관람가', '현장수령');
+insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
+ ('바로사용', '경기', '안산시', '체험', '온라인 예매할인 당일사용가능', '로그아웃 - 지금 당신에게 필요한 순간', 
  '2021.12.21', '2023.03.01', '뚝섬미술관', 15000, 10, date_format(now(), '%Y-%m-%d'), '11: 00 ~ 19:00 (입장 마감 18:20)', '전체관람가', '현장수령');
 insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery) values 
  ('투데이특가', '서울', '용산', '전시', '온라인 예매 투데이 특가 할인', '영국 현대미술의 거장, 마이클 크레이그 마틴展', 
@@ -203,27 +202,74 @@ desc proList;
 truncate proList;
 select * from proList;
 select * from proList order by pNo Asc;
-delete from proList where pNo = 9;
-update proList set pWriteSel = '666' where pNo = 1;
-update proList set pWriteSel = null where pNo = 2;
+delete from proList where pNo = 4;
+update proList set pSalePercent = 0 where pNo = 3;
+update proList set pWriteSel = null where pNo = 3;
+update proList set pSalePercent = null where pNo = 3;
+update proList set pSalePercent = '0' where pNo = 3;
 select pWriteSel, pNo from proList;
+select pReview, pNo from proList;
+select pSalePercent, pNo from proList;
 select count(pWriteSel) from proList where pNo = 1;
-select count(pWriteSel) from proList where pNo = 2;
+select count(pWriteSel) from proList where pNo = 3;
 
-## detail info
-## pContactSel : 판매자 문의 내용
-## 보류 ##
-create table proLDetail(
-pNo					int				not null,
-pContactSel		VARCHAR(500)		,
-
-constraint foreign key(pNo) references proList(pNo)
+## 판매자 문의
+create table pWSel(
+pWUId		char(15),
+pWrite		varchar(500)
 );
 
-drop table proLDetail;
-desc proLDetail;
-truncate proLDetail;
-select * from proLDetail;
+drop table pWsel;
+select * from pWSel;
+truncate pWSel;
+
+select count(*) from pWSel where pWUId = 'hi';
+## 리뷰 문의
+create table pRevWrite(
+pRevWNo		int,
+pRevWUId		char(15),
+pRevWrite		varchar(500)
+);
+## 리뷰 리스트
+create table pRevList(
+pRevPNo			int,
+pRevNo			int,
+pRevUId			char(15),
+pRevPhoto		int,
+pRevImg			varchar(100),
+pRevCont		varchar(500),
+pRevDate		datetime,
+pRevRecom		int,
+pRevStar		int
+);
+
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, 'hello123', 0, '너무 재밌었어요~ 만족합니다!', now(), 0, 3);
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(2, 'lalalala', 1, 'product-review-img1.jpg', '인스타에서 보고 가보고 싶어 예매해서 잘보고 갑니다. 사진 색감이 너무 이뻐요~ 봄 여행을 다녀온 것 같았습니다. 대신 티켓값에 비해 볼 것은 그렇게 많지 않았다는 점 참고해주세요~', now(), 0, 4);
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(3, 'dksjdkn', 1, 'product-review-img2.jpg', '사람이 너무 많았어요 ㅠㅠ 주말대신 평일 오전에 가시는 것을 추천합니다! 생각보다 내부가 넓고 전시 다 보려면 2시간정도 걸려요.', now(), 0, 4);
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(4, 'skjd567', 1, 'product-review-img3.jpg', '정말 잘봤습니다', now(), 0, 5);
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(5, '12dkhjd12', 1, 'product-review-img4.jpg', '저희 딸이랑 다녀왔는데 전시에 체험이 없어서 아이는 조금 재미없어하더라구요 ^^;;;', now(), 0, 3);
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(6, '4857dfjfbs',  1, 'product-review-img5.jpg', '추천해요~~ 사람이 워낙 많아서 빨리 다녀와야 할 것 같아요!', now(), 0, 5);
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(7, 'hjfawevd',  0, '굿굿!', now(), 0, 3);
+insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(6, 'dddddd123',  1, 'product-review-img6.jpg', '추천해요~~ 사람이 워낙 많아서 빨리 다녀와야 할 것 같아요!', '2022-04-19 13:34:03', 0, 4);
+
+set sql_safe_updates = 0;
+drop table pRevList;
+desc pRevList;
+truncate pRevList;
+delete from pRevList where pRevNo = 7;
+update pRevList set pRevUId = '99999' where pRevNo = 6;
+select * from pRevList;
+select pRevPhoto from pRevList where pRevPhoto = 1;
+select * from pRevList order by pRevDate Desc;
+
 /* // 상품 리스트 */
 
 

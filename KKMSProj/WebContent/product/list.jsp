@@ -3,7 +3,7 @@
 <%@page import="pack_Product.ProductMgr"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />
 
 <!DOCTYPE html>
@@ -21,7 +21,6 @@
 	<div id="wrap">
 
 		<%@ include file="/include/header.jsp"%>
-
 
 		<div class="sub-body">
 			<div class="inner">
@@ -64,34 +63,36 @@
 					</div>
 
 					<div class="exhibit-list">
-					<%
-					request.setCharacterEncoding("UTF-8");
-					List objList = prodMgr.listOutput();
-				 	int cnt = prodMgr.proListCount();
-				 	boolean wishChk = false;
-					
-				 	if(cnt != 0){
-			      		for(int i = 0; i < objList.size(); i++){
-							ProListBean mList = (ProListBean) objList.get(i);
-							int pNo = mList.getpNo();
-							if(memberId!=null) {
-								List wList = prodMgr.wishList(memberId);
-								for(int j = 0; j < wList.size(); j++) {
-									Object data = wList.get(j);
-									int wish = (int)data;
-									if(i+1==wish) {
-										wishChk = true;
-										break;
-									} else {
-										wishChk = false;
+						<%
+						request.setCharacterEncoding("UTF-8");
+						List objList = prodMgr.listOutput();
+						int cnt = prodMgr.proListCount();
+						boolean wishChk = false;
+
+						if (cnt != 0) {
+							for (int i = 0; i < objList.size(); i++) {
+								ProListBean mList = (ProListBean) objList.get(i);
+
+								int pNo = mList.getpNo();
+								if (memberId != null) {
+									List wList = prodMgr.wishList(memberId);
+									for (int j = 0; j < wList.size(); j++) {
+										Object data = wList.get(j);
+										int wish = (int) data;
+										if (i + 1 == wish) {
+											wishChk = true;
+											break;
+										} else {
+											wishChk = false;
+										}
 									}
 								}
-							}
-					%>
+						%>
 						<div class="listBox">
-							<a href="/product/listView.jsp?pNo=<%= pNo%>">
+							<a href="/product/listView.jsp?pNo=<%=pNo%>">
 								<div class="likeClk">
 									<div class="chk-group">
+										<input type="checkbox" value="" id="like"/>
 										<input type="hidden" value="<%=memberId%>">
 										<input type="hidden" value="<%=pNo %>">
 										<input type="checkbox" value="<%=wishChk %>" class="wishChk" id="like"/>
@@ -100,45 +101,42 @@
 									</div>
 								</div>
 								<p class="img">
-									<img src="/images/product-list-img<%= i+1 %>.jpg" alt="" />
+									<img src="/images/product-list-img<%=i + 1%>.jpg" alt="" />
 								</p>
 								<div class="txt-info">
 									<div class="flag-desc">
 										<p class="flag">
-											<span class="event"><%= mList.getpFlag1()%></span>
-											<span class="event"><%= mList.getpFlag2()%></span>
+											<span class="event"><%=mList.getpFlag1()%></span> <span
+												class="event"><%=mList.getpFlag2()%></span>
 										</p>
 									</div>
 
 									<p class="sub-txt">
-										<span class="location"><%= mList.getpArea()%></span> 
-										<span class="info"><%= mList.getpInfoTxt()%></span>
+										<span class="location"><%=mList.getpArea()%></span> <span
+											class="info"><%=mList.getpInfoTxt()%></span>
 									</p>
 
 									<p class="tit">
-										[<span class="area"><%= mList.getpArea()%></span><em>, </em><span class="group"><%= mList.getpGroup()%></span>] <%= mList.getpTitle()%></p>
+										[<span class="area"><%=mList.getpArea()%></span><em>, </em><span
+											class="group"><%=mList.getpGroup()%></span>]
+										<%=mList.getpTitle()%></p>
 									<p class="explain-txt">
-										<span class="date"><%= mList.getpDate1()%> - <%= mList.getpDate2()%></span> 
-										<span class="content"><%= mList.getpContent()%></span>
+										<span class="date"><%=mList.getpDate1()%> - <%=mList.getpDate2()%></span>
+										<span class="content"><%=mList.getpContent()%></span>
 									</p>
 									<p class="price sale">
 										<%
-										request.setCharacterEncoding("UTF-8");
 										int salePrice = mList.getpSalePercent();
 										if (salePrice == 0) {
 										%>
-										<span class="original"> 
-											<del><%= mList.getpOriPrice()%></del><span>원</span>
-										</span> 
+										<span class="original"> <del><%=mList.getpOriPrice()%></del><span>원</span>
+										</span>
 										<%
-										} else{
+										} else {
 										%>
-										<span class="original"> 
-											<span class="rate-sale"><em><%= mList.getpSalePercent()%></em>%</span> 
-											<del><%= mList.getpOriPrice()%></del><span>원</span>
-										</span> 
-										<span class="discount-price">
-											<ins></ins><span>원</span>
+										<span class="original"> <span class="rate-sale"><em><%=mList.getpSalePercent()%></em>%</span>
+											<del><%=mList.getpOriPrice()%></del><span>원</span>
+										</span> <span class="discount-price"> <ins></ins><span>원</span>
 										</span>
 										<%
 										}
@@ -148,14 +146,14 @@
 							</a>
 						</div>
 						<!-- // listBox -->
-		      				<% 
-		      				}
-				 	}else{
-				 		%>
+						<%
+						}
+						} else {
+						%>
 						<%@ include file="/product/listNodata.jsp"%>
-				 		<%
-				 	}
-		      				%>
+						<%
+						}
+						%>
 					</div>
 					<!--  // exhibit-list -->
 				</div>
@@ -168,9 +166,9 @@
 
 	</div>
 	<!-- div#wrap -->
-<script src="/source/jquery-3.6.0.min.js"></script>
-<script src="/source/gsap.min.js"></script>
-<script src="/script/script.js"></script>
-<script src="/script/memberScript.js"></script>
+	<script src="/source/jquery-3.6.0.min.js"></script>
+	<script src="/source/gsap.min.js"></script>
+	<script src="/script/script.js"></script>
+	<script src="/script/memberScript.js"></script>
 </body>
 </html>
