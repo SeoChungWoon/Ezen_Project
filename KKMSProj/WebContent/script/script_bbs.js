@@ -1,19 +1,5 @@
 
 $(function(){
-	////////////////////write.jsp 영역 시작/////////////////
- 		$("input#openChk").click(function(){
-			$("#contentPw").css({
-				"display":"none"
-			})
-			
-	});
-		$("input#lockChk").click(function(){
-			$("#contentPw").css({
-				"display":"block"
-			})
-		});
-
-		////////////////////write.jsp 영역 끝/////////////////
 		
 		///////////////////faqList.jsp 영역 시작/////////////////
 
@@ -35,8 +21,37 @@ $(".faqBtn").on("click", function(){
         }, 100);
     });
 
-	
-
 
 		///////////////////faqList.jsp 영역 끝/////////////////
  });
+ 
+ 		///////////////////write.jsp 영역 시작/////////////////
+ 		
+ 		function cancel(){
+
+		let chk = confirm("글쓰기를 취소하시겠습니까?");
+			if(chk){
+				location.href="/data/bbsList.jsp";
+			}else {
+				window.location.reload();
+			}
+	}
+	
+		function main(){
+			location.href="/index.jsp";
+			
+		}
+ 		
+ 		///////////////////write.jsp 영역 끝/////////////////
+	
+		///////////////////bbsList.jsp 영역 시작/////////////////
+		function writeMove(){
+			location.href="/data/write.jsp";
+		}
+		///////////////////bbsList.jsp 영역 끝/////////////////
+	
+	
+	
+	
+	
+	

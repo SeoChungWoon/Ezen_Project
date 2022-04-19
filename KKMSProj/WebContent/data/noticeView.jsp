@@ -9,17 +9,18 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
+String division = "공지사항";
 int no = Integer.parseInt(request.getParameter("no"));
 int prevNext = 1;
 
 //조회수 가져오기
-int nowCnt = regDAO.viewCnt(no);
+int nowCnt = regDAO.viewCnt(no,division);
 
 //no 가져오기
-List ntcList = regDAO.mtdSelect(no);
+List ntcList = regDAO.mtdSelect(no,division);
 
 //데이터 갯수 가져오기
-int cnt = regDAO.BoardCount();
+int cnt = regDAO.BoardCount(division);
 
 
 %>

@@ -10,8 +10,9 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
+String division = "공지사항";
 BoardDAO objDAO = new BoardDAO();
-int cnt = objDAO.BoardCount();		//데이터 갯수
+int cnt = objDAO.BoardCount(division);		//데이터 갯수
 int pageSize = 10;
 
 String pageNum = request.getParameter("pageNum");
@@ -26,7 +27,7 @@ int lastData = nowPage * pageSize-1;
 List objList = null;
 
 if(cnt != 0){
-	objList = objDAO.BoardList(firstData,pageSize);
+	objList = objDAO.BoardList(firstData,pageSize,division);
 }
 %>
 <!DOCTYPE html>
@@ -140,7 +141,7 @@ if(cnt != 0){
 		      </div>
 		      <!-- div.tblArea 끝 -->
 		      
-		      <div class="footerArea">
+		      <div class="footerArea dFlex">
 		      	<div class="pageArea">
 		      		<%
 		      		//처음 페이지 이동 할 때
@@ -207,12 +208,13 @@ if(cnt != 0){
 		      		<%
 		      			}else{
 		      		%>
-		      			<!-- <script>location.href = "/data/noData.jsp";</script> -->
+		      			<  <script>location.href = "/data/noData.jsp";</script>
 		      		<%
 		      			}
-			
-	    	 %>
-	    	 		
+	    	 		%>
+	    		<div class="btnArea">
+	    			<button type="button" onclick="writeMove()">글쓰기</button>
+	    		</div> 		
 </div>
 <!-- div.footerArea -->
 </div>

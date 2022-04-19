@@ -7,13 +7,13 @@ public class BoardVO {
 	String wName;
 	String postDate;
 	String content;
+	int count;
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
-	int count;
 	
 	public String getPostDate() {
 		return postDate;
