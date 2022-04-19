@@ -22,6 +22,7 @@
 
 		<%@ include file="/include/header.jsp"%>
 
+
 		<div class="sub-body">
 			<div class="inner">
 				<div class="tit-cont">
@@ -67,17 +68,35 @@
 					request.setCharacterEncoding("UTF-8");
 					List objList = prodMgr.listOutput();
 				 	int cnt = prodMgr.proListCount();
+				 	boolean wishChk = false;
 					
 				 	if(cnt != 0){
 			      		for(int i = 0; i < objList.size(); i++){
 							ProListBean mList = (ProListBean) objList.get(i);
+							int pNo = mList.getpNo();
+							if(memberId!=null) {
+								List wList = prodMgr.wishList(memberId);
+								for(int j = 0; j < wList.size(); j++) {
+									Object data = wList.get(j);
+									int wish = (int)data;
+									if(i+1==wish) {
+										wishChk = true;
+										break;
+									} else {
+										wishChk = false;
+									}
+								}
+							}
 					%>
 						<div class="listBox">
-							<a href="/product/listView.jsp?pNo=<%=mList.getpNo() %>">
+							<a href="/product/listView.jsp?pNo=<%= pNo%>">
 								<div class="likeClk">
 									<div class="chk-group">
-										<input type="checkbox" value="" id="like"/>
+										<input type="hidden" value="<%=memberId%>">
+										<input type="hidden" value="<%=pNo %>">
+										<input type="checkbox" value="<%=wishChk %>" class="wishChk" id="like"/>
 										<label for="like"></label>
+										<div class="wishRes hidden"></div>
 									</div>
 								</div>
 								<p class="img">

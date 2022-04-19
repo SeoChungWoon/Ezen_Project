@@ -57,6 +57,7 @@ public class eventMgr {
 			sql = "select * from eventList";
 			objStmt = objConn.createStatement();
 			objRS = objStmt.executeQuery(sql);
+			
 			while (objRS.next()) {
 				eventBean eBean = new eventBean();
 				eBean.seteNo(objRS.getInt("eNo"));
@@ -71,7 +72,7 @@ public class eventMgr {
 				eBean.seteType(objRS.getString("eType"));
 				eList.add(eBean);
 			}
-
+			
 		} catch (Exception e) {
 			System.out.println("e : " + e.getMessage());
 		} finally {

@@ -37,7 +37,7 @@ List eList = eMgr.eventList();
 					<!--  title -->
 					<p class="tit">이벤트</p>
 				</div>
-				<div class="eventPageArea">
+				<div class="eventPageArea" id="eventAlarm">
 					<ul class="event-tab dFlex">
 						<li class="on"><a href="javascript:"><span
 								class="eventTabTitle">전체</span></a> <input type="hidden" value="전체"></li>
@@ -84,12 +84,17 @@ List eList = eMgr.eventList();
 										<%
 										if (evList.geteRes() != null) {
 										%>
-										<span class="eDate"> | <%=evList.geteRes()%> 발표</span>
+										<span class="eDate"> | <%=evList.geteRes()%> 발표
+										</span>
 										<%
 										}
 										%>
 									</div>
 								</div>
+								<div class="eventDdayBar">
+								<span class="percentBar"></span>
+								</div>
+								<div class="eventDday"></div>
 							</a>
 						</div>
 						<%

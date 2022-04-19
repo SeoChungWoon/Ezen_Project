@@ -66,14 +66,46 @@ $(function() {
 	// checkbox
 	$(".chk-group").each(function(k) {
 		$(this).find("label").off("click").on("click", function() {
-			if (!$(this).parent(".chk-group").hasClass("checked")) {
-				$(this).parent(".chk-group").addClass("checked");
-				alert("찜 목록에 추가되었습니다.");
-			} else {
-				$(this).parent(".chk-group").removeClass("checked");
-				alert("찜 목록에서 삭제되었습니다.");
-			}
+			
 		});
+	});
+	
+	
+	//찜 목록 버튼
+	$(".likeClk label").on("click", function(){
+			
+			let wish = $(this).prev().is(":checked");
+			let pNo = $(this).prev().prev().val();
+			let uId = $(this).prev().prev().prev().val();
+			uId = uId.trim();
+			if(uId=="null") {
+				alert("로그인 후 이용 가능합니다.");
+				location.href="/member/login.jsp";
+				return;
+			} else {
+			
+				if(!wish){
+					$(this).parent(".chk-group").addClass("checked");
+					$.ajax({
+						type: "post",
+						url: "/product/wishProc.jsp",
+						data: { "uId": uId, "pNo": pNo, "wish": wish },
+						success: function(txt) {
+							alert("찜 목록에 추가되었습니다.");
+						}
+					});
+				} else {
+					$(this).parent(".chk-group").removeClass("checked");
+					$.ajax({
+						type: "post",
+						url: "/product/wishProc.jsp",
+						data: { "uId": uId, "pNo": pNo, "wish": wish },
+						success: function(txt) {
+							alert("찜 목록에서 제거되었습니다.");
+						}
+					});
+				}	
+			}
 	});
 
 	//popup
@@ -358,6 +390,45 @@ $(window).on("load", function() {
 	if ($("#idArea").length != 0) {
 		$("#memberid").focus();
 	}
+	
+	if ($("#eventAlarm").length != 0) {
+		$(".eventDday").each(function(e){
+			let date = new Date();
+			let today = new Date(date.getFullYear(), date.getMonth()+1, date.getDate());
+			let dDate = $(this).siblings("div").find("span.eDate").eq(1).text();
+			let dYear = dDate.substring(0, 4);
+			let dMonth = dDate.substring(5, 7);
+			let dDay = dDate.substring(8, 10);
+			let lastDay = new Date(dYear, dMonth, dDay);
+			let gap = lastDay.getTime() - today.getTime();
+			let result = Math.ceil(gap / (1000 * 60 * 60 * 24));
+				if(result>0){
+					let percent = 100-((result/50)*100);
+					$(this).html("D - " + result);
+					$(this).css({"color": "red", "font-weight": "bold"});
+					gsap.to($(this).siblings("div").find("span.percentBar"), 0.7, { width: percent+"%", ease: Power3.easeOut });
+					$(this).siblings("div").find("span.percentBar").css({"background-color": "blue"});
+				} else if (result==0) {
+					$(this).html("D-Day");
+					$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "red"});
+				} else {
+					$(this).html("이미 종료된 이벤트입니다.");
+					$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "grey"});
+				}
+			});
+		}
+		
+	if ($(".likeClk").length != 0) {
+		$(".wishChk").each(function(e){
+			if($(".wishChk").eq(e).val()=="true") {
+				$(this).prop("checked", true);
+				$(this).parent(".chk-group").addClass("checked");
+			} 
+		});
+	}
+
+	
+	
 
 });
 

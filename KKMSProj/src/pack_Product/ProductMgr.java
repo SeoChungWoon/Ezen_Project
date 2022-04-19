@@ -156,4 +156,72 @@ public class ProductMgr {
 
 		return count;
 	}
+	
+	// 찜 목록 추가
+	public boolean wishAdd (String uId, int pNo) {
+		boolean flag = false;
+		
+		try {
+			objConn = pool.getConnection();
+			String sql = "insert into wishList values (?, ?)";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uId);
+			objPstmt.setInt(2, pNo);
+			if(objPstmt.executeUpdate()>0) {
+				flag=true;
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		
+		return flag;
+	}
+	
+	// 찜 목록 제거
+		public boolean wishDel (String uId, int pNo) {
+			boolean flag = false;
+			
+			try {
+				objConn = pool.getConnection();
+				String sql = "delete from wishList where uId=? and pNo=?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, uId);
+				objPstmt.setInt(2, pNo);
+				if(objPstmt.executeUpdate()>0) {
+					flag=true;
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			} finally {
+				pool.freeConnection(objConn, objPstmt);
+			}
+			
+			return flag;
+		}
+		
+		// 찜 목록 불러오기
+		public List wishList (String uId) {
+			List wList = new Vector();
+			
+			try {
+				objConn = pool.getConnection();
+				String sql = "select pNo from wishList where uId=?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, uId);
+				objRS = objPstmt.executeQuery();
+				while (objRS.next()) {
+					wList.add(objRS.getInt("pNo"));
+				}
+				
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			} finally {
+				pool.freeConnection(objConn, objPstmt);
+			}
+			
+			return wList;
+		}
+			
 }
