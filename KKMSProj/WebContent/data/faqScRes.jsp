@@ -1,14 +1,15 @@
-<%@page import="pack_FAQ.FaqVO"%>
+<%@page import="pack_EzPro.BoardVO"%>
+<%@page import="pack_EzPro.BoardDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="pack_FAQ.FaqDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	FaqDAO objDAO = new FaqDAO();
+	String division = "FAQ";
+	BoardDAO objDAO = new BoardDAO();
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
-	ArrayList list = objDAO.getSearch(searchField, searchText);
+	ArrayList list = objDAO.getSearch(searchField, searchText,division);
 	
 	
 	
@@ -63,14 +64,16 @@
 						<%
 		      				// JSP 코드 영역
 		      				for(int i=0; i<list.size(); i++){
-		      					FaqVO objVO = (FaqVO)list.get(i);
+		      					BoardVO objVO = (BoardVO)list.get(i);
 		      					
 		      			%>
 		      				<tbody>
 		      					<tr>
-		      						<td><%=objVO.getfDivision() %></td>
+		      						<td><%=objVO.getDivision() %></td>
 		      						<td>
-		      						<a href="noticeView.jsp?no=<%=objVO.getfNo() %>&title=<%=objVO.getfTitle() %>"><%=objVO.getfTitle() %></a>
+		      						<label for="faqRow<%=i+1%>">
+		      						<%=objVO.getTitle() %>
+		      						</label>
 		      						</td>
 		      						<td>
 		      						<label for="faqRow<%=i+1%>">
@@ -81,7 +84,7 @@
 		      					</tr>
 		      					<tr class="hidden">
 		      						<td class="hide" colspan="3">
-		      							<pre><%=objVO.getfContent() %></pre>
+		      							<pre><%=objVO.getContent() %></pre>
 		      						</td>
 		      					</tr>		      		
 		      				<% 

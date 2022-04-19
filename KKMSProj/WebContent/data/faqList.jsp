@@ -1,18 +1,18 @@
-<%@page import="pack_FAQ.FaqVO"%>
-<%@page import="pack_FAQ.FaqDAO"%>
+
 <%@page import="pack_EzPro.BoardDAO"%>
 <%@page import="pack_EzPro.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<jsp:useBean id="regDAO" class="pack_FAQ.FaqDAO" />
-<jsp:useBean id="regVO" class="pack_FAQ.FaqVO" />
+<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
+<jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
 
 <%
 request.setCharacterEncoding("UTF-8");
-FaqDAO objDAO = new FaqDAO();
-int cnt = objDAO.BoardCount();		//데이터 갯수
+String division = "FAQ";
+BoardDAO objDAO = new BoardDAO();
+int cnt = objDAO.BoardCount(division);		//데이터 갯수
 int pageSize = 10;
 
 String pageNum = request.getParameter("pageNum");
@@ -27,7 +27,7 @@ int lastData = nowPage * pageSize-1;
 List objList = null;
 
 if(cnt != 0){
-	objList = objDAO.FaqList(firstData,pageSize);
+	objList = objDAO.BoardList(firstData,pageSize,division);
 }
 %>
 
@@ -64,8 +64,8 @@ if(cnt != 0){
   			<span>Search</span>
   			<select name="searchField" class="searchDV">
   				<option value="0">선택</option>
-  				<option value="fTitle">제목</option>
-  				<option value="fContent">내용</option>
+  				<option value="title">제목</option>
+  				<option value="content">내용</option>
   			</select>
   			<input type="text" placeholder="제목 및 내용을 검색해보세요" id="searchBox" name="searchText" size="30"
   			  onfocus="this.placeholder=''" onblur="this.placeholder='제목 및 내용을 검색해보세요'">
@@ -114,13 +114,13 @@ if(cnt != 0){
 		      				<%
 		      				// JSP 코드 영역
 		      				for(int i=0; i<objList.size(); i++){
-		      					FaqVO objVO = (FaqVO)objList.get(i);
+		      					BoardVO objVO = (BoardVO)objList.get(i);
 		      				%>
 		      					<tr>
-		      						<td><%=objVO.getfDivision() %></td>
+		      						<td><%=objVO.getDivision() %></td>
 		      						<td>
 		      						<label for="faqRow<%=i+1 %>" class="faqTitle">
-		      						<%=objVO.getfTitle() %>
+		      						<%=objVO.getTitle() %>
 		      						</label>
 		      						</td>
 		      						<td>
@@ -132,7 +132,7 @@ if(cnt != 0){
 		      					</tr>
 		      					<tr class="hidden">
 		      						<td class="hide" colspan="3">
-		      							<pre><%=objVO.getfContent() %></pre>
+		      							<pre><%=objVO.getContent() %></pre>
 		      						</td>
 		      					</tr>		      		
 		      				<% 
@@ -143,7 +143,7 @@ if(cnt != 0){
 		      </div>
 		      <!-- div.tblArea 끝 -->
 		      
-		      <div class="footerArea">
+		      <div class="footerArea dFlex">
 		      	<div class="pageArea">
 		      		<%
 		      		//처음 페이지 이동 할 때
@@ -213,8 +213,10 @@ if(cnt != 0){
 		      			<!-- <script>location.href = "/data/noData.jsp";</script> -->
 		      		<%
 		      			}
-			
-	    	 %>
+					%>
+				<div class="btnArea">
+	    			<button type="button" onclick="writeMove()">글쓰기</button>
+	    		</div> 		
 	    	 		
 </div>
 <!-- div.footerArea -->

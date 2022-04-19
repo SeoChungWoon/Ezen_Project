@@ -1,26 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
+<jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
+<jsp:setProperty name="regVO" property="*" />
 
+<jsp:useBean id="fRegVO" class="pack_FAQ.FaqVO" />
+<jsp:useBean id="fRegDAO" class="pack_FAQ.FaqDAO" />
+<jsp:setProperty name="fRegVO" property="*" />
+<%
+request.setCharacterEncoding("UTF-8");
+boolean res = memMgr.mtdWrite(regVO);
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-     <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style3.css" />
-     <script src="/source/jquery-3.6.0.min.js"></script>
-     <script src="/script/script.js"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="/style/style_Common.css">
+<link rel="stylesheet" href="/style/style1.css">
+<link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet" href="/style/style3.css">
+<script src="/source/jquery-3.6.0.min.js"></script>
+<script src="/source/gsap.min.js"></script>
+<script src="/script/script.js"></script>
+<script src="/script/script_bbs.js"></script>
+<script src="/script/memberScript.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 
-  <div id="wrap">
-  		<h1></h1>
-        <hr id="headHR">
+	<div id="wrap">
+		<%@ include file="/include/header.jsp"%>
+		<div class="sub-body">
+			<div class="inner">
+				<div class="tit-cont">
+					<!--  title -->
+					<p class="tit">게시글이 성공적으로 등록되었습니다.</p>
+				</div>
+				<!--div.tit-cont  -->
+					<div class="get-send">
+						
+						<button type="button" class="writeBtn">목록으로</button>
+						<button type="button" class="writeBtn" onclick="main()">메인으로</button>
+					</div>
+					<!-- div.get-send -->
+				
 
-  </div>
-  <!-- div#wrap -->
+			</div>
+			<!-- div.inner -->
+		</div>
+		<!-- div.sub-body -->
+		<%@ include file="/include/footer.jsp"%>
+	</div>
+	<!-- div#wrap -->
 </body>
 </html>

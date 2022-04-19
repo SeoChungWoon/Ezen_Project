@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="pack_DBCP.DBConnectionMgr"%>
@@ -8,7 +9,6 @@
 <jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
 <jsp:setProperty name="regVO" property="*" />
 <% 
-boolean flag = memMgr.mtdWrite(regVO);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -18,48 +18,50 @@ boolean flag = memMgr.mtdWrite(regVO);
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
      <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style1.css">
-	 <link rel="stylesheet" href="/style/style2.css">
+     <link rel="stylesheet" href="/style/style2.css">
      <link rel="stylesheet" href="/style/style3.css">
      <script src="/source/jquery-3.6.0.min.js"></script>
 	 <script src="/source/gsap.min.js"></script>
-	 <script src="/script/script.js"></script>
+	 <script src="/script/script_bbs.js"></script>
 	 <script src="/script/memberScript.js"></script>
 </head>
 <body>
 
   <div id="wrap">
   <%@ include file="/include/header.jsp"%>
-		<div class="sub-body">
+		<div class="sub-body dFlex">
+				<div class="mypageInner">
+					<%@include file="/include/myPageAside.jsp" %>				        
+         		</div>
+				<!-- div.mypageInner -->			
 			<div class="inner">
 				<div class="tit-cont"> <!--  title -->
 					<p class="tit">글쓰기</p>
 				</div>
 				<!-- div.tit-cont -->
+
+        <form action="/data/writeRes.jsp" id="writeFrm" method="get">
+        <div id="main">
+        
  		<div id="header">
         <hr id="headHR">
         </div>
         <!-- div#header -->
-        
-        
-        <form action="/data/bbsList.jsp" id="writeFrm" method="post">
-        <div id="main">
        
         <table id="writeTbl">
         	<tbody>
         	<tr>
         		<td>
-        			<span>작성자 : </span>
-					<input type="text" id="writer" readonly name="wName">
+        		<input type="hidden" name="wName" value="<%=memberId %>">
+        			<span id="writer">작성자 : <%=memberId %></span>
         		</td>
         	</tr>
         		<tr>
         			<td>
         				<select name="division" id="division">
         					<option value="">구 분</option>
-        					<option>공지사항</option>
-        					<option>FAQ</option>
-        					<option>이용안내</option>
+        					<option value="공지사항">공지사항</option>
+        					<option value="FAQ">FAQ</option>
         				</select>
         			</td>
         		</tr>
@@ -79,7 +81,7 @@ boolean flag = memMgr.mtdWrite(regVO);
         		</tr>
         		<tr>
         			<td>
-        				<textarea name="script" id="content" cols="50" rows="15"
+        				<textarea name="content" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
         				  onblur="this.placeholder='내용을 입력해주세요'"></textarea>
@@ -87,28 +89,16 @@ boolean flag = memMgr.mtdWrite(regVO);
         		</tr>
         	</tbody>
         </table>
-        </div>
- 		<!-- div#main -->
- 		<div id="setPwArea">
- 			<div id="setPw">
- 				<span>공개 여부 : </span>
- 				공개 <input type="radio" class="setPw" id="openChk" name="gender">
- 				비공개 <input type="radio" class="setPw" id="lockChk" name="gender">
- 			</div>
- 			<!-- div#setPw -->
- 			<div id="contentPw">
- 				<span>비밀번호 :</span> 
- 				<input type="password" class="cPwBox" id="inputPw">
- 			</div>
- 			<div id="alert"></div>
- 		</div>
- 		<!-- div#setPwArea -->
  		<div id="btnArea">
- 			<button type="submit" class="writeBtn">저장하기</button>
- 			<button type="button" class="writeBtn">취소</button>
+ 			<button type="submit" class="writeBtn">작성하기</button>
+ 			<button type="button" class="writeBtn"	onclick="cancel()">취소</button>
  		</div>
  		<!-- div#btnArea -->
+        </div>
+ 		<!-- div#main -->
          </form>
+
+
 
 </div>
 <!-- div.inner -->

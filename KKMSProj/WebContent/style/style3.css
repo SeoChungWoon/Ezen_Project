@@ -60,8 +60,21 @@ div#wrap>.sub-body>.inner>form>.searchArea>button.btnImg{
 /*div#searchArea 영역 끝*/
 
 /*div.footerArea 시작*/
+div.footerArea{
+	justify-content: space-between;	
+	margin-top: 30px;
+}
 div.footerArea>.pageArea a.nowPage{
 	cursor: none;
+}
+div.footerArea>.btnArea button{
+	width: 100px;
+	height: 35px;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	border-radius: 5px;
 }
 /*div.footerArea 끝*/
 
@@ -69,6 +82,10 @@ div.footerArea>.pageArea a.nowPage{
 
 
 /*/////////////////////write.jsp 영역 시작///////////////////////*/
+#wrap>.sub-body>.inner>form#writeFrm>#main{
+	width: 70%;
+	margin: 0 auto;
+}
 #wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl{
 	width: 100%;
 }
@@ -81,13 +98,7 @@ div.footerArea>.pageArea a.nowPage{
 }
 
 
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl select#division{
-	width: 100%;
-	margin: 7px 7px;
-	height: 35px;
-	border: 1px solid #d8d8d8;
-	font-size: 18px;
-}
+#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl select#division,
 #wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#titleBox{
 	width: 100%;
 	margin: 7px 7px;
@@ -98,8 +109,12 @@ div.footerArea>.pageArea a.nowPage{
 #wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl td#bg{
 	background-color: #fbfbfb;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl span{
+#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl span#writer{
+	display: inline-block;
 	margin-left: 5px;
+}
+#wrap>.sub-body>.inner>form#writeFrm>#main>table td:first-child{
+	text-align: left;
 }
 #wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#writer{
 	outline: none;
@@ -126,6 +141,7 @@ div.footerArea>.pageArea a.nowPage{
 	font-size: 18px;
 }
 #btnArea{
+	margin-top: 20px;
 	text-align: right;
 }
 #btnArea>button{
@@ -139,13 +155,6 @@ div.footerArea>.pageArea a.nowPage{
 }
 #btnArea>button:hover {
 	background-color: #aaa;
-}
-#setPwArea>#setPw{
-	margin-left: 7px;
-}
-#setPwArea>#contentPw{
-	display: none;
-	margin: 10px 5px;
 }
 /*/////////////////////write.jsp 영역 끝///////////////////////*/
 
@@ -196,6 +205,8 @@ div.footerArea>.pageArea a.nowPage{
 }
 .content>pre{
 	padding:0;
+	font-size: 15px;
+	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
 }
 .ntcFooter {
 	justify-content: space-between;
@@ -341,10 +352,39 @@ div.footerArea>.pageArea a.nowPage{
 }
 
 /*/////////////////////useInfo.jsp 영역 끝///////////////////////*/
+/*/////////////////////noData.jsp 영역 시작///////////////////////*/
 
+#wrap .rpBtn {
+	text-align: center;
+}
+#wrap .rpBtn>button{
+	margin-right: 10px;
+	width: 100px;
+	height: 35px;
+	background-color: #fff;
+	font-size: 15px;
+	font-weight: bold;
+	color: #333;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+.noDataInner{
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
 
+/*/////////////////////noData.jsp 영역 끝///////////////////////*/
 
+/*/////////////////////faqScRes.jsp 영역 끝///////////////////////*/
 
+.scTblArea>table>tbody>tr>td img:hover,
+.scTblArea>table>tbody>tr>td label:hover{
+
+	cursor: pointer;
+}
+
+/*/////////////////////faqScRes.jsp 영역 끝///////////////////////*/
 
 
 

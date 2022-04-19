@@ -9,13 +9,23 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
      <link rel="stylesheet" href="/style/style_Common.css">
+     <link rel="stylesheet" href="/style/style1.css">
+	 <link rel="stylesheet" href="/style/style2.css">
+     <link rel="stylesheet" href="/style/style3.css">
      <script src="/source/jquery-3.6.0.min.js"></script>
-     <script src="/script/script.js"></script>
+	 <script src="/source/gsap.min.js"></script>
+	<script src="/script/script.js"></script>
+	 <script src="/script/script_bbs.js"></script>
+	 <script src="/script/memberScript.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
 
   <div id="wrap">
+  <%@ include file="/include/header.jsp"%>
+		<div class="sub-body">
+			<div class="inner">
+  <div class="noDataInner">
       <div class="tblArea">
 		      	<div class="tblTop">
 		      		<span>전체 게시물 : 0개</span>
@@ -44,7 +54,7 @@
 		      			</thead>
 		      				<tbody>
 		    					<tr>
-		      						<td colspan=5>등록된 게시물이 없습니다.</td>
+		      						<td colspan=6>등록된 게시물이 없습니다.</td>
 		      					</tr>
 		      				
 	
@@ -52,7 +62,18 @@
 		      	</table>
 		      </div>
 		      <!-- div.tblArea 끝 -->
-
+		      	
+		      	  <div class="rpBtn">
+		      	  	<button type="button" onclick="main()">메인으로</button>
+	    			<button type="button" onclick="writeMove()">글쓰기</button>
+	    		</div> 		
+</div>
+<!-- noDataInner -->
+</div>
+<!-- div.inner -->
+</div>
+<!-- div.subbody -->
+		<%@ include file="/include/footer.jsp"%>
   </div>
   <!-- div#wrap -->
 </body>

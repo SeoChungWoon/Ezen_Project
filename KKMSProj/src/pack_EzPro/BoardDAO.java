@@ -23,16 +23,16 @@ public class BoardDAO {
 		pool = DBConnectionMgr.getInstance();
 	}
 	
-	public List BoardList(int firstData, int pageSize) {
+	public List BoardList(int firstData, int pageSize, String division) {
 		List boardList = new Vector();
 			try {
 				objConn = pool.getConnection();
-				String sql = "select * from bbsList order by no desc limit ?,?";
-				
+				String sql = "select * from bbsList where division=? order by no desc limit ?,?";
 				objPstmt = objConn.prepareStatement(sql);
 				
-				objPstmt.setInt(1, firstData);
-				objPstmt.setInt(2, pageSize);
+				objPstmt.setString(1, division);
+				objPstmt.setInt(2, firstData);
+				objPstmt.setInt(3, pageSize);
 				
 				objRS = objPstmt.executeQuery();
 				
@@ -43,6 +43,7 @@ public class BoardDAO {
 					objVO.setNo(objRS.getInt("no"));
 					objVO.setDivision(objRS.getString("division"));
 					objVO.setTitle(objRS.getString("title"));
+					objVO.setContent(objRS.getString("content"));
 					objVO.setwName(objRS.getString("wName"));
 					objVO.setPostDate(objRS.getString("postDate"));
 					objVO.setCount(objRS.getInt("count"));
@@ -57,18 +58,20 @@ public class BoardDAO {
 		
 		return boardList;
 	}
-	public int BoardCount() {
+	public int BoardCount(String division) {
 		int count = 0;
 		
 		try {
 			objConn = pool.getConnection();
-			String sql = "select count(*) from bbsList";
+			String sql = "select count(*) from bbsList where division=?";
 			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, division);
 			objRS = objPstmt.executeQuery();
 			
 			if(objRS.next()) {
-				count = objRS.getInt(1);
+				count = objRS.getInt("count(*)");
 			}
+
 		}catch(Exception e2) {
 			System.out.println("Exception : " + e2.getMessage());
 		} finally {
@@ -90,16 +93,17 @@ public class BoardDAO {
 	 	try{
 	 		objConn = pool.getConnection();
 	 		
-	 		String sql = "insert into bbsList (division, title, wName, postDate, count) values";
-	 				sql += "(?,?,?,date_format(now(),'%Y-%m-%d'),?)";
+	 		String sql = "insert into bbsList (division, title, wName,content,postDate, count) values ";
+	 				sql += "(?,?,?,?,date_format(now(), '%Y-%m-%d'),0)";
 	 		objPstmt = objConn.prepareStatement(sql);
 	 		objPstmt.setString(1,vo.getDivision());
 	 		objPstmt.setString(2,vo.getTitle());
 	 		objPstmt.setString(3,vo.getwName());
-	 		objPstmt.setString(4,vo.getPostDate());
-	 		objPstmt.setInt(5, 0);
+	 		objPstmt.setString(4, vo.getContent());
 	 		
-	 		objPstmt.executeUpdate();
+	 		if(objPstmt.executeUpdate()>0) {
+	 			res = true;
+	 		}
 		
 
 	}catch (Exception e) {
@@ -108,26 +112,28 @@ public class BoardDAO {
 		return res;
 }
 	//공지사항 조회수
-	public int viewCnt(int no) {
+	public int viewCnt(int no,String division) {
 		
 		String sql="";
 		int count = 0;
 		try{
 			objConn = pool.getConnection();
 			
-			sql = "select count from bbsList where no=?";
+			sql = "select count from bbsList where division=? and no=?";
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setInt(1, no);
+			objPstmt.setString(1, division);
+			objPstmt.setInt(2, no);
 			objRS = objPstmt.executeQuery();
 			objRS.next();
 			count = objRS.getInt("count");
 			count++;
 			
-			sql = "update bbsList set count=? where no=?";
+			sql = "update bbsList set count=? where division=? and no=?";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, count);
-			objPstmt.setInt(2, no);
+			objPstmt.setString(2, division);
+			objPstmt.setInt(3, no);
 			
 			objPstmt.executeUpdate();
 			
@@ -140,16 +146,17 @@ public class BoardDAO {
 		
 		return count;
 	}
-	public List mtdSelect(int no) {
+	public List mtdSelect(int no, String division) {
 		List objList = new Vector();
 		
 		try {
 			objConn = pool.getConnection();
 			
-			String sql = "select * from bbsList where no=?";
+			String sql = "select * from bbsList where no=? and division=?";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, no);
+			objPstmt.setString(2, division);
 			objRS = objPstmt.executeQuery();
 			while(objRS.next()) {
 				BoardVO objVO = new BoardVO();
@@ -171,15 +178,16 @@ public class BoardDAO {
 		}
 		return objList;
 	}
-	public ArrayList getSearch(String searchField, String searchText){
+	public ArrayList getSearch(String searchField, String searchText, String division){
 			ArrayList	list = new ArrayList();
-			String sql = "select * from bbsList where "+searchField.trim();
+			String sql = "select * from bbsList where division =? and "+searchField.trim();
 			try {
 				objConn = pool.getConnection();
 				if(searchText != null && !searchText.equals("")) {
 					sql += " like '%"+searchText.trim()+"%' order by no desc";
 				}
 					objPstmt = objConn.prepareStatement(sql);
+					objPstmt.setString(1, division);
 					objRS = objPstmt.executeQuery();
 					while(objRS.next()) {
 						BoardVO objVO = new BoardVO();

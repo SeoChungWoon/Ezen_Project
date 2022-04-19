@@ -47,7 +47,8 @@ area4 char(20)
 );
 
 
-/*공지게시판용 테이블 시작*/
+
+/*게시판용 테이블 시작*/
 create table bbsList (
 no		int	auto_increment	not null,
 division	char(20)	not null,
@@ -64,46 +65,11 @@ desc bbsList;
 
 drop table bbsList;
 
-
-insert into bbsList (no, division, title, wName,content,postDate) values
-(1, '공지사항', '반품/교환 신청 및 조회 서비스 오픈!', '관리자',
-'E-Ticket에서 상품을 구매하신 후 반품이나 교환을 원하시거나 주문하신 상품이 누락되었을 때
-사이트에서 직접 신청하실 수 있는 반품/교환 신청 및 조회 메뉴가 마이페이지에 추가되었습니다.
-
-메뉴 바로가기
-'
-, date_format(now(),'%Y-%m-%d'));
-
-insert into bbsList (no, division, title, wName,content,postDate) values
-(2, '공지사항', '이용약관 개정안','관리자',
-'시행일자 : 2022년 04월 09일
-
-주요 개정 내용
-
-개정조항 : 제2조(용어의 정리)
-
-개정내용 :
-
-- 6. 디지털상품 : 동영상, eTicket, e러닝, E-Ticket 클럽 및 음원과 같이 VOD, 스트리밍, 다운로드 등의 형태로 제공되는 무배송 상품을 말합니다.
-
-- 8. 라.캐시 : 디지털상품 중 웹소설/코믹을 구매할 때, 현금처럼 사용할 수 있는 사이버머니
-
-- 11. sey코인 : 회사의 웹소설/코믹에서 운영하는 가상화폐로 회사가 정한 기준에 따라 지급'
-,date_format(now(), '%Y-%m-%d'));
-
-insert into bbsList (no, division, title, wName,content,postDate) values
-(3, '공지사항', '택배사 변경안내', '관리자',
-'04월 11일부터 하루배송 택배사가 CJ 대한통운으로 변경되어 안내 드립니다.
-
-▶ 배송 대행 업체 변경
-
-1) 당일 배송 대행 : GTX -> 한진택배
-
-2) 일반 배송 (하루배송) 대행  : KG로지스 -> CJ 대한통운'
-, date_format(now(), '%Y-%m-%d'));
-
 select * from bbsList order by no limit 0,10;
-
+select count(*) from bbsList where division='공지사항';
+select * from bbsList where division='공지사항' order by no desc limit 0,10 ;
+select * from bbsList where no=2 and division='공지사항';
+select * from bbsList where division='공지사항' and title like '%택배%' order by no desc;
 set global max_connections=500;
 set wait_timeout=50;
 /*set sql_safe_updates=0;
@@ -113,40 +79,7 @@ update bbsList set title = '택배사 변경안내'
 where no=3;
 */
 
-/*공지게시판용 테이블 끝*/
-
-/* FAQ게시판용 테이블 시작*/
-create table faqList(
-fNo	int	auto_increment	not null,
-fDivision char(20)	not null,
-fTitle		char(50)	not null,				
-fContent varchar(1000)	not null,
-constraint primary key (fNo)
-);
-
-insert into faqList (fNo, fDivision, fTitle, fContent) values
-(1, '주문/결제', '주문내역은 어디서 확인하나요?',
-'  ▷ 주문내역은 로그인 후, 마이페이지>예매내역에서 확인 하실 수 있습니다.');
-insert into faqList values
-(2, '취소/교환', '휴대폰으로 결제한 경우 취소시 환불은 어떻게 되나요?',
-' ▷  휴대폰결제를 통한 주문 시 결제대금이 다음 달 휴대폰요금과 함께 청구되며,
-      이동통신사 정책에 따라 결제 승인 취소는 해당 월 내에만 가능합니다.
-
-      ※ 휴대폰 결제 취소는 주문한 달의 말일까지만 가능
-
-      익월 취소시에는 예치금으로 환불 (통신사 정책에 따라 승인취소 불가능)');
-insert into faqList values
-(3, '회원정보', '아이디,비밀번호를 잊어버렸어요. 어떻게 해야 하나요?',
-' ▷  아이디 찾기
-	  회원 로그인 화면에서 [아이디 찾기]를 클릭하여 인증을 통해 확인이 가능합니다.
-
-	  비밀번호 찾기
-	  회원 로그인 화면에서 [비밀번호 찾기]를 클릭 하여 아이디 와 가입 시 기입한 이메일 주소 또는 휴대폰번호를 입력 하여 임시비밀번호 발급이 가능합니다.
-	  위의 정보로 받을 수 없는 경우 본인인증 후 새 비밀번호로 변경해주세요.');
-
-
-drop table faqList;
-/* FAQ게시판용 테이블 끝*/
+/*게시판용 테이블 끝*/
 
 
 /* 상품 리스트 */
