@@ -53,8 +53,6 @@ public class ProductMgr {
 				pLBean.setpViewTime(objRS.getString("pViewTime"));
 				pLBean.setpClass(objRS.getString("pClass"));
 				pLBean.setpDelivery(objRS.getString("pDelivery"));
-				pLBean.setpWSeller(objRS.getString("pWriteSel"));
-				pLBean.setpReview(objRS.getString("pReview"));
 				pList.add(pLBean);
 			}
 		} catch (Exception e) {
