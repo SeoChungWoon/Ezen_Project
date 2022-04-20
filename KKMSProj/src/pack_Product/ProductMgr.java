@@ -101,6 +101,7 @@ public class ProductMgr {
 			objRS = objPstmt.executeQuery();
 			while (objRS.next()) {
 				ProRevBean pRBean = new ProRevBean();
+				pRBean.setpRevPNo(objRS.getInt("pRevPNo"));
 				pRBean.setpRevNo(objRS.getInt("pRevNo"));
 				pRBean.setpRevUId(objRS.getString("pRevUId"));
 				pRBean.setpRevPhoto(objRS.getInt("pRevPhoto"));
@@ -135,49 +136,6 @@ public class ProductMgr {
 			}
 		} catch (Exception e) {
 			System.out.println("proListCount e : " + e.getMessage());
-		} finally {
-			pool.freeConnection(objConn, objPstmt, objRS);
-		}
-
-		return count;
-	}
-
-	// 리뷰 데이터 있는 지 확인
-	public int proRevCount() {
-		int count = 0;
-
-		try {
-			objConn = pool.getConnection();
-			String sql = "select count(*) from pRevList where pRevPhoto = 1";
-			objPstmt = objConn.prepareStatement(sql);
-			objRS = objPstmt.executeQuery();
-
-			if (objRS.next()) {
-				count = objRS.getInt(1);
-			}
-		} catch (Exception e) {
-			System.out.println("proRevCount e : " + e.getMessage());
-		} finally {
-			pool.freeConnection(objConn, objPstmt, objRS);
-		}
-
-		return count;
-	}
-
-	public int proRevPhotoCnt() {
-		int count = 0;
-
-		try {
-			objConn = pool.getConnection();
-			String sql = "select count(*) from pRevList where pRevPhoto = 1";
-			objPstmt = objConn.prepareStatement(sql);
-			objRS = objPstmt.executeQuery();
-
-			if (objRS.next()) {
-				count = objRS.getInt(1);
-			}
-		} catch (Exception e) {
-			System.out.println("proRevCount e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -234,14 +192,13 @@ public class ProductMgr {
 	}
 
 	// 판매자 문의 삭제
-	public boolean writeDelChk(int pWUId) {
+	public boolean writeDelChk(String pWUId) {
 		boolean chkDel = false;
 
 		try {
 			objConn = pool.getConnection();
-			sql = "update pWSel set pWrite = null where pWUId = " + pWUId;
+			sql = "delete from pWSel where pWUId = '" + pWUId + "'";
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.executeUpdate();
 
 			if (objPstmt.executeUpdate() > 0) {
 				chkDel = true;
@@ -256,31 +213,8 @@ public class ProductMgr {
 		return chkDel;
 	}
 
-	// 리뷰 작성
-	public boolean writeRevChk(int pNo, String pReview) {
-		boolean chk = false;
 
-		try {
-			objConn = pool.getConnection();
-			sql = "update proList set pReview = ? where pNo = " + pNo;
-			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, pReview);
-			objPstmt.executeUpdate();
-
-			if (objPstmt.executeUpdate() > 0) {
-				chk = true;
-			}
-
-		} catch (Exception e) {
-			System.out.println("writeRevChk e : " + e.getMessage());
-		} finally {
-			pool.freeConnection(objConn, objPstmt, objRS);
-		}
-
-		return chk;
-	}
-
-	// 데이터 있는 지 확인
+	// 판매자 데이터 있는 지 확인
 	public int writeListChk(String pWUId) {
 		int count = 0;
 
@@ -301,6 +235,131 @@ public class ProductMgr {
 
 		return count;
 	}
+
+	// 리뷰 작성
+	public boolean writeRevChk(int pRevWNo,String pRevWUId, String pRevWrite, int pRevWStar, String pRevWPhoto) {
+		boolean chk = false;
+
+		try {
+			objConn = pool.getConnection();
+			sql = "insert into pRevWrite (pRevWNo, pRevWUId, pRevWrite, pRevWStar, pRevWPhoto, pRevWTime, pRevWRecom) values (?, ?, ?, ?, ?, now(), 0)";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, pRevWNo);
+			objPstmt.setString(2, pRevWUId);
+			objPstmt.setString(3, pRevWrite);
+			objPstmt.setInt(4, pRevWStar);
+			objPstmt.setString(5, pRevWPhoto);
+
+			if (objPstmt.executeUpdate() > 0) {
+				chk = true;
+			}
+
+		} catch (Exception e) {
+			System.out.println("writeRevChk e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return chk;
+	}
+	public boolean listRevChk(int pRevPNo,String pRevUId, String pRevCont, int pRevStar, String pRevImg) {
+		boolean chk = false;
+
+		try {
+			objConn = pool.getConnection();
+			sql = "insert into pRevList (pRevPNo, pRevUId, pRevCont, pRevStar, pRevImg, pRevDate, pRevRecom, pRevPhoto) values (?, ?, ?, ?, ?, now(), 0, ?)";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, pRevPNo);
+			objPstmt.setString(2, pRevUId);
+			objPstmt.setString(3, pRevCont);
+			objPstmt.setInt(4, pRevStar);
+			objPstmt.setString(5, pRevImg);
+			if(pRevImg.equals(null) || pRevImg.equals("")) {
+				objPstmt.setInt(6, 0);
+			}else {
+				objPstmt.setInt(6, 1);
+			}
+
+			if (objPstmt.executeUpdate() > 0) {
+				chk = true;
+			}
+
+		} catch (Exception e) {
+			System.out.println("writeRevChk e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return chk;
+	}
+
+	// 리뷰 이미지 리스트
+	public int proRevCount() {
+		int count = 0;
+
+		try {
+			objConn = pool.getConnection();
+			String sql = "select count(*) from pRevList where pRevPhoto = 1";
+			objPstmt = objConn.prepareStatement(sql);
+			objRS = objPstmt.executeQuery();
+
+			if (objRS.next()) {
+				count = objRS.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println("proRevCount e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return count;
+	}
+	// 리뷰 썼는지(로그인 시)
+	public int revWCnt(String uId) {
+		int count = 0;
+
+		try {
+			objConn = pool.getConnection();
+			String sql = "select count(*) from pRevWrite where pRevWUId = '" + uId + "'";
+			objPstmt = objConn.prepareStatement(sql);
+			objRS = objPstmt.executeQuery();
+
+			if (objRS.next()) {
+				count = objRS.getInt(1);
+			}
+		} catch (Exception e) {
+			System.out.println("revWCnt e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return count;
+	}
+	
+	// 리뷰 좋아요
+	public boolean revRecomCnt(int pRevRecom, String uId, int pNo) {
+		boolean chk = false;
+
+		try {
+			objConn = pool.getConnection();
+			String sql = "update pRevList set pRevRecom = ? where pRevUId = '" + uId + "'and pRevPNo = " + pNo;
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, pRevRecom);
+			objPstmt.executeUpdate();
+
+			if (objPstmt.executeUpdate() > 0) {
+				chk = true;
+			}
+		} catch (Exception e) {
+			System.out.println("revWCnt e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return chk;
+	}
+
+
 
 	// 찜 목록 추가
 	public boolean wishAdd(String uId, int pNo) {

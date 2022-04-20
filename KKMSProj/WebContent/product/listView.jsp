@@ -10,7 +10,6 @@
 <jsp:setProperty name="prodBean" property="*" />
 <jsp:useBean id="prodRevBean" class="pack_Product.ProRevBean" />
 <jsp:setProperty name="prodRevBean" property="*" />
-<jsp:setProperty name="prodBean" property="*" />
 <jsp:useBean id="prodWSBean" class="pack_Product.ProWSelBean" />
 <jsp:setProperty name="prodWSBean" property="*" />
 
@@ -235,12 +234,12 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 										</ul>
 
 										<%
-										List objWSList = prodMgr.listWSOutput();
-										ProWSelBean pWSList = (ProWSelBean) objWSList.get(0);
-										int chk = prodMgr.writeListChk(memberId);
-										
-										if (memberId != null) {
-											if (chk > 0) {
+										if(prodMgr.listWSOutput().size() > 0){
+											List objWSList = prodMgr.listWSOutput();
+											ProWSelBean pWSList = (ProWSelBean) objWSList.get(0);
+											int chk = prodMgr.writeListChk(memberId);
+											
+											if (chk > 0 ) {
 										%>
 										<div class="inquiry-writeCont">
 											<p class="tit">나의 판매자 문의 내역</p>
@@ -267,7 +266,11 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 										</div>
 										<!-- // inquiry-writeCont -->
 										<%
-										} else {
+											}
+										}
+										
+
+										if (memberId != null) {
 										%>
 
 										<div class="btn-cont">
@@ -275,8 +278,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 												data-target="popup1">문의 작성하기</button>
 										</div>
 										<%
-										}
-										} else {
+											} else {
 										%>
 
 										<div class="btn-cont">
@@ -285,7 +287,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 												작성하기</button>
 										</div>
 										<%
-										}
+											}
 										%>
 									</div>
 									<!-- // "inquiryBox" -->
@@ -294,8 +296,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 									<div class="reviewBox">
 										<p class="tit">관람후기</p>
 										<%
-										List objRevList = prodMgr.listRevOutput();
-										int revPhotoCnt = prodMgr.proRevPhotoCnt();
+										 List objRevList = prodMgr.listRevOutput();
 
 										int cnt = prodMgr.proRevCount();
 										%>
@@ -306,20 +307,25 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 											</p>
 
 											<div class="photo-list swiper-container">
+												<!-- Add Arrows -->
+												<div class="swiper-button-next"></div>
+												<div class="swiper-button-prev"></div>
 												<div class="swiper-wrapper">
 													<%
-													for (int i = revPhotoCnt; i >= 1; i--) {
+													if (cnt != 0) {
+														for (int i = 0; i < objRevList.size(); i++) {
+															ProRevBean revList = (ProRevBean) objRevList.get(i);
+															if(revList.getpRevImg() != null){
 													%>
 													<div class="swiper-slide">
 														<a href="javascript:" class="btn open-modal photoList pPreview" data-target="popup4"><img
-															src="/images/product-review-img<%=i%>.jpg" alt="" /></a>
+															src="/images/<%=revList.getpRevImg()%>" alt="" data-target="<%=i %>ImgPop" /></a>
 													</div>
 													<%
+															}
+														}
 													}
 													%>
-													<!-- Add Arrows -->
-													<div class="swiper-button-next"></div>
-													<div class="swiper-button-prev"></div>
 												</div>
 											</div>
 										</div>
@@ -331,14 +337,15 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 											</ul>
 
 											<%
-											if (memberId != null) {
+											int revWCnt = prodMgr.revWCnt(memberId);
+											if (memberId != null && revWCnt == 0) {
 											%>
 											<div class="btn-cont">
 												<button type="button" class="btn open-modal review"
 													data-target="popup2">관람리뷰 작성하기</button>
 											</div>
 											<%
-											} else {
+											} else if(memberId == null){
 											%>
 											<div class="btn-cont">
 												<button type="button" class="btn review"
@@ -350,6 +357,14 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 											%>
 										</div>
 
+										<%
+										if(memberId != null){
+										%>
+										<p class="logTxt">* 나의 리뷰 수정/삭제는 마이페이지에서 가능합니다.</p>
+										<%
+										}
+										%>
+										
 										<ul class="revList">
 											<%
 											if (cnt != 0) {
@@ -364,6 +379,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 														String revRecom = revList.getpRevDate();
 														String[] revRecom1 = revRecom.split(" ");
 														int revStar = revList.getpRevStar();
+														String pRevUId = revList.getpRevUId();
 														
 														if (revPhotoChk > 0) {
 														%>
@@ -373,46 +389,53 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 														<%
 														}
 														%>
+														
 														<p class="txt"><%=revList.getpRevCont()%></p>
 														<ul class="txtInfo">
+															<input type="hidden" name="wRecom" id="wRecom" value="<%=revList.getpRevRecom()%>" />
+															<input type="hidden" name="wPNo" id="wPNo" value="<%=pNo %>" />
+															<input type="hidden" name="wUId" id="wUId" value="<%=revList.getpRevUId()%>" />
 															
 															<li class="wUseId"><span><%=revList.getpRevUId()%></span></li>
 															<li class="wDate"><span><%=revRecom1[0]%></span></li>
 															<%
 															if (memberId != null) {
 															%>
-															<li class="wRecom"><a href="javascript:"><span
+															<li class="wRecom"><a href="javascript:" class="revRecomBtn"><span
 																	class="blind">추천하기</span><em class="cnt"><%=revList.getpRevRecom()%></em></a></li>
+																	
 															<%
-															} else {
+															}else {
 															%>
 															<li class="wRecom"><a href="javascript:"
-																onclick="alert('로그인 후 작성가능합니다.'); location.href='/member/login.jsp'"><span
+																onclick="alert('로그인 후 가능합니다.'); location.href='/member/login.jsp'"><span
 																	class="blind">추천하기</span><%=revList.getpRevRecom()%></a></li>
+																	
 															<%
 															}
 															%>
 														</ul>
 														<div class="review-star star-rating">
 															<div class="rateChk">
-															<%
-															for(int t = 1; t <= revStar; t++){
-															%>
+														<%
+														for(int t = 1; t <= revStar; t++){
+														%>
 																<div class="chk-group checked">
 																	<input type="checkbox" name="rateStar" id="rateStar" value=""/> 
 																	<label for="rateStar"><a href="javascript:"><span class="blind">점</span></a></label>
 																</div>
-															<%
-															}
-															for(int t = 1; t <= 5 - revStar; t++){
-															%>
+														<%
+														}
+														
+														for(int t = 1; t <= 5 - revStar; t++){
+														%>
 																<div class="chk-group">
 																	<input type="checkbox" name="rateStar" id="rateStar" value=""  /> 
 																	<label for="rateStar"><a href="javascript:"><span class="blind">점</span></a></label>
 																</div>
-															<%
-															}
-															%>
+														<%
+														}
+														%>
 															</div>
 														</div>
 													</div>

@@ -63,72 +63,35 @@
 			</div>
 		</div>
 		
-	<!--  	
-	<div class="section_sub-menu section">
-		<div class="sub-menu-wrapper">
-			<div>공지사항</div>
-			<div>게시판</div>
-			<div>게시판</div>
-			<div>게시판</div>
-		</div>
-	</div> 
-	-->
-	<div class="section_hot section">
-		<h1>WHAT'S HOT</h1>
-		<article>
-			<div>
-				<div class="hot-list_first">
-					<img src="images/main_images/01_thumb.jpeg" alt="지킬 앤 하이드 포스터">
-					<div class="hot-list-text">
-						<p>지킬 앤 하이드</p>
-						<p>2022. 06. 18 ~ 2022. 06. 19 드림씨어터</p>
+		
+		<section class="sec01">
+			<h1>WHAT'S HOT</h1>
+
+
+			<div class="hot_list_section">
+				<%
+				if (cnt != 0) {
+					for (int i = 0; i < objList.size(); i++) {
+						ProListBean mList = (ProListBean) objList.get(i);
+				%>
+				<div class="listcontainer">
+					<div class="hot_list">
+						<a href="/product/listView.jsp?pNo=<%=mList.getpNo()%>"> <img
+							src="/images/main_images/product-list-img<%=i + 1%>.jpg" alt="포스터">
+							<div class="hotproduct">
+								<h2>앤서니 브라운의 원더랜드 뮤지엄</h2>
+								<p>2022.04.28~2022.05.31</p>
+								<p>예술의 전당 한가람미술관 2층</p>
+							</div>
 					</div>
+					</a>
 				</div>
+				<%
+				}	}
+				%>
 			</div>
-			<div class="hot-list-wrapper">
-				<div class="hot-list">
-					<img src="images/main_images/02_thumb.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="hot-list">
-					<img src="images/main_images/03_thumb.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="hot-list">
-					<img src="images/main_images/04_thumb.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="hot-list">
-					<img src="images/main_images/05_thumb.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="hot-list">
-					<img src="images/main_images/06_thumb.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-				<div class="hot-list">
-					<img src="images/main_images/07_thumb.jpeg" alt="뮤지컬 공연 포스터">
-				</div>
-			</div>
-		</article>
-	</div>
-	
-	
-<!-- 탭메뉴 -->	
+		</section>
 
-<!-- 
-<div class="tab_container">
-
-  <ul class="tabs">
-    <li class="tab-link current" data-tab="tab-1">전체</li>
-    <li class="tab-link" data-tab="tab-2">전시</li>
-    <li class="tab-link" data-tab="tab-3">체험/행사</li>
-    <li class="tab-link" data-tab="tab-4">기타</li>
-  </ul>
-
-  <div id="tab-1" class="tab-content current">전체</div>
-  <div id="tab-2" class="tab-content">전시</div>
-  <div id="tab-3" class="tab-content">체험/행사</div>
-  <div id="tab-4" class="tab-content">기타</div>
-
-</div>
-	 -->
-<!-- 탭메뉴 -->
 
 
 <section class="mainprolist">

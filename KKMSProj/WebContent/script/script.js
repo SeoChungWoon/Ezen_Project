@@ -88,12 +88,14 @@ $(function() {
 	if ($(".rateChk").length != 0) {
 		$(".rateCalc").find(".set").text($(this).parent(".chk-group.checked").length);
 
-		$(".rateChk .chk-group").each(function(e) {
-			$(this).find("label").off("click").on("click", function(a) {
+		$(".rateChk").each(function(e) {
+			$(this).find(".chk-group label").off("click").on("click", function(a) {
 				$(this).parent(".chk-group").addClass("checked");
 				$(this).parent(".chk-group").prevAll().addClass("checked");
 				$(this).parent(".chk-group").nextAll().removeClass("checked");
-				$("#rateCalc").val($(".rateChk .chk-group.checked").length);
+				
+				var chkLeng = $(".rateChk").eq(e).find(".chk-group.checked").length;
+				$("#rateCalc").val(chkLeng);
 			});
 		});
 	}
@@ -175,15 +177,36 @@ $(function() {
 				var btnImg = $(this).children("img").attr("src");
 				var btnData = $(this).attr("data-target");
 				
-				
 				if($(".pop_wrap.modal").is("#"+btnData)){
-					console.log("22222");
 					$(".pop_wrap.modal#"+btnData).find(".img").find("img").attr("src", btnImg);
 				}
 			});
 		});
 	}
-
+	// photo review pop
+	if ($("a.btn.photoList").length != 0) {
+		$("a.btn.photoList").each(function(e){
+			$(".reviewBox .revList li").each(function(a){
+				$("a.btn.photoList").eq(e).on("click", function(){
+					var btnData = $(this).attr("data-target");
+					var btnImg = $(this).children("img").attr("src");
+					var listImg = $(".reviewBox .revList li").eq(a);
+					
+					if(btnImg == listImg.find("img").attr("src")){
+						var rate = listImg.find(".star-rating .rateChk").html();
+						var txt = listImg.find(".txt-area .txt").html();
+						var txtInfo = listImg.find(".txtInfo").html();
+					}
+					
+					if($(".pop_wrap.modal").is("#"+btnData)){
+						$(".pop_wrap.modal#"+btnData).find(".star-rating .rateChk").html(rate);
+						$(".pop_wrap.modal#"+btnData).find(".txt").html(txt);
+						$(".pop_wrap.modal#"+btnData).find(".txtInfo").html(txtInfo);
+					}	
+				});
+			});
+		});
+	}
 	//product price calc
 	if ($(".price.sale").length != 0) {
 		priceCalc();
@@ -426,6 +449,21 @@ $(function() {
 			}
 		});
 	}
+	// 리뷰 작성
+	if ($(".pop_review").length != 0) {
+		$(".file-group").each(function(e){
+			// 파일 첨부
+			$(this).find(".fileBtn").on("click", function(e){
+				e.preventDefault();
+				$(this).siblings("input[type=file]").click();
+			});
+			// 파일 첨부 삭제
+			$(this).find(".file-name .fileDel").on("click", function(e){
+				$(this).siblings("span").text("");
+				$(this).parent().hide();
+			});
+		});
+	}
 	// 리뷰 ID 가리기
 	if ($(".reviewInfo .txt-area .txtInfo .wUseId").length != 0) {
 		$(".reviewInfo .txt-area .txtInfo .wUseId").each(function(e){
@@ -440,6 +478,50 @@ $(function() {
 			$(".wUseId span").eq(e).text(idTxt);
 		});
 
+	}
+	// 리뷰 좋아요
+	if($(".reviewInfo .txtInfo").length != 0){
+		$(".txtInfo").each(function(e){
+			$(this).find("a.revRecomBtn").on("click", function(){
+				var cnt = $(this).find("em").text();
+				
+				if(!$(this).hasClass("on")){
+					$(this).addClass("on");
+					cnt++;
+					$(this).find("em").text(cnt);
+					$(".txtInfo").eq(e).find("#wRecom").val(cnt);
+					
+					var wRecom = $(".txtInfo").eq(e).find("#wRecom").val();
+					var wPNo = $(".txtInfo").eq(e).find("#wPNo").val();
+					var wUId = $(".txtInfo").eq(e).find("#wUId").val();
+					
+					$.ajax({
+						type: "post",
+						url: "/product/listReviewCntProc.jsp",
+						data: { "wRecom": wRecom, "wPNo" : wPNo, "wUId" : wUId},
+						success: function(txt) {
+						}
+					});
+				}else{
+					$(this).removeClass("on");
+					cnt--;
+					$(this).find("em").text(cnt);
+					$(".txtInfo").eq(e).find("#wRecom").val(cnt);
+					
+					var wRecom =$(".txtInfo").eq(e).find("#wRecom").val();
+					var wPNo = $(".txtInfo").eq(e).find("#wPNo").val();
+					var wUId = $(".txtInfo").eq(e).find("#wUId").val();
+					
+					$.ajax({
+						type: "post",
+						url: "/product/listReviewCntProc.jsp",
+						data: { "wRecom": wRecom, "wPNo" : wPNo, "wUId" : wUId},
+						success: function(txt) {
+						}
+					});
+				}
+			});
+		});
 	}
 
 
@@ -497,21 +579,21 @@ $(window).on("load", function() {
 			let lastDay = new Date(dYear, dMonth, dDay);
 			let gap = lastDay.getTime() - today.getTime();
 			let result = Math.ceil(gap / (1000 * 60 * 60 * 24));
-				if(result>0){
-					let percent = 100-((result/50)*100);
-					$(this).html("D - " + result);
-					$(this).css({"color": "red", "font-weight": "bold"});
-					gsap.to($(this).siblings("div").find("span.percentBar"), 0.7, { width: percent+"%", ease: Power3.easeOut });
-					$(this).siblings("div").find("span.percentBar").css({"background-color": "blue"});
-				} else if (result==0) {
-					$(this).html("D-Day");
-					$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "red"});
-				} else {
-					$(this).html("이미 종료된 이벤트입니다.");
-					$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "grey"});
-				}
-			});
-		}
+			if(result>0){
+				let percent = 100-((result/50)*100);
+				$(this).html("D - " + result);
+				$(this).css({"color": "red", "font-weight": "bold"});
+				gsap.to($(this).siblings("div").find("span.percentBar"), 0.7, { width: percent+"%", ease: Power3.easeOut });
+				$(this).siblings("div").find("span.percentBar").css({"background-color": "blue"});
+			} else if (result==0) {
+				$(this).html("D-Day");
+				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "red"});
+			} else {
+				$(this).html("이미 종료된 이벤트입니다.");
+				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "grey"});
+			}
+		});
+	}
 		
 	if ($(".likeClk").length != 0) {
 		$(".wishChk").each(function(e){
@@ -598,6 +680,13 @@ function priceCalc() {
 		}
 
 	});
+}
+// review file명 불러오기
+function fileVal(a)
+{
+	$(".file-name span").text(a.files[0].name);
+	$(".file-name").css("display", "flex");
+	$("#fileName").val(a.files[0].name);
 }
 
 // sns url clk evt
