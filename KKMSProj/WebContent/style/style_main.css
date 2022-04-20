@@ -37,25 +37,77 @@
   height: 100%;
 }
 
-.section_sub-menu {
-  width: 100%;
-  padding-top: 50px;
-}
-.sub-menu-wrapper {
-  box-shadow: 0px 5px 14px 5px #e8e8e8;
+
+/* 핫리스트 수정작업한거 */
+
+
+
+.listcontainer{
   display: flex;
   justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  /* align-items: center; */
+  height: 400px;
 }
-.sub-menu-wrapper > div {
-  width: 220px;
-  padding: 18px 38px;
-  border-left: 2px solid rgb(194, 194, 194);
+.hot_list{
+  margin: 10px;
+  width: 300px;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  transition: .5s;
+  border-radius: 10px;
+}
+.hot_list a{
+  width: inherit;
+  height: inherit;
+  
+}
+.hot_list img{
+  width: 100%;
+  height: 100%;
+}
+.hotproduct{
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 100%;
+  left: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(to top,
+   rgba(44, 41, 41, 0.459), transparent);
+   color: #fff;
+   text-align: center;
+   padding-top: 220px;
+   box-sizing: border-box;
+   transition: .5s;
+   /* opacity: .8; */
+}
+.hot_list:hover .hotproduct{
+  top: 0;
+}
+.hot_list:hover{
+  transform: translateY(-20px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.342);
+}
+
+ 
+/* 핫리스트 수정작업한거 */
+
+
+.sec01{
+  width: 70%;
+  height: 850px;
+  margin: 0 auto;
+  margin-top: 10px;
+  background-color: rgba(197, 62, 62, 0.053);
+  
+}
+.sec01 > h1 {
   text-align: center;
-}
-.sub-menu-wrapper > div:first-child {
-  border-left: none;
+  font-size: 40px;
+  padding-top: 100px;
+  padding-bottom: 70px;
 }
 
 
@@ -109,55 +161,6 @@
   margin-right: 0px;
 }
 
-
-/* 탭 메뉴*/
-.tab_menu{ 
-	
-}
-.tab_menu ul{
-	align-items: center;
-}
-
-.tab_container{
-  width: 500px;
-  margin: 0 auto;
-  margin-top: 50px;
-}
-
-.tab_container> ul.tabs{
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-}
-.tab_container> ul.tabs li{
-  background: none;
-  color: #222;
-  display: inline-block;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.tab_container> ul.tabs li.current{
-  background: #ededed;
-  color: #222;
-}
-
-.tab-content{
-  display: none;
-  background: #ededed;
-  padding: 15px;
-}
-
-.tab-content.current{
-  display: inherit;
-}
-
-
-
-
-
-
-/* 탭 메뉴*/
 
 
 /* 상품 리스트 */

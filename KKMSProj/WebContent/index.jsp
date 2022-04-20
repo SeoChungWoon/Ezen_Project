@@ -63,17 +63,37 @@
 			</div>
 		</div>
 		
-	<!--  	
-	<div class="section_sub-menu section">
-		<div class="sub-menu-wrapper">
-			<div>공지사항</div>
-			<div>게시판</div>
-			<div>게시판</div>
-			<div>게시판</div>
-		</div>
-	</div> 
-	-->
-	<div class="section_hot section">
+		<!-- 아.. 안돼..... -->
+		<section class="sec01">
+      	<h1>WHAT'S HOT</h1>
+          
+		<%
+		if(cnt != 0){
+      		for(int i = 0; i < objList.size(); i++){
+				ProListBean mList = (ProListBean) objList.get(i);
+		%>
+	
+          <div class="listcontainer">
+            <div class="hot_list">
+              <a href="/product/listView.jsp?pNo=<%=mList.getpNo() %>">
+                <img src="/images/main_images/product-list-slideimg<%= i+1%>.jpg" alt="포스터">
+                <div class="hotproduct">
+                  <h2>앤서니 브라운의 원더랜드 뮤지엄</h2>
+                  <p>2022.04.28~2022.05.31</p>
+                  <p>예술의 전당 한가람미술관 2층</p>    
+                </div>
+              </div>
+            </a>
+          </div>
+		<%} }%>
+		</section>
+		
+		
+		
+		
+		
+		
+<!--  <div class="section_hot section">
 		<h1>WHAT'S HOT</h1>
 		<article>
 			<div>
@@ -106,29 +126,9 @@
 				</div>
 			</div>
 		</article>
-	</div>
+	</div>-->
 	
-	
-<!-- 탭메뉴 -->	
 
-<!-- 
-<div class="tab_container">
-
-  <ul class="tabs">
-    <li class="tab-link current" data-tab="tab-1">전체</li>
-    <li class="tab-link" data-tab="tab-2">전시</li>
-    <li class="tab-link" data-tab="tab-3">체험/행사</li>
-    <li class="tab-link" data-tab="tab-4">기타</li>
-  </ul>
-
-  <div id="tab-1" class="tab-content current">전체</div>
-  <div id="tab-2" class="tab-content">전시</div>
-  <div id="tab-3" class="tab-content">체험/행사</div>
-  <div id="tab-4" class="tab-content">기타</div>
-
-</div>
-	 -->
-<!-- 탭메뉴 -->
 
 
 <section class="mainprolist">
