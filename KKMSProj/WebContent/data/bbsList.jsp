@@ -29,6 +29,7 @@ List objList = null;
 if(cnt != 0){
 	objList = objDAO.BoardList(firstData,pageSize,division);
 }
+BoardVO objVO = null;
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -99,16 +100,14 @@ if(cnt != 0){
 		      	
 		      	<table>
 		      		<colgroup>
-		      			<col width="8%" />
 		      			<col width="10%"/>
 		      			<col width="40%"/>
-		      			<col width="12%"/>
+		      			<col width="20%"/>
 		      			<col width="15%"/>
 		      			<col width="15%"/>
 		      		</colgroup>
 		      			<thead>
-		      				<tr>
-		      					<th>번호</th>
+		      				<tr>	    
 		      					<th>구분</th>
 		      					<th>제목</th>
 		      					<th>작성자</th>
@@ -120,10 +119,9 @@ if(cnt != 0){
 		      				<%
 		      				// JSP 코드 영역
 		      				for(int i=0; i<objList.size(); i++){
-		      					BoardVO objVO = (BoardVO)objList.get(i);
+		      					objVO = (BoardVO)objList.get(i);
 		      				%>
 		      					<tr>
-		      						<td><a href="bbsList.jsp?no=<%=objVO.getNo() %>&pageNum=<%=pageNum %>"><%=objVO.getNo() %></a></td>
 		      						<td><%=objVO.getDivision() %></td>
 		      						<td>
 		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>"><%=objVO.getTitle() %></a></td>
@@ -212,9 +210,11 @@ if(cnt != 0){
 		      		<%
 		      			}
 	    	 		%>
+					
 	    		<div class="btnArea">
 	    			<button type="button" onclick="writeMove()">글쓰기</button>
 	    		</div> 		
+	   
 </div>
 <!-- div.footerArea -->
 </div>

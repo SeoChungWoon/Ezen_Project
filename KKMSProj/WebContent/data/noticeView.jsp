@@ -56,30 +56,28 @@ int cnt = regDAO.BoardCount(division);
 				<!--div.tit-cont  -->
         <hr id="headHR">
 				<div id="ntcViewInner">				
-        			<div class="header">
-        				<div class="headerTop dFlex">
-        					<div class="headerTop-left">
-        						<span>공지사항</span>
-        					</div>
-        					<div class="headerTop-right">
         					<%
         					for(int i=0; i<ntcList.size(); i++){
         						BoardVO objVO = (BoardVO)ntcList.get(i);
         		
         					%>
-        						<span>등록일 : <%=objVO.getPostDate()%>&ensp;|&ensp;</span>
         						
-        						<span>조회수 : <%=nowCnt %></span>	
-        					</div>
-        					<!-- headerTop-right -->
-        				</div>
-        				<!-- div.headerTop -->
-        				<div class="ntcTitle">
-        					<span><%=objVO.getTitle() %></span>
+        				
+
+        				<div class="ntcTitle dFlex">
+        						<div class="ntcTitle-left">
+        							<span><%=objVO.getTitle() %></span>
+        						</div>
+        						<!-- div.ntcTitle-left -->
+        						<div class="ntcTitle-right">
+        							<span>등록일 : <%=objVO.getPostDate()%>&ensp;|&ensp;</span>
+        						
+        							<span>조회수 : <%=nowCnt %></span>	
+        						</div>
+        						<!-- div.nteTitle-right -->
         				</div>
         				<!-- div.ntcTitle -->
-        		</div>
-        		<!-- div.header -->
+
         		<div class="content">
         			<pre><%=objVO.getContent() %></pre>
         		</div>
@@ -101,6 +99,8 @@ int cnt = regDAO.BoardCount(division);
         				<!-- div.footerLeft -->
         				<div class="footerRight">
         					<a href="/data/bbsList.jsp">목록으로</a>
+        					<a href="update.jsp">수정하기</a>
+	    					<a href="delete.jsp?no=<%=objVO.getNo() %>" id="delKey">삭제하기</a>
         				</div>
         				<!-- div.footerRight -->
         		</div>

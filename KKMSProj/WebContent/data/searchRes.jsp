@@ -6,9 +6,10 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	BoardDAO objDAO = new BoardDAO();
+	String division = "공지사항";
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
-	ArrayList list = objDAO.getSearch(searchField, searchText);
+	ArrayList list = objDAO.getSearch(searchField, searchText,division);
 	
 	
 

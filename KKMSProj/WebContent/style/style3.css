@@ -140,11 +140,10 @@ div.footerArea>.btnArea button{
 	color: #aaa;
 	font-size: 18px;
 }
-#btnArea{
-	margin-top: 20px;
+.btnArea{
 	text-align: right;
 }
-#btnArea>button{
+.btnArea>button{
 	width: 80px;
 	height: 35px;
 	font-size: 15px;
@@ -153,7 +152,7 @@ div.footerArea>.btnArea button{
 	font-weight: bold;
 	cursor: pointer;
 }
-#btnArea>button:hover {
+.btnArea>button:hover {
 	background-color: #aaa;
 }
 /*/////////////////////write.jsp 영역 끝///////////////////////*/
@@ -164,34 +163,26 @@ div.footerArea>.btnArea button{
 	width: 80%;
 	height: 600px;
 	margin: 0 auto;
+	margin-top: 30px;
 }
-
-#wrap>form#noticeFrm>.sub-body>.inner>#ntcViewInner>.header>.headerTop{
-	justify-content: space-between;
+.ntcTitle{
+	width: 100%;
 	padding: 30px 10px;
-}
-.headerTop>.headerTop-right{
-		transform: translateY(27px);
-		
-}
-.headerTop>.headerTop-left>span{
-	font-size: 25px;
-	font-weight: bold;
-	text-decoration: underline;
-}
-.headerTop>.headerTop-right>span{
-	font-size: 14px;
-	font-weight: bold;
-}
-.header>.ntcTitle{
-	padding: 20px 10px;
 	border:1px solid #000;
 	border-top: 5px solid #000;
 	border-bottom:none;
 	background-color: #f5f5f5;
+	justify-content: space-between;
 }
-.header>.ntcTitle>span{
-	font-size: 25px;
+.ntcTitle>.ntcTitle-left>span{
+	font-size: 20px;
+	font-weight: bold;
+}
+.ntcTitle>.ntcTitle-right{
+	transform: translateY(20px);
+}
+.ntcTitle>.ntcTitle-right>span{
+	font-size: 14px;
 	font-weight: bold;
 }
 
@@ -210,6 +201,7 @@ div.footerArea>.btnArea button{
 }
 .ntcFooter {
 	justify-content: space-between;
+	margin-top: 20px;
 }
 .ntcFooter>.footerLeft>a{
 	padding: 10px 10px;
@@ -226,6 +218,9 @@ div.footerArea>.btnArea button{
 .ntcFooter>.footerRight>a:hover{
 	opacity: 0.7;
 	text-decoration: underline;
+}
+.ntcFooter>.footerRight>a{
+	padding: 5px 10px;
 }
 /*/////////////////////noticeView.jsp 영역 끝///////////////////////*/
 /*/////////////////////searchRes.jsp 영역 시작///////////////////////*/
@@ -386,7 +381,22 @@ div.footerArea>.btnArea button{
 
 /*/////////////////////faqScRes.jsp 영역 끝///////////////////////*/
 
+/*/////////////////////writeRes.jsp 영역 시작///////////////////////*/
 
+#wrap>.sub-body>.inner>.tit-cont p#writeRes-p{
+	font-size: 20px;
+}
+
+/*/////////////////////writeRes.jsp 영역 끝///////////////////////*/
+
+/*/////////////////////delete.jsp 영역 시작///////////////////////*/
+
+#wrap>.sub-body>.inner .btnArea>#dlBtn{
+	margin: 5px 10px;
+	transform: translateX(-250px);
+}
+
+/*/////////////////////delete.jsp 영역 끝///////////////////////*/
 
 
 

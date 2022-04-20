@@ -3,10 +3,6 @@
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
 <jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
 <jsp:setProperty name="regVO" property="*" />
-
-<jsp:useBean id="fRegVO" class="pack_FAQ.FaqVO" />
-<jsp:useBean id="fRegDAO" class="pack_FAQ.FaqDAO" />
-<jsp:setProperty name="fRegVO" property="*" />
 <%
 request.setCharacterEncoding("UTF-8");
 boolean res = memMgr.mtdWrite(regVO);
@@ -37,7 +33,7 @@ boolean res = memMgr.mtdWrite(regVO);
 			<div class="inner">
 				<div class="tit-cont">
 					<!--  title -->
-					<p class="tit">게시글이 성공적으로 등록되었습니다.</p>
+					<p class="tit" id="wirteRes-p">게시글이 성공적으로 등록되었습니다.</p>
 				</div>
 				<!--div.tit-cont  -->
 					<div class="get-send">

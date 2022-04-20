@@ -41,13 +41,27 @@ $(".faqBtn").on("click", function(){
 			location.href="/index.jsp";
 			
 		}
+		function writeMove(){
+			location.href="/data/write.jsp";
+		}
  		
  		///////////////////write.jsp 영역 끝/////////////////
 	
 		///////////////////bbsList.jsp 영역 시작/////////////////
-		function writeMove(){
-			location.href="/data/write.jsp";
+		function list(){
+			location.href="/data/bbsList.jsp";
 		}
+		
+		$("a#delKey").on("click",function(){
+			let delChk = comfirm("정말 삭제하시겠습니까?");
+			if(delChk){
+					location.href="delete.jsp";	
+			}else{
+				window.location.reroad();	
+			}
+			
+		});
+		
 		///////////////////bbsList.jsp 영역 끝/////////////////
 	
 	
