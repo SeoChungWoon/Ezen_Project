@@ -75,10 +75,10 @@
 
 								int pNo = mList.getpNo();
 								if (memberId != null) {
-									List wList = prodMgr.wishList(memberId);
-									for (int j = 0; j < wList.size(); j++) {
-										Object data = wList.get(j);
-										int wish = (int) data;
+									List objWishList = prodMgr.wishList(memberId);
+									for (int j = 0; j < objWishList.size(); j++) {
+										ProListBean wList = (ProListBean) objWishList.get(j);
+										int wish = wList.getpNo();
 										if (i + 1 == wish) {
 											wishChk = true;
 											break;

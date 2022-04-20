@@ -1,16 +1,6 @@
 
 $(function() {
 
-/* 이벤트 D-day 알람 */
-	$("").on("load", function(){
-	
-	alert("이미지로딩");
-		
-		
-	
-	});
-/* 이벤트 D-day 알람 */
-
 
 /* 이벤트 페이지 태그 버튼 */
 	$(".event-tab > li > a").on("click", function() {

@@ -13,7 +13,7 @@ String tag = evList.geteTag();
 String type = evList.geteType();
 tag = tag.trim();
 type = type.trim();
-int eCnt = eMgr.eventReplyCnt();
+int eCnt = eMgr.eventReplyCnt(eNo);
 
 String pageNo = request.getParameter("pageNo");
 if(pageNo == null) {
@@ -50,6 +50,19 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 <script src="/script/eventScript.js"></script>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-rwdImageMaps/1.6/jquery.rwdImageMaps.min.js">
+
+</script>
+
+<script>
+
+$(document).ready(function(){
+
+$('img[usemap]').rwdImageMaps();
+
+});
+
+</script>
 	<div id="wrap">
 
 		<%@ include file="/include/header.jsp"%>
@@ -84,7 +97,34 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 					<!-- // eventTop -->
 					
 					<%
-					if(type.equals("기대평이벤트")) {
+					if(type.equals("출석체크")) {
+					%>
+					<div id="eventContent">
+						<img src="/images/event-spring-attend-0.png" usemap="#image-map">
+						<map name="image-map">
+						    <area target="" alt="" title="출석하기" href="javascript:" coords="215,1157,692,1237" shape="rect">
+						</map>
+						
+						<div class="eventRef">
+							<span class="eventRefTitle">참고해주세요</span>
+							<hr class="eventRefHR">
+							<span id="eventRefTxt">
+								<ul>
+									<li>본 이벤트는 ID 1개당 1회 참여만 가능합니다.</li>
+									<li>중복으로 참여하시더라도 당첨 확률에는 영향을 미치지 않습니다.</li>
+									<li>본 이벤트는 예고없이 사전에 종료될 수 있습니다.</li>
+									<li>본 이벤트는 부적절한 행위 확인 시 당첨이 취소될 수 있습니다.</li>
+									<li>기타 이벤트 관련 문의사항은 1:1문의 게시판을 이용해주세요.</li>
+								</ul>
+							</span>
+							<hr class="eventRefHR">
+						</div>
+						<!-- div.eventRef -->
+					</div>
+					<!-- div.eventContent -->
+					
+					<%
+					} else if(type.equals("기대평이벤트")) {
 					%>
 					<div id="eventContent">
 						<img src="/images/<%=evList.geteInnerImg()%>" alt="" />
@@ -145,8 +185,8 @@ if(pageCnt-2>1 && pageCnt-2<=nowPage){
 									if(i==rList.size()) break;
 									eventBean evReply = (eventBean) rList.get(i);
 									String uId = evReply.getuId();
-									String str = uId.substring(uId.length() - 2);
-									String eId = uId.replace(str, "**");
+									String eId = uId.substring(0, uId.length() - 2);
+									eId+="**";
 							%>
 							<div class="eventReplyRow dFlex">
 								<div class="eventReplyId">

@@ -539,6 +539,18 @@ $(function() {
 			},
 		});
 	}
+	if ($(".wishSwiper").length != 0) {
+		var revSwiper = new Swiper('.wishSwiper', {
+			slidesPerView: "auto",
+			spaceBetween: 10,
+			observer: true,
+			observeParents: true,
+			navigation: {
+				nextEl: '.wishSwiper .swiper-button-next',
+				prevEl: '.wishSwiper .swiper-button-prev',
+			},
+		});
+	}
 
 });
 

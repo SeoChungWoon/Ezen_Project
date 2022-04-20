@@ -463,6 +463,21 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 	margin-bottom: 10px;
 }
 
+.mypageRow .mypageVal .mypageWishList {
+	width: 20%;
+	margin: 0 10px;
+}
+
+.mypageRow .mypageVal .wishSwiper {
+	padding: 5px 25px;
+	border: 1px solid #222;
+}
+
+.mypageRow .mypageVal .mypageWishList img {
+	width: 100%;
+}
+
+
 .modifyRow > div , .mypageRow > div {
 	width: 60%;
 }
@@ -474,7 +489,11 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 	width: 80%;
 }
 
-div.modifyBtnArea, div.modifyVal , .mypageVal {
+.mypageArea .mypageRow .mypageVal input {
+	width: 100%;
+}
+
+div.modifyBtnArea, div.modifyVal , .mypageVal:not(:last-child) {
 	display: inline;
 }
 

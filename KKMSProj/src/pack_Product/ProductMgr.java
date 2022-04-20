@@ -408,6 +408,7 @@ public class ProductMgr {
 	// 찜 목록 불러오기
 	public List wishList(String uId) {
 		List wList = new Vector();
+		List pList = new Vector();
 
 		try {
 			objConn = pool.getConnection();
@@ -416,7 +417,23 @@ public class ProductMgr {
 			objPstmt.setString(1, uId);
 			objRS = objPstmt.executeQuery();
 			while (objRS.next()) {
-				wList.add(objRS.getInt("pNo"));
+				pList.add(objRS.getInt("pNo"));
+			}
+			
+			for (int i = 0; i<pList.size(); i++) {
+				int pNo = (int) pList.get(i);
+				sql = "select * from proList where pNo = ?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setInt(1, pNo);
+				objRS = objPstmt.executeQuery();
+				objRS.next();
+				ProListBean pLBean = new ProListBean();
+				pLBean.setpNo(objRS.getInt("pNo"));
+				pLBean.setpTitle(objRS.getString("pTitle"));
+				pLBean.setpDate1(objRS.getString("pDate1"));
+				pLBean.setpDate2(objRS.getString("pDate2"));
+				pLBean.setpContent(objRS.getString("pContent"));
+				wList.add(pLBean);
 			}
 
 		} catch (Exception e) {

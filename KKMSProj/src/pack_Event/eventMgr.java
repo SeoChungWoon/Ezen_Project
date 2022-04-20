@@ -190,12 +190,12 @@ public class eventMgr {
 		return flag;
 	}
 	
-	public int eventReplyCnt () {
+	public int eventReplyCnt (int eNo) {
 		int eCnt = 0;
 		
 		try {
 			objConn = pool.getConnection();
-			sql = "select count(*) from replyEvent";
+			sql = "select count(*) from replyEvent where eNo='"+eNo+"'";
 			objStmt = objConn.createStatement();
 			objRS = objStmt.executeQuery(sql);
 			objRS.next();

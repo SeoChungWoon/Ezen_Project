@@ -209,6 +209,10 @@ $(function() {
 
 /* 비밀번호 재설정 버튼 */
 	$("#fPwSubmit").on("click", function(){
+		if($("#fPw").length<8 || $("#fPw").length>16) {
+			alert("비밀번호는 8~16자로 설정해주세요.");
+			return;
+		}
 		if($("#pwMatch").val()=="Y"){
 			$("#fPwForm").submit();
 		} else {
@@ -250,7 +254,7 @@ $(function() {
 			success: function(txt) {
 				$("#modifyErrMsg").html(txt);
 				$("#modifyErrMsg *").css({
-					"text-align": "center",
+					"text-align": "left",
 					"color": "red",
 					"margin-bottom": "10px"
 				});
@@ -276,7 +280,7 @@ $(function() {
 			success: function(txt) {
 				$("#withdrawErrMsg").html(txt);
 				$("#withdrawErrMsg *").css({
-					"text-align": "center",
+					"text-align": "left",
 					"color": "red",
 					"margin-bottom": "10px"
 				});
@@ -367,6 +371,11 @@ $("#genderArea input").click(function(){
 function modifyConfirm(formName) {
 	if (formName.uPw.value != formName.uPwChk.value) {
 		alert("비밀번호를 확인해 주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.uPw.value.length < 8 || formName.uPw.value.length > 16) {
+		alert("비밀번호는 8~16자 사이로 설정해주세요.");
 		formName.uPw.focus();
 		return;
 	}
@@ -568,6 +577,11 @@ function join(formName) {
 	}
 	if (formName.uPw.value == "" || formName.uPwChk.value == "" || formName.pwMatch.value == "N") {
 		alert("비밀번호를 확인해 주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.uPw.value.length<8 || formName.uPw.value.length>16) {
+		alert("비밀번호는 8~16자 사이로 설정해주세요.");
 		formName.uPw.focus();
 		return;
 	}
