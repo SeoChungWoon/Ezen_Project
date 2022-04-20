@@ -5,14 +5,16 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-int pNo = Integer.parseInt(request.getParameter("pNo"));
-String memberId = (String) session.getAttribute("memID");
-int rate = Integer.parseInt(request.getParameter("rateCalc"));
-String pReview = request.getParameter("qnaContRev");
+int pRevWNo = Integer.parseInt(request.getParameter("pNo"));
+String uId = request.getParameter("uId");
+String pRevWrite = request.getParameter("qnaContRev");
+int pRevWStar = Integer.parseInt(request.getParameter("rateCalc"));
+String pRevWPhoto = request.getParameter("fileName");
 
-boolean chk = pMgr.writeRevChk(pNo, pReview);
+boolean chk = pMgr.writeRevChk(pRevWNo, uId, pRevWrite, pRevWStar, pRevWPhoto);
+boolean listChk = 	pMgr.listRevChk(pRevWNo, uId, pRevWrite, pRevWStar, pRevWPhoto);
 
-if(chk) {
+if(chk && listChk) {
 	%>
 	<script>
 	alert("리뷰가 작성되었습니다.");

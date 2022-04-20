@@ -2,6 +2,7 @@ package pack_Product;
 
 public class ProRevBean {
 
+	private		int			pRevPNo;
 	private		int			pRevNo;
 	private		String		pRevUId;		// 계정	
 	private		int			pRevPhoto; 	// 사진
@@ -11,6 +12,13 @@ public class ProRevBean {
 	private		int			pRevRecom;	// 리뷰 추천수
 	private		int			pRevStar;	// 리뷰 별점
 	
+	
+	public int getpRevPNo() {
+		return pRevPNo;
+	}
+	public void setpRevPNo(int pRevPNo) {
+		this.pRevPNo = pRevPNo;
+	}
 	public int getpRevNo() {
 		return pRevNo;
 	}

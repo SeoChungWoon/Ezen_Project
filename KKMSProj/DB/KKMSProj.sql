@@ -82,6 +82,16 @@ where no=3;
 /*게시판용 테이블 끝*/
 
 
+
+
+
+
+
+
+
+
+
+
 /* 상품 리스트 */
 ## flag : 투데이특가, 바로사용, MD추천 (최대 3개까지 가능)
 ## pArea : 지역별 선택 탭 (전체, 서울, 경기/인천, 대전/충청/강원)
@@ -135,16 +145,6 @@ desc proList;
 truncate proList;
 select * from proList;
 select * from proList order by pNo Asc;
-delete from proList where pNo = 4;
-update proList set pSalePercent = 0 where pNo = 3;
-update proList set pWriteSel = null where pNo = 3;
-update proList set pSalePercent = null where pNo = 3;
-update proList set pSalePercent = '0' where pNo = 3;
-select pWriteSel, pNo from proList;
-select pReview, pNo from proList;
-select pSalePercent, pNo from proList;
-select count(pWriteSel) from proList where pNo = 1;
-select count(pWriteSel) from proList where pNo = 3;
 
 ## 판매자 문의
 create table pWSel(
@@ -156,17 +156,25 @@ drop table pWsel;
 select * from pWSel;
 truncate pWSel;
 
-select count(*) from pWSel where pWUId = 'hi';
 ## 리뷰 문의
+## 아이디, 작성 내용, 별점, 리뷰 사진
 create table pRevWrite(
 pRevWNo		int,
 pRevWUId		char(15),
-pRevWrite		varchar(500)
+pRevWrite		varchar(500),
+pRevWStar		int,
+pRevWPhoto	varchar(100),
+pRevWTime		timestamp,
+pRevWRecom		int
 );
+
+drop table prevWrite;
+truncate prevWrite;
+select * from pRevWrite;
 ## 리뷰 리스트
 create table pRevList(
 pRevPNo			int,
-pRevNo			int,
+pRevNo			int		auto_increment unique,
 pRevUId			char(15),
 pRevPhoto		int,
 pRevImg			varchar(100),
@@ -176,32 +184,28 @@ pRevRecom		int,
 pRevStar		int
 );
 
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevCont, pRevDate, pRevRecom, pRevStar) values 
 (1, 'hello123', 0, '너무 재밌었어요~ 만족합니다!', now(), 0, 3);
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
-(2, 'lalalala', 1, 'product-review-img1.jpg', '인스타에서 보고 가보고 싶어 예매해서 잘보고 갑니다. 사진 색감이 너무 이뻐요~ 봄 여행을 다녀온 것 같았습니다. 대신 티켓값에 비해 볼 것은 그렇게 많지 않았다는 점 참고해주세요~', now(), 0, 4);
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
-(3, 'dksjdkn', 1, 'product-review-img2.jpg', '사람이 너무 많았어요 ㅠㅠ 주말대신 평일 오전에 가시는 것을 추천합니다! 생각보다 내부가 넓고 전시 다 보려면 2시간정도 걸려요.', now(), 0, 4);
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
-(4, 'skjd567', 1, 'product-review-img3.jpg', '정말 잘봤습니다', now(), 0, 5);
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
-(5, '12dkhjd12', 1, 'product-review-img4.jpg', '저희 딸이랑 다녀왔는데 전시에 체험이 없어서 아이는 조금 재미없어하더라구요 ^^;;;', now(), 0, 3);
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
-(6, '4857dfjfbs',  1, 'product-review-img5.jpg', '추천해요~~ 사람이 워낙 많아서 빨리 다녀와야 할 것 같아요!', now(), 0, 5);
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevCont, pRevDate, pRevRecom, pRevStar) values 
-(7, 'hjfawevd',  0, '굿굿!', now(), 0, 3);
-insert into pRevList (pRevNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
-(6, 'dddddd123',  1, 'product-review-img6.jpg', '추천해요~~ 사람이 워낙 많아서 빨리 다녀와야 할 것 같아요!', '2022-04-19 13:34:03', 0, 4);
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, 'lalalala', 1, 'product-review-img1.jpg', '인스타에서 보고 가보고 싶어 예매해서 잘보고 갑니다. 사진 색감이 너무 이뻐요~ 봄 여행을 다녀온 것 같았습니다. 대신 티켓값에 비해 볼 것은 그렇게 많지 않았다는 점 참고해주세요~', now(), 0, 4);
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, 'dksjdkn', 1, 'product-review-img2.jpg', '사람이 너무 많았어요 ㅠㅠ 주말대신 평일 오전에 가시는 것을 추천합니다! 생각보다 내부가 넓고 전시 다 보려면 2시간정도 걸려요.', now(), 0, 4);
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, 'skjd567', 1, 'product-review-img3.jpg', '정말 잘봤습니다', now(), 0, 5);
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, '12dkhjd12', 1, 'product-review-img4.jpg', '저희 딸이랑 다녀왔는데 전시에 체험이 없어서 아이는 조금 재미없어하더라구요 ^^;;;', now(), 0, 3);
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, '4857dfjfbs',  1, 'product-review-img5.jpg', '추천해요~~ 사람이 워낙 많아서 빨리 다녀와야 할 것 같아요!', now(), 0, 5);
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, 'hjfawevd',  0, '굿굿!', now(), 0, 3);
+insert into pRevList (pRevPNo, pRevUId, pRevPhoto, pRevImg, pRevCont, pRevDate, pRevRecom, pRevStar) values 
+(1, 'dddddd123',  1, 'product-review-img6.jpg', '추천해요~~ 사람이 워낙 많아서 빨리 다녀와야 할 것 같아요!', '2022-04-19 13:34:03', 0, 4);
 
 set sql_safe_updates = 0;
 drop table pRevList;
 desc pRevList;
 truncate pRevList;
-delete from pRevList where pRevNo = 7;
-update pRevList set pRevUId = '99999' where pRevNo = 6;
 select * from pRevList;
-select pRevPhoto from pRevList where pRevPhoto = 1;
-select * from pRevList order by pRevDate Desc;
 
 /* // 상품 리스트 */
 

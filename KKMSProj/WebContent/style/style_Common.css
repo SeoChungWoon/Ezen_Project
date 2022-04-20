@@ -64,6 +64,9 @@
 	border: 1px solid #333;
 	color: #fff;
 }
+.btn-cont button + button{
+	margin-left: 10px;
+}
 .btn-cont button:hover{
 	background: #0086b8;
 	border: 1px solid #0086b8;

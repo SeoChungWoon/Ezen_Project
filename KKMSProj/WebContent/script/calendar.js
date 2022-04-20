@@ -83,7 +83,6 @@ function buildCalendar() {
 				clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
 
 				document.getElementById("date").value = clickedYMD;
-				console.log("날짜 click : " + clickedDate);
 
 				//
 				//하단에 예약일시 표시
@@ -140,12 +139,9 @@ function exchangeToPosibleDay(num) {
 }
 //이번달이면 0 리턴, 다음달이면 1 리턴
 function thisMonth(todayMonth, dateMonth) {
-	console.log("todayMonth : " + todayMonth + ", dateMonth : " + dateMonth);
 	if (todayMonth * 1 == dateMonth * 1) {
-		console.log("이번달 이구요")
 		return 0;
 	}
-	console.log("다음달 이구요")
 	return 1;
 }
 //날자 클릭시 예약시간 및 결제정보 초기화
