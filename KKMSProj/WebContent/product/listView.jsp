@@ -78,12 +78,30 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 									<img src="/images/product-list-img<%=mList.getpNo()%>.jpg"
 										alt="" />
 								</p>
-								
+								<%
+								boolean wishChk = false;
+								if (memberId != null) {
+									List objWishList = prodMgr.wishList(memberId);
+									for (int j = 0; j < objWishList.size(); j++) {
+										ProListBean wList = (ProListBean) objWishList.get(j);
+										int wish = wList.getpNo();
+										if (pNo == wish) {
+											wishChk = true;
+											break;
+										} else {
+											wishChk = false;
+										}
+									}
+								}
+								%>
 								
 								<div class="likeClk">
-									<div class="chk-group like">
-										<input type="checkbox" value="" id="like"/>
-										<label for="like"></label>
+									<div class="chk-group">
+										<input type="hidden" value="<%=memberId%>">
+										<input type="hidden" value="<%=pNo %>">
+										<input type="checkbox" value="<%=wishChk %>" class="wishChk" id="like<%=pNo%>"/>
+										<label for="like<%=pNo%>"></label>
+										<div class="wishRes hidden"></div>
 									</div>
 								</div>
 							</div>

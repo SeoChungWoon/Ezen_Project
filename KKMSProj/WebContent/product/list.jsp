@@ -92,11 +92,10 @@
 							<a href="/product/listView.jsp?pNo=<%=pNo%>">
 								<div class="likeClk">
 									<div class="chk-group">
-										<input type="checkbox" value="" id="like"/>
 										<input type="hidden" value="<%=memberId%>">
 										<input type="hidden" value="<%=pNo %>">
-										<input type="checkbox" value="<%=wishChk %>" class="wishChk" id="like"/>
-										<label for="like"></label>
+										<input type="checkbox" value="<%=wishChk %>" class="wishChk" id="like<%=pNo%>"/>
+										<label for="like<%=pNo%>"></label>
 										<div class="wishRes hidden"></div>
 									</div>
 								</div>

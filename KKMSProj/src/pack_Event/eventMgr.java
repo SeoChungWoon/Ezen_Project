@@ -195,9 +195,10 @@ public class eventMgr {
 		
 		try {
 			objConn = pool.getConnection();
-			sql = "select count(*) from replyEvent where eNo='"+eNo+"'";
-			objStmt = objConn.createStatement();
-			objRS = objStmt.executeQuery(sql);
+			sql = "select count(*) from replyEvent where eNo=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, eNo);
+			objRS = objPstmt.executeQuery();
 			objRS.next();
 			eCnt = objRS.getInt("count(*)");
 		} catch (Exception e) {

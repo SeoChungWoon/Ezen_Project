@@ -132,7 +132,7 @@ $(function() {
 							url: "/product/wishProc.jsp",
 							data: { "uId": uId, "pNo": pNo, "wish": wish },
 							success: function(txt) {
-								alert("찜 목록에서 제거되었습니다.");
+								alert("찜 목록에서 삭제되었습니다.");
 							}
 						});
 					}	

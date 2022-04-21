@@ -99,7 +99,7 @@ $('img[usemap]').rwdImageMaps();
 					<%
 					if(type.equals("출석체크")) {
 					%>
-					<div id="eventContent">
+					<div class="eventContent">
 						<img src="/images/event-spring-attend-0.png" usemap="#image-map">
 						<map name="image-map">
 						    <area target="" alt="" title="출석하기" href="javascript:" coords="215,1157,692,1237" shape="rect">
@@ -126,7 +126,7 @@ $('img[usemap]').rwdImageMaps();
 					<%
 					} else if(type.equals("기대평이벤트")) {
 					%>
-					<div id="eventContent">
+					<div class="eventContent">
 						<img src="/images/<%=evList.geteInnerImg()%>" alt="" />
 						<div class="eventRef">
 							<span class="eventRefTitle">참고해주세요</span>
