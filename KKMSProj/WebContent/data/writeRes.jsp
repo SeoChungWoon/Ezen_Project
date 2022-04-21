@@ -38,8 +38,8 @@ boolean res = memMgr.mtdWrite(regVO);
 				<!--div.tit-cont  -->
 					<div class="get-send">
 						
-						<button type="button" class="writeBtn">목록으로</button>
-						<button type="button" class="writeBtn" onclick="main()">메인으로</button>
+						<button type="button" class="writeBtn" id="list">목록으로</button>
+						<button type="button" class="writeBtn" id="mainMove">메인으로</button>
 					</div>
 					<!-- div.get-send -->
 				

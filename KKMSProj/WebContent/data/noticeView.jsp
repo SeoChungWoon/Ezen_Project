@@ -98,9 +98,12 @@ int cnt = regDAO.BoardCount(division);
         				</div>
         				<!-- div.footerLeft -->
         				<div class="footerRight">
-        					<a href="/data/bbsList.jsp">목록으로</a>
-        					<a href="update.jsp">수정하기</a>
-	    					<a href="delete.jsp?no=<%=objVO.getNo() %>" id="delKey">삭제하기</a>
+        					<button type="button" id="list" class="listBtn">목록으로</button>
+        					<button type="button" id="update">수정하기</button>
+        					<input type="hidden" id="inputNo" value="<%=objVO.getNo() %>">
+        					<input type="hidden" id="inputTi" value="<%=objVO.getTitle() %>">
+        					<input type="hidden" id="inputCont" value="<%=objVO.getContent() %>">
+        					<button type="button" id="delKey">삭제하기</button>
         				</div>
         				<!-- div.footerRight -->
         		</div>

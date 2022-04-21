@@ -142,6 +142,7 @@ div.footerArea>.btnArea button{
 }
 .btnArea{
 	text-align: right;
+	margin-top: 10px;
 }
 .btnArea>button{
 	width: 80px;
@@ -215,12 +216,18 @@ div.footerArea>.btnArea button{
 	cursor: text;
 	color: #bbb;
 }
-.ntcFooter>.footerRight>a:hover{
+.ntcFooter>.footerRight>button:hover{
 	opacity: 0.7;
-	text-decoration: underline;
 }
-.ntcFooter>.footerRight>a{
-	padding: 5px 10px;
+.ntcFooter>.footerRight>button{
+	margin: 0 5px;
+	width: 80px;
+	height: 35px;
+	font-size: 15px;
+	background-color: #fff;
+	color: #000;
+	font-weight: bold;
+	cursor: pointer;
 }
 /*/////////////////////noticeView.jsp 영역 끝///////////////////////*/
 /*/////////////////////searchRes.jsp 영역 시작///////////////////////*/
@@ -391,7 +398,7 @@ div.footerArea>.btnArea button{
 
 /*/////////////////////delete.jsp 영역 시작///////////////////////*/
 
-#wrap>.sub-body>.inner .btnArea>#dlBtn{
+#wrap>.sub-body>.inner .btnArea>.dlBtn{
 	margin: 5px 10px;
 	transform: translateX(-250px);
 }

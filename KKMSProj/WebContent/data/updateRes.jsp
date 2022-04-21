@@ -1,19 +1,18 @@
-<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
-
+<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
+<jsp:setProperty name="regVO" property="*" />
 <%
-	request.setCharacterEncoding("UTF-8");
-	
-	
-	int no = Integer.parseInt(request.getParameter("no"));
-	boolean deleteChk = false;
-	
-	if(regDAO.Delete(no)){
-		deleteChk = true;
-	}
+request.setCharacterEncoding("UTF-8");
+String title = (String)request.getParameter("title");
+String content = (String)request.getParameter("content");
+int no = Integer.parseInt(request.getParameter("no"));
+
+boolean res = false;
+if(regDAO.Update(title, content, no)){
+	res = true;
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -36,26 +35,27 @@
 <body>
 
   <div id="wrap">
-  		<%@ include file="/include/header.jsp"%>
-		<div class="sub-body">
+ <%@ include file="/include/header.jsp"%>
+		<div class="sub-body dFlex">
+				<div class="mypageInner">
+					<%@include file="/include/myPageAside.jsp" %>				        
+         		</div>
+				<!-- div.mypageInner -->			
 			<div class="inner">
-	
 				<div class="tit-cont"> <!--  title -->
-					<p class="tit">게시물이 성공적으로 삭제 되었습니다.</p>
+					<p class="tit">수정이 완료되었습니다.</p>
 				</div>
-				<!--div.tit-cont  -->
-					<div class="btnArea">
-						<button type="button" id="list" class="dlBtn listBtn">목록으로</button>
-						<button type="button" id="mainMove" class="dlBtn">메인으로</button>
+				<!-- div.tit-cont -->
+					<div class="get-send">
+						<button type="button" class="writeBtn" id="list">목록으로</button>
+						<button type="button" class="writeBtn" id="mainMove">메인으로</button>
 					</div>
 					<!-- div.get-send -->
-				
-				
-	</div>
-	<!-- div.inner -->
-	</div>
-	<!-- div.subbody -->
-		<%@ include file="/include/footer.jsp"%>
+</div>
+<!-- div.inner -->
+</div>
+<!-- div.sub-body -->
+	<%@ include file="/include/footer.jsp"%>
   </div>
   <!-- div#wrap -->
 </body>

@@ -89,11 +89,12 @@
         		</tr>
         	</tbody>
         </table>
- 		<div id="btnArea">
- 			<button type="submit" class="writeBtn">작성하기</button>
- 			<button type="button" class="writeBtn"	onclick="cancel()">취소</button>
+ 		<div class="btnArea">
+ 			<button type="submit" class="writeBtn" id="formSave">작성하기</button>
+ 			<button type="button" class="writeBtn" id="cancel">취소</button>
  		</div>
  		<!-- div#btnArea -->
+
         </div>
  		<!-- div#main -->
          </form>

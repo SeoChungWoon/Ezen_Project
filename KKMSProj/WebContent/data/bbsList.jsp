@@ -212,7 +212,7 @@ BoardVO objVO = null;
 	    	 		%>
 					
 	    		<div class="btnArea">
-	    			<button type="button" onclick="writeMove()">글쓰기</button>
+	    			<button type="button" class="write">글쓰기</button>
 	    		</div> 		
 	   
 </div>
