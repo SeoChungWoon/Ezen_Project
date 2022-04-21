@@ -149,7 +149,7 @@ if(cnt != 0){
 		      		//처음 페이지 이동 할 때
 		      			if(startPage > pageBlock){
 		      				%>
-		      				<a href="faqList.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
+		      				<a href="faqListAd.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
 		      				<%
 		      			}else{
 		      				%>
@@ -159,12 +159,12 @@ if(cnt != 0){
 		      		// 이전 페이지 이동 할 때 
 		      		if(nowPage > 1){
 		      		%>
-		      		<a href="faqList.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
+		      		<a href="faqListAd.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
 		      		<%
 		      			
 		      		}else if(nowPage == startPage){
 		      		%>
-		      		<a href="faqList.jsp?pageNum=<%=nowPage %>">&lt;</a>
+		      		<a href="faqListAd.jsp?pageNum=<%=nowPage %>">&lt;</a>
 		      		<%
 		      		}
 		      		
@@ -175,18 +175,18 @@ if(cnt != 0){
 		      			pageCnt++;
 		      			if(i == nowPage){		//현재 페이지 일때
 		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
+		      			<a href="faqListAd.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
 		      		<%
 		      			}else{		//현재 페이지가 아닐때
 		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=i %>"><%=i %></a>
+		      			<a href="faqListAd.jsp?pageNum=<%=i %>"><%=i %></a>
 		      		<%
 		      			}
 		      		}
 		      		//다음 페이지 이동 할 때
 		      		if(nowPage < pageCount){
 		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
+		      			<a href="faqListAd.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
 		      		<%
 		      		}else{
 		      		%>
@@ -197,7 +197,7 @@ if(cnt != 0){
 		      		// 끝 페이지로 이동 할 때
 		      		if(endPage < pageCount){
 		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
+		      			<a href="faqListAd.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
 		      		<%
 		      		}else{
 		      		%>
@@ -215,7 +215,9 @@ if(cnt != 0){
 		      			}
 					%>
 				<div class="btnArea">
-	    			<button type="button" class="faq_AdminPg">관리 페이지</button>
+	    			<button type="button" class="write">글쓰기</button>
+	    			<button type="button" class="update">수정하기</button>
+	    			<button type="button" class="delKey">삭제하기</button>
 	    		</div> 		
 	    	 		
 </div>

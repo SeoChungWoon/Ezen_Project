@@ -30,13 +30,13 @@ $(".faqBtn").on("click", function(){
 
 		let chk = confirm("글쓰기를 취소하시겠습니까?");
 			if(chk){
-				location.href="/data/bbsList.jsp";
+				location.href="/data/bbsListAd.jsp";
 			}else {
 				window.location.reload();
 			}
 	});
 	
-		$("#mainMove").on("click",function(){
+		$(".mainMove").on("click",function(){
 			location.href="/index.jsp";
 		});
 		
@@ -56,10 +56,14 @@ $(".faqBtn").on("click", function(){
  		///////////////////write.jsp 영역 끝/////////////////
 	
 		///////////////////bbsList.jsp 영역 시작/////////////////
-		$("#list").on("click",function(){
-			location.href="/data/bbsList.jsp";
+		$("button.list").on("click",function(){
+			let dvChk = $(".orgDV").val().trim();
+			if(dvChk=="FAQ"){
+				location.href="/data/faqListAd.jsp";
+			}else{
+				location.href="/data/bbsListAd.jsp";
+			}
 		});
-		
 		
 		///////////////////bbsList.jsp 영역 끝/////////////////
 		///////////////////noticeView.jsp 영역 시작/////////////////
@@ -84,7 +88,19 @@ $(".faqBtn").on("click", function(){
 			+"&title="+sendTi+"&content="+sendCont;
 			
 		});
+		
+		$("button.adminPg").on("click",function(){
+			location.href="/data/bbsListAd.jsp";
+		});
+		
+		$("button.faq_AdminPg").on("click",function(){
+			location.href="/data/faqListAd.jsp";
+		});
 
+		$("button.adminPg-nv").on("click",function(){
+			let nvNo= $("input#nvNo").val();
+			location.href="/data/noticeViewAd.jsp?no="+nvNo;
+		});
 		///////////////////noticeView.jsp 영역 끝/////////////////
 });	
 	

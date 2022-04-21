@@ -45,8 +45,8 @@
 				</div>
 				<!--div.tit-cont  -->
 					<div class="btnArea">
-						<button type="button" id="list" class="dlBtn listBtn">목록으로</button>
-						<button type="button" id="mainMove" class="dlBtn">메인으로</button>
+						<button type="button" class="dlBtn list">목록으로</button>
+						<button type="button"class="dlBtn mainMove">메인으로</button>
 					</div>
 					<!-- div.get-send -->
 				

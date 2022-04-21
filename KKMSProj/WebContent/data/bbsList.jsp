@@ -124,7 +124,7 @@ BoardVO objVO = null;
 		      					<tr>
 		      						<td><%=objVO.getDivision() %></td>
 		      						<td>
-		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>"><%=objVO.getTitle() %></a></td>
+		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&division=<%=division%>"><%=objVO.getTitle() %></a></td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
@@ -206,13 +206,13 @@ BoardVO objVO = null;
 		      		<%
 		      			}else{
 		      		%>
-		      			<  <script>location.href = "/data/noData.jsp";</script>
+		      			  <script>location.href = "/data/noData.jsp";</script>
 		      		<%
 		      			}
 	    	 		%>
 					
 	    		<div class="btnArea">
-	    			<button type="button" class="write">글쓰기</button>
+	    			<button type="button" class="adminPg">관리 페이지</button>
 	    		</div> 		
 	   
 </div>

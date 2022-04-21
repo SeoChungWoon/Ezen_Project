@@ -6,6 +6,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 boolean res = memMgr.mtdWrite(regVO);
+String division = request.getParameter("division");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -37,13 +38,11 @@ boolean res = memMgr.mtdWrite(regVO);
 				</div>
 				<!--div.tit-cont  -->
 					<div class="get-send">
-						
-						<button type="button" class="writeBtn" id="list">목록으로</button>
-						<button type="button" class="writeBtn" id="mainMove">메인으로</button>
+						<input type="hidden" class="orgDV" value="<%=division %>">
+						<button type="button" class="writeBtn list">목록으로</button>
+						<button type="button" class="writeBtn mainMove">메인으로</button>
 					</div>
 					<!-- div.get-send -->
-				
-
 			</div>
 			<!-- div.inner -->
 		</div>

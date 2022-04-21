@@ -9,7 +9,7 @@
 	String title = (String)request.getParameter("title");
 	String content = (String)request.getParameter("content");
 	int no = Integer.parseInt(request.getParameter("no"));
-	
+	String division = (String)request.getParameter("division");
 
 %>
 <!DOCTYPE html>

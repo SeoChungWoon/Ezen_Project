@@ -87,18 +87,23 @@ int cnt = regDAO.BoardCount(division);
 					<%if(no==1){ %>
 					<a class="noData">이전글</a>
 					<%}else{ %>
-					<a href="noticeView.jsp?no=<%=no-prevNext %>">이전글</a>
+					<a href="noticeViewAd.jsp?no=<%=no-prevNext %>">이전글</a>
 					<%} %>
 					<%if(no==cnt) {%>
 					<a class="noData">다음글</a>
 					<%}else{ %>
-        			<a href="noticeView.jsp?no=<%=no+prevNext %>">다음글</a>
+        			<a href="noticeViewAd.jsp?no=<%=no+prevNext %>">다음글</a>
         			<%} %>
         				</div>
         				<!-- div.footerLeft -->
         				<div class="footerRight">
-        					<input type="hidden" id="nvNo" value="<%=no %>">
-        					<button type="button" class="adminPg-nv">관리 페이지</button>
+        					<input type="hidden" id="inputNo" value="<%=objVO.getNo() %>">
+        					<input type="hidden" id="inputTi" value="<%=objVO.getTitle() %>">
+        					<input type="hidden" id="inputCont" value="<%=objVO.getContent() %>">
+        					<input type="hidden" class="orgDV" value="<%=division %>">
+                			<button type="button" class="list">목록으로</button>
+        					<button type="button" id="update">수정하기</button>
+        					<button type="button" id="delKey">삭제하기</button>
         				</div>
         				<!-- div.footerRight -->
         		</div>

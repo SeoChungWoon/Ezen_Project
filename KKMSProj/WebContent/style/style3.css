@@ -160,7 +160,7 @@ div.footerArea>.btnArea button{
 
 /*/////////////////////noticeView.jsp 영역 시작///////////////////////*/
 
-#wrap>form#noticeFrm>.sub-body>.inner>#ntcViewInner{
+#wrap>.sub-body>.inner>#ntcViewInner{
 	width: 80%;
 	height: 600px;
 	margin: 0 auto;
@@ -405,7 +405,9 @@ div.footerArea>.btnArea button{
 
 /*/////////////////////delete.jsp 영역 끝///////////////////////*/
 
-
+.btnArea>button.adminPg{
+	width: 300px;
+}
 
 
 
