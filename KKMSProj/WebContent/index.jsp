@@ -1,4 +1,5 @@
 <%@page import="pack_Product.ProListBean"%>
+<%@page import="pack_Event.eventBean"%>
 <%@page import="java.util.List"%>
 <%@page import="pack_Product.ProductMgr"%>
 
@@ -6,6 +7,12 @@
 	pageEncoding="UTF-8"%>
 	
 <jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />	
+<jsp:useBean id="eMgr" class="pack_Event.eventMgr" />
+<%
+int eCount = eMgr.eListCnt();
+
+List eList = eMgr.eventList();
+%>
 	
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,21 +21,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>메인페이지</title>
-<!-- main 용 -->
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style_main.css">
-
-<!-- main 용 -->
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet"
+	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" /> <!-- swiper cdn -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> <!-- slick-slider cnd -->
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/source/gsap.min.js"></script>
 <script src="/script/script.js"></script>
 <script src="/script/memberScript.js"></script>
 <script src="/script/script_maintab.js"></script>
-<link rel="stylesheet"
-	href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script> <!-- swiper cdn -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> <!-- slick-slider cnd -->
+
 </head>
 <body>
 		<%@ include file="/include/header.jsp"%>
@@ -66,8 +73,6 @@
 		
 		<section class="sec01">
 			<h1>WHAT'S HOT</h1>
-
-
 			<div class="hot_list_section">
 				<%
 				if (cnt != 0) {
@@ -76,15 +81,15 @@
 				%>
 				<div class="listcontainer">
 					<div class="hot_list">
-						<a href="/product/listView.jsp?pNo=<%=mList.getpNo()%>"> <img
-							src="/images/main_images/product-list-img<%=i + 1%>.jpg" alt="포스터">
+						<a href="/product/listView.jsp?pNo=<%=mList.getpNo()%>">
+							<img src="/images/main_images/product-list-img<%=i + 1%>.jpg" alt="포스터">
 							<div class="hotproduct">
-								<h2>앤서니 브라운의 원더랜드 뮤지엄</h2>
-								<p>2022.04.28~2022.05.31</p>
-								<p>예술의 전당 한가람미술관 2층</p>
+								<h2><%=mList.getpTitle()%></h2>
+								<p><%=mList.getpDate1()%> - <%=mList.getpDate2()%></p>
+								<p><%=mList.getpContent()%></p>
 							</div>
+						</a>
 					</div>
-					</a>
 				</div>
 				<%
 				}	}
@@ -93,75 +98,46 @@
 		</section>
 
 
+		<section class="sec02 exhibit-news">
+			<div class="sec02-inner">
+				<h2>E-TICKET 소식</h2>
+				
+				<div class="exhibit-news-list">
+					
+					<div class="news-box">
+					<!-- 슬라이더생성후 공지사항내용 표시 -->
+						<h3>공지사항 제목</h3>
+							<p>공지사항 내용</p>
+							
+					</div>
+				
+					<div class="event-box">
+						<!-- 슬라이더생성후 이벤트 목록 표시 -->
+							<div><img src="/images/main_images/product-list-img1.jpg" alt="" />
+							<p>asdfsadfas</p></div>
+							<div><img src="/images/main_images/product-list-img1.jpg" alt="" /></div>
+							<div><img src="/images/main_images/product-list-img1.jpg" alt="" /></div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</section>
 
-<section class="mainprolist">
-	<div class="viewtitle">
-		<h1>TICKET OPEN</h1>
-	</div>
-	<!-- <div class="viewbox">
-		<div class="list_grid"></div>
-		<div class="list_grid"></div>
-		<div class="list_grid"></div>
-		<div class="list_grid"></div>
-		<div class="list_grid"></div>
-	</div> -->
-
-
-
-</section>
-
-
-
-
-	<div class="section_musical section">
-        <h1>Musical & Play</h1>
-        <div class="product_list">
-          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
-          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
-          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
-          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
-          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
-          <div><img src="images/main_images/02_thumb.jpeg" alt="뮤지컬" /></div>
-        </div>
-	
-	</div>
-	
-	<div class="section_notice section">
-		<h1>NOTICE</h1>
-		<article>
-			<ul class="notice-list">
-				<li>
-					<div>새로운 소식입니다.</div>
-					<div>04.12</div>
-				</li>
-				<li>
-					<div>새로운 소식입니다.</div>
-					<div>04.12</div>
-				</li>
-				<li>
-					<div>새로운 소식입니다.</div>
-					<div>04.12</div>
-				</li>
-				<li>
-					<div>새로운 소식입니다.</div>
-					<div>04.12</div>
-				</li>
-				<li>
-					<div>새로운 소식입니다.</div>
-					<div>04.12</div>
-				</li>
-			</ul>
-		</article>
-	</div>
-	</div>
-	<!-- div.sub-body -->
 
 	
+</div>
 	<%@ include file="/include/footer.jsp"%>
 
 	
 	
 	<!-- div#wrap -->
 	<script src="/script/main_sup_script.js"></script>
+	<script>
+	$(function(){
+		$('.event-box').slick()
+	});
+	
+	</script>
 </body>
 </html>

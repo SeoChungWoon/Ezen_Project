@@ -24,12 +24,12 @@
 
 
 
-/* 메인 슬라이드 영역 */
+/* 메인 슬라이드 영역 시작 */
 .mainfront{
 	padding-top: 100px;
 }
 .mainslide{
-  width: 100%;
+  width: 80%;
   height: 600px;
 }
 .swiper-slide{
@@ -39,16 +39,66 @@
   width: 100%;
   height: 100%;
 }
+.swiper-button-prev{
+	background-image: url("/images/icon-review-arrow-prev.png");
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	background-repeat:no-repeat;
+	width: 40px !important;
+	height: 40px !important;
+}
+.swiper-button-next{
+	background-image: url("/images/icon-review-arrow-next.png");
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	background-repeat:no-repeat;
+	width: 40px !important;
+	height: 40px !important;
+  	
+}
+.mainslide .swiper-button-next::after,
+.mainslide .swiper-button-prev::after {
+  display: none;
+}
+.mainslide .swiper-pagination-bullet { 
+	width: 12px; 
+	height: 12px; 
+	background: transparent; 
+	border: 1px solid #c1c1c1; 
+	opacity: 1; 
+	}
+.mainslide .swiper-pagination-bullet-active { width: 40px; 
+transition: width .5s; 
+border-radius: 5px; 
+background: #d7daf0; 
+border: 1px solid transparent; 
+ }
+ 
 
 
-/* 핫리스트 수정작업한거 */
+/* 메인 슬라이드 영역 끝 */
+
+
+/* 핫리스트 영역 시작 */
+.sec01{
+  width: 100%;
+  height: 700px;
+  margin: 0 auto;
+  margin-top: 10px;
+  
+}
+.sec01 > h1 {
+  text-align: center;
+  font-size: 40px;
+  padding-top: 100px;
+  padding-bottom: 70px;
+}
+
 .hot_list_section{
 	display:flex;
 	flex-wrap: nowrap;
 	justify-content: center;
 }
-
-
 .listcontainer{
   display: flex;
   justify-content: center;
@@ -97,117 +147,57 @@
   transform: translateY(-20px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.342);
 }
+/* 핫리스트 영역 끝 */
 
- 
-/* 핫리스트 수정작업한거 */
-
-
-.sec01{
-  width: 70%;
-  height: 850px;
-  margin: 0 auto;
-  margin-top: 10px;
-  background-color: rgba(197, 62, 62, 0.053);
-  
+/* 전시전 소식 영역 시작 */
+.sec02{
+	width: 80%;
+	height: 580px;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	border: 4px solid #f80;
 }
-.sec01 > h1 {
-  text-align: center;
-  font-size: 40px;
-  padding-top: 100px;
-  padding-bottom: 70px;
+.sec02-inner {
+	width: 100%;
+	height: 80%;
 }
-
-
-.section_hot > article {
-  display: flex;
+.sec02-inner h2{
+	font-size: 30px;
+	padding: 20px 0 20px 20px;
+	border: 1px solid #000;
+	display: block;
 }
-.hot-list-wrapper {
-  height: 610px;
-  display: grid;
-  grid-template: "a b c" "d e f";
-}
-.hot-list_first {
-  max-width: 378px;
-  height: 520px;
-  margin-left: 0px;
-  margin-right: 10px;
-}
-.hot-list_first > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hot-list_first .hot-list-text {
-  width: 100%;
-  height: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.hot-list_first .hot-list-text p {
-  padding: 10px;
-}
-.hot-list_first .hot-list-text > p:last-child {
-  font-size: 15px;
-  color: rgb(99, 99, 99);
-}
-.hot-list {
-  max-width: 240px;
-  height: 300px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 20px;
-}
-.hot-list > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.hot-list-wrapper:last-child > .hot-list:nth-child(3n) {
-  margin-right: 0px;
+.exhibit-news-list{
+	width: 100%;
+	height: 100%;
+	margin-top: 15px;
+	display: flex;
 }
 
-
-
-/* 상품 리스트 */
-
-
-.product_list{
-	
+.news-box{
+	width: 40%;
+	height: 100%;
+	margin-left: 20px;
+	border: 1px solid #000;
 }
-
-.product_list {
-  width: 70%;
-  display: flex;
+.event-box{
+	width: 60%;
+	height: 100%;
+	margin-left: 20px;
+	margin-right: 20px;
+	border: 1px solid #000;
 }
-.product_list > div {
-  padding: 8px;
-  flex: 1;
-  
-}
-.product_list > div > img {
-  width: 100%;
-  height: 100%;
-}
+/* .news-box,
+.event-box {
+	width: 40vh;
+	height: 100%;
+	margin-right: 10px;
+	border: 1px solid #08f;
+	flex:1;
+} */
+
+
+/* 전시전 소식 영역 끝 */
 
 
 
-
-/* 상품 리스트 */
-
-
-
-
-.notice-list {
-  width: 100%;
-  background-color: #f4f4f4;
-}
-.notice-list > li {
-  border-bottom: 1px solid rgb(249, 249, 249);
-  width: 100%;
-  padding: 20px 36px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 19px;
-}
