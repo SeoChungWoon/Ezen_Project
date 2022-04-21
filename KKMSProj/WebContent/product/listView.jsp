@@ -78,6 +78,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 									<img src="/images/product-list-img<%=mList.getpNo()%>.jpg"
 										alt="" />
 								</p>
+								
 								<%
 								boolean wishChk = false;
 								if (memberId != null) {
@@ -94,9 +95,8 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 									}
 								}
 								%>
-								
 								<div class="likeClk">
-									<div class="chk-group">
+									<div class="chk-group like">
 										<input type="hidden" value="<%=memberId%>">
 										<input type="hidden" value="<%=pNo %>">
 										<input type="checkbox" value="<%=wishChk %>" class="wishChk" id="like<%=pNo%>"/>
@@ -425,7 +425,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 															<%
 															}else {
 															%>
-															<li class="wRecom"><a href="javascript:"
+															<li class="wRecom"><a href="javascript:"  class="revRecomBtn"
 																onclick="alert('로그인 후 가능합니다.'); location.href='/member/login.jsp'"><span
 																	class="blind">추천하기</span><%=revList.getpRevRecom()%></a></li>
 																	

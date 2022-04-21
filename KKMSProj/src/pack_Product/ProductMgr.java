@@ -213,7 +213,6 @@ public class ProductMgr {
 		return chkDel;
 	}
 
-
 	// 판매자 데이터 있는 지 확인
 	public int writeListChk(String pWUId) {
 		int count = 0;
@@ -445,3 +444,4 @@ public class ProductMgr {
 		return wList;
 	}
 }
+

@@ -1169,7 +1169,7 @@
     background: #777;
     transform: translateY(-50%);
 }
-.pop_wrap .pop_body .pop_photo .txtInfo li a{
+.pop_wrap .pop_body .pop_photo .txtInfo li a.revRecomBtn{
 	position: relative;
     display: block;
     color: #777;
@@ -1178,6 +1178,9 @@
     border-radius: 20px;
     border: 1px solid #4a90e2;
     background: url(/images/icon-recommend-off.png)no-repeat 3px center / 22px;
+}
+.pop_wrap .pop_body .pop_photo .txtInfo li a.revRecomBtn:hover{
+	background: url(/images/icon-recommend-on.png)no-repeat 3px center / 22px;
 }
 .pop_wrap .pop_body .pop_review .txtLength{
 	position: relative;
