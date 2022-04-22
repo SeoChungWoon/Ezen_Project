@@ -28,12 +28,12 @@
 			<div class="inner">
 				<div class="managerPage dFlex">
 					<%@ include file="/adminPage/inc/managerAside.jsp" %>
+					<div class="manager-cont">
 					<div class="manager-tit">
 						<!--  title -->
 						<p>회원 관리 <span class="smallFont">&gt; 일반회원 목록</span></p>
 					</div>
 					
-					<div class="manager-cont">
 					
 										여기영역 안에서 작업
 										
