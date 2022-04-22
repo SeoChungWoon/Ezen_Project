@@ -8,48 +8,11 @@ String memberPw = request.getParameter("memberpw");
 String mType = mMgr.mTypeChk(memberId, memberPw);
 boolean waitChk = mMgr.waitChk(memberId, memberPw);
 
-if (mType.equals("관리자")) {	
+if (mType.equals("관리자")) {
+	session.setAttribute("adminID", memberId);	
 	%>
 	<script>
-	alert("제한된 계정입니다.");
-	location.href = "/member/login.jsp";
-	</script>
-	<%
-} else if (mType.equals("판매자")) {
-	if (waitChk) {
-	%>
-	<script>
-	alert("판매자 로그인");
-	alert("가입 승인 대기중인 회원입니다.");
-	location.href = "/member/login.jsp";
-	</script>
-	<%
-	} else {
-		session.setAttribute("memID", memberId);
-		%>
-		<script>
-		alert("판매자 로그인");
-		location.href = "/sellerPage/sellerMain.jsp";
-		</script>
-		<%
-	}
-} else if (mType.equals("일반")) {
-	session.setAttribute("memID", memberId);	
-	%>
-	<script>
-	alert("일반회원 로그인");
-	let ref = document.referrer;
-	let jpIdx = ref.indexOf("joinProc.jsp");
-	let lIdx = ref.indexOf("login.jsp");
-	let jP = ref.substring(jpIdx);
-	jP = jP.trim();
-	let login = ref.substring(lIdx);
-	login = login.trim();
-	if(jP == "joinProc.jsp" || login == "login.jsp") {
-		location.href = "/index.jsp";
-	} else {
-		window.location = document.referrer;	
-	}
+	location.href = "/adminPage/adminMain.jsp";
 	</script>
 <%
 } else {

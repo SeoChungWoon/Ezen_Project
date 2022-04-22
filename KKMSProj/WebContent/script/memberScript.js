@@ -109,6 +109,28 @@ $(function() {
 /* 로그인 유효성 검사 */
 
 
+/* 관리자 로그인 유효성 검사 */
+	$("#adminLoginBtn").click(function(){
+		let memberid = $("#memberid").val();
+		let memberpw = $("#memberpw").val();
+		$.ajax({
+			type: "post",
+			url: "/adminPage/adminLoginProc.jsp",
+			data: { "memberid": memberid, "memberpw": memberpw },
+			success: function(txt) {
+				$("#loginErrMsg").html(txt);
+				$("#loginErrMsg").css({
+					"text-align": "center",
+					"color": "red",
+					"margin-bottom": "10px"
+				});
+			}
+		});
+
+	});
+/* 관리자 로그인 유효성 검사 */
+
+
 /* 로그인 아이디 공백 제거 */
 	$("#memberid").keyup(function(){
 		let memberid = $("#memberid").val();
@@ -118,6 +140,7 @@ $(function() {
 	$("#memberid").keypress(function(event){
 		if(event.which == 13) {
 			$("#loginBtn").click();
+			$("#adminLoginBtn").click();
 		}
 	});
 /* 로그인 아이디 공백 제거 */
@@ -132,6 +155,7 @@ $(function() {
 	$("#memberpw").keypress(function(event){
 		if(event.which == 13) {
 			$("#loginBtn").click();
+			$("#adminLoginBtn").click();
 		}
 	});
 /* 로그인 패스워드 공백 제거 */

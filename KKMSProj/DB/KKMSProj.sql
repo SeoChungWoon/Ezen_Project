@@ -31,7 +31,6 @@ select * from member;
 
 drop table member;
 
-update member set joinWait = 'Y' where uId = 'seller';
 
 
 

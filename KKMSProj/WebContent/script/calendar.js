@@ -19,6 +19,19 @@ function buildCalendar() {
 	var calendarTable = document.getElementById("calendar");
 	var calendarTableTitle = document.getElementById("dateTxt");
 	calendarTableTitle.innerHTML = today.getFullYear() + "년 " + (today.getMonth() + 1) + "월";
+	let startDate = $(".startDate").text();
+	let sYear = startDate.substring(0, 4);
+	let sMonth = startDate.substring(5, 7);
+	let sDay = startDate.substring(8,10);
+	let endDate = $(".endDate").text();
+	let eYear = endDate.substring(0, 4);
+	let eMonth = endDate.substring(5, 7);
+	let eDay = endDate.substring(8,10);
+	var sDate = new Date(sYear, sMonth-1, sDay);
+	var eDate = new Date(eYear, eMonth-1, eDay);
+	//alert(eYear+" "+eMonth+" "+eDay);
+	//alert(eDate);
+	
 
 	var firstDate = new Date(today.getFullYear(), today.getMonth(), 1);
 	var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
@@ -59,9 +72,9 @@ function buildCalendar() {
 		//
 		etp = exchangeToPosibleDay(cnt) * 1;
 
-		if (nowMonth == realMonth && i <= realToDay) {
+		if (nowMonth == sMonth && i < sDay) {
 			noCount += 1;
-		} else if (nowMonth > realMonth && i > realToDay) {
+		} else if (nowMonth >= eMonth && i > eDay) {
 			noCount += 1;
 		}
 		// 예약 불가
