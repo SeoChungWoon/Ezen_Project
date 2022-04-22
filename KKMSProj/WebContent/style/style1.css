@@ -974,6 +974,10 @@
 .reviewBox .revList .reviewInfo .txt-area .txtInfo{
 	position: relative;
 	margin-top: 20px;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
 }
 .reviewBox .revList .reviewInfo .txt-area .txtInfo li{
 	position: relative;
@@ -981,7 +985,7 @@
 	color: #777;
 	font-size: 14px;
 }
-.reviewBox .revList .reviewInfo .txt-area .txtInfo li a{
+.reviewBox .revList .reviewInfo .txt-area .txtInfo li a.revRecomBtn{
 	position: relative;
 	display: block;
 	color: #777;
@@ -991,11 +995,19 @@
 	border: 1px solid #4a90e2;
 	background: url("/images/icon-recommend-off.png")no-repeat 3px center / 22px;
 }
-.reviewBox .revList .reviewInfo .txt-area .txtInfo li a:hover{
+.reviewBox .revList .reviewInfo .txt-area .txtInfo li a.revRecomBtn:hover{
 	background: url("/images/icon-recommend-on.png")no-repeat 3px center / 22px;
 }
-.reviewBox .revList .reviewInfo .txt-area .txtInfo li.wRecom a.on{
+.reviewBox .revList .reviewInfo .txt-area .txtInfo li.wRecom a.revRecomBtn.on{
 	background: url("/images/icon-recommend-on.png")no-repeat 3px center / 22px;
+}
+.reviewBox .revList .reviewInfo .txt-area .txtInfo li a.revDelBtn{
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+.reviewBox .revList .reviewInfo .txt-area .txtInfo li a.revDelBtn img{
+	width: 100%;
 }
 .reviewBox .revList .reviewInfo .txt-area .txtInfo li + li{
 	padding-left: 10px;
@@ -1119,7 +1131,6 @@
 	height: 500px;
 	text-align: center;
 	margin: 0 auto;
-	border-top: 1px solid #ddd;
 	padding-top: 20px;
 }
 .pop_wrap .pop_body .img img{

@@ -71,13 +71,13 @@ $(function() {
 
 
 					if ($(this).parent(".chk-group").hasClass("like")) {
-						// alert("찜 목록에 추가되었습니다.");
+						//alert("찜 목록에 추가되었습니다.");
 					}
 				} else {
 					$(this).parent(".chk-group").removeClass("checked");
 
 					if ($(this).parent(".chk-group").hasClass("like")) {
-						// alert("찜 목록에서 삭제되었습니다.");
+						//alert("찜 목록에서 삭제되었습니다.");
 					}
 				}
 			});
@@ -374,12 +374,18 @@ $(function() {
 								$("#qnaContsWrite").text(qnaConts);
 								$(".listViewForm").submit();
 							} else if ($(".inquiryBtn").eq(e).hasClass("qnaContRevSubmit")) {
-								alert("리뷰");
-								$(".listViewRevForm").submit();
+								
+								if($("#rateCalc").val() == ""){
+									alert("평점은 최소 별 한개이상 가능합니다.");
+								}else{
+									alert("리뷰");
+									$(".listViewRevForm").submit();
+								}
+								
 							}
 
-							writeTxt.val("");
-							$(".inquiryBtn").eq(e).parent().siblings("inquiry-txt").find(".txtLength em").text(0);
+							//writeTxt.val("");
+							//$(".inquiryBtn").eq(e).parent().siblings("inquiry-txt").find(".txtLength em").text(0);
 						}
 					}
 				}
@@ -461,6 +467,7 @@ $(function() {
 			$(this).find(".file-name .fileDel").on("click", function(e){
 				$(this).siblings("span").text("");
 				$(this).parent().hide();
+				$("#fileName").val("");
 			});
 		});
 	}
@@ -490,7 +497,6 @@ $(function() {
 				var cnt = $(this).find("em").text();
 				
 				if(!$(this).hasClass("on")){
-					console.log("!111");
 					$(this).addClass("on");
 					cnt++;
 					$(this).find("em").text(cnt);
@@ -525,6 +531,23 @@ $(function() {
 						}
 					});
 				}
+			});
+		});
+	}
+	// 나의 리뷰 삭제
+	if($(".revDelBtn").length != 0){
+		$(".reviewInfo").each(function(e){
+			$(this).find(".revDelBtn").on("click", function(){
+				var wUId = $(".reviewInfo").eq(e).find("#wUId").val();
+				console.log(wUId);
+				$.ajax({
+					type: "post",
+					url: "/product/listViewReDelProc.jsp",
+					data: {"wUId" : wUId},
+					success: function(txt) {
+						$(".reviewRef").html(txt);
+					}
+				});
 			});
 		});
 	}
@@ -697,9 +720,53 @@ function priceCalc() {
 // review file명 불러오기
 function fileVal(a)
 {
-	$(".file-name span").text(a.files[0].name);
-	$(".file-name").css("display", "flex");
-	$("#fileName").val(a.files[0].name);
+	//$("#fileName").val(a.files[0].name);
+	// 업로드 파일 제한
+	//fileName : 파일 경로 (C:\fakepath\파일이름.확장명)
+	let pWfile = $("#pWfile").val().trim();
+	console.log("pWfile : "+ pWfile);
+	let fileName = pWfile.substring(12);
+	console.log("fileName : "+ fileName);
+	$("#fileName").val(fileName);
+	
+	// extension. 확장자, lastIndexOf : idx 번호 가져옴, dotIdx : 의 위치 (위로써는 16)
+	let dotIdx = pWfile.lastIndexOf(".");
+	let ext = pWfile.substring(dotIdx + 1); // ''.확장명'을 +1 해서 '확장명'
+	ext = ext.toLowerCase(); // 대소문자 모두 소문자로 변경
+	console.log("ext : " + ext);
+	
+	let forbidExt = ["jpg", "png", "gif"]; // 허용된 확장명들
+	let chk = false;
+	
+	for (let x of forbidExt) {
+		if (x == ext) {
+			chk = true;
+		}
+	}
+	
+	if (!chk) {
+		alert("확장자가 " + ext + "인 파일은 업로드 하실 수 없습니다.");
+		$(".fileBtn").focus();
+	} else{
+		$(".file-name").css("display", "flex");
+		$(".file-name span").text(a.files[0].name);
+		//$("#fileName").val(a.files[0].name);
+		
+		let x = document.getElementById("pWfile");
+		//let len = x.files.length; // 업로드할 파일의 개수
+		let fileSize = x.files[0].size; // 업로드되는 파일을 배열로 처리
+
+		if (fileSize > 10 * 1024 * 1024) {
+			alert("최대 업로드 크기는 10MB입니다.");
+			$("#pWfile").val("").clone(true);
+			$(".fileBtn").focus();
+		}
+	}
+	
+	if($(".file-name").display == "flex"){
+		
+	}
+	
 }
 
 // sns url clk evt
@@ -747,6 +814,9 @@ function modalClose(id) {
 	$(".modal-opened").focus().attr("tabindex", "0").removeClass("modal-opened");
 	$("header").css("z-index", 10);
 
+	if($(id).hasClass("reviewBtn")){
+		window.location.reload();
+	}
 }
 // dim hide
 function modalDimClose(id) {

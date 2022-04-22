@@ -236,31 +236,6 @@ public class ProductMgr {
 	}
 
 	// 리뷰 작성
-	public boolean writeRevChk(int pRevWNo,String pRevWUId, String pRevWrite, int pRevWStar, String pRevWPhoto) {
-		boolean chk = false;
-
-		try {
-			objConn = pool.getConnection();
-			sql = "insert into pRevWrite (pRevWNo, pRevWUId, pRevWrite, pRevWStar, pRevWPhoto, pRevWTime, pRevWRecom) values (?, ?, ?, ?, ?, now(), 0)";
-			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setInt(1, pRevWNo);
-			objPstmt.setString(2, pRevWUId);
-			objPstmt.setString(3, pRevWrite);
-			objPstmt.setInt(4, pRevWStar);
-			objPstmt.setString(5, pRevWPhoto);
-
-			if (objPstmt.executeUpdate() > 0) {
-				chk = true;
-			}
-
-		} catch (Exception e) {
-			System.out.println("writeRevChk e : " + e.getMessage());
-		} finally {
-			pool.freeConnection(objConn, objPstmt, objRS);
-		}
-
-		return chk;
-	}
 	public boolean listRevChk(int pRevPNo,String pRevUId, String pRevCont, int pRevStar, String pRevImg) {
 		boolean chk = false;
 
@@ -292,6 +267,7 @@ public class ProductMgr {
 		return chk;
 	}
 
+
 	// 리뷰 이미지 리스트
 	public int proRevCount() {
 		int count = 0;
@@ -319,7 +295,7 @@ public class ProductMgr {
 
 		try {
 			objConn = pool.getConnection();
-			String sql = "select count(*) from pRevWrite where pRevWUId = '" + uId + "'";
+			String sql = "select count(*) from pRevList where pRevUId = '" + uId + "'";
 			objPstmt = objConn.prepareStatement(sql);
 			objRS = objPstmt.executeQuery();
 
@@ -357,7 +333,28 @@ public class ProductMgr {
 
 		return chk;
 	}
-
+	
+	// 나의 리뷰 삭제
+	public boolean revDelCnt (String wUId) {
+		boolean chk = false;
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "delete from pRevList where pRevUId = ?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, wUId);
+			if(objPstmt.executeUpdate()>0) {
+				chk = true;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		
+		return chk;
+	}
 
 
 	// 찜 목록 추가

@@ -337,7 +337,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 													%>
 													<div class="swiper-slide">
 														<a href="javascript:" class="btn open-modal photoList pPreview" data-target="popup4"><img
-															src="/images/<%=revList.getpRevImg()%>" alt="" data-target="<%=i %>ImgPop" /></a>
+															src="/images/fileUpload/<%=revList.getpRevImg()%>" alt=""  /></a>
 													</div>
 													<%
 															}
@@ -378,7 +378,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 										<%
 										if(memberId != null){
 										%>
-										<p class="logTxt">* 나의 리뷰 수정/삭제는 마이페이지에서 가능합니다.</p>
+										<p class="logTxt">* 나의 리뷰 수정은 마이페이지에서 가능합니다.</p>
 										<%
 										}
 										%>
@@ -401,13 +401,14 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 														
 														if (revPhotoChk > 0) {
 														%>
-														<a href="javascript:" class="photo pPreview btn open-modal" data-target="popup3"><img
-															src="/images/<%=revList.getpRevImg()%>" alt="" /><span
+															<a href="javascript:" class="photo pPreview btn open-modal" data-target="popup3"><img
+															src="/images/fileUpload/<%=revList.getpRevImg()%>" alt="" /><span
 															class="blind">포토리뷰</span></a>
 														<%
 														}
 														%>
 														
+														<div class="reviewRef"></div>
 														<p class="txt"><%=revList.getpRevCont()%></p>
 														<ul class="txtInfo">
 															<input type="hidden" name="wRecom" id="wRecom" value="<%=revList.getpRevRecom()%>" />
@@ -421,8 +422,13 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 															%>
 															<li class="wRecom"><a href="javascript:" class="revRecomBtn"><span
 																	class="blind">추천하기</span><em class="cnt"><%=revList.getpRevRecom()%></em></a></li>
+															<%
+																if (memberId.equals(pRevUId)) {
+															%>
+															<li class="wDel"><a href="javascript:" title="나의 리뷰 삭제" class="revDelBtn"><img src="/images/icon-delete-btn.png"></a></li>
 																	
 															<%
+																}
 															}else {
 															%>
 															<li class="wRecom"><a href="javascript:"  class="revRecomBtn"

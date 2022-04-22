@@ -46,8 +46,7 @@
 			<p class="pop_tit">관람리뷰 작성</p>
 
 			<div class="pop_review">
-				<form action="/product/listViewReviewProc.jsp" method="post"
-					class="listViewRevForm" >
+				<form action="/product/listViewReviewProc.jsp" method="post" enctype="multipart/form-data" class="listViewRevForm" >
 					<input type="hidden" name="pNo" id="pNo" value="<%=pNo%>" /> 
 					<input type="hidden" name="uId" value="<%=memberId%>" /> 
 					<input type="hidden" id="rateCalc" name="rateCalc" value="" />
@@ -170,13 +169,15 @@
 					</div>
 
 
-					<p class="txt"></p>
+					<div class="reviewInfo">
+						<p class="txt"></p>
 					
-					<ul class="txtInfo">
-						<li class="wUseId"><span></span></li>
-						<li class="wDate"><span></span></li>
-						<li class="wRecom"><a href="javascript:"><span class="blind">추천하기</span><em class="cnt"></em></a></li>
-					</ul>
+						<ul class="txtInfo">
+							<li class="wUseId"><span></span></li>
+							<li class="wDate"><span></span></li>
+							<li class="wRecom"><a href="javascript:" class="revRecomBtn"><span class="blind">추천하기</span><em class="cnt"></em></a></li>
+						</ul>
+					</div>
 				</div>
 				<!-- // right-desc -->
 			</div>
@@ -185,7 +186,7 @@
 		<!-- // pop_div -->
 
 		<div class="pop_close">
-			<a href="javascript:" class="close-modal"><span class="blind">닫기</span></a>
+			<a href="javascript:" class="close-modal reviewBtn"><span class="blind">닫기</span></a>
 		</div>
 	</div>
 	<!-- // pop_body -->
