@@ -27,8 +27,6 @@ function buildCalendar() {
 	let eYear = endDate.substring(0, 4);
 	let eMonth = endDate.substring(5, 7);
 	let eDay = endDate.substring(8,10);
-	var sDate = new Date(sYear, sMonth-1, sDay);
-	var eDate = new Date(eYear, eMonth-1, eDay);
 	//alert(eYear+" "+eMonth+" "+eDay);
 	//alert(eDate);
 	
@@ -37,20 +35,23 @@ function buildCalendar() {
 	var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 	//
 	nowMonth = today.getMonth() + 1;
+	nowYear = today.getFullYear();
 	monthEquals = thisMonth(nowMonth, realMonth);
 	//
 	while (calendarTable.rows.length > 2) {
 		calendarTable.deleteRow(calendarTable.rows.length - 1);
 	}
-
+	
 	row = calendarTable.insertRow();
-	for (i = 0; i < firstDate.getDay(); i++) {
-		cell = row.insertCell();
-		cnt += 1;
-	}
 	
 	row = calendarTable.insertRow();
 	for (i = 1; i <= lastDate.getDate(); i++) {
+		if(i==1){
+			for (j = 0; j < firstDate.getDay(); j++) {
+				cell = row.insertCell();
+				cnt += 1;
+			}			
+		}
 		// 예약 못하는 제약사항 해당되면 1씩 증가
 		noCount = 0;
 		//
@@ -71,11 +72,29 @@ function buildCalendar() {
 		}
 		//
 		etp = exchangeToPosibleDay(cnt) * 1;
-
-		if (nowMonth == sMonth && i < sDay) {
-			noCount += 1;
-		} else if (nowMonth >= eMonth && i > eDay) {
-			noCount += 1;
+		
+		if (eYear-nowYear != 0) {
+			if (nowMonth == realMonth && i < realToDay) {
+				noCount += 1;
+			}
+		} else if (sYear-nowYear !=0) {
+			if (nowMonth == realMonth && i < realToDay) {
+				noCount += 1;
+			} else if (nowMonth == eMonth && i>eDay) {
+				noCount += 1;
+			}
+		} else {
+			if (nowMonth > eMonth) {
+				noCount += 1;
+			} else if (nowMonth >= eMonth && i < realToDay && nowMonth == realMonth) {
+				noCount += 1;
+			} else if ((nowMonth >= sMonth && i < realToDay) && nowMonth > eMonth) {
+				noCount += 1;
+			} else if (nowMonth <= sMonth && (i < sDay || i <= realToDay)) {
+				noCount += 1;
+			} else if (nowMonth >= eMonth && i > eDay) {
+				noCount += 1;
+			}
 		}
 		// 예약 불가
 		if (noCount > 0) {
@@ -126,7 +145,7 @@ function buildCalendar() {
 //전달 달력
 function prevCalendar() {
 	if (today.getMonth() < realMonth) {
-		alert("예약은 금일기준 다음날부터 30일 이후까지만 가능합니다.");
+		alert("예약은 현재 월부터 2개월 이후까지만 가능합니다.");
 		return false;
 	}
 	today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
@@ -134,8 +153,8 @@ function prevCalendar() {
 }
 //다음달 달력
 function nextCalendar() {
-	if (today.getMonth() + 1 == (realMonth + 1)) {
-		alert("예약은 금일기준 다음날부터 30일 이후까지만 가능합니다.");
+	if (today.getMonth() + 1 == (realMonth + 2)) {
+		alert("예약은 현재 월부터 2개월 이후까지만 가능합니다.");
 		return false;
 	}
 	today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());

@@ -15,6 +15,7 @@
 			<form action="/product/listViewProc.jsp" method="post"
 				class="listViewForm">
 				<input type="hidden" id="pWSId" name="uId" value="<%=memberId%>">
+				<input type="hidden" id="pWPNo" name="pNo" value="<%=pNo%>">
 				<div class="inquiry-txt">
 					<textarea name="qnaConts" id="qnaConts" class="qnaWrite"
 						placeholder="문의를 작성해주세요."></textarea>
@@ -163,13 +164,14 @@
 				</div>
 
 				<div class="right-desc">
-					<div class="review-star star-rating">
-						<div class="rateChk">
-						</div>
-					</div>
-
-
 					<div class="reviewInfo">
+						<div class="reviewRef"></div>
+						
+						<div class="review-star star-rating">
+							<div class="rateChk">
+							</div>
+						</div>
+
 						<p class="txt"></p>
 					
 						<ul class="txtInfo">

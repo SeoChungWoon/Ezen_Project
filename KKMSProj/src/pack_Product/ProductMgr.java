@@ -65,17 +65,21 @@ public class ProductMgr {
 	}
 
 	// Write Seller List
-	public List<ProWSelBean> listWSOutput() {
+	public List<ProWSelBean> listWSOutput(int pNo, String pWUId) {
 
 		List<ProWSelBean> pWSList = new Vector<ProWSelBean>();
 
 		try {
 			objConn = pool.getConnection();
-			sql = "select * from pWSel";
+			sql = "select * from pWSel where pWPNo = ? and pWUId = ?";
 			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, pNo);
+			objPstmt.setString(2, pWUId);
 			objRS = objPstmt.executeQuery();
+			
 			while (objRS.next()) {
 				ProWSelBean pWSBean = new ProWSelBean();
+				pWSBean.setpWPNo(objRS.getInt("pWPNo"));
 				pWSBean.setpWUId(objRS.getString("pWUId"));
 				pWSBean.setpWrite(objRS.getString("pWrite"));
 				pWSList.add(pWSBean);
@@ -90,15 +94,17 @@ public class ProductMgr {
 	}
 
 	// Review List
-	public List<ProRevBean> listRevOutput() {
+	public List<ProRevBean> listRevOutput(int pNo) {
 
 		List<ProRevBean> pRevList = new Vector<ProRevBean>();
 
 		try {
 			objConn = pool.getConnection();
-			sql = "select * from pRevList order by pRevDate Desc";
+			sql = "select * from pRevList where pRevPNo = ? order by pRevDate Desc";
 			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, pNo);
 			objRS = objPstmt.executeQuery();
+			
 			while (objRS.next()) {
 				ProRevBean pRBean = new ProRevBean();
 				pRBean.setpRevPNo(objRS.getInt("pRevPNo"));
@@ -144,15 +150,16 @@ public class ProductMgr {
 	}
 
 	// 판매자 문의 등록
-	public boolean writeChk(String uId, String pTextarea) {
+	public boolean writeChk(int pWPNo, String uId, String pTextarea) {
 		boolean chk = false;
 
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into pWSel values (?, ?)";
+			sql = "insert into pWSel values (?, ?, ?)";
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, uId);
-			objPstmt.setString(2, pTextarea);
+			objPstmt.setInt(1, pWPNo);
+			objPstmt.setString(2, uId);
+			objPstmt.setString(3, pTextarea);
 
 			if (objPstmt.executeUpdate() > 0) {
 				chk = true;
@@ -168,12 +175,12 @@ public class ProductMgr {
 	}
 
 	// 판매자 문의 수정
-	public boolean writeModChk(String pWUId, String pTextarea) {
+	public boolean writeModChk(int pWPNo, String pWUId, String pTextarea) {
 		boolean chk = false;
 
 		try {
 			objConn = pool.getConnection();
-			sql = "update pWSel set pWrite = ? where pWUId = '" + pWUId + "'";
+			sql = "update pWSel set pWrite = ? where pWUId = '" + pWUId + "' and pWPNo = '" + pWPNo + "'";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, pTextarea);
 			objPstmt.executeUpdate();
@@ -192,12 +199,12 @@ public class ProductMgr {
 	}
 
 	// 판매자 문의 삭제
-	public boolean writeDelChk(String pWUId) {
+	public boolean writeDelChk(int pWpNo, String pWUId) {
 		boolean chkDel = false;
 
 		try {
 			objConn = pool.getConnection();
-			sql = "delete from pWSel where pWUId = '" + pWUId + "'";
+			sql = "delete from pWSel where pWUId = '" + pWUId + "' and pWpNo = '" + pWpNo + "'";
 			objPstmt = objConn.prepareStatement(sql);
 
 			if (objPstmt.executeUpdate() > 0) {
@@ -211,28 +218,6 @@ public class ProductMgr {
 		}
 
 		return chkDel;
-	}
-
-	// 판매자 데이터 있는 지 확인
-	public int writeListChk(String pWUId) {
-		int count = 0;
-
-		try {
-			objConn = pool.getConnection();
-			String sql = "select count(*) from pWSel where pWUId = '" + pWUId + "'";
-			objPstmt = objConn.prepareStatement(sql);
-			objRS = objPstmt.executeQuery();
-
-			if (objRS.next()) {
-				count = objRS.getInt(1);
-			}
-		} catch (Exception e) {
-			System.out.println("writeListChk e : " + e.getMessage());
-		} finally {
-			pool.freeConnection(objConn, objPstmt, objRS);
-		}
-
-		return count;
 	}
 
 	// 리뷰 작성
@@ -267,15 +252,15 @@ public class ProductMgr {
 		return chk;
 	}
 
-
 	// 리뷰 이미지 리스트
-	public int proRevCount() {
+	public int proRevCount(int pNo) {
 		int count = 0;
 
 		try {
 			objConn = pool.getConnection();
-			String sql = "select count(*) from pRevList where pRevPhoto = 1";
+			String sql = "select count(*) from pRevList where pRevPhoto = 1 and pRevPNo = ?";
 			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, pNo);
 			objRS = objPstmt.executeQuery();
 
 			if (objRS.next()) {
@@ -290,17 +275,19 @@ public class ProductMgr {
 		return count;
 	}
 	// 리뷰 썼는지(로그인 시)
-	public int revWCnt(String uId) {
-		int count = 0;
+	public boolean revWCnt(String uId, int pRevPNo) {
+		boolean chk = false;
 
 		try {
 			objConn = pool.getConnection();
-			String sql = "select count(*) from pRevList where pRevUId = '" + uId + "'";
+			String sql = "select * from pRevList where pRevUId = ? and pRevPNo = ?";
 			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uId);
+			objPstmt.setInt(2, pRevPNo);
 			objRS = objPstmt.executeQuery();
 
 			if (objRS.next()) {
-				count = objRS.getInt(1);
+				chk = true;
 			}
 		} catch (Exception e) {
 			System.out.println("revWCnt e : " + e.getMessage());
@@ -308,7 +295,7 @@ public class ProductMgr {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
 
-		return count;
+		return chk;
 	}
 	
 	// 리뷰 좋아요

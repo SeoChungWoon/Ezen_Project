@@ -370,7 +370,6 @@ $(function() {
 						} else {
 
 							if ($(".inquiryBtn").eq(e).hasClass("qnaContsSubmit")) {
-								alert("판매자");
 								$("#qnaContsWrite").text(qnaConts);
 								$(".listViewForm").submit();
 							} else if ($(".inquiryBtn").eq(e).hasClass("qnaContRevSubmit")) {
@@ -378,7 +377,6 @@ $(function() {
 								if($("#rateCalc").val() == ""){
 									alert("평점은 최소 별 한개이상 가능합니다.");
 								}else{
-									alert("리뷰");
 									$(".listViewRevForm").submit();
 								}
 								
@@ -538,6 +536,7 @@ $(function() {
 	if($(".revDelBtn").length != 0){
 		$(".reviewInfo").each(function(e){
 			$(this).find(".revDelBtn").on("click", function(){
+				console.log(e);
 				var wUId = $(".reviewInfo").eq(e).find("#wUId").val();
 				console.log(wUId);
 				$.ajax({
@@ -792,6 +791,25 @@ function modalOpen(id) {
 	modalDimOpen(id); //dim show
 
 	//return false;
+	
+	// 나의 리뷰 삭제
+	if($(".revDelBtn").length != 0){
+		$(".reviewInfo").each(function(e){
+			$(this).find(".revDelBtn").on("click", function(){
+				console.log(e);
+				var wUId = $(".reviewInfo").eq(e).find("#wUId").val();
+				console.log(wUId);
+				$.ajax({
+					type: "post",
+					url: "/product/listViewReDelProc.jsp",
+					data: {"wUId" : wUId},
+					success: function(txt) {
+						$(".reviewRef").html(txt);
+					}
+				});
+			});
+		});
+	}
 }
 //dim show
 function modalDimOpen(id) {
