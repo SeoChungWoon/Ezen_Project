@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				
-				<form action="/member/join.jsp" id="termsForm" method="post">
+				<form action="/member/sellerJoin.jsp" id="termsForm" method="post">
 					<div id="termsArea">
 						<div class="termsRow">
 							<p>
@@ -43,7 +43,7 @@
 								<input type="checkbox" id="chkAll" class="hidden" name="chkAll">
 								<label for="chkAll" class="unchecked">
 								<span class="chkAllTxt">
-											E-Ticket 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신<span class="smallFont">(선택)</span>에 모두 동의합니다.
+											E-Ticket 판매자 이용약관, 개인정보 수집 및 이용에 모두 동의합니다.
 								</span>
 								</label>
 								</span>
@@ -53,7 +53,7 @@
 							<p>
 								<input type="checkbox" id="chkService" class="hidden" name="chkService">
 								<label for="chkService" class="unchecked"> <span class="termsTitle">
-										E-Ticket 이용약관 동의<span class="req">(필수)</span>
+										E-Ticket 판매자 이용약관 동의<span class="req">(필수)</span>
 								</span>
 								</label>
 							</p>
@@ -68,16 +68,6 @@
 								</label>
 							</p>
 							<iframe src="/include/privacyAgree.jsp" class="termsTxt"></iframe>
-						</div>
-						<div class="termsRow usingTerms">
-							<p>
-								<input type="checkbox" id="termsAds" class="hidden" name="termsAds">
-								<label for="termsAds" class="unchecked"> <span class="termsTitle">
-										프로모션 정보 수신 동의<span class="termsOption">(선택)</span>
-								</span>
-								</label>
-							</p>
-							<iframe src="/include/adsAgree.jsp" class="termsTxt"></iframe>
 						</div>
 					</div>
 					<!-- div#termsArea -->

@@ -17,7 +17,7 @@ if (TermsAds == null) {
 if (reqChk == null) {
 %>
 <script>
-	location.href = "/member/termsChk.jsp";
+	location.href = "/member/sellerTermsChk.jsp";
 </script>
 <%
 }
@@ -59,7 +59,7 @@ if (reqChk == null) {
 							</ul>
 						</div>
 				</div>
-				<form action="/member/joinProc.jsp" id="joinForm" method=post>
+				<form action="/member/sellerJoinProc.jsp" id="joinForm" method=post>
 					<div id="joinArea">
 
 						<div class="joinRow">
@@ -139,32 +139,6 @@ if (reqChk == null) {
 
 
 						<div class="joinRow">
-							<span class="joinTitle">주소<span class="point"> *</span></span>
-						</div>
-						<div class="joinRow">
-
-							<input type="text" id="uZipcode" name="uZipcode" readonly>
-
-							<button type="button" id="zipChk">우편번호 찾기</button>
-
-						</div>
-
-
-						<div class="joinRow joinAddrRow">
-							<input type="text" id="addr1" name="addr1" readonly>
-						</div>
-
-						<div class="joinRow">
-							<span class="joinTitle">상세 주소</span>
-						</div>
-						<div class="joinRow joinAddrRow">
-							<input type="text" id="addr2" name="addr2"
-								onkeyup="addr(this.form)">
-						</div>
-						<input type="hidden" id="uAddr" name="uAddr">
-
-
-						<div class="joinRow">
 							<span class="joinTitle">휴대전화 번호<span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
@@ -180,7 +154,7 @@ if (reqChk == null) {
 
 
 						<div class="joinRow">
-							<button type="button" onclick="join(this.form)">가입하기</button>
+							<button type="button" onclick="sellerJoin(this.form)">가입하기</button>
 							<button type="reset">다시쓰기</button>
 						</div>
 

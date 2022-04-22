@@ -50,7 +50,7 @@
 					} else {
 					%>
 					<li><a href="/member/login.jsp"><span>로그인</span></a></li>
-					<li><a href="/member/termsChk.jsp"><span>회원가입</span></a></li>
+					<li><a href="/member/joinType.jsp"><span>회원가입</span></a></li>
 					<%
 					}
 					%>

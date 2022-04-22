@@ -217,7 +217,7 @@
 .detail-cont .infoBox .left .likeClk {
 	position: relative;
 	margin-top: 10px;
-	left: 45%;
+	left: 2%;
 }
 
 .exhibit-cont .exhibit-list .listBox .likeClk input ,
@@ -231,22 +231,36 @@
 	opacity: .01;
 }
 
-.exhibit-cont .exhibit-list .listBox .likeClk .chk-group label ,
-.detail-cont .infoBox .left .likeClk .chk-group label {
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group label {
 	padding: 5px 0 5px 40px;
 	/* 	font-size: 14px; */
 	background: url("/images/icon-like-off.png") no-repeat 0 0/30px;
 }
 
-.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked label ,
-.detail-cont .infoBox .left .likeClk .chk-group.checked label {
+.exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked label {
 	background: url("/images/icon-like-on.png") no-repeat 0 0/30px;
+}
+
+.detail-cont .infoBox .left .likeClk .chk-group label {
+	padding: 6px 0 9px 40px;
+	/* 	font-size: 14px; */
+	background: url("/images/icon-like-off.png") no-repeat 0 0/40px;
+}
+
+.detail-cont .infoBox .left .likeClk .chk-group.checked label {
+	background: url("/images/icon-like-on.png") no-repeat 0 0/40px;
 }
 
 .exhibit-cont .exhibit-list .listBox .likeClk .chk-group.checked::before ,
 .detail-cont .infoBox .left .likeClk .chk-group.checked::before
 	{
 	display: none;
+}
+
+.detail-cont .infoBox .left .likeClk .chk-group label::after
+	{
+	content: "찜 하기";
+	color: #222;
 }
 
 .exhibit-cont .exhibit-list .listBox .txt-info {

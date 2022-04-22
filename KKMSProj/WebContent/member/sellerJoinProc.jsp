@@ -3,13 +3,13 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String mType = request.getParameter("mType");
-mType = "일반";
+mType = "판매자";
 %>
 <jsp:useBean id="memMgr" class="pack_Member.MemberMgr" />
 <jsp:useBean id="regBean" class="pack_Member.RegisterBean" />
 <jsp:setProperty name="regBean" property="*" />
 <%
-boolean result = memMgr.joinMember(regBean, mType);
+boolean result = memMgr.sellerJoinMember(regBean, mType);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -33,7 +33,7 @@ boolean result = memMgr.joinMember(regBean, mType);
 			<div class="inner">
 				<div class="tit-cont">
 					<!--  title -->
-					<p class="tit">회원가입이 완료되었습니다.</p>
+					<p class="tit">회원가입 신청이 완료되었습니다.</p>
 						<div class="joinStep">
 							<ul class="dFlex">
 								<li>step 1. 회원 선택</li>
@@ -45,9 +45,9 @@ boolean result = memMgr.joinMember(regBean, mType);
 								<li class="nowStep">step 4. 가입 완료</li>
 							</ul>
 						</div>
+					<p class="sellerJoinInfo">※ 관리자의 가입 승인 이후 사이트 이용이 가능합니다.</p>
 				</div>
 				<div class="joinOkBtnArea">
-				<a href="/member/login.jsp">로그인하기</a>
 				<a href="/index.jsp">메인으로</a>
 				</div>
 			</div>

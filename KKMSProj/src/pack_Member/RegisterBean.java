@@ -13,8 +13,22 @@ public class RegisterBean {
 	private String uZipcode;
 	private String uAddr;
 	private String termsAds;
+	private String mType;
+	private String joinWait;
 	
 	
+	public String getmType() {
+		return mType;
+	}
+	public void setmType(String mType) {
+		this.mType = mType;
+	}
+	public String getJoinWait() {
+		return joinWait;
+	}
+	public void setJoinWait(String joinWait) {
+		this.joinWait = joinWait;
+	}
 	public int getNo() {
 		return no;
 	}

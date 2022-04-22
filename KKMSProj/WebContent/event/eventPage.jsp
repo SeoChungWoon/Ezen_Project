@@ -15,7 +15,7 @@ List eList = eMgr.eventList();
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이벤트 페이지</title>
+<title>E-Ticket :이벤트</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">

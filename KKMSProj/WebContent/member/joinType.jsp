@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-Ticket :마이페이지</title>
+<title>E-Ticket :회원가입</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
@@ -17,41 +17,34 @@
 </head>
 <body>
 	<div id="wrap">
-		<%@ include file="/include/header.jsp"%>
-		<%
-		if (memberId == null) {
-		%>
-		<script>
-			location.href = "/index.jsp";
-		</script>
-		<%
-		}
-		%>
+	<%@ include file="/include/header.jsp"%>
 		<div class="sub-body">
 			<div class="inner">
-				<div class="mypageInner dFlex">
-					<%@ include file="/include/myPageAside.jsp"%>
-					<div class="mypageArea">
-					<div class="mypageTit">
-							<h1>회원정보 수정</h1>
-						</div>
-						<div id="modifyChkArea">
-							<input type="password" id="modifyPw" name="modifyPw"
-								placeholder="비밀번호 입력" maxlength="16">
-							<button type="button" id="modifyPwBtn">확인</button>
-						</div>
-						<!-- div#modifyChkArea -->
-						<div id="modifyChkRes">
-							<p id="modifyErrMsg"></p>
-						</div>
+				<div class="tit-cont"> <!--  title -->
+					<p class="tit">회원가입</p>
+					<div class="joinStep">
+						<ul class="dFlex">
+							<li class="nowStep">step 1. 회원 선택</li>
+							<li>&gt;</li>
+							<li>step 2. 약관 동의</li>
+							<li>&gt;</li>
+							<li>step 3. 정보 입력</li>
+							<li>&gt;</li>
+							<li>step 4. 가입 완료</li>
+						</ul>
 					</div>
-					<!-- div.mypageArea -->
 				</div>
-				<!-- div.mypageInner -->
+
+					<div class="choiceJoin">
+						<a href="/member/sellerTermsChk.jsp" id="sellerMember">
+						<img src="/images/join-seller.png" alt="" />
+						</a>
+						<a href="/member/termsChk.jsp" id="generalMember">
+						<img src="/images/join-general.png" alt="" />
+						</a>
+					</div>
 			</div>
-			<!-- div.inner -->
 		</div>
-		<!-- div.sub-body -->
 		<%@ include file="/include/footer.jsp"%>
 	</div>
 	<!-- div#wrap -->

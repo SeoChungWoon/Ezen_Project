@@ -9,20 +9,21 @@ no int auto_increment,
 uId char(15) not null,
 uPw char(16) not null,
 uName char(20) not null,
-uBirthday char(8) not null,
-uGender char(6) not null,
+uBirthday char(8),
+uGender char(6),
 uEmail char(50) not null,
 uPhone char(11) not null,
-uZipcode char(7) not null,
-uAddr char(50) not null,
+uZipcode char(7),
+uAddr varchar(200),
 termsAds char(1),
+mType char(5) not null,
+joinWait char(2),
 constraint primary key(uId),
 constraint unique key(no)
 );
 
-desc member;
 
-insert into member values (3, 'A', '1234', 'abc', 'a', 'a', 'a', 'a', 'a', 'a', 'Y');
+insert into member values (1, 'admin', 'admin', '관리자', '00000000', 'null', 'null', '01012345678', 'null', 'null', '', '관리자', '');
 select count(*) from member where uId = 'a';
 
 
@@ -30,7 +31,7 @@ select * from member;
 
 drop table member;
 
-
+update member set joinWait = 'Y' where uId = 'seller';
 
 
 
@@ -156,21 +157,6 @@ drop table pWsel;
 select * from pWSel;
 truncate pWSel;
 
-## 리뷰 문의
-## 아이디, 작성 내용, 별점, 리뷰 사진
-create table pRevWrite(
-pRevWNo		int,
-pRevWUId		char(15),
-pRevWrite		varchar(500),
-pRevWStar		int,
-pRevWPhoto	varchar(100),
-pRevWTime		timestamp,
-pRevWRecom		int
-);
-
-drop table prevWrite;
-truncate prevWrite;
-select * from pRevWrite;
 ## 리뷰 리스트
 create table pRevList(
 pRevPNo			int,
@@ -277,3 +263,4 @@ create table wishList (
 drop table wishList;
 
 select * from wishList;
+

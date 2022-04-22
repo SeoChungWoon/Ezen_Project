@@ -126,7 +126,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 									<dl>
 										<dt>관람날짜</dt>
 										<dd>
-											<span class="date"><%=mList.getpDate1()%> - <%=mList.getpDate2()%></span>
+											<span class="date startDate"><%=mList.getpDate1()%></span> - <span class="date endDate"><%=mList.getpDate2()%></span>
 										</dd>
 									</dl>
 									<dl>

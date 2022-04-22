@@ -71,13 +71,13 @@ $(function() {
 
 
 					if ($(this).parent(".chk-group").hasClass("like")) {
-						alert("찜 목록에 추가되었습니다.");
+						// alert("찜 목록에 추가되었습니다.");
 					}
 				} else {
 					$(this).parent(".chk-group").removeClass("checked");
 
 					if ($(this).parent(".chk-group").hasClass("like")) {
-						alert("찜 목록에서 삭제되었습니다.");
+						// alert("찜 목록에서 삭제되었습니다.");
 					}
 				}
 			});

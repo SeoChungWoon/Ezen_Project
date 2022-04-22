@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>로그인</title>
+<title>E-Ticket :로그인</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
@@ -52,7 +52,7 @@
 							<p id="loginErrMsg"></p>
 						</div>
 						<ul id="utilArea">
-							<li><a href="/member/termsChk.jsp">회원가입</a></li>
+							<li><a href="/member/joinType.jsp">회원가입</a></li>
 							<li><a href="/member/findId.jsp">아이디 찾기</a></li>
 							<li><a href="/member/findPw.jsp">비밀번호 찾기</a></li>
 						</ul>

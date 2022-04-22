@@ -2,6 +2,20 @@
 
 $(function() {
 
+/* 회원 종류 선택 */
+
+	if($(".choiceJoin").length != 0){
+		$(".choiceJoin a").on("mouseenter", function(){
+			gsap.to($(this), 0.4, { top : -15, opacity : 1, ease: Power3.easeOut });
+		});
+		$(".choiceJoin a").on("mouseleave", function(){
+			gsap.to($(this), 0.4, { top : 0, opacity : 0.75, ease: Power3.easeOut });
+		});
+	}
+
+/* 회원 종류 선택 */
+
+
 /* 우편번호 찾기 새창 띄우기 */
 	$("#zipChk").click(function() {
 		window.open("/member/zipChk.jsp","우편번호 찾기","width=700, height=700, left=600, _blank");
@@ -627,6 +641,66 @@ function join(formName) {
 	formName.submit();
 }
 /* 입력 정보 확인 및 회원가입 */
+
+/* 판매자 회원가입 */
+function sellerJoin(formName) {
+	if (formName.uId.value =="") {
+		alert("아이디를 입력해 주세요.");
+		formName.uId.focus();
+		return;
+	}
+	if (formName.uIdChk.value  =="N") {
+		alert("이미 사용중인 아이디입니다.");
+		formName.uId.focus();
+		return;
+	}
+	if (formName.uPw.value == "" || formName.uPwChk.value == "" || formName.pwMatch.value == "N") {
+		alert("비밀번호를 확인해 주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.uPw.value.length<8 || formName.uPw.value.length>16) {
+		alert("비밀번호는 8~16자 사이로 설정해주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.uName.value == "") {
+		alert("이름을 입력해 주세요.");
+		formName.uName.focus();
+		return;
+	}
+	uBirth = formName.uBirthday.value;
+	if (uBirth == "" || uBirth.length < 8) {
+		alert("생년월일을 확인해 주세요.");
+		formName.uBirthday.focus();
+		return;
+	}
+	if (formName.uGender.value == "") {
+		alert("성별을 선택해 주세요.");
+		formName.uGender.focus();
+		return;
+	}
+	if (formName.uEmail.value == "") {
+		alert("이메일 주소를 입력해 주세요.");
+		formName.uEmail.focus();
+		return;
+	}
+	uPhone = formName.uPhone.value;
+	if (uPhone == "" || uPhone.length < 11) {
+		alert("휴대폰 번호를 확인해 주세요.");
+		formName.uPhone.focus();
+		return;
+	}
+	let ads = formName.TermsAds.value;
+	if (ads == "Y") {
+		formName.TermsAds.value = "Y";
+	} else if (ads == "N") {
+		formName.TermsAds.value = "N";
+	}
+	
+	formName.submit();
+}
+/* 판매자 회원가입 */
 /****** 회원가입 영역 *****/
 
 

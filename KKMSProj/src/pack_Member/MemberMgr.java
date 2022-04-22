@@ -24,7 +24,8 @@ public class MemberMgr {
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 아이디 중복확인
 	public boolean chkId(String uId) {
 		boolean flag = false;
 
@@ -45,14 +46,15 @@ public class MemberMgr {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("chkId e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
 
 		return flag;
 	}
-
+	
+	// 우편번호 찾기
 	public List<ZipcodeBean> zipChk(String area3) {
 		
 		List<ZipcodeBean> zipList = new Vector<ZipcodeBean>();
@@ -73,7 +75,7 @@ public class MemberMgr {
 				zipList.add(zBean);
 			}
 		} catch (Exception e) {
-			System.out.println("e : " + e.getMessage());
+			System.out.println("zipChk e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -81,14 +83,14 @@ public class MemberMgr {
 		return zipList;
 	}
 
-	public boolean joinMember(RegisterBean rBean) {
+	// 일반 회원가입
+	public boolean joinMember(RegisterBean rBean, String mType) {
 		
 		boolean flag = false;
-
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, uZipcode, uAddr, termsAds) ";
-			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, uZipcode, uAddr, termsAds, mType) ";
+			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, rBean.getuId());
 			objPstmt.setString(2, rBean.getuPw());
@@ -100,41 +102,104 @@ public class MemberMgr {
 			objPstmt.setString(8, rBean.getuZipcode());
 			objPstmt.setString(9, rBean.getuAddr());
 			objPstmt.setString(10, rBean.getTermsAds());
+			objPstmt.setString(11, mType);
 			if (objPstmt.executeUpdate() == 1)
 				flag = true;
 		} catch (Exception e) {
-			System.out.println("e : " + e.getMessage());
+			System.out.println("joinMember e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		return flag;
+	}
+	
+	// 판매자 회원가입
+	public boolean sellerJoinMember(RegisterBean rBean, String mType) {
+		
+		boolean flag = false;
+		try {
+			objConn = pool.getConnection();
+			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, mType, joinWait) ";
+			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, rBean.getuId());
+			objPstmt.setString(2, rBean.getuPw());
+			objPstmt.setString(3, rBean.getuName());
+			objPstmt.setString(4, rBean.getuBirthday());
+			objPstmt.setString(5, rBean.getuGender());
+			objPstmt.setString(6, rBean.getuEmail());
+			objPstmt.setString(7, rBean.getuPhone());
+			objPstmt.setString(8, mType);
+			objPstmt.setString(9, "Y");
+			if (objPstmt.executeUpdate() == 1)
+				flag = true;
+		} catch (Exception e) {
+			System.out.println("sellerJoinMember e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt);
 		}
 		return flag;
 	}
 
-	public String loginChk(String mId, String mPw) {
+	
+	// 가입 승인 대기 조회 ('Y'면 대기상태)
+	public boolean waitChk(String mId, String mPw) {
 		
-		String uName = "";
+		boolean flag = false;
+		String chk = "";
 
 		
 		try {
 			objConn = pool.getConnection();
-			sql = "select count(*), uName from member where uId = ? and uPw = ?";
+			sql = "select joinWait from member where uId = ? and uPw = ?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, mId);
 			objPstmt.setString(2, mPw);
 			objRS = objPstmt.executeQuery();
 			objRS.next();
-			if (objRS.getInt("count(*)") > 0) {
-				uName = objRS.getString("uName");
+			
+			chk = objRS.getString("joinWait");
+			if(chk != null) {
+				if(chk.equals("Y")) {
+					flag = true;
+				}					
 			}
 			
 		} catch (Exception e) {
-			System.out.println("e : " + e.getMessage());
+			System.out.println("waitChk e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
-		return uName;
+		return flag;
 	}
 	
+	// 로그인, 회원 타입 조회 (관리자, 일반, 판매자)
+	public String mTypeChk(String mId, String mPw) {
+		
+		boolean flag = false;
+		String mType = "";
+
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "select mType from member where uId = ? and uPw = ?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, mId);
+			objPstmt.setString(2, mPw);
+			objRS = objPstmt.executeQuery();
+			objRS.next();
+			
+			mType = objRS.getString("mType");
+						
+		} catch (Exception e) {
+			System.out.println("mTypeChk e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		return mType;
+	}
+			
+	// 마이페이지 비밀번호 확인
 	public boolean mPwChk(String mId, String mPw) {
 		
 		boolean flag = false;
@@ -151,7 +216,7 @@ public class MemberMgr {
 				flag = true;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("mPwChk e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -159,6 +224,7 @@ public class MemberMgr {
 		return flag;
 	}
 	
+	// 마이페이지 정보조회
 	public List<ZipcodeBean> myPage(String mId) {
 
 		List mList = new Vector();
@@ -185,7 +251,7 @@ public class MemberMgr {
 			
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("myPage e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -193,6 +259,7 @@ public class MemberMgr {
 		return mList;
 	}
 	
+	// 회원 탈퇴
 	public boolean withdraw (String wId, String wPw) {
 		
 		boolean flag = false;
@@ -206,7 +273,7 @@ public class MemberMgr {
 			if (objPstmt.executeUpdate()>0)
 			flag = true;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("withdraw e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -215,6 +282,7 @@ public class MemberMgr {
 		
 	}
 	
+	// 회원정보 수정
 	public boolean modify (String uId, String nPw, String nEmail, String nZipcode, String nAddr, String nPhone) {
 		boolean flag = false;
 		
@@ -243,7 +311,7 @@ public class MemberMgr {
 					flag = true;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("modify e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt);
 		}
@@ -251,6 +319,7 @@ public class MemberMgr {
 		return flag;
 	}
 	
+	// 아이디 찾기
 	public String findId (String fName, String fData, String howTo) {
 		
 		String id = "";
@@ -272,7 +341,7 @@ public class MemberMgr {
 				id="";
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("findId e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -281,7 +350,8 @@ public class MemberMgr {
 		
 	}
 	
-public boolean findPw (String fId, String fName, String fData, String howTo) {
+	// 비밀번호 찾기
+	public boolean findPw (String fId, String fName, String fData, String howTo) {
 		
 		String id = "";
 		boolean flag = false;
@@ -304,7 +374,7 @@ public boolean findPw (String fId, String fName, String fData, String howTo) {
 			}
 			
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println("findPw e : " + e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt, objRS);
 		}
@@ -313,26 +383,27 @@ public boolean findPw (String fId, String fName, String fData, String howTo) {
 		
 	}
 	
-public boolean fChangePw (String uId, String uPw) {
-	boolean flag = false;
+	// 비밀번호 찾기 새로운 비밀번호 설정
+	public boolean fChangePw (String uId, String uPw) {
+		boolean flag = false;
 	
-	System.out.println(uId + " " + uPw);
-	try {
-		objConn = pool.getConnection();
-			sql = "update member set uPw = ? where uId=?";
-			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, uPw);
-			objPstmt.setString(2, uId);
-			if (objPstmt.executeUpdate()>0)
-				flag = true;
+		System.out.println(uId + " " + uPw);
+		try {
+			objConn = pool.getConnection();
+				sql = "update member set uPw = ? where uId=?";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, uPw);
+				objPstmt.setString(2, uId);
+				if (objPstmt.executeUpdate()>0)
+					flag = true;
+			
+		} catch (Exception e) {
+			System.out.println("fChangePw e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
 		
-	} catch (Exception e) {
-		System.out.println(e.getMessage());
-	} finally {
-		pool.freeConnection(objConn, objPstmt);
+		return flag;
 	}
-	
-	return flag;
-}
-	
+		
 }

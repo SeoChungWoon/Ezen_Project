@@ -1,5 +1,61 @@
 @charset "UTF-8";
 
+/* 회원가입 진행 스텝 시작 */
+.tit-cont .joinStep {
+	padding: 5px 10px;
+}
+
+.tit-cont .joinStep ul {
+	margin-top: 20px;
+	justify-content: center;
+}
+
+.tit-cont .joinStep ul li{
+	margin: 0 5px;
+	padding: 10px 5px;
+	color : #aaa;
+}
+
+.tit-cont .joinStep ul li.nowStep {
+	font-weight: bold;
+	color: #222;
+	border-bottom: 3px solid #0086b8;
+}
+
+.tit-cont p.sellerJoinInfo {
+	margin: 10px 0;
+	color: #e64949;
+	font-size: 20px;
+}
+
+/* 회원가입 진행 스텝 끝 */
+
+/* 가입 유형 선택 시작 */
+
+.choiceJoin {
+	text-align: center;
+}
+
+.choiceJoin a {
+	position: relative;
+	display: inline-block;
+	border: 2px solid #0086b8;
+	border-right: 4px solid #0086b8;
+	border-bottom: 4px solid #0086b8;
+	border-radius: 5%;
+	opacity: 0.75;
+	width: 28%;
+	margin: 0 20px;
+	overflow: hidden;
+}
+
+.choiceJoin a img {
+	width: 100%;
+	
+}
+
+/* 가입 유형 선택 끝 */
+
 /* 약관동의 영역 시작 */
 
 #termsArea {
@@ -68,7 +124,9 @@ pre.termsTxtInner {
 }
 
 #termsBtnArea button:first-child:hover {
-	background: #444;
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
 }
 
 #termsBtnArea button:last-child {
@@ -208,7 +266,9 @@ radio:fisrt-child {
 	margin-right: 20px;
 }
 
-#joinArea > div.joinRow>button#zipChk {
+#joinArea > div.joinRow > button#zipChk {
+	width: 25%;
+	transform: translateY(-2px);
 	font-size: 16px;
 	padding: 10px;
 	height: 50px;
@@ -216,6 +276,12 @@ radio:fisrt-child {
 	background: #333;
 	border: none;
 	color: #fff;
+}
+
+#joinArea > div.joinRow > button#zipChk:hover {
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
 }
 
 input#addr1, input#addr2 {
@@ -251,7 +317,9 @@ input#addr1, input#addr2 {
 }
 
 .joinRow:last-child button:first-child:hover {
-	background: #444;
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
 }
 
 .joinRow:last-child button:last-child {
@@ -357,6 +425,12 @@ div#loginArea {
 	background: #333;
 	border: none;
 	color: #fff;
+}
+
+#loginArea > div#loginBtnArea button:hover {
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
 }
 .login-desc{
 	width: 500px;
@@ -550,7 +624,9 @@ div#changeAddr >modify.Row > input#uZipcode {
 }
 
 .modifyFinal button:first-child:hover {
-	background: #444;
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
 }
 
 .modifyFinal button:last-child {
@@ -632,7 +708,9 @@ div#withdrawBtnArea {
 }
 
 #withdrawBtnArea button:first-child:hover {
-	background: #444;
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
 }
 
 #withdrawBtnArea button:last-child {
@@ -743,7 +821,9 @@ div#withdrawBtnArea {
 }
 
 .findResBtnArea button:first-child:hover {
-	background: #444;
+	background: #0086b8;
+	border: 1px solid #0086b8;
+	font-weight: bold;
 }
 
 .findResBtnArea button:last-child {
