@@ -8,8 +8,11 @@
 <jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
 
+
 <%
 request.setCharacterEncoding("UTF-8");
+
+
 String division = "FAQ";
 BoardDAO objDAO = new BoardDAO();
 int cnt = objDAO.BoardCount(division);		//데이터 갯수
@@ -59,6 +62,7 @@ if(cnt != 0){
 					<p class="tit">FAQ게시판</p>
 				</div>
 				<!--div.tit-cont  -->
+
   	<form action="faqScRes.jsp" method="post" name="search">
   		<div class="searchArea">
   			<span>Search</span>
@@ -99,12 +103,17 @@ if(cnt != 0){
 		      	
 		      	<table>
 		      		<colgroup>
+		      			<col width="10%" />
 		      			<col width="20%" />
-		      			<col width="60%"/>
+		      			<col width="50%"/>
 		      			<col width="20%"/>
 		      		</colgroup>
 		      			<thead>
 		      				<tr>
+		      					<th>전체선택
+		      					<input type="checkbox" name="chkBox" class="allChk"
+		      					onclick="selectAll(this)">
+		      					</th>
 		      					<th>구분</th>
 		      					<th>제목</th>
 		      					<th>내용보기</th>
@@ -117,6 +126,11 @@ if(cnt != 0){
 		      					BoardVO objVO = (BoardVO)objList.get(i);
 		      				%>
 		      					<tr>
+		      						<td>
+		      							<input type="checkbox" name="chkBox" class="listChk" id="chkRow<%=i+1%>">
+		      							<input type="hidden" id="hd-Title" value="<%=objVO.getTitle() %>">
+		      							<input type="hidden" id="hd-Content" value="<%=objVO.getContent() %>">
+		      						</td>
 		      						<td><%=objVO.getDivision() %></td>
 		      						<td>
 		      						<label for="faqRow<%=i+1 %>" class="faqTitle">
@@ -134,6 +148,12 @@ if(cnt != 0){
 		      						<td class="hide" colspan="3">
 		      							<pre><%=objVO.getContent() %></pre>
 		      						</td>
+		      						<td>
+										<input type="hidden" id="hd-no" value="<%=objVO.getNo() %>">
+										<input type="hidden" id="hd-division" value="<%=objVO.getDivision() %>">
+		      							<button type="button" class="udBtn" id="faq-update">수정</button>
+		      							<button type="button" class="udBtn" id="faq-delKey">삭제</button>
+		      						</td>
 		      					</tr>		      		
 		      				<% 
 		      				}
@@ -142,6 +162,8 @@ if(cnt != 0){
 		      	</table>
 		      </div>
 		      <!-- div.tblArea 끝 -->
+
+					
 		      
 		      <div class="footerArea dFlex">
 		      	<div class="pageArea">
@@ -215,8 +237,8 @@ if(cnt != 0){
 		      			}
 					%>
 				<div class="btnArea">
+					<input type="hidden" class="chkWrite" value="<%=division %>">	
 	    			<button type="button" class="write">글쓰기</button>
-	    			<button type="button" class="update">수정하기</button>
 	    			<button type="button" class="delKey">삭제하기</button>
 	    		</div> 		
 	    	 		

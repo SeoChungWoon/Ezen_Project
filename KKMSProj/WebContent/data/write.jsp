@@ -9,7 +9,8 @@
 <jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
 <jsp:setProperty name="regVO" property="*" />
 <% 
-%>
+	String division = (String)request.getParameter("division");
+%> 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -44,7 +45,7 @@
         <div id="main">
         
  		<div id="header">
-        <hr id="headHR">
+        	<hr id="headHR">
         </div>
         <!-- div#header -->
        
@@ -58,10 +59,11 @@
         	</tr>
         		<tr>
         			<td>
+        				<input type="hidden" id="writeChk" value="<%=division %>">
         				<select name="division" id="division">
-        					<option value="">구 분</option>
-        					<option value="공지사항">공지사항</option>
-        					<option value="FAQ">FAQ</option>
+        					<option value="" id="standard">구 분</option>
+        					<option value="공지사항" id="otNotice">공지사항</option>
+        					<option value="FAQ" id="otFAQ">FAQ</option>
         				</select>
         			</td>
         		</tr>

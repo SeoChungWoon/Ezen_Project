@@ -6,8 +6,7 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-	
-	
+	String division = (String)request.getParameter("division");
 	int no = Integer.parseInt(request.getParameter("no"));
 	boolean deleteChk = false;
 	
@@ -45,6 +44,7 @@
 				</div>
 				<!--div.tit-cont  -->
 					<div class="btnArea">
+						<input type="hidden" class="orgDV" value="<%=division %>">
 						<button type="button" class="dlBtn list">목록으로</button>
 						<button type="button"class="dlBtn mainMove">메인으로</button>
 					</div>

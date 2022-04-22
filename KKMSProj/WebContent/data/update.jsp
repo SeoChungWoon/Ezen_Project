@@ -63,10 +63,11 @@
         	</tr>
         		<tr>
         			<td>
+        					<input type="hidden" id="updateChk" value="<%=division %>">
         				<select name="division" id="division">
         					<option value="">구 분</option>
-        					<option value="공지사항">공지사항</option>
-        					<option value="FAQ">FAQ</option>
+        					<option value="공지사항" id="otNotice-ud">공지사항</option>
+        					<option value="FAQ" id="otNotice-ud">FAQ</option>
         				</select>
         			</td>
         		</tr>

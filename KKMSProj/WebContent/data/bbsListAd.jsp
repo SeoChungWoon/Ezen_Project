@@ -212,6 +212,7 @@ BoardVO objVO = null;
 	    	 		%>
 					
 	    		<div class="btnArea">
+	    			<input type="hidden" class="chkWrite" value="<%=division %>">
 	    			<button type="button" class="write">글쓰기</button>
 	    		</div> 		
 	   

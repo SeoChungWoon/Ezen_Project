@@ -98,6 +98,7 @@ int cnt = regDAO.BoardCount(division);
         				<!-- div.footerLeft -->
         				<div class="footerRight">
         					<input type="hidden" id="nvNo" value="<%=no %>">
+        					<input type="hidden" id="nvDV" value="<%=division %>">
         					<button type="button" class="adminPg-nv">관리 페이지</button>
         				</div>
         				<!-- div.footerRight -->

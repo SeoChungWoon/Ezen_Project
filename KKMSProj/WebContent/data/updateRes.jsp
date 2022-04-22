@@ -47,12 +47,12 @@ if(regDAO.Update(title, content, no, division)){
 					<p class="tit">수정이 완료되었습니다.</p>
 				</div>
 				<!-- div.tit-cont -->
-					<div class="get-send">
+					<div class="btnArea ">
 						<input type="hidden" class="orgDV" value="<%=division %>">
-						<button type="button" class="writeBtn list">목록으로</button>
-						<button type="button" class="writeBtn mainMove">메인으로</button>
+						<button type="button" class="dlBtn list">목록으로</button>
+						<button type="button" class="dlBtn mainMove">메인으로</button>
 					</div>
-					<!-- div.get-send -->
+					<!-- div.btnArea -->
 </div>
 <!-- div.inner -->
 </div>
