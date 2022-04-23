@@ -15,8 +15,15 @@ public class RegisterBean {
 	private String termsAds;
 	private String mType;
 	private String joinWait;
+	private int ePay;
 	
 	
+	public int getePay() {
+		return ePay;
+	}
+	public void setePay(int ePay) {
+		this.ePay = ePay;
+	}
 	public String getmType() {
 		return mType;
 	}

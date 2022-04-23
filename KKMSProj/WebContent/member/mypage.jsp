@@ -42,7 +42,7 @@
 			<div class="inner">
 				<div class="mypageInner dFlex">
 					<aside class="mypageAside">
-						<div class="mypageMenu">
+						<div class="mypageMenu mLnbOn">
 							<a href="/member/mypage.jsp">My page</a>
 						</div>
 						<div class="mypageMenu">
@@ -75,6 +75,11 @@
 						<div class="mypageRow">
 							<div class="mypageTitle">휴대전화 번호</div>
 							<div class="mypageVal"><input type="text" value="<%=mList.getuPhone() %>" readonly></div>
+						</div>
+						
+						<div class="mypageRow">
+							<div class="mypageTitle">보유중인 적립금</div>
+							<div class="mypageVal"><input type="text" class="myEpay" value="<%=mList.getePay() %>" readonly></div>
 						</div>
 						
 						<div class="mypageRow">

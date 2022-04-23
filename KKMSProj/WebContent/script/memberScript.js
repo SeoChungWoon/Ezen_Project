@@ -275,13 +275,6 @@ $(function() {
 
 /****** 마이페이지 영역 *****/
 
-/* 마이페이지 LNB on/off */
-	$(".mypageMenu a").on("click", function(){
-		$(this).addClass("mypageMenuOn");
-	});
-/* 마이페이지 LNB on/off */
-
-
 /* 회원정보 수정 비밀번호 유효성 검사 */
 	$("#modifyPwBtn").click(function(){
 		let modifyPw = $("#modifyPw").val();
@@ -374,6 +367,18 @@ $("#modifyResetBtn").on("click", function(){
 	$(".modifyAddrArea").removeClass("hidden");
 });
 /* 마이페이지 리셋 버튼 */
+
+/* 적립금 천단위 구분 기호 */
+$(document).ready(function(){
+    
+	if($(".mypageRow").length != 0) {
+		let ePay = $(".myEpay").val();
+		ePay = ePay.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		ePay += " 원";
+		$(".myEpay").val(ePay);
+	}  
+});
+/* 적립금 천단위 구분 기호 */
 
 
 /****** 마이페이지 영역 *****/

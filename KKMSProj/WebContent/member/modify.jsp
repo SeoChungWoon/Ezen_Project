@@ -34,7 +34,7 @@
 							<div class="mypageMenu">
 								<a href="/member/mypage.jsp">My page</a>
 							</div>
-							<div class="mypageMenu">
+							<div class="mypageMenu mLnbOn">
 								<a href="/member/modify.jsp">회원정보 수정</a>
 							</div>
 							<div class="mypageMenu">

@@ -18,9 +18,13 @@ uAddr varchar(200),
 termsAds char(1),
 mType char(5) not null,
 joinWait char(2),
+ePay int,
 constraint primary key(uId),
 constraint unique key(no)
 );
+
+alter table member add column ePay int;
+alter table member drop column ePay;
 
 
 insert into member values (1, 'admin', 'admin', '관리자', '00000000', 'null', 'null', '01012345678', 'null', 'null', '', '관리자', '');
@@ -131,7 +135,7 @@ insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle,
  '2022.04.16', '2022.08.28', '갤러리 헤이리스', 10000, 50, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장 마감 18:00) / 매주 월요일 휴관(공휴일일 경우 정상 운영, 홈페이지 참조)', '전체관람가', '현장수령', 'product-list-img2.jpg');
 insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg) values 
  ('MD추천', '바로사용', '인천', '센트럴로', '행사', '온라인 예매 쿠폰 할인 전시 정상 운영중', '어느 봄날, 테레사 프레이타스 사진전', 
- '2022.01.29', '2022.04.24', '더현대 서울 ALT.1', 13000, 0, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00(입장마감 18:00) / 더현대 서울 월별 휴무일 휴관 (별도공지)', '전체관람가', '현장수령', 'product-list-img3.jpg');
+ '2022.01.29', '2022.07.24', '더현대 서울 ALT.1', 13000, 0, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00(입장마감 18:00) / 더현대 서울 월별 휴무일 휴관 (별도공지)', '전체관람가', '현장수령', 'product-list-img3.jpg');
 insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg) values 
  ('바로사용', '경기', '안산시', '체험', '온라인 예매할인 당일사용가능', '로그아웃 - 지금 당신에게 필요한 순간', 
  '2021.12.21', '2023.03.01', '뚝섬미술관', 15000, 10, date_format(now(), '%Y-%m-%d'), '10: 00 ~ 19:00 (입장 마감 18:00)', '전체관람가', '현장수령', 'product-list-img4.jpg');

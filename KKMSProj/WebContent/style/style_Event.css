@@ -12,12 +12,16 @@
 	width: calc((100% - 80px) / 4);
 }
 
+.eventPageArea .eventInner .eventRow .eventBanner {
+	overflow: hidden;
+}
+
 .eventPageArea .eventInner .eventRow .eventBanner Img {
 	width: 100%;
 }
 
 .eventPageArea .eventInner .eventRow:hover {
-	opacity: 0.9;
+	opacity: 0.7;
 }
 
 .eventPageArea .event-tab {
@@ -51,7 +55,8 @@
 }
 
 .eventPageArea .eventInner .eventRow .eventLink .eventType {
-	font-size: 14px; color : #1bb8d3;
+	font-size: 14px;
+	color : #1bb8d3;
 	display: inline-block;
 	padding: 3px 5px;
 	margin: 5px 0;
@@ -69,7 +74,6 @@
 }
 
 .eventPageArea .eventInner .eventRow .eventLink .eventTitle {
-	font-size: 19px;
 	padding: 0 5px;
 	margin-bottom: 5px;
 }
@@ -98,6 +102,21 @@ hr.eventHR {
 .eventViewArea .eventTop .eventFlagDesc {
 	width: 100%;
 }
+
+.eventViewArea .eventTop .eventFlagDesc .flag span {
+	font-size: 12px;
+    padding: 2px 5px;	
+}
+
+.eventViewArea .eventTop .eventFlagDesc .flag .eventType {
+	border: 1px solid #0086b8;
+    color: #0086b8;
+}
+.eventViewArea .eventTop .eventFlagDesc .flag .eventTag {
+	border: 1px solid #d3002b;
+    color: #d3002b;
+}
+
 
 .eventViewArea .eventTop .eventTxtDesc {
 	position: relative;

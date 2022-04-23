@@ -89,8 +89,8 @@ public class MemberMgr {
 		boolean flag = false;
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, uZipcode, uAddr, termsAds, mType) ";
-			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, uZipcode, uAddr, termsAds, mType, ePay) ";
+			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1000)";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, rBean.getuId());
 			objPstmt.setString(2, rBean.getuPw());
@@ -246,6 +246,7 @@ public class MemberMgr {
 				rBean.setuPhone(objRS.getString("uPhone"));
 				rBean.setuZipcode(objRS.getString("uZipcode"));
 				rBean.setuAddr(objRS.getString("uAddr"));
+				rBean.setePay(objRS.getInt("ePay"));
 				mList.add(rBean);
 			}
 			
