@@ -17,9 +17,7 @@ public class ProListBean {
 	private	String		pViewTime;	// 관람시간
 	private	String		pClass;		// 관람등급
 	private	String		pDelivery;	// 배송정보
-	
-	private	String		pWriteSel;	// 판매자 문의
-	private	String		pReview;	// 리뷰 문의
+	private	String		pImg;			// 이미지
 
 	
 	public int getpNo() {
@@ -118,18 +116,11 @@ public class ProListBean {
 	public void setpDelivery(String pDelivery) {
 		this.pDelivery = pDelivery;
 	}
+	public String getpImg() {
+		return pImg;
+	}
+	public void setpImg(String pImg) {
+		this.pImg = pImg;
+	}
 
-
-	public String getpWSeller() {
-		return pWriteSel;
-	}
-	public void setpWSeller(String pWriteSel) {
-		this.pWriteSel = pWriteSel;
-	}
-	public String getpReview() {
-		return pReview;
-	}
-	public void setpReview(String pReview) {
-		this.pReview = pReview;
-	}
 }

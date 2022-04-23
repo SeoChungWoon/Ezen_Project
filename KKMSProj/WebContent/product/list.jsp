@@ -100,7 +100,7 @@
 									</div>
 								</div>
 								<p class="img">
-									<img src="/images/product-list-img<%=i + 1%>.jpg" alt="" />
+									<img src="/images/<%=mList.getpImg()%>" alt="" />
 								</p>
 								<div class="txt-info">
 									<div class="flag-desc">

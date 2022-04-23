@@ -75,8 +75,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 						<div class="infoBox">
 							<div class="left">
 								<p class="img">
-									<img src="/images/product-list-img<%=mList.getpNo()%>.jpg"
-										alt="" />
+									<img src="/images/<%=mList.getpImg()%>" alt="" />
 								</p>
 								
 								<%
