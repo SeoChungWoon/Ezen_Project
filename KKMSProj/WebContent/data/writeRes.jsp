@@ -6,7 +6,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 boolean res = memMgr.mtdWrite(regVO);
-String division = request.getParameter("division");
+String divisions = request.getParameter("divisions");
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -37,10 +37,10 @@ String division = request.getParameter("division");
 					<p class="tit" id="wirteRes-p">게시글이 성공적으로 등록되었습니다.</p>
 				</div>
 				<!--div.tit-cont  -->
-					<div class="get-send">
-						<input type="hidden" class="orgDV" value="<%=division %>">
-						<button type="button" class="writeBtn list">목록으로</button>
-						<button type="button" class="writeBtn mainMove">메인으로</button>
+					<div class="btnArea">
+						<input type="hidden" class="orgDV" value="<%=divisions %>">
+						<button type="button" class="dlBtn list">목록으로</button>
+						<button type="button" class="dlBtn mainMove">메인으로</button>
 					</div>
 					<!-- div.get-send -->
 			</div>

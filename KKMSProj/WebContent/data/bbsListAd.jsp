@@ -10,9 +10,9 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-String division = "공지사항";
+String divisions = "공지사항";
 BoardDAO objDAO = new BoardDAO();
-int cnt = objDAO.BoardCount(division);		//데이터 갯수
+int cnt = objDAO.BoardCount(divisions);		//데이터 갯수
 int pageSize = 10;
 
 String pageNum = request.getParameter("pageNum");
@@ -27,7 +27,7 @@ int lastData = nowPage * pageSize-1;
 List objList = null;
 
 if(cnt != 0){
-	objList = objDAO.BoardList(firstData,pageSize,division);
+	objList = objDAO.BoardList(firstData,pageSize,divisions);
 }
 BoardVO objVO = null;
 %>
@@ -122,9 +122,9 @@ BoardVO objVO = null;
 		      					objVO = (BoardVO)objList.get(i);
 		      				%>
 		      					<tr>
-		      						<td><%=objVO.getDivision() %></td>
+		      						<td><%=objVO.getHeader() %></td>
 		      						<td>
-		      						<a href="noticeViewAd.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&division=<%=division%>"><%=objVO.getTitle() %></a></td>
+		      						<a href="noticeViewAd.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&divisions=<%=divisions%>"><%=objVO.getTitle() %></a></td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
@@ -212,7 +212,7 @@ BoardVO objVO = null;
 	    	 		%>
 					
 	    		<div class="btnArea">
-	    			<input type="hidden" class="chkWrite" value="<%=division %>">
+	    			<input type="hidden" class="chkWrite" value="<%=divisions %>">
 	    			<button type="button" class="write">글쓰기</button>
 	    		</div> 		
 	   

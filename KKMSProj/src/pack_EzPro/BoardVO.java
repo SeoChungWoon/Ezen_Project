@@ -2,12 +2,19 @@ package pack_EzPro;
 
 public class BoardVO {
 	int no;
-	String division;
+	String divisions;
+	String header;
 	String title;
 	String wName;
 	String postDate;
 	String content;
 	int count;
+	public String getHeader() {
+		return header;
+	}
+	public void setHeader(String header) {
+		this.header = header;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -33,11 +40,11 @@ public class BoardVO {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public String getDivision() {
-		return division;
+	public String getDivisions() {
+		return divisions;
 	}
-	public void setDivision(String division) {
-		this.division = division;
+	public void setDivisions(String divisions) {
+		this.divisions = divisions;
 	}
 	public String getTitle() {
 		return title;

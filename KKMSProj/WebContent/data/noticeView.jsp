@@ -9,19 +9,28 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-String division = "공지사항";
+String divisions = "공지사항";
 int no = Integer.parseInt(request.getParameter("no"));
 int prevNext = 1;
 
 //조회수 가져오기
-int nowCnt = regDAO.viewCnt(no,division);
+int nowCnt = regDAO.viewCnt(no);
 
-//no 가져오기
-List ntcList = regDAO.mtdSelect(no,division);
+//테이블데이터 가져오기
+List ntcList = regDAO.mtdSelect(no,divisions);
 
 //데이터 갯수 가져오기
-int cnt = regDAO.BoardCount(division);
+int cnt = regDAO.BoardCount(divisions);
 
+//공지사항 no 가져오기
+int[] ntcNo = regDAO.ntcNoChk(divisions);
+int idx=0;
+for(int i = 0; i<ntcNo.length; i++){
+	if(ntcNo[i]==no){
+		idx = i;
+
+	}
+}
 
 %>
 
@@ -58,7 +67,7 @@ int cnt = regDAO.BoardCount(division);
         					<%
         					for(int i=0; i<ntcList.size(); i++){
         						BoardVO objVO = (BoardVO)ntcList.get(i);
-        		
+
         					%>
         						
         				
@@ -77,34 +86,41 @@ int cnt = regDAO.BoardCount(division);
         				</div>
         				<!-- div.ntcTitle -->
 
-        		<div class="content">
+        		<div class="nt-content">
         			<pre><%=objVO.getContent() %></pre>
         		</div>
         		<!-- div.content -->
         		<div class="ntcFooter dFlex">
         
         		       <div class="footerLeft">
-					<%if(no==1){ %>
+					<%if(idx==(cnt-1)){ %>
 					<a class="noData">이전글</a>
 					<%}else{ %>
-					<a href="noticeView.jsp?no=<%=no-prevNext %>">이전글</a>
+					<a href="noticeView.jsp?no=<%=ntcNo[idx+1] %>">이전글</a>
 					<%} %>
-					<%if(no==cnt) {%>
+					<%if(idx==0) {%>
 					<a class="noData">다음글</a>
 					<%}else{ %>
-        			<a href="noticeView.jsp?no=<%=no+prevNext %>">다음글</a>
+        			<a href="noticeView.jsp?no=<%=ntcNo[idx-1] %>">다음글</a>
         			<%} %>
         				</div>
         				<!-- div.footerLeft -->
         				<div class="footerRight">
         					<input type="hidden" id="nvNo" value="<%=no %>">
-        					<input type="hidden" id="nvDV" value="<%=division %>">
+        					<input type="hidden" class="orgDV" value="<%=divisions %>">
+        					<button type="button" class="list-notAd">목록으로</button>
         					<button type="button" class="adminPg-nv">관리 페이지</button>
         				</div>
         				<!-- div.footerRight -->
         		</div>
         		<!-- div.ntcFooter -->
         		<%} %>
+        		<%
+        		for(int j = 0 ; j<ntcNo.length; j++){
+        			out.print(ntcNo[j]+"<br>");
+        			
+        		}
+        		%>
         	</div>
         	<!-- div.ntcViewInner -->
         </div>

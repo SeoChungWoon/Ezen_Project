@@ -10,9 +10,9 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-String division = "공지사항";
+String divisions = "공지사항";
 BoardDAO objDAO = new BoardDAO();
-int cnt = objDAO.BoardCount(division);		//데이터 갯수
+int cnt = objDAO.BoardCount(divisions);		//데이터 갯수
 int pageSize = 10;
 
 String pageNum = request.getParameter("pageNum");
@@ -27,9 +27,11 @@ int lastData = nowPage * pageSize-1;
 List objList = null;
 
 if(cnt != 0){
-	objList = objDAO.BoardList(firstData,pageSize,division);
+	objList = objDAO.BoardList(firstData,pageSize,divisions);
 }
 BoardVO objVO = null;
+
+
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -118,19 +120,25 @@ BoardVO objVO = null;
 		      				<tbody>
 		      				<%
 		      				// JSP 코드 영역
+							
 		      				for(int i=0; i<objList.size(); i++){
 		      					objVO = (BoardVO)objList.get(i);
+		      					
+		      				
+		      					
 		      				%>
 		      					<tr>
-		      						<td><%=objVO.getDivision() %></td>
+		      						<td><%=objVO.getHeader() %></td>
 		      						<td>
-		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&division=<%=division%>"><%=objVO.getTitle() %></a></td>
+		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&division=<%=divisions%>"><%=objVO.getTitle() %></a>
+		      						</td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
 		      					</tr>
 		      				
-		      				<% 
+		      				<%
+		      				
 		      				}
 		      				%>
 		      		

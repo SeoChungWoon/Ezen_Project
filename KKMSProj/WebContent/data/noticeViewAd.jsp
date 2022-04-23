@@ -9,19 +9,28 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-String division = "공지사항";
+String divisions = "공지사항";
 int no = Integer.parseInt(request.getParameter("no"));
 int prevNext = 1;
 
 //조회수 가져오기
-int nowCnt = regDAO.viewCnt(no,division);
+int nowCnt = regDAO.viewCnt(no);
 
 //no 가져오기
-List ntcList = regDAO.mtdSelect(no,division);
+List ntcList = regDAO.mtdSelect(no,divisions);
 
 //데이터 갯수 가져오기
-int cnt = regDAO.BoardCount(division);
+int cnt = regDAO.BoardCount(divisions);
 
+//공지사항 no 가져오기
+int[] ntcNo = regDAO.ntcNoChk(divisions);
+int idx=0;
+for(int i = 0; i<ntcNo.length; i++){
+	if(ntcNo[i]==no){
+		idx = i;
+
+	}
+}
 
 %>
 
@@ -77,22 +86,22 @@ int cnt = regDAO.BoardCount(division);
         				</div>
         				<!-- div.ntcTitle -->
 
-        		<div class="content">
+        		<div class="nt-content">
         			<pre><%=objVO.getContent() %></pre>
         		</div>
         		<!-- div.content -->
         		<div class="ntcFooter dFlex">
         
-        		       <div class="footerLeft">
-					<%if(no==1){ %>
+        		           <div class="footerLeft">
+					<%if(idx==(cnt-1)){ %>
 					<a class="noData">이전글</a>
 					<%}else{ %>
-					<a href="noticeViewAd.jsp?no=<%=no-prevNext %>">이전글</a>
+					<a href="noticeView.jsp?no=<%=ntcNo[idx+1] %>">이전글</a>
 					<%} %>
-					<%if(no==cnt) {%>
+					<%if(idx==0) {%>
 					<a class="noData">다음글</a>
 					<%}else{ %>
-        			<a href="noticeViewAd.jsp?no=<%=no+prevNext %>">다음글</a>
+        			<a href="noticeView.jsp?no=<%=ntcNo[idx-1] %>">다음글</a>
         			<%} %>
         				</div>
         				<!-- div.footerLeft -->
@@ -100,7 +109,7 @@ int cnt = regDAO.BoardCount(division);
         					<input type="hidden" id="inputNo" value="<%=objVO.getNo() %>">
         					<input type="hidden" id="inputTi" value="<%=objVO.getTitle() %>">
         					<input type="hidden" id="inputCont" value="<%=objVO.getContent() %>">
-        					<input type="hidden" class="orgDV" value="<%=division %>">
+        					<input type="hidden" class="orgDV" value="<%=divisions %>">
                 			<button type="button" class="list">목록으로</button>
         					<button type="button" id="update">수정하기</button>
         					<button type="button" id="delKey">삭제하기</button>

@@ -5,11 +5,11 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String division = "FAQ";
+	String divisions = "FAQ";
 	BoardDAO objDAO = new BoardDAO();
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
-	ArrayList list = objDAO.getSearch(searchField, searchText,division);
+	ArrayList list = objDAO.getSearch(searchField, searchText,divisions);
 	
 	
 	
@@ -69,7 +69,7 @@
 		      			%>
 		      				<tbody>
 		      					<tr>
-		      						<td><%=objVO.getDivision() %></td>
+		      						<td><%=objVO.getDivisions() %></td>
 		      						<td>
 		      						<label for="faqRow<%=i+1%>">
 		      						<%=objVO.getTitle() %>

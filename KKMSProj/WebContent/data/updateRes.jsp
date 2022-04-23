@@ -8,10 +8,10 @@ request.setCharacterEncoding("UTF-8");
 String title = (String)request.getParameter("title");
 String content = (String)request.getParameter("content");
 int no = Integer.parseInt(request.getParameter("no"));
-String division = (String)request.getParameter("division");
+String divisions = "공지사항";
 
 boolean res = false;
-if(regDAO.Update(title, content, no, division)){
+if(regDAO.Update(title, content, no, divisions)){
 	res = true;
 }
 %>
@@ -48,7 +48,7 @@ if(regDAO.Update(title, content, no, division)){
 				</div>
 				<!-- div.tit-cont -->
 					<div class="btnArea ">
-						<input type="hidden" class="orgDV" value="<%=division %>">
+						<input type="hidden" class="orgDV" value="<%=divisions %>">
 						<button type="button" class="dlBtn list">목록으로</button>
 						<button type="button" class="dlBtn mainMove">메인으로</button>
 					</div>

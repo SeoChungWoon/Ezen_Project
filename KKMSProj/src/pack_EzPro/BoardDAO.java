@@ -23,14 +23,14 @@ public class BoardDAO {
 		pool = DBConnectionMgr.getInstance();
 	}
 	
-	public List BoardList(int firstData, int pageSize, String division) {
+	public List BoardList(int firstData, int pageSize, String divisions) {
 		List boardList = new Vector();
 			try {
 				objConn = pool.getConnection();
-				String sql = "select * from bbsList where division=? order by no desc limit ?,?";
+				String sql = "select * from bbsList where divisions=? order by no desc limit ?,?";
 				objPstmt = objConn.prepareStatement(sql);
 				
-				objPstmt.setString(1, division);
+				objPstmt.setString(1, divisions);
 				objPstmt.setInt(2, firstData);
 				objPstmt.setInt(3, pageSize);
 				
@@ -41,7 +41,8 @@ public class BoardDAO {
 					BoardVO objVO = new BoardVO();
 					
 					objVO.setNo(objRS.getInt("no"));
-					objVO.setDivision(objRS.getString("division"));
+					objVO.setDivisions(objRS.getString("divisions"));
+					objVO.setHeader(objRS.getString("header"));
 					objVO.setTitle(objRS.getString("title"));
 					objVO.setContent(objRS.getString("content"));
 					objVO.setwName(objRS.getString("wName"));
@@ -58,14 +59,14 @@ public class BoardDAO {
 		
 		return boardList;
 	}
-	public int BoardCount(String division) {
+	public int BoardCount(String divisions) {
 		int count = 0;
 		
 		try {
 			objConn = pool.getConnection();
-			String sql = "select count(*) from bbsList where division=?";
+			String sql = "select count(*) from bbsList where divisions=?";
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, division);
+			objPstmt.setString(1, divisions);
 			objRS = objPstmt.executeQuery();
 			
 			if(objRS.next()) {
@@ -93,13 +94,14 @@ public class BoardDAO {
 	 	try{
 	 		objConn = pool.getConnection();
 	 		
-	 		String sql = "insert into bbsList (division, title, wName,content,postDate, count) values ";
-	 				sql += "(?,?,?,?,date_format(now(), '%Y-%m-%d'),0)";
+	 		String sql = "insert into bbsList (divisions,header, title, wName,content,postDate, count) values ";
+	 				sql += "(?,?,?,?,?,date_format(now(), '%Y-%m-%d'),0)";
 	 		objPstmt = objConn.prepareStatement(sql);
-	 		objPstmt.setString(1,vo.getDivision());
-	 		objPstmt.setString(2,vo.getTitle());
-	 		objPstmt.setString(3,vo.getwName());
-	 		objPstmt.setString(4, vo.getContent());
+	 		objPstmt.setString(1,vo.getDivisions());
+	 		objPstmt.setString(2,vo.getHeader());
+	 		objPstmt.setString(3,vo.getTitle());
+	 		objPstmt.setString(4,vo.getwName());
+	 		objPstmt.setString(5, vo.getContent());
 	 		
 	 		if(objPstmt.executeUpdate()>0) {
 	 			res = true;
@@ -112,28 +114,26 @@ public class BoardDAO {
 		return res;
 }
 	//공지사항 조회수
-	public int viewCnt(int no,String division) {
+	public int viewCnt(int no) {
 		
 		String sql="";
 		int count = 0;
 		try{
 			objConn = pool.getConnection();
 			
-			sql = "select count from bbsList where division=? and no=?";
+			sql = "select count from bbsList where no=?";
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, division);
-			objPstmt.setInt(2, no);
+			objPstmt.setInt(1, no);
 			objRS = objPstmt.executeQuery();
 			objRS.next();
 			count = objRS.getInt("count");
 			count++;
 			
-			sql = "update bbsList set count=? where division=? and no=?";
+			sql = "update bbsList set count=? where no=?";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, count);
-			objPstmt.setString(2, division);
-			objPstmt.setInt(3, no);
+			objPstmt.setInt(2, no);
 			
 			objPstmt.executeUpdate();
 			
@@ -146,23 +146,23 @@ public class BoardDAO {
 		
 		return count;
 	}
-	public List mtdSelect(int no, String division) {
+	public List mtdSelect(int no, String divisions) {
 		List objList = new Vector();
 		
 		try {
 			objConn = pool.getConnection();
 			
-			String sql = "select * from bbsList where no=? and division=?";
+			String sql = "select * from bbsList where no=? and divisions=?";
 			
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, no);
-			objPstmt.setString(2, division);
+			objPstmt.setString(2, divisions);
 			objRS = objPstmt.executeQuery();
 			while(objRS.next()) {
 				BoardVO objVO = new BoardVO();
 				
 				objVO.setNo(objRS.getInt("no"));
-				objVO.setDivision(objRS.getString("division"));
+				objVO.setDivisions(objRS.getString("divisions"));
 				objVO.setTitle(objRS.getString("title"));
 				objVO.setwName(objRS.getString("wName"));
 				objVO.setPostDate(objRS.getString("postDate"));
@@ -178,35 +178,92 @@ public class BoardDAO {
 		}
 		return objList;
 	}
-	public ArrayList getSearch(String searchField, String searchText, String division){
-			ArrayList	list = new ArrayList();
-			String sql = "select * from bbsList where division =? and "+searchField.trim();
-			try {
-				objConn = pool.getConnection();
-				if(searchText != null && !searchText.equals("")) {
-					sql += " like '%"+searchText.trim()+"%' order by no desc";
-				}
-					objPstmt = objConn.prepareStatement(sql);
-					objPstmt.setString(1, division);
-					objRS = objPstmt.executeQuery();
-					while(objRS.next()) {
-						BoardVO objVO = new BoardVO();
-						
-						objVO.setNo(objRS.getInt("no"));
-						objVO.setDivision(objRS.getString("division"));
-						objVO.setTitle(objRS.getString("title"));
-						objVO.setwName(objRS.getString("wName"));
-						objVO.setPostDate(objRS.getString("postDate"));
-						objVO.setCount(objRS.getInt("count"));
-						objVO.setContent(objRS.getString("content"));
-						
-						list.add(objVO);
-					
-					}
-			} catch (Exception e) {
-				System.out.println("Exception :" +e.getMessage());
+	public ArrayList getSearch(String searchField, String searchText, String divisions){
+		ArrayList	list = new ArrayList();
+		String sql = "select * from bbsList where divisions =? and "+searchField.trim();
+		try {
+			objConn = pool.getConnection();
+			if(searchText != null && !searchText.equals("")) {
+				sql += " like '%"+searchText.trim()+"%' order by no desc";
 			}
-			return list;
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, divisions);
+				objRS = objPstmt.executeQuery();
+				while(objRS.next()) {
+					BoardVO objVO = new BoardVO();
+					
+					objVO.setNo(objRS.getInt("no"));
+					objVO.setDivisions(objRS.getString("divisions"));
+					objVO.setTitle(objRS.getString("title"));
+					objVO.setwName(objRS.getString("wName"));
+					objVO.setPostDate(objRS.getString("postDate"));
+					objVO.setCount(objRS.getInt("count"));
+					objVO.setContent(objRS.getString("content"));
+					
+					list.add(objVO);
+				
+				}
+		} catch (Exception e) {
+			System.out.println("Exception :" +e.getMessage());
+		}
+		return list;
+}
+	public boolean Update(String title, String content, int no, String divisions) {
+		boolean udChk = false;
+			String sql = "update bbsList set title=? , content=? where divisions=? and no=?";
+			
+			try {
+				objConn=pool.getConnection();
+				
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setString(1, title);
+				objPstmt.setString(2, content);
+				objPstmt.setString(3,divisions);
+				objPstmt.setInt(4, no);
+				
+				objPstmt.executeUpdate();
+				
+				if(objPstmt.executeUpdate()>0) {
+					udChk = true;
+				}
+			} catch (Exception e) {
+				System.out.println("Exception :" + e.getMessage());
+			}
+		
+		return udChk;
+
+	}
+	public int[] ntcNoChk(String divisions) {
+		int count = 0;
+		String sql = "";
+		int[] ntcNo = null;
+		
+		try {
+			objConn= pool.getConnection();
+			sql ="select count(*) from bbsList where divisions=?";
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, divisions);
+			objRS=objPstmt.executeQuery();
+			while(objRS.next()) {
+				count = objRS.getInt("count(*)");
+			}
+		ntcNo = new int[count];
+		
+			sql="select no from bbsList where divisions=?";
+			
+			objPstmt=objConn.prepareStatement(sql);
+			objPstmt.setString(1, divisions);
+			objRS=objPstmt.executeQuery();
+			for(int i = count-1; i >= 0;i--) {
+				objRS.next();
+				ntcNo[i] = objRS.getInt("no");
+			}
+
+		} catch (Exception e) {
+			System.out.println("Exception:"+e.getMessage());
+		}
+		return ntcNo;
 	}
 }
 

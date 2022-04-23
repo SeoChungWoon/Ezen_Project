@@ -6,11 +6,11 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-	String division = (String)request.getParameter("division");
+	String divisions = (String)request.getParameter("divisions");
 	int no = Integer.parseInt(request.getParameter("no"));
 	boolean deleteChk = false;
 	
-	if(regDAO.Delete(no)){
+	if(regDAO.Delete(no,divisions)){
 		deleteChk = true;
 	}
 %>
@@ -44,7 +44,7 @@
 				</div>
 				<!--div.tit-cont  -->
 					<div class="btnArea">
-						<input type="hidden" class="orgDV" value="<%=division %>">
+						<input type="hidden" class="orgDV" value="<%=divisions %>">
 						<button type="button" class="dlBtn list">목록으로</button>
 						<button type="button"class="dlBtn mainMove">메인으로</button>
 					</div>

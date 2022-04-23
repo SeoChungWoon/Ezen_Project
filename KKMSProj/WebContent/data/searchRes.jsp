@@ -6,10 +6,10 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	BoardDAO objDAO = new BoardDAO();
-	String division = "공지사항";
+	String divisions = "공지사항";
 	String searchField = request.getParameter("searchField");
 	String searchText = request.getParameter("searchText");
-	ArrayList list = objDAO.getSearch(searchField, searchText,division);
+	ArrayList list = objDAO.getSearch(searchField, searchText,divisions);
 	
 	
 
@@ -74,7 +74,7 @@
 		      				<tbody>
 		      					<tr>
 		      						<td><a href="bbsList.jsp?no=<%=objVO.getNo() %>"><%=objVO.getNo() %></a></td>
-		      						<td><%=objVO.getDivision() %></td>
+		      						<td><%=objVO.getDivisions() %></td>
 		      						<td>
 		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>"><%=objVO.getTitle() %></a></td>
 		      						<td><%=objVO.getwName() %></td>

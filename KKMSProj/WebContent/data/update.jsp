@@ -9,7 +9,7 @@
 	String title = (String)request.getParameter("title");
 	String content = (String)request.getParameter("content");
 	int no = Integer.parseInt(request.getParameter("no"));
-	String division = (String)request.getParameter("division");
+	String divisions = (String)request.getParameter("divisions");
 
 %>
 <!DOCTYPE html>
@@ -63,11 +63,12 @@
         	</tr>
         		<tr>
         			<td>
-        					<input type="hidden" id="updateChk" value="<%=division %>">
-        				<select name="division" id="division">
-        					<option value="">구 분</option>
-        					<option value="공지사항" id="otNotice-ud">공지사항</option>
-        					<option value="FAQ" id="otNotice-ud">FAQ</option>
+        				<input type="hidden" id="writeChk" name="divisions" value="<%=divisions %>">
+        				<select name="header" id="header">
+        					<option value="" id="standard">구 분</option>
+        					<option value="[공지]" id="otNotice">[공지]</option>
+        					<option value="[안내]" id="otInfo">[안내]</option>
+        					<option value="[이벤트]" id="otEvent">[이벤트]</option>
         				</select>
         			</td>
         		</tr>

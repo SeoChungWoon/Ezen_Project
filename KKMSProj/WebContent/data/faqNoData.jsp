@@ -33,39 +33,30 @@
 		      	</div>
 		      	<!-- div.tblTop 끝 -->
 		      	
-		      	<table>
-		      		<colgroup>
-		      			<col width="8%" />
-		      			<col width="10%"/>
-		      			<col width="40%"/>
-		      			<col width="12%"/>
-		      			<col width="15%"/>
-		      			<col width="15%"/>
-		      		</colgroup>
-		      			<thead>
-		      				<tr>
-		      					<th>번호</th>
-		      					<th>구분</th>
-		      					<th>제목</th>
-		      					<th>작성자</th>
-		      					<th>내용보기</th>
-		      					<th>조회수</th>
-		      				</tr>
-		      			</thead>
-		      				<tbody>
-		    					<tr>
-		      						<td colspan=6>등록된 게시물이 없습니다.</td>
-		      					</tr>
-		      				
+		      	 <div class="main">
+		      		<div class="listTop dFlex">
+		      				<div class="th-title">제목</div>
+		      		</div>
+		      		<!-- div.listTop -->
 	
-		      				</tbody>
-		      	</table>
+		      		<div class="sub-main">
+		      				<div class="td-title">
+		      						<div class="title">
+		      								<span>등록된 게시물이 없습니다</span>
+		      						</div>
+		      				</div>
+		      				<!-- div.td-title-->
+		      		</div>
+		      		<!-- div.sub-main -->
+
+		      </div>
+		      <!-- div.main -->
 		      </div>
 		      <!-- div.tblArea 끝 -->
 		      	
 		      	  <div class="rpBtn">
 		      	  	<button type="button" class="list">메인으로</button>
-	    			<button type="button" class="re-write">글쓰기</button>
+	    			<button type="button" class="re-faqWrite">글쓰기</button>
 	    		</div> 		
 </div>
 <!-- noDataInner -->

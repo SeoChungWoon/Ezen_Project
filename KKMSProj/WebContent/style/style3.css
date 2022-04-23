@@ -37,7 +37,7 @@ div#wrap>.sub-body>.inner>form>.searchArea>button.btnImg{
 	width: 100%;
 	border-collapse: collapse;
 }
-.tblArea>.tblTop{
+.tblTop{
 	text-align: right;
 }
 .tblArea>.tblTop span{
@@ -92,16 +92,8 @@ div.footerArea>.btnArea button{
 #wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl{
 	width: 100%;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#writer{
-	width: 20%;
-	height: 35px;
-	margin: 7px 7px;
-	border: 1px solid #d8d8d8;
-	font-size: 18px;
-}
 
-
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl select#division,
+#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl select#header,
 #wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#titleBox{
 	width: 100%;
 	margin: 7px 7px;
@@ -118,9 +110,6 @@ div.footerArea>.btnArea button{
 }
 #wrap>.sub-body>.inner>form#writeFrm>#main>table td:first-child{
 	text-align: left;
-}
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#writer{
-	outline: none;
 }
 #wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#titleBox::placeholder{
 	color: #aaa;
@@ -161,6 +150,38 @@ div.footerArea>.btnArea button{
 	background-color: #aaa;
 }
 /*/////////////////////write.jsp 영역 끝///////////////////////*/
+/*/////////////////////faqWrite.jsp 영역 시작///////////////////////*/
+div#header>hr{
+	border: 2px solid #222;
+}
+.writeArea>.writerArea{
+	padding: 10px 5px;
+	font-size: 18px;
+}
+.writeArea>.titleArea{
+	width: 100%;
+	padding: 5px 0px;
+}
+.writeArea>.titleArea>input#titleBox{
+	width: 100%;
+	margin: 7px 0px;
+	height: 35px;
+	border: 1px solid #d8d8d8;
+	font-size: 18px;
+}
+.writeArea>.titleArea>input[type='text']::placeholder{
+	font-size: 18px;
+}
+.writeArea>.cont-Area>textarea#content{
+	width: 100%;
+	resize: none;
+	margin: 5px 0px;
+	font-size: 16px;
+}
+.writeArea>.cont-Area>textarea#content::placeholder{
+	font-size: 18px;
+}
+/*/////////////////////faqWrite.jsp 영역 끝///////////////////////*/
 
 /*/////////////////////noticeView.jsp 영역 시작///////////////////////*/
 
@@ -191,15 +212,14 @@ div.footerArea>.btnArea button{
 	font-weight: bold;
 }
 
-.content{
+.nt-content{
 	width: 100%;
 	border: 1px solid #000;
 	padding: 10px;
 	font-size: 12px;
-	height: 70%;
 	border-top: none;
 }
-.content>pre{
+.nt-content>pre{
 	padding:0;
 	font-size: 15px;
 	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
@@ -293,6 +313,47 @@ div.footerArea>.btnArea button{
 	color: #333;
 	border-radius: 5px;
 }
+div.main{
+	width: 100%;
+	border-top: 3px solid #000;
+	text-align: center;
+}
+.main>.listTop{
+	padding: 5px 20px;
+	width: 100%;
+	border-bottom: 1px solid #aaa;
+	background-color: #f5f5f5;
+}
+.main>.listTop>.th-title{
+	width: 100%;
+	padding: 10px 20px;
+	text-align: center;
+}
+.main>.sub-main>.td-title{
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid #aaa;
+}
+.main>.sub-main>.td-title>.title{
+	padding: 15px 50px;
+}
+.main>.sub-main>.td-title>.title span{
+	font-weight: bold;
+	font-size: 18px;
+}
+.main>.sub-main>.td-title>.title span:hover{
+	cursor: pointer;
+}
+.content{
+		border:none;
+		padding: 15px 10px;
+		text-align: left;
+}
+.content>pre{
+	font-size: 15px;
+	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
 /*/////////////////////faqList.jsp 영역 끝///////////////////////*/
 /*/////////////////////useInfo.jsp 영역 시작///////////////////////*/
 

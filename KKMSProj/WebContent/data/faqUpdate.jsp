@@ -1,16 +1,18 @@
 <%@page import="java.util.List"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="pack_DBCP.DBConnectionMgr"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
-<jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
-<jsp:setProperty name="regVO" property="*" />
-<% 
-	String divisions = "공지사항";
-%> 
+
+<%
+	request.setCharacterEncoding("UTF-8");
+	String title = (String)request.getParameter("title");
+	String content = (String)request.getParameter("content");
+	int no = Integer.parseInt(request.getParameter("no"));
+	String divisions = "FAQ";
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,17 +21,20 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
      <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style2.css">
+     <link rel="stylesheet" href="/style/style1.css">
+	 <link rel="stylesheet" href="/style/style2.css">
      <link rel="stylesheet" href="/style/style3.css">
      <script src="/source/jquery-3.6.0.min.js"></script>
 	 <script src="/source/gsap.min.js"></script>
+	<script src="/script/script.js"></script>
 	 <script src="/script/script_bbs.js"></script>
 	 <script src="/script/memberScript.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
 
   <div id="wrap">
-  <%@ include file="/include/header.jsp"%>
+		 <%@ include file="/include/header.jsp"%>
 		<div class="sub-body dFlex">
 				<div class="mypageInner">
 					<%@include file="/include/myPageAside.jsp" %>				        
@@ -37,62 +42,50 @@
 				<!-- div.mypageInner -->			
 			<div class="inner">
 				<div class="tit-cont"> <!--  title -->
-					<p class="tit">글쓰기</p>
+					<p class="tit">수정하기</p>
 				</div>
 				<!-- div.tit-cont -->
 
-        <form action="/data/writeRes.jsp" id="writeFrm" method="get">
+        <form action="/data/updateRes.jsp" id="writeFrm" method="get">
         <div id="main">
         
  		<div id="header">
-        	<hr id="headHR">
+        <hr id="headHR">
         </div>
         <!-- div#header -->
        
-        <table id="writeTbl">
-        	<tbody>
-        	<tr>
-        		<td>
+        <div class="writeArea">
+
+        		<div class="writerArea">
         		<input type="hidden" name="wName" value="<%=memberId %>">
         			<span id="writer">작성자 : <%=memberId %></span>
-        		</td>
-        	</tr>
-        		<tr>
-        			<td>
+        		</div>
+        		<!-- div.writerArea -->
+
+        			<div class="hidden">
         				<input type="hidden" id="writeChk" name="divisions" value="<%=divisions %>">
-        				<select name="header" id="header">
-        					<option value="" id="standard">구 분</option>
-        					<option value="[공지]" id="otNotice">[공지]</option>
-        					<option value="[안내]" id="otInfo">[안내]</option>
-        					<option value="[이벤트]" id="otEvent">[이벤트]</option>
-        				</select>
-        			</td>
-        		</tr>
-        		<tr>
-        			<td>
+        			</div>
+        			<!-- div.hidden-->
+
+        			<div class="titleArea">
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
         					id="titleBox" onfocus="this.placeholder=''"
-        					onblur="this.placeholder='제목을 입력해 주세요.'">
-        			</td>
-        		</tr>
-        		<tr>
-        			<td id="bg">
-        				<img src="/images/fileIcon.png" alt="파일" class='icon'>
-        				<img src="/images/pictureIcon.png" alt="사진" class='icon'>
-        				<img src="/images/videoIcon.png" alt="동영상" class='icon'>
-        			</td>
-        		</tr>
-        		<tr>
-        			<td>
+        					onblur="this.placeholder='제목을 입력해 주세요.'"
+        					value="<%=title%>">
+        			</div>
+        			<!-- div.titleArea -->
+    
+        			<div class="cont-Area">
         				<textarea name="content" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
-        				  onblur="this.placeholder='내용을 입력해주세요'"></textarea>
-        			</td>
-        		</tr>
-        	</tbody>
-        </table>
+        				  onblur="this.placeholder='내용을 입력해주세요'"><%=content %></textarea>
+        			</div>
+        			<!-- div.cont-Area -->
+        </div>
+        <!-- writeArea -->
  		<div class="btnArea">
+ 			<input type="hidden" id="orgNo" name="no" value="<%=no %>">
  			<button type="submit" class="writeBtn" id="formSave">작성하기</button>
  			<button type="button" class="writeBtn" id="cancel">취소</button>
  		</div>
@@ -109,6 +102,7 @@
 </div>
 <!-- div.sub-body -->
 	<%@ include file="/include/footer.jsp"%>
+
   </div>
   <!-- div#wrap -->
 </body>

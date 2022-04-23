@@ -8,9 +8,9 @@
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
 <jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
 <jsp:setProperty name="regVO" property="*" />
-<% 
-	String divisions = "공지사항";
-%> 
+<%
+String divisions = "FAQ";
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,49 +49,35 @@
         </div>
         <!-- div#header -->
        
-        <table id="writeTbl">
-        	<tbody>
-        	<tr>
-        		<td>
+        <div class="writeArea">
+
+        		<div class="writerArea">
         		<input type="hidden" name="wName" value="<%=memberId %>">
         			<span id="writer">작성자 : <%=memberId %></span>
-        		</td>
-        	</tr>
-        		<tr>
-        			<td>
+        		</div>
+        		<!-- div.writerArea -->
+
+        			<div class="hidden">
         				<input type="hidden" id="writeChk" name="divisions" value="<%=divisions %>">
-        				<select name="header" id="header">
-        					<option value="" id="standard">구 분</option>
-        					<option value="[공지]" id="otNotice">[공지]</option>
-        					<option value="[안내]" id="otInfo">[안내]</option>
-        					<option value="[이벤트]" id="otEvent">[이벤트]</option>
-        				</select>
-        			</td>
-        		</tr>
-        		<tr>
-        			<td>
+        			</div>
+        			<!-- div.hidden-->
+
+        			<div class="titleArea">
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
         					id="titleBox" onfocus="this.placeholder=''"
         					onblur="this.placeholder='제목을 입력해 주세요.'">
-        			</td>
-        		</tr>
-        		<tr>
-        			<td id="bg">
-        				<img src="/images/fileIcon.png" alt="파일" class='icon'>
-        				<img src="/images/pictureIcon.png" alt="사진" class='icon'>
-        				<img src="/images/videoIcon.png" alt="동영상" class='icon'>
-        			</td>
-        		</tr>
-        		<tr>
-        			<td>
+        			</div>
+        			<!-- div.titleArea -->
+    
+        			<div class="cont-Area">
         				<textarea name="content" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
         				  onblur="this.placeholder='내용을 입력해주세요'"></textarea>
-        			</td>
-        		</tr>
-        	</tbody>
-        </table>
+        			</div>
+        			<!-- div.cont-Area -->
+        </div>
+        <!-- writeArea -->
  		<div class="btnArea">
  			<button type="submit" class="writeBtn" id="formSave">작성하기</button>
  			<button type="button" class="writeBtn" id="cancel">취소</button>

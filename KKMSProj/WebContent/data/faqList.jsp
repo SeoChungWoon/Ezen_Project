@@ -10,9 +10,9 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-String division = "FAQ";
+String divisions = "FAQ";
 BoardDAO objDAO = new BoardDAO();
-int cnt = objDAO.BoardCount(division);		//데이터 갯수
+int cnt = objDAO.BoardCount(divisions);		//데이터 갯수
 int pageSize = 10;
 
 String pageNum = request.getParameter("pageNum");
@@ -27,7 +27,7 @@ int lastData = nowPage * pageSize-1;
 List objList = null;
 
 if(cnt != 0){
-	objList = objDAO.BoardList(firstData,pageSize,division);
+	objList = objDAO.BoardList(firstData,pageSize,divisions);
 }
 %>
 
@@ -91,57 +91,39 @@ if(cnt != 0){
 	    		
 		      %>
 		      <!-- HTML 코드 시작  -->
-		      <div class="tblArea">
 		      	<div class="tblTop">
 		      		<span>페이지 : <%=nowPage %> / <%=pageCount %></span>
 		      	</div>
 		      	<!-- div.tblTop 끝 -->
-		      	
-		      	<table>
-		      		<colgroup>
-		      			<col width="20%" />
-		      			<col width="60%"/>
-		      			<col width="20%"/>
-		      		</colgroup>
-		      			<thead>
-		      				<tr>
-		      					<th>구분</th>
-		      					<th>제목</th>
-		      					<th>내용보기</th>
-		      				</tr>
-		      			</thead>
-		      				<tbody>
-		      				<%
-		      				// JSP 코드 영역
-		      				for(int i=0; i<objList.size(); i++){
-		      					BoardVO objVO = (BoardVO)objList.get(i);
-		      				%>
-		      					<tr>
-		      						<td><%=objVO.getDivision() %></td>
-		      						<td>
-		      						<label for="faqRow<%=i+1 %>" class="faqTitle">
-		      						<%=objVO.getTitle() %>
-		      						</label>
-		      						</td>
-		      						<td>
-		      						<label for="faqRow<%=i+1%>">
-		      						<img src="/images/detailIcon.png" alt="펼침버튼" class="detailIcon">
-		      						</label>
-		      						<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
-		      						</td>
-		      					</tr>
-		      					<tr class="hidden">
-		      						<td class="hide" colspan="3">
+		      <div class="main">
+		      		<div class="listTop dFlex">
+		      				<div class="th-title">제목</div>
+		      		</div>
+		      		<!-- div.listTop -->
+		      		<%
+		      			for(int i=0; i<objList.size(); i++){
+		      				BoardVO objVO = (BoardVO)objList.get(i);
+		      			
+		      		%>
+		      		<div class="sub-main">
+		      				<div class="td-title">
+		      						<div class="title">
+		      							<label for="faqRow<%=i+1 %>">
+		      								<span><%=objVO.getTitle() %></span>
+		      							</label>
+		      							<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
+		      						</div>
+		      						<div class="content hidden">
 		      							<pre><%=objVO.getContent() %></pre>
-		      						</td>
-		      					</tr>		      		
-		      				<% 
-		      				}
-		      				%>
-		      				</tbody>
-		      	</table>
+		      						</div>
+		      						<!-- div.content -->
+		      				</div>
+		      				<!-- div.td-title-->
+		      		</div>
+		      		<!-- div.sub-main -->
+		      		<%} %>
 		      </div>
-		      <!-- div.tblArea 끝 -->
+		      <!-- div.main -->
 		      
 		      <div class="footerArea dFlex">
 		      	<div class="pageArea">
@@ -210,7 +192,7 @@ if(cnt != 0){
 		      		<%
 		      			}else{
 		      		%>
-		      			<!-- <script>location.href = "/data/noData.jsp";</script> -->
+		      			<script>location.href = "/data/faqNoData.jsp";</script>
 		      		<%
 		      			}
 					%>
