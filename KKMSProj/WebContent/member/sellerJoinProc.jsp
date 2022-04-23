@@ -37,11 +37,8 @@ boolean result = memMgr.sellerJoinMember(regBean, mType);
 						<div class="joinStep">
 							<ul class="dFlex">
 								<li>step 1. 회원 선택</li>
-								<li>&gt;</li>
 								<li>step 2. 약관 동의</li>
-								<li>&gt;</li>
 								<li>step 3. 정보 입력</li>
-								<li>&gt;</li>
 								<li class="nowStep">step 4. 가입 완료</li>
 							</ul>
 						</div>

@@ -50,11 +50,8 @@ if (reqChk == null) {
 						<div class="joinStep">
 							<ul class="dFlex">
 								<li>step 1. 회원 선택</li>
-								<li>&gt;</li>
 								<li>step 2. 약관 동의</li>
-								<li>&gt;</li>
 								<li class="nowStep">step 3. 정보 입력</li>
-								<li>&gt;</li>
 								<li>step 4. 가입 완료</li>
 							</ul>
 						</div>
@@ -153,7 +150,7 @@ if (reqChk == null) {
 						</div>
 
 
-						<div class="joinRow">
+						<div class="joinRow btn-cont">
 							<button type="button" onclick="sellerJoin(this.form)">가입하기</button>
 							<button type="reset">다시쓰기</button>
 						</div>

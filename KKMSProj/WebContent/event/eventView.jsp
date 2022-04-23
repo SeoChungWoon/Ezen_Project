@@ -174,7 +174,7 @@ $('img[usemap]').rwdImageMaps();
 							<input type="hidden" id="evId" name="uId" value="<%=memberId%>">
 							<input type="hidden" id="evNo" name="eNo" value="<%=eNo%>">
 							<button type="button" id="eventReplyBtn">등록</button>
-							<span id="eventReplySize"></span>
+							<span id="eventReplySize">0 / 255</span>
 						</div>
 						<%} %>
 						<div class="eventReplyRes"></div>
@@ -193,7 +193,7 @@ $('img[usemap]').rwdImageMaps();
 									<%=eId%>
 								</div>
 								<div class="eventReplyInnerTxt">
-									<pre><%=evReply.geteTxt()%></pre>
+									<p><%=evReply.geteTxt()%></p>
 								</div>
 								<%
 								if (memberId!=null){

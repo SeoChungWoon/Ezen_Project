@@ -6,20 +6,28 @@
 }
 
 .tit-cont .joinStep ul {
-	margin-top: 20px;
+	margin-top: 50px;
 	justify-content: center;
 }
 
 .tit-cont .joinStep ul li{
-	margin: 0 5px;
-	padding: 10px 5px;
+	position: relative;
+	margin: 0 8px;
+	padding: 7px 5px;
 	color : #aaa;
+	font-size: 13px;
+}
+
+.tit-cont .joinStep ul li:not(:last-child)::after {
+	content : ">";
+	padding: 0 10px;
+	position: absolute;
 }
 
 .tit-cont .joinStep ul li.nowStep {
 	font-weight: bold;
 	color: #222;
-	border-bottom: 3px solid #0086b8;
+	border-bottom: 2px solid #0086b8;
 }
 
 .tit-cont p.sellerJoinInfo {
@@ -44,7 +52,7 @@
 	border-bottom: 4px solid #0086b8;
 	border-radius: 5%;
 	opacity: 0.75;
-	width: 28%;
+	width: 250px;
 	margin: 0 20px;
 	overflow: hidden;
 }
@@ -66,7 +74,11 @@
 
 #termsArea > div.termsRow span.chkAllTxt {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 17px;
+}
+
+#termsArea > div.termsRow span.termsTitle {
+	font-size: 14px;
 }
 
 .termsRow {
@@ -91,7 +103,6 @@
 
 iframe.termsTxt {
 	border: 1px solid #aaa;
-	border-radius: 10px;
 	margin-top: 10px;
 	padding: 5px;
 	width: 95%;
@@ -109,65 +120,39 @@ pre.termsTxtInner {
 }
 
 #termsBtnArea button {
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 18px;
 	padding: 10px;
 	height: 100%;
-	width: 40%;
+	width: 15%;
 }
 
-#termsBtnArea button:first-child {
-	margin-right: 20px;
-	background: #333;
-	border: none;
-	color: #fff;
-}
-
-#termsBtnArea button:first-child:hover {
-	background: #0086b8;
-	border: 1px solid #0086b8;
-	font-weight: bold;
-}
-
-#termsBtnArea button:last-child {
-	border: 1px solid #aaa;
-}
-
-#termsBtnArea button:last-child:hover {
-	border: 1px solid #ccc;
+#termsArea .termsRow .termsCheckBox {
+	position: absolute;
+	opacity: 0.1;
+	width: 1px;
+	height: 1px;
 }
 
 .checked::before {
 	content:" ";
 	position: relative;
-	top: 6px;
-	width: 25px;
-	height: 25px;
+	top: 4px;
+	width: 20px;
+	height: 20px;
 	display: inline-block;
 	background: url(/images/checked.png) no-repeat;
-	background-size: 25px 25px;
+	background-size: 20px 20px;
 }
 
 .unchecked::before {
 	content:" ";
 	position: relative;
-	top: 6px;
-	width: 25px;
-	height: 25px;
+	top: 4px;
+	width: 20px;
+	height: 20px;
 	display: inline-block;
 	background: url(/images/unchecked.png) no-repeat;
-	background-size: 25px 25px;
-}
-
-.checkDefault::before {
-	content:" ";
-	position: relative;
-	top: 6px;
-	width: 25px;
-	height: 25px;
-	display: inline-block;
-	background: url(/images/checkDefault.png) no-repeat;
-	background-size: 25px 25px;
+	background-size: 20px 20px;
 }
 
 span.smallFont {
@@ -195,10 +180,6 @@ span.smallFont {
 #joinArea > .joinRow > span {
 	width: 100%;
 	display: inline-block;
-}
-
-span.joinTitle {
-	font-size: 21px;
 }
 
 p#pwChkMsg {
@@ -267,7 +248,7 @@ radio:fisrt-child {
 }
 
 #joinArea > div.joinRow > button#zipChk {
-	width: 25%;
+	width: 26%;
 	transform: translateY(-2px);
 	font-size: 16px;
 	padding: 10px;
@@ -290,7 +271,7 @@ input#addr1, input#addr2 {
 
 
 .joinRow span.joinTitle {
-	padding: 5px;
+	font-size: 21px;
 	font-weight: bold;
 	width: 20%;
 	text-align-last: left;
@@ -304,30 +285,8 @@ input#addr1, input#addr2 {
 
 .joinRow:last-child button {
 	font-size: 20px;
-	padding: 20px 10px;
-	font-weight: bold;
-	width: 45%;
-}
-
-.joinRow:last-child button:first-child {
-	margin-right: 20px;
-	background: #333;
-	border: none;
-	color: #fff;
-}
-
-.joinRow:last-child button:first-child:hover {
-	background: #0086b8;
-	border: 1px solid #0086b8;
-	font-weight: bold;
-}
-
-.joinRow:last-child button:last-child {
-	border: 1px solid #aaa;
-}
-
-.joinRow:last-child button:last-child:hover {
-	border: 1px solid #ccc;
+	padding: 15px 10px;
+	width: 30%;
 }
 
 div.joinOkBtnArea {
@@ -540,6 +499,24 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 .mypageRow .mypageVal .mypageWishList {
 	width: 20%;
 	margin: 0 10px;
+}
+
+.mypageInner .mypageArea .mypageRow .mypageVal .swiper-button-next , 
+.mypageInner .mypageArea .mypageRow .mypageVal .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    width: 25px;
+    height: 20px;
+    margin-top: -12px;
+    z-index: 10;
+    cursor: pointer;
+    background-size: 20px 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mypageInner .mypageArea .mypageRow:last-child .mypageVal {
+	width: 100%;
 }
 
 .mypageRow .mypageVal .wishSwiper {

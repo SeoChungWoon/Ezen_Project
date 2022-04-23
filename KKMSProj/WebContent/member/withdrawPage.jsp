@@ -36,7 +36,18 @@
 		<div class="sub-body">
 			<div class="inner">
 				<div class="mypageInner dFlex">
-					<%@ include file="/include/myPageAside.jsp"%>
+					<aside class="mypageAside">
+						<div class="mypageMenu">
+							<a href="/member/mypage.jsp">My page</a>
+						</div>
+						<div class="mypageMenu">
+							<a href="/member/modify.jsp">회원정보 수정</a>
+						</div>
+						<div class="mypageMenu">
+							<a href="/member/withdraw.jsp">회원 탈퇴</a>
+						</div>
+					</aside>
+					
 					<div class="mypageArea">
 						<div class="withdrawChkMsg">
 							<h2>아래의 내용을 꼭 확인해주세요.</h2>

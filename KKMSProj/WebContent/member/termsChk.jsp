@@ -25,11 +25,8 @@
 					<div class="joinStep">
 						<ul class="dFlex">
 							<li>step 1. 회원 선택</li>
-							<li>&gt;</li>
 							<li class="nowStep">step 2. 약관 동의</li>
-							<li>&gt;</li>
 							<li>step 3. 정보 입력</li>
-							<li>&gt;</li>
 							<li>step 4. 가입 완료</li>
 						</ul>
 					</div>
@@ -40,7 +37,7 @@
 						<div class="termsRow">
 							<p>
 								<span>
-								<input type="checkbox" id="chkAll" class="hidden" name="chkAll">
+								<input type="checkbox" id="chkAll" class="termsCheckBox" name="chkAll">
 								<label for="chkAll" class="unchecked">
 								<span class="chkAllTxt">
 											E-Ticket 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신<span class="smallFont">(선택)</span>에 모두 동의합니다.
@@ -51,7 +48,7 @@
 						</div>
 						<div class="termsRow usingTerms">
 							<p>
-								<input type="checkbox" id="chkService" class="hidden" name="chkService">
+								<input type="checkbox" id="chkService" class="termsCheckBox" name="chkService">
 								<label for="chkService" class="unchecked"> <span class="termsTitle">
 										E-Ticket 이용약관 동의<span class="req">(필수)</span>
 								</span>
@@ -61,7 +58,7 @@
 						</div>
 						<div class="termsRow usingTerms">
 							<p>
-								<input type="checkbox" id="chkPrivacy" class="hidden" name="chkPrivacy">
+								<input type="checkbox" id="chkPrivacy" class="termsCheckBox" name="chkPrivacy">
 								<label for="chkPrivacy" class="unchecked"> <span class="termsTitle">
 										개인정보 수집 및 이용 동의<span class="req">(필수)</span>
 								</span>
@@ -71,7 +68,7 @@
 						</div>
 						<div class="termsRow usingTerms">
 							<p>
-								<input type="checkbox" id="termsAds" class="hidden" name="termsAds">
+								<input type="checkbox" id="termsAds" class="termsCheckBox" name="termsAds">
 								<label for="termsAds" class="unchecked"> <span class="termsTitle">
 										프로모션 정보 수신 동의<span class="termsOption">(선택)</span>
 								</span>
@@ -81,8 +78,8 @@
 						</div>
 					</div>
 					<!-- div#termsArea -->
-					<div id="termsBtnArea">
-						<button type="button" id="termsBtn" >확인</button>
+					<div id="termsBtnArea" class="btn-cont">
+						<button type="button" id="termsBtn">확인</button>
 						<button type="button" id="termsReset">취소</button>
 					</div>
 				</form>

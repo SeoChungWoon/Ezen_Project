@@ -25,11 +25,8 @@
 					<div class="joinStep">
 						<ul class="dFlex">
 							<li>step 1. 회원 선택</li>
-							<li>&gt;</li>
 							<li class="nowStep">step 2. 약관 동의</li>
-							<li>&gt;</li>
 							<li>step 3. 정보 입력</li>
-							<li>&gt;</li>
 							<li>step 4. 가입 완료</li>
 						</ul>
 					</div>
@@ -71,7 +68,7 @@
 						</div>
 					</div>
 					<!-- div#termsArea -->
-					<div id="termsBtnArea">
+					<div id="termsBtnArea" class="btn-cont">
 						<button type="button" id="termsBtn" >확인</button>
 						<button type="button" id="termsReset">취소</button>
 					</div>
