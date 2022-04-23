@@ -55,7 +55,7 @@ area4 char(20)
 /*게시판용 테이블 시작*/
 create table bbsList (
 no		int	auto_increment	not null,
-division	char(20)	not null,
+divisions	char(20)	not null,
 title		char(50)	not null,
 wName	char(20)	not null,				/*wName = writerName*/
 content varchar(1000),
