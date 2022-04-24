@@ -34,14 +34,18 @@ $(function() {
 		let uId = $("#evId").val();
 		let eNo = $("#evNo").val();
 		let eTxt = $("#eventReplyTxt").val();
-		$.ajax({
-			type: "post",
-			url: "/event/replyEnter.jsp",
-			data: { "uId": uId, "eNo": eNo, "eTxt": eTxt },
-			success: function(txt) {
-				$(".eventReplyRes").html(txt);
-			}
-		});
+		if(eTxt.length<10) {
+			alert("10자 이상부터 등록가능합니다.");
+		} else {
+			$.ajax({
+				type: "post",
+				url: "/event/replyEnter.jsp",
+				data: { "uId": uId, "eNo": eNo, "eTxt": eTxt },
+				success: function(txt) {
+					$(".eventReplyRes").html(txt);
+				}
+			});
+		}
 	});
 	
 	$(".eventReplyDel a").on("click", function(){
@@ -83,5 +87,15 @@ $(function() {
 		location.href="/member/login.jsp";
 	});
 /* 댓글 이동 버튼 */
+
+/* 종료 이벤트 호버 */
+	$(".eventRow a").on("mouseenter", function(){
+		let tag = $(this).find(".eventTag").text();
+		tag = tag.trim();
+		if(tag=="종료") {
+			
+		}
+	});
+/* 종료 이벤트 호버 */
 
 });

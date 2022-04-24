@@ -90,7 +90,7 @@ public class MemberMgr {
 		try {
 			objConn = pool.getConnection();
 			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, uZipcode, uAddr, termsAds, mType, ePay, joinDate) ";
-			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1000, date_format(now(), '%Y-%m-%d'))";
+			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 5000, date_format(now(), '%Y-%m-%d'))";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, rBean.getuId());
 			objPstmt.setString(2, rBean.getuPw());

@@ -71,6 +71,50 @@ public class AdminMgr {
 		return objList; 
 	}
 	
+	//회원 목록 검색
+		public List searchMemberList (String mType, String joinWait, String Tag, String Txt) {
+			List objList = new Vector();
+			try {
+				objConn = pool.getConnection();
+				if(joinWait==null) {
+					sql = "select * from member where mType=? and "+Tag+" like '%"+Txt+"%'";
+					objPstmt = objConn.prepareStatement(sql);
+					objPstmt.setString(1, mType);
+				} else {
+					sql = "select * from member where mType=? and joinWait=? and " + Tag + " like '%"+Txt+"%'";
+					objPstmt = objConn.prepareStatement(sql);
+					objPstmt.setString(1, mType);
+					objPstmt.setString(2, joinWait);
+				}
+				objRS = objPstmt.executeQuery();
+				
+				while(objRS.next()) {
+					AdminBean aBean = new AdminBean();
+					aBean.setNo(objRS.getInt("No"));
+					aBean.setuId(objRS.getString("uId"));
+					aBean.setuName(objRS.getString("uName"));
+					aBean.setuBirthday(objRS.getString("uBirthday"));
+					aBean.setuGender(objRS.getString("uGender"));
+					aBean.setuEmail(objRS.getString("uEmail"));
+					aBean.setuPhone(objRS.getString("uPhone"));
+					aBean.setuZipcode(objRS.getString("uZipcode"));
+					aBean.setuAddr(objRS.getString("uAddr"));
+					aBean.setTermsAds(objRS.getString("TermsAds"));
+					aBean.setmType(objRS.getString("mType"));
+					aBean.setePay(objRS.getInt("ePay"));
+					aBean.setJoinDate(objRS.getString("joinDate"));
+					objList.add(aBean);
+				}
+				
+			} catch (Exception e) {
+				System.out.println("searchMemberList e : " + e.getMessage());
+			} finally {
+				pool.freeConnection(objConn, objPstmt, objRS);
+			}
+			
+			return objList; 
+		}
+	
 	//가입승인 대기 인원
 	public int waitCnt () {
 		int wCnt = 0;

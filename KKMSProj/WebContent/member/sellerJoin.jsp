@@ -59,6 +59,7 @@ if (reqChk == null) {
 				<form action="/member/sellerJoinProc.jsp" id="joinForm" method=post>
 					<div id="joinArea">
 
+						<div class="joinRowGroup">
 						<div class="joinRow">
 							<span class="joinTitle">아이디 <span class="smallFont">(5~15자, 영문자와 숫자로만 입력)</span><span class="point"> *</span></span>
 						</div>
@@ -72,8 +73,11 @@ if (reqChk == null) {
 							</div>
 							<!-- div#idChkRes -->
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 
+						<div class="joinRowGroup">
 						<div class="joinRow">
 							<span class="joinTitle">비밀번호 <span class="smallFont">(8~16자 사이의 비밀번호를 설정)</span><span class="point"> *</span></span>
 						</div>
@@ -93,8 +97,11 @@ if (reqChk == null) {
 								<p id="pwChkMsg">* 비밀번호가 일치하지 않습니다.</p>
 							</div>
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 
+						<div class="joinRowGroup">
 						<div class="joinRow">
 							<span class="joinTitle">이름<span class="point"> *</span></span>
 						</div>
@@ -102,8 +109,11 @@ if (reqChk == null) {
 							<input type="text" id="uName" name="uName"
 								onkeyup="nameChk(this.form)">
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 
+						<div class="joinRowGroup">
 						<div class="joinRow">
 							<span class="joinTitle">생년월일 <span class="smallFont">(ex. 20220102)</span><span class="point"> *</span></span>
 						</div>
@@ -111,8 +121,11 @@ if (reqChk == null) {
 							<input type="text" id="uBirthday" maxlength="8" name="uBirthday"
 								onkeyup="birthChk(this.form)" placeholder="YYYYMMDD">
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 
+						<div class="joinRowGroup">
 						<div class="joinRow">
 							<span class="joinTitle">성별<span class="point"> *</span></span>
 						</div>
@@ -125,16 +138,22 @@ if (reqChk == null) {
 								</label>
 							</div>
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 
+						<div class="joinRowGroup">
 						<div class="joinRow">
 							<span class="joinTitle">이메일 주소<span class="point"> *</span></span>
 						</div>
 						<div class="joinRow">
 							<input type="text" name="uEmail">
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 
+						<div class="joinRowGroup">
 						<div class="joinRow">
 							<span class="joinTitle">휴대전화 번호<span class="point"> *</span></span>
 						</div>
@@ -142,6 +161,8 @@ if (reqChk == null) {
 							<input type="text" id="uPhone" name="uPhone" maxlength="11"
 								placeholder=" '-' 없이 숫자만 입력" onkeyup="pNum(this.form)">
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 
 						<div class="joinRow">
@@ -150,10 +171,13 @@ if (reqChk == null) {
 						</div>
 
 
+						<div class="joinRowGroup">
 						<div class="joinRow btn-cont">
 							<button type="button" onclick="sellerJoin(this.form)">가입하기</button>
 							<button type="reset">다시쓰기</button>
 						</div>
+						</div>
+						<!-- div.joinRowGroup -->
 
 					</div>
 					<!-- div#joinArea -->

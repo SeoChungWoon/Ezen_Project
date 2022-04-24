@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<div class="termsTxtInner">
 <pre>
 E-Ticket에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(알림 또는 문자), 이메일로 받아보실 수 있습니다.
 
@@ -7,3 +8,4 @@ E-Ticket에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전�
  
 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
 </pre>
+</div>

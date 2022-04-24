@@ -41,7 +41,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 <link rel="stylesheet" href="/style/style_Event.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/source/gsap.min.js"></script>
-<script src="/script/adminScript.js"></script>
+<script src="/adminPage/script/adminScript.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -142,12 +142,12 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 							</div>
 							<!-- div.memberListPaging -->
 							<div class="memberListSearch">
-								<select name="member-srh" id="member-srh">
+								<select id="mSrh-tag">
 									<option value="uId">아이디</option>
 									<option value="uName">이름</option>
 									<option value="uPhone">연락처</option>
-								</select> <input type="text" class="mSrh-txt" />
-								<button type="button">검색</button>
+								</select> <input type="text" id="mSrh-txt" />
+								<button type="button" class="memberListSearchBtnS">검색</button>
 							</div>
 							<!-- div.memberListSearch -->
 						</div>

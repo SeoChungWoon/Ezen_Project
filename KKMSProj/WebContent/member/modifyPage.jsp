@@ -35,6 +35,9 @@
 		} else {
 		List objList = mMgr.myPage(memberId);
 		RegisterBean mList = (RegisterBean) objList.get(0);
+		String uId = mList.getuId();
+		String uName = mList.getuName();
+		String uBirth = mList.getuBirthday();
 		%>
 		<div class="sub-body">
 			<div class="inner">
@@ -57,25 +60,26 @@
 						</div>
 						<form action="/member/modifyConfirm.jsp" id="modifyForm"
 							method="post">
-							<div class="modifyRow">
+							<div class="modifyRow dFlex">
 								<div class="modifyTitle">
 									<span>아이디</span>
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" value="<%=mList.getuId()%>" readonly>
+									<%=uId %>
+									<input type="hidden" value="<%=uId%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
 							</div>
 							<!-- div.modifyRow -->
 
 
-							<div class="modifyRow">
+							<div class="modifyRow dFlex">
 								<div class="modifyTitle">
 									<span>비밀번호 변경</span>
 								</div>
 								<!-- div.modifyTitle -->
-								<div class="modifyVal">
+								<div class="modifyVal mPwArea">
 									<div class="modifyPwTitle">
 										<span>변경할 비밀번호</span>
 									</div>
@@ -84,7 +88,7 @@
 										maxlength="16" onkeyup="pwChk(this.form)">
 								</div>
 								<!-- div.modifyVal -->
-								<div class="modifyVal">
+								<div class="modifyVal mPwArea">
 									<div class="modifyPwTitle">
 										<span>변경할 비밀번호 확인</span>
 									</div>
@@ -96,50 +100,52 @@
 
 								</div>
 								<!-- div.modifyVal -->
+							</div>
+							<!-- div.modifyRow -->
 								<div id="pwChkRes" class="hidden">
 									<p id="pwChkMsg">* 비밀번호가 일치하지 않습니다.</p>
 								</div>
-							</div>
-							<!-- div.modifyRow -->
 
 
-							<div class="modifyRow">
+							<div class="modifyRow dFlex">
 								<div class="modifyTitle">
 									<span>이름</span>
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" value="<%=mList.getuName()%>" readonly>
+									<%=uName %>
+									<input type="hidden" value="<%=uName%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
 							</div>
 							<!-- div.modifyRow -->
 
 
-							<div class="modifyRow">
+							<div class="modifyRow dFlex">
 								<div class="modifyTitle">
 									<span>생년월일</span>
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" value="<%=mList.getuBirthday()%>" readonly>
+									<%=uBirth %>
+									<input type="hidden" value="<%=uBirth%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
 							</div>
 							<!-- div.modifyRow -->
 
 
-							<div class="modifyRow">
-								<div class="modifyTitle">
+							<div class="modifyRow dFlex">
+								<div class="modifyTitle lh2">
 									<span>이메일 주소</span>
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" id="nEmail" name="nEmail"
+									<input type="text" id="nEmail" class="readonlyInput" name="nEmail"
 										value="<%=mList.getuEmail()%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
-								<div class="modifyBtnArea">
+								<div class="modifyBtnArea lh2">
 									<button type="button" class="modifyBtn">수정</button>
 								</div>
 								<!-- div.modifyBtn -->
@@ -147,26 +153,26 @@
 							<!-- div.modifyRow -->
 
 							<div class="modifyAddrArea">
-								<div class="modifyRow">
+								<div class="modifyRow dFlex">
 									<div class="modifyTitle">
 										<span>주소</span>
 									</div>
 									<!-- div.modifyTitle -->
 									<div class="modifyVal">
-										<input type="text" value="<%=mList.getuZipcode()%>" readonly>
+										<input type="text" class="readonlyInput" value="<%=mList.getuZipcode()%>" readonly>
 									</div>
 									<!-- div.modifyVal -->
 								</div>
 								<!-- div.modifyRow -->
 
 
-								<div class="modifyRow">
+								<div class="modifyRow dFlex">
 									<div class="modifyTitle">
 										<span>상세 주소</span>
 									</div>
 									<!-- div.modifyTitle -->
 									<div class="modifyVal">
-										<input type="text" value="<%=mList.getuAddr()%>" readonly>
+										<input type="text" class="readonlyInput" value="<%=mList.getuAddr()%>" readonly>
 									</div>
 									<!-- div.modifyVal -->
 									<div class="modifyBtnArea">
@@ -179,32 +185,30 @@
 							<!-- div.modifyAddrArea -->
 
 							<div id="changeAddr" class="hidden">
-								<div class="modifyRow">
+								<div class="modifyRow dFlex">
 									<div class="modifyTitle">
 										<span>주소</span>
 									</div>
-								</div>
-								<div class="modifyRow">
-									<div class="modifyVal">
-										<input type="text" id="uZipcode" name="nZipcode"
-											value="<%=mList.getuZipcode()%>" readonly>
+									<div class="modifyValGroup">
+										<div class="modifyZipcodeFind dFlex">
+											<div class="modifyVal">
+												<input type="text" class="readonlyInput" id="uZipcode" name="nZipcode"
+													value="<%=mList.getuZipcode()%>" readonly>
+												<button type="button" id="zipChk">우편번호 찾기</button>
+											</div>
+											<div class="modifyBtnArea">
+											</div>
+										</div>
+										<div class="modifyRow">
+											<input type="text" id="addr1" class="readonlyInput" name="addr1" readonly>
+										</div>
 									</div>
-									<div class="modifyBtnArea">
-										<button type="button" id="zipChk">우편번호 찾기</button>
-									</div>
 								</div>
 
-
-								<div class="modifyRow">
-									<input type="text" id="addr1" name="addr1" readonly>
-								</div>
-
-								<div class="modifyRow">
+								<div class="modifyRow dFlex">
 									<div class="modifyTitle">
 										<span>상세 주소</span>
 									</div>
-								</div>
-								<div class="modifyRow">
 									<input type="text" id="addr2" name="addr2"
 										onkeyup="addr(this.form)">
 								</div>
@@ -212,18 +216,18 @@
 									value="<%=mList.getuAddr()%>">
 							</div>
 
-							<div class="modifyRow">
-								<div class="modifyTitle">
+							<div class="modifyRow dFlex">
+								<div class="modifyTitle lh2">
 									<span>휴대전화 번호</span>
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" id="uPhone" name="nPhone" maxlength="11"
+									<input type="text" id="uPhone" class="readonlyInput" name="nPhone" maxlength="11"
 										placeholder="숫자만 입력" onkeyup="pNum(this.form)"
 										value="<%=mList.getuPhone()%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
-								<div class="modifyBtnArea">
+								<div class="modifyBtnArea lh2">
 									<button type="button" class="modifyBtn">수정</button>
 								</div>
 								<!-- div.modifyBtn -->
@@ -233,7 +237,7 @@
 							}
 							%>
 							<div class="modifyRow">
-								<div class="modifyFinal">
+								<div class="modifyFinal btn-cont">
 									<button type="button" class="modifyFinalBtn"
 										onclick="modifyConfirm(this.form)">저장</button>
 									<button type="reset" id="modifyResetBtn" class="modifyFinalBtn">취소</button>

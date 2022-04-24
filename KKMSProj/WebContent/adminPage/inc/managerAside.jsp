@@ -20,7 +20,7 @@
 %>
 				<aside class="managerAside">
 					<div class="managerMenu">
-						<a href="javscript:">회원 관리</a>
+						<a href="javascript:">회원 관리</a>
 						<ul>
 							<li><a href="/adminPage/memberManager/listGeneral.jsp">일반회원 목록</a></li>
 							<li><a href="/adminPage/memberManager/listSeller.jsp">판매회원 목록</a></li>
@@ -28,14 +28,14 @@
 						</ul>
 					</div>
 					<div class="managerMenu">
-						<a href="javscript:">상품 관리</a>
+						<a href="javascript:">상품 관리</a>
 						<ul>
 							<li><a href="javascript:">전체상품 리스트</a></li>
 							<li><a href="javascript:">상품 등록요청</a></li>
 						</ul>
 					</div>
 					<div class="managerMenu">
-						<a href="javscript:">메인 관리</a>
+						<a href="javascript:">메인 관리</a>
 						<ul>
 							<li><a href="/adminPage/mainManager/slideManager.jsp">메인 슬라이드 수정</a></li>
 							<li><a href="javascript:">a</a></li>
@@ -43,14 +43,14 @@
 						</ul>
 					</div>
 					<div class="managerMenu">
-						<a href="javscript:">게시판 관리</a>
+						<a href="javascript:">게시판 관리</a>
 						<ul>
 							<li><a href="/data/bbsListAd.jsp">공지게시판</a></li>
 							<li><a href="/data/faqListAd.jsp">FAQ</a></li>
 						</ul>
 					</div>
 					<div class="managerMenu">
-						<a href="javscript:">이벤트 관리</a>
+						<a href="javascript:">이벤트 관리</a>
 						<ul>
 							<li><a href="javascript:">이벤트 등록</a></li>
 							<li><a href="javascript:">이벤트 목록</a></li>

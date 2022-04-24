@@ -30,9 +30,10 @@ boolean result = memMgr.sellerJoinMember(regBean, mType);
 	<div id="wrap">
 
 		<div class="sub-body">
-			<div class="inner">
+			<div class="inner joinOK">
 				<div class="tit-cont">
 					<!--  title -->
+					<img src="/images/icon-joinOk.png" alt="" />
 					<p class="tit">회원가입 신청이 완료되었습니다.</p>
 						<div class="joinStep">
 							<ul class="dFlex">

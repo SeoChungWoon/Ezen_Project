@@ -35,7 +35,7 @@ zList = zipChk.zipChk(area3);
 <body>
 	<div id="wrap">
 		<div class="sub-body">
-			<div class="inner">
+			<div class="inner zipChkInner">
 				<form method="post" name="zipFrm">
 					<div class="tit-cont">
 						<!--  title -->

@@ -57,37 +57,37 @@
 							<h1>My page</h1>
 						</div>
 						<!-- div.mypageTit -->
-						<div class="mypageRow">
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">아이디</div>
-							<div class="mypageVal"><input type="text" value="<%=mList.getuId()%>" readonly></div>
+							<div class="mypageVal"><%=mList.getuId()%></div>
 						</div>
 						
-						<div class="mypageRow">
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">이름</div>
-							<div class="mypageVal"><input type="text" value="<%=mList.getuName()%>" readonly></div>
+							<div class="mypageVal"><%=mList.getuName()%></div>
 						</div>
 						
-						<div class="mypageRow">
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">이메일 주소</div>
-							<div class="mypageVal"><input type="text" value="<%=mList.getuEmail()%>" readonly></div>
+							<div class="mypageVal"><%=mList.getuEmail()%></div>
 						</div>
 						
-						<div class="mypageRow">
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">휴대전화 번호</div>
-							<div class="mypageVal"><input type="text" value="<%=mList.getuPhone() %>" readonly></div>
+							<div class="mypageVal"><%=mList.getuPhone() %></div>
 						</div>
 						
-						<div class="mypageRow">
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">보유중인 적립금</div>
-							<div class="mypageVal"><input type="text" class="myEpay" value="<%=mList.getePay() %>" readonly></div>
+							<div class="mypageVal"><span class="myEpay"><%=mList.getePay() %></span></div>
 						</div>
 						
-						<div class="mypageRow">
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">예약 내역</div>
-							<div class="mypageVal">예약 내역 보기 버튼 (추가해야함)</div>
+							<div class="mypageVal">(작업예정)</div>
 						</div>
 						
-						<div class="mypageRow">
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">찜 목록 <span class="smallFont">(<%=objWishList.size() %>개)</span></div>
 								<div class="mypageVal">
 								<%if(objWishList.size()>0) { %>

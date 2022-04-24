@@ -30,9 +30,10 @@ boolean result = memMgr.joinMember(regBean, mType);
 	<div id="wrap">
 
 		<div class="sub-body">
-			<div class="inner">
+			<div class="inner joinOK">
 				<div class="tit-cont">
 					<!--  title -->
+					<img src="/images/icon-joinOk.png" alt="" />
 					<p class="tit">회원가입이 완료되었습니다.</p>
 						<div class="joinStep">
 							<ul class="dFlex">
@@ -42,6 +43,10 @@ boolean result = memMgr.joinMember(regBean, mType);
 								<li class="nowStep">step 4. 가입 완료</li>
 							</ul>
 						</div>
+					<p class="joinInfo">
+					E-Ticket의 회원이 되신걸 축하합니다!<br>
+					가입 축하적립금 5,000원이 적립되었습니다!
+					</p>
 				</div>
 				<div class="joinOkBtnArea">
 				<a href="/member/login.jsp">로그인하기</a>

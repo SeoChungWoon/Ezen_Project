@@ -30,10 +30,26 @@
 	border-bottom: 2px solid #0086b8;
 }
 
+.sub-body .joinOK .tit-cont{
+	padding-top: 100px;
+}
+
+.sub-body .joinOK .tit-cont > img {
+	width: 150px;
+	margin-bottom: 30px;
+}
+
 .tit-cont p.sellerJoinInfo {
-	margin: 10px 0;
+	margin: 30px 0;
 	color: #e64949;
-	font-size: 20px;
+	font-size: 18px;
+}
+
+.tit-cont p.joinInfo {
+	margin: 30px 0;
+	color: #222;
+	font-size: 17px;
+	line-height: 30px;
 }
 
 /* 회원가입 진행 스텝 끝 */
@@ -83,6 +99,7 @@
 
 .termsRow {
 	padding: 10px;
+	margin: 10px 0;
 }
 
 .termsRow label:hover {
@@ -101,20 +118,24 @@
 	color : blue;
 }
 
-iframe.termsTxt {
+div.termsTxtInner {
 	border: 1px solid #aaa;
 	margin-top: 10px;
-	padding: 5px;
+	padding: 15px;
 	width: 95%;
+	height: 180px;
+	overflow-y: scroll; 
 }
 
-pre.termsTxtInner {
-	width: 100%;
+.termsRow .termsTxtInner pre {
+	word-break: break-all;
+	white-space: pre-wrap;
+	font-size: 13px;
 }
 
 #termsBtnArea {
 	height: 60px;
-	margin: -15px auto;
+	margin: 50px auto;
 	width: 50%;
 	text-align: center;
 }
@@ -122,8 +143,9 @@ pre.termsTxtInner {
 #termsBtnArea button {
 	font-size: 18px;
 	padding: 10px;
-	height: 100%;
-	width: 15%;
+	height: 80%;
+	width: 10%;
+	margin: 0 10px;
 }
 
 #termsArea .termsRow .termsCheckBox {
@@ -170,19 +192,24 @@ span.smallFont {
 	width: 600px;
 }
 
-#joinArea > div.joinRow {
+#joinArea div.joinRow {
 	padding-left: 10px;
-	padding-bottom: 10px;
-	margin: 0 auto;
+	padding-bottom: 5px;
+	margin: 5px auto;
 	width: 80%;
 }
 
-#joinArea > .joinRow > span {
+#joinArea .joinRowGroup {
+	margin-bottom: 30px;
+}
+
+#joinArea .joinRow > span {
 	width: 100%;
 	display: inline-block;
 }
 
 p#pwChkMsg {
+	text-align: center;
 	margin-top: 7px;
 	padding-left: 10px;
 	color: red;
@@ -193,19 +220,19 @@ div#idChkRes {
 	padding-left: 10px;
 }
 
-#joinArea > .joinRow>input {
+#joinArea .joinRow>input {
 	font-size: 18px;
 	padding: 10px;
 	height: 49px;
 	width: 100%;
 }
 
-#joinArea > div.joinRow>input#uZipcode {
+#joinArea div.joinRow input#uZipcode {
 	width: 72%;
 	transform: translateY(-1px);
 }
 
-#joinArea > .joinRow>input::placeholder {
+#joinArea .joinRow>input::placeholder {
 	font-size: 18px;
 }
 
@@ -247,7 +274,7 @@ radio:fisrt-child {
 	margin-right: 20px;
 }
 
-#joinArea > div.joinRow > button#zipChk {
+#joinArea div.joinRow > button#zipChk {
 	width: 26%;
 	transform: translateY(-2px);
 	font-size: 16px;
@@ -259,14 +286,15 @@ radio:fisrt-child {
 	color: #fff;
 }
 
-#joinArea > div.joinRow > button#zipChk:hover {
+#joinArea div.joinRow > button#zipChk:hover {
 	background: #0086b8;
 	border: 1px solid #0086b8;
 	font-weight: bold;
 }
 
 input#addr1, input#addr2 {
-	width: 80%;	
+	width: 590px;
+	margin-left: 15px;	
 }
 
 
@@ -278,27 +306,29 @@ input#addr1, input#addr2 {
 	display: inline-block;
 }
 
-.joinRow:last-child {
-	padding-top: 20px;
+.joinRowGroup:last-child .joinRow {
 	text-align: center;
 }
 
-.joinRow:last-child button {
-	font-size: 20px;
-	padding: 15px 10px;
-	width: 30%;
+.joinRowGroup:last-child .joinRow button {
+	font-size: 18px;
+	padding: 10px 10px;
+	margin: 0 15px;
+	width: 20%;
 }
 
 div.joinOkBtnArea {
 	text-align: center;
+	margin-top: 20px;
 }
 
 div.joinOkBtnArea a {
 	padding: 15px;
-	margin: 0 15px;
+	margin: 0 5px;
 	font-size: 16px;
 	height: 50px;
-	width: 70px;
+	width: 150px;
+	display: inline-block;
 	background: #333;
 	border: none;
 	color: #fff;
@@ -312,6 +342,10 @@ div.joinOkBtnArea a:hover {
 /* 회원가입 영역 끝 */
 
 /* 우편번호 검색 영역 시작 */
+
+.sub-body > .zipChkInner .tit-cont {
+	padding-top: 0;
+}
 
 div#findArea input {
 	font-size: 18px;
@@ -330,6 +364,11 @@ div#findArea button {
 	background: #333;
 	border: none;
 	color: #fff;
+}
+
+div#findArea button:hover {
+	background: #0086b8;
+	font-weight: bold;
 }
 
 
@@ -489,11 +528,16 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 }
 
 .mypageTit > h1 {
-	margin-bottom: 20px;
+	margin-bottom: 50px;
+	color: #0086b8;
 }
 
 .modifyRow , .mypageRow {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.mypageArea #modifyForm > .modifyRow:nth-child(2) .modifyTitle {
+	line-height: 5;
 }
 
 .mypageRow .mypageVal .mypageWishList {
@@ -529,52 +573,94 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 }
 
 
-.modifyRow > div , .mypageRow > div {
-	width: 60%;
-}
-
 .mypageArea div.modifyRow input , .mypageRow input {
 	font-size: 18px;
 	padding: 10px;
-	height: 50%;
-	width: 80%;
-}
-
-.mypageArea .mypageRow .mypageVal input {
 	width: 100%;
 }
 
-div.modifyBtnArea, div.modifyVal , .mypageVal:not(:last-child) {
-	display: inline;
+.readonlyInput {
+	background: #ddd;
+	border: 1px solid #ddd;
 }
 
 div.modifyPwTitle {
-	padding: 10px;
+	padding: 5px 0;
+}
+
+.modifyAddrArea .modifyRow {
+	margin: 0;
+}
+
+.modifyRow .modifyBtnArea {
+	width: 45px;
+	padding: 5px;
 }
 
 .modifyRow .modifyBtnArea button {
 	font-size: 15px;
-	width: 10%;
-	height: 46px;
+	text-align: center;
+	width: 50px;
+	height: 50px;
 	margin-left: 10px;
+	padding: 5px;
 	background: #333;
 	border: none;
 	color: #fff;
+}
+
+.modifyRow .modifyBtnArea button:hover {
+	background: #0086b8;
+	font-weight: bold;
+}
+
+.modifyRow .modifyVal #zipChk {
+	font-size: 15px;
+	text-align: center;
+	width: 100px;
+	height: 50px;
+	margin-left: 10px;
+	padding: 5px;
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+.modifyRow .modifyVal #zipChk:hover {
+	background: #0086b8;
+	font-weight: bold;
 }
 
 .mypageArea div.modifyRow input#uZipcode {
 	width: 58%;
 }
 
-.mypageArea div.modifyRow button#zipChk {
-	width: 20%;
+.modifyRow .modifyTitle , .mypageTitle {
+	font-size: 17px;
+    width: 190px;
+    margin: 10px;
+    text-align-last: left;
+    font-weight: bold;
 }
 
-.modifyRow .modifyTitle , .mypageTitle {
-	font-size: 19px;
-	padding: 10px;
-	font-weight: bold;
-	text-align-last: left;
+.modifyRow .modifyVal {
+	font-size: 17px;
+    width: 600px;
+    margin: 6px;
+    text-align-last: left;
+    padding-left: 10px;
+}
+
+.modifyRow .mPwArea {
+	width: 300px;
+}
+
+.mypageRow .mypageVal {
+	font-size: 17px;
+    width: calc((100%-190px));
+    margin: 6px;
+    text-align-last: left;
+    padding-left: 10px;
 }
 
 div#changeAddr >modify.Row > input#uZipcode {
@@ -582,15 +668,16 @@ div#changeAddr >modify.Row > input#uZipcode {
 }
 
 .modifyFinal {
-	margin: 20px auto;
+	margin: 70px auto;
 	text-align: center;
+	padding-left: 30px;
 }
 
 .modifyFinal button {
 	font-size: 20px;
 	padding: 10px 10px;
 	font-weight: bold;
-	width: 25%;
+	width: 20%;
 }
 
 .modifyFinal button:first-child {
@@ -624,13 +711,16 @@ div#modifyChkArea button, div#withdrawChkArea button {
 }
 
 div.withdrawChkMsg {
-	margin-bottom: 15px;
+	margin-bottom: 25px;
+}
+
+.withdrawChkMsg h2 {
+	color: red;
 }
 
 div.withdrawTxt {
-	background-color: #eee;
 	padding: 15px;
-	line-height: 30px;
+	line-height: 50px;
 	margin-bottom: 20px;
 }
 
@@ -640,6 +730,7 @@ div.withdrawTxt > h3 {
 
 div.withdrawTxt li {
 	list-style-position: inside;
+	padding-left: 10px;
 }
 
 div.withdrawTxt li::before {
@@ -647,7 +738,7 @@ div.withdrawTxt li::before {
 	display: inline-block;
 	position: relative;
 	top: -5px;
-	left: -3px;
+	left: -5px;
 	border-radius: 50%;
 	width: 3px;
 	height: 3px;
@@ -660,13 +751,13 @@ div.withdrawTxt hr {
 
 div#withdrawBtnArea {
 	text-align: center;
+	margin-top: 70px;
 }
 
 #withdrawBtnArea button {
 	font-size: 16px;
-	padding: 20px 10px;
-	font-weight: bold;
-	width: 18%;
+	padding: 10px 10px;
+	width: 15%;
 }
 
 #withdrawBtnArea button:first-child {
@@ -696,6 +787,33 @@ div#withdrawBtnArea {
 
 /* 아이디 / 비밀번호 찾기 영역 시작 */
 
+.findIdPwInner .tit-cont {
+	padding-bottom: 20px;
+}
+
+.findIdPwInner .tit-cont .tit *{
+	font-size: 40px;
+    display: inline-block;
+    width: 250px;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+.findIdPwInner .tit-cont .tit span {
+	border-bottom: 2px solid #0086b8;
+}
+
+.findIdPwInner .tit-cont .tit a {
+	opacity: 0.4;
+	font-weight: normal;
+}
+
+.findIdPwInner .tit-cont .tit a:hover {
+	border-bottom: 2px solid #0086b8;
+	font-weight: bold;
+	opacity: 1;
+}
+
 .findIdPwArea {
 	padding: 10px;
 	margin: 10px auto;
@@ -703,10 +821,63 @@ div#withdrawBtnArea {
 }
 
 .findIdPwRow {
+	position: relative;
 	padding: 10px;
 	margin: 20px auto;
 	border: 1px solid #aaa;
 	width: 60%;
+}
+
+.findIdPwRow .fToggle {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0.1;
+}
+
+.findIdPwRow .howToFind img {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
+
+.findIdPwRow:first-child label::before {
+	content: "";
+	position: absolute;
+	top: 16px;
+	left: 17px;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: url(/images/icon-find-phone.png) no-repeat;
+	background-size: 30px 30px;
+}
+
+.findIdPwRow:nth-child(2) label::before {
+	content: "";
+	position: absolute;
+	top: 16px;
+	left: 15px;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: url(/images/icon-find-email.png) no-repeat;
+	background-size: 30px 30px;
+}
+
+.findIdPwRow:nth-child(3) label::before {
+	content: "";
+	position: absolute;
+	top: 16px;
+	left: 13px;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: url(/images/icon-find-identity.png) no-repeat;
+	background-size: 30px 30px;
 }
 
 .howToFind {
@@ -714,7 +885,7 @@ div#withdrawBtnArea {
 }
 
 .findIdPwRow label {
-	padding: 10px;
+	padding: 10px 40px;
 	display: inline-block;
 	width: 100%;
 	height: 100%;

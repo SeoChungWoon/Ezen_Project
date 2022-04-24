@@ -171,9 +171,11 @@ $(function() {
 			$(".fToggle").not(this).parent().next().slideUp(200);
 			$(this).parent().next().slideDown(200);
 			$(".findValArea input").val("");
+			$(this).siblings().find("img").css({"transform" : "rotate(180deg)"});
 		} else {
 			$(this).parent().next().slideUp(200);
 			$(this).parent().next().children().val("");
+			$(this).siblings().find("img").css({"transform" : "rotate(0deg)"});
 		}
 	});
 /* 아이디 / 비밀번호 찾기 방식 토글 버튼 */
@@ -328,9 +330,12 @@ $(function() {
 
 /* 회원탈퇴 동의, 비동의 버튼 */
 /* 동의 */
-$("#withdrawAgree").click(function(){
+$("#withdrawAgree").on("click", function(){
 	let wPw = $("#withdrawPw").val();
-	location.href="/member/withdrawOK.jsp?wPw="+wPw;
+	const result = confirm("정말 탈퇴 하시겠습니까?");
+		if(result) {
+			location.href="/member/withdrawOK.jsp?wPw="+wPw;
+		}
 });
 /* 동의 */
 
@@ -346,6 +351,7 @@ $("#withdrawDisagree").click(function(){
 /* 마이페이지 정보 수정 버튼 */
 $(".modifyBtn").on("click", function(){
 	$(this).parent().siblings(".modifyVal").children("input[type=text]").attr("readonly", false).val('');
+	$(this).parent().siblings(".modifyVal").children("input[type=text]").removeClass("readonlyInput");
 	$(this).parent().siblings(".modifyVal").children("input[type=text]").focus();
 });
 /* 마이페이지 정보 수정 버튼 */
@@ -365,6 +371,10 @@ $(".modifyAddrBtn").on("click", function(){
 $("#modifyResetBtn").on("click", function(){
 	$("#changeAddr").addClass("hidden");
 	$(".modifyAddrArea").removeClass("hidden");
+	$("#nEmail").addClass("readonlyInput");
+	$("#nEmail").prop("readonly", true);
+	$("#uPhone").addClass("readonlyInput");
+	$("#uPhone").prop("readonly", true);
 });
 /* 마이페이지 리셋 버튼 */
 
@@ -372,10 +382,10 @@ $("#modifyResetBtn").on("click", function(){
 $(document).ready(function(){
     
 	if($(".mypageRow").length != 0) {
-		let ePay = $(".myEpay").val();
+		let ePay = $(".myEpay").text();
 		ePay = ePay.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		ePay += " 원";
-		$(".myEpay").val(ePay);
+		$(".myEpay").text(ePay);
 	}  
 });
 /* 적립금 천단위 구분 기호 */
@@ -417,7 +427,7 @@ function modifyConfirm(formName) {
 		formName.uPw.focus();
 		return;
 	}
-	if (formName.uPw.value.length < 8 || formName.uPw.value.length > 16) {
+	if (formName.uPw.value.length != 0 && (formName.uPw.value.length < 8 || formName.uPw.value.length > 16)) {
 		alert("비밀번호는 8~16자 사이로 설정해주세요.");
 		formName.uPw.focus();
 		return;

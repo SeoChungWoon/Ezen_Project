@@ -7,7 +7,7 @@
 request.setCharacterEncoding("UTF-8");
 String uId = request.getParameter("uId");
 
-boolean flag = aMgr.joinDisagree(uId);
+boolean flag = aMgr.joinAgree(uId);
 %>
 
 <!DOCTYPE html>

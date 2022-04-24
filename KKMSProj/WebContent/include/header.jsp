@@ -43,7 +43,7 @@
 					String memberId = (String) session.getAttribute("memID");
 					if (memberId != null) {
 					%>
-					<li><a href="javascript:"><span><%=memberId%>님</span></a></li>
+					<li><span><%=memberId%>님</span></li>
 					<li><a href="/member/mypage.jsp"><span>My page</span></a></li>
 					<li><a href="/member/logout.jsp"><span>로그아웃</span></a></li>
 					<%

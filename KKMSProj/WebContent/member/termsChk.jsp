@@ -54,7 +54,7 @@
 								</span>
 								</label>
 							</p>
-							<iframe src="/include/usingAgree.jsp" class="termsTxt"></iframe>
+							<%@ include file="/include/usingAgree.jsp"%>
 						</div>
 						<div class="termsRow usingTerms">
 							<p>
@@ -64,7 +64,7 @@
 								</span>
 								</label>
 							</p>
-							<iframe src="/include/privacyAgree.jsp" class="termsTxt"></iframe>
+							<%@ include file="/include/privacyAgree.jsp"%>
 						</div>
 						<div class="termsRow usingTerms">
 							<p>
@@ -74,7 +74,7 @@
 								</span>
 								</label>
 							</p>
-							<iframe src="/include/adsAgree.jsp" class="termsTxt"></iframe>
+							<%@ include file="/include/adsAgree.jsp"%>
 						</div>
 					</div>
 					<!-- div#termsArea -->

@@ -4,7 +4,6 @@
 
 .eventPageArea .eventInner {
 	flex-wrap: wrap;
-	justify-content: center;
 }
 
 .eventPageArea .eventInner .eventRow {
@@ -65,6 +64,7 @@
 }
 
 .eventPageArea .eventInner .eventRow .eventLink .eventTag {
+	position: relative;
 	font-size: 14px;
 	color: #2a853f;
 	display: inline-block;
@@ -170,6 +170,11 @@ hr.eventHR {
 	margin: 20px auto;
 }
 
+.eventDate {
+	font-size: 17px;
+	padding-left: 5px;
+}
+
 .eventContent {
 	margin-top: 15px;
 	padding: 5px;
@@ -185,7 +190,8 @@ hr.eventHR {
 }
 
 .eventBtnArea button:hover {
-	background: #444;
+	background: #0086b8;
+	font-weight: bold;
 }
 
 .eventContent img {
@@ -230,6 +236,16 @@ hr.eventHR {
 	padding: 10px;
 	position: relative;
 	left: -30px;
+}
+
+.eventReplyCaption {
+	margin: 0 auto;
+	position: relative;
+	left: 50px;
+	padding: 5px;
+	width: 80%;
+	text-align-last: left;
+	color: #e64949;
 }
 
 #eventReplyBtn {

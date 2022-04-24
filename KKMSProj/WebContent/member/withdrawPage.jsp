@@ -49,8 +49,12 @@
 					</aside>
 					
 					<div class="mypageArea">
+						<div class="mypageTit">
+							<h1>회원 탈퇴</h1>
+						</div>
+						<!-- div.mypageTit -->
 						<div class="withdrawChkMsg">
-							<h2>아래의 내용을 꼭 확인해주세요.</h2>
+							<h2>* 아래의 내용을 꼭 확인해주세요.</h2>
 						</div>
 
 						<div class="withdrawTxt">
@@ -81,8 +85,8 @@
 							</ul>
 						</div>
 
-						<div id="withdrawBtnArea">
-							<button type="button" id="withdrawAgree">확인</button>
+						<div id="withdrawBtnArea" class="btn-cont">
+							<button type="button" id="withdrawAgree">탈퇴하기</button>
 							<input type="hidden" id="withdrawPw" value="<%=mPw%>">
 							<button type="button" id="withdrawDisagree">취소</button>
 						</div>

@@ -297,7 +297,8 @@ header .hUtil .login li:not(:last-child)::after {
 	background: #aaa;
 }
 
-header .hUtil .login li a span {
+header .hUtil .login li a span ,
+header .hUtil .login li span {
 	color: #aaa;
 	font-size: 14px;
 }

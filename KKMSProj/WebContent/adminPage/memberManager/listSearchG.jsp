@@ -6,7 +6,10 @@
 <%
 String mType = "일반";
 String joinWait = null;
-List memList = aMgr.memberList(mType, joinWait);
+request.setCharacterEncoding("UTF-8");
+String tag = request.getParameter("tag");
+String srhTxt = request.getParameter("srhTxt");
+List memList = aMgr.searchMemberList(mType, joinWait, tag, srhTxt);
 
 int mCnt = memList.size();
 
@@ -118,9 +121,6 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 						</div>
 						<!-- div.manager-inner -->
 						
-						<%
-						if (memList.size()!=0) {
-						%>
 						<div class="memberListFooter dFlex">
 							<div class="memberListPaging dFlex">
 								<div class="memberListPagingPrev">
@@ -143,7 +143,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 								%>
 								<div class="memberListPagingNext">
 									<%
-									if (pageCnt != nowPage) {
+									if (pageCnt != nowPage && pageCnt != 0) {
 									%>
 									<a href="?pageNo=<%=nowPage + 1%>" id="">&gt;</a> <a
 										href="?pageNo=<%=pageCnt%>" id="">&gt;&gt;</a>
@@ -159,12 +159,11 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 									<option value="uName">이름</option>
 									<option value="uPhone">연락처</option>
 								</select> <input type="text" id="mSrh-txt" />
-								<button type="button" class="memberListSearchBtnG">검색</button>
+								<button type="button" class="memberListSearchBtn">검색</button>
 							</div>
 							<!-- div.memberListSearch -->
 						</div>
 						<!-- div.memberListFooter -->
-						<%} %>
 					</div>
 					<!-- div.manager-cont -->
 				</div>

@@ -19,7 +19,6 @@ if (mType.equals("관리자")) {
 	if (waitChk) {
 	%>
 	<script>
-	alert("판매자 로그인");
 	alert("가입 승인 대기중인 회원입니다.");
 	location.href = "/member/login.jsp";
 	</script>
@@ -28,7 +27,6 @@ if (mType.equals("관리자")) {
 		session.setAttribute("memID", memberId);
 		%>
 		<script>
-		alert("판매자 로그인");
 		location.href = "/sellerPage/sellerMain.jsp";
 		</script>
 		<%
@@ -37,7 +35,6 @@ if (mType.equals("관리자")) {
 	session.setAttribute("memID", memberId);	
 	%>
 	<script>
-	alert("일반회원 로그인");
 	let ref = document.referrer;
 	let jpIdx = ref.indexOf("joinProc.jsp");
 	let lIdx = ref.indexOf("login.jsp");

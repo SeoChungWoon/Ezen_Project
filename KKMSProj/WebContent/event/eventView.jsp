@@ -93,6 +93,9 @@ $('img[usemap]').rwdImageMaps();
 								</div>
 							</div>
 						</div>
+						<div class="eventDate">
+						<%=evList.geteStart() %> ~ <%=evList.geteEnd() %>
+						</div>
 					</div>
 					<!-- // eventTop -->
 					
@@ -162,12 +165,17 @@ $('img[usemap]').rwdImageMaps();
 						<p>이미 종료된 이벤트입니다.</p>
 						<% } else if (memberId == null) {
 						%>
+												
 						<div id="eventReplyArea">
 							<textarea name="eventReplyTxt" id="eventReplyTxt" class="guest" maxlength="255"
 								placeholder="로그인 후 기대평을 작성해주세요."></textarea>
 							<button type="button" id="eventReplyBtn">등록</button>
 						</div>
 						<% } else {%>
+						<div class="eventReplyCaption">
+						* 매매, 욕설 등 예스24 게시판 운영 규정에 위반되는 글은 사전 통보없이 삭제될 수 있습니다.<br>
+						* 개인정보가 포함된 내용은 삼가 주시기 바라며, 게시물로 인해 발생하는 문제는 작성자 본인에게 책임이 있습니다.
+						</div>
 						<div id="eventReplyArea">
 							<textarea name="eventReplyTxt" id="eventReplyTxt" maxlength="255"
 								placeholder="내용을 입력해주세요."></textarea>
