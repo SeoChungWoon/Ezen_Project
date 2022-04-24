@@ -23,11 +23,11 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-Ticket :관리자</title>
+<title>E-Ticket관리자 :메인</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
-<link rel="stylesheet" href="/adminPage/style/style_admin.css">
+<link rel="stylesheet" href="/adminPage/style/style_admin2.css">
 <link rel="stylesheet" href="/style/style_Event.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/source/gsap.min.js"></script>
@@ -53,8 +53,8 @@
 						<div class="adminSubTab">
 							<ul>
 								<li><a href="/adminPage/memberManager/listGeneral.jsp">일반회원 목록</a></li>
-								<li><a href="javascript:">판매회원 목록</a></li>
-								<li><a href="javascript:">가입대기 회원</a></li>
+								<li><a href="/adminPage/memberManager/listSeller.jsp">판매회원 목록</a></li>
+								<li><a href="/adminPage/memberManager/listWait.jsp">가입대기 회원</a></li>
 							</ul>
 						</div>
 					</div>
@@ -79,7 +79,7 @@
 						</p>
 						<div class="adminSubTab">
 							<ul>
-								<li><a href="javascript:">메인 슬라이드 수정</a></li>
+								<li><a href="/adminPage/mainManager/slideManager.jsp">메인 슬라이드 수정</a></li>
 								<li><a href="javascript:">a</a></li>
 								<li><a href="javascript:">b</a></li>
 							</ul>
@@ -93,9 +93,8 @@
 						</p>
 						<div class="adminSubTab">
 							<ul>
-								<li><a href="javascript:">글쓰기</a></li>
-								<li><a href="javascript:">수정</a></li>
-								<li><a href="javascript:">삭제</a></li>
+								<li><a href="/data/bbsListAd.jsp">공지게시판</a></li>
+								<li><a href="/data/faqListAd.jsp">FAQ</a></li>
 							</ul>
 						</div>
 					</div>

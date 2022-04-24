@@ -1,7 +1,7 @@
-package pack_Member;
+package pack_Admin;
 
-public class RegisterBean {
-
+public class AdminBean {
+	
 	private int no;
 	private String uId;
 	private String uPw;
@@ -19,29 +19,12 @@ public class RegisterBean {
 	private String joinDate;
 	
 	
+	
 	public String getJoinDate() {
 		return joinDate;
 	}
 	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
-	}
-	public int getePay() {
-		return ePay;
-	}
-	public void setePay(int ePay) {
-		this.ePay = ePay;
-	}
-	public String getmType() {
-		return mType;
-	}
-	public void setmType(String mType) {
-		this.mType = mType;
-	}
-	public String getJoinWait() {
-		return joinWait;
-	}
-	public void setJoinWait(String joinWait) {
-		this.joinWait = joinWait;
 	}
 	public int getNo() {
 		return no;
@@ -109,7 +92,24 @@ public class RegisterBean {
 	public void setTermsAds(String termsAds) {
 		this.termsAds = termsAds;
 	}
-	
+	public String getmType() {
+		return mType;
+	}
+	public void setmType(String mType) {
+		this.mType = mType;
+	}
+	public String getJoinWait() {
+		return joinWait;
+	}
+	public void setJoinWait(String joinWait) {
+		this.joinWait = joinWait;
+	}
+	public int getePay() {
+		return ePay;
+	}
+	public void setePay(int ePay) {
+		this.ePay = ePay;
+	}
 	
 	
 }

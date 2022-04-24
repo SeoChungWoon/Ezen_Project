@@ -19,23 +19,31 @@ termsAds char(1),
 mType char(5) not null,
 joinWait char(2),
 ePay int,
+joinDate date not null,
 constraint primary key(uId),
 constraint unique key(no)
 );
 
 alter table member add column ePay int;
+alter table member add column joinDate date;
 alter table member drop column ePay;
 
 
 insert into member values (1, 'admin', 'admin', '관리자', '00000000', 'null', 'null', '01012345678', 'null', 'null', '', '관리자', '');
 select count(*) from member where uId = 'a';
 
+insert into member (uId, uPw, uName, uEmail, uPhone, mType, joinWait, joinDate) values ('seller1', '1234', '테스트', 'hera6223@naver.com', '01077045339', '판매자', 'N', date_format(now(), '%Y-%m-%d'));
+insert into member (uId, uPw, uName, uEmail, uPhone, mType, joinWait, joinDate) values ('seller2', '1234', '테스트', 'hera6223@naver.com', '01077045339', '판매자', 'N', date_format(now(), '%Y-%m-%d'));
+insert into member (uId, uPw, uName, uEmail, uPhone, mType, joinWait, joinDate) values ('seller3', '1234', '테스트', 'hera6223@naver.com', '01077045339', '판매자', 'N', date_format(now(), '%Y-%m-%d'));
+insert into member (uId, uPw, uName, uEmail, uPhone, mType, joinWait, joinDate) values ('seller4', '1234', '테스트', 'hera6223@naver.com', '01077045339', '판매자', 'N', date_format(now(), '%Y-%m-%d'));
+insert into member (uId, uPw, uName, uEmail, uPhone, mType, joinWait, joinDate) values ('seller5', '1234', '테스트', 'hera6223@naver.com', '01077045339', '판매자', 'N', date_format(now(), '%Y-%m-%d'));
+insert into member (uId, uPw, uName, uEmail, uPhone, mType, joinWait, joinDate) values ('seller6', '1234', '테스트', 'hera6223@naver.com', '01077045339', '판매자', 'N', date_format(now(), '%Y-%m-%d'));
 
 select * from member;
 
 drop table member;
 
-
+select count(*) from member where joinWait='N';
 
 
 
@@ -273,8 +281,6 @@ create table wishList (
 drop table wishList;
 
 select * from wishList;
-
-
 
 /* 메인슬라이더 이미지 */
 create table mainslidelist(

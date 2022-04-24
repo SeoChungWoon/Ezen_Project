@@ -4,8 +4,8 @@
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="aMgr" class="pack_Admin.AdminMgr" />
 <%
-String mType = "일반";
-String joinWait = null;
+String mType = "판매자";
+String joinWait = "N";
 List memList = aMgr.memberList(mType, joinWait);
 
 int mCnt = memList.size();
@@ -33,7 +33,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E-Ticket관리자 :회원 관리</title>
+<title>E-Ticket관리자 :가입 승인</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
@@ -41,7 +41,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 <link rel="stylesheet" href="/style/style_Event.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/source/gsap.min.js"></script>
-<script src="/script/adminScript.js"></script>
+<script src="/adminPage/script/adminScript.js"></script>
 </head>
 <body>
 	<div id="wrap">
@@ -54,7 +54,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 						<div class="manager-tit">
 							<!--  title -->
 							<p>
-								회원 관리 <span class="sub-tit">일반회원 목록 (<%=mCnt %>)</span>
+								회원 관리 <span class="sub-tit">가입대기 목록 (<%=mCnt %>)</span>
 							</p>
 						</div>
 						<div class="manager-inner">
@@ -67,11 +67,8 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 									<col width="5%" />
 									<col width="14%" />
 									<col width="9%" />
-									<col width="7%" />
-									<col width="14%" />
-									<col width="8%" />
-									<col width="6%" />
-									<col width="6%" />
+									<col width="20%" />
+									<col width="21%" />
 								</colgroup>
 								<thead>
 									<tr>
@@ -82,33 +79,28 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 										<th>성별</th>
 										<th>이메일 주소</th>
 										<th>휴대전화</th>
-										<th>우편번호</th>
-										<th>상세 주소</th>
-										<th>적립금</th>
-										<th>광고 동의</th>
-										<th>회원 등급</th>
+										<th>승인 요청일</th>
+										<th>가입 승인</th>
 									</tr>
 								</thead>
 								<tbody>
 									<%
-									for (int i = start; i < end; i++) {
-										if (i == memList.size())
-											break;
+									for (int i = 0; i < memList.size(); i++) {
 										AdminBean mList = (AdminBean) memList.get(i);
 									%>
 									<tr>
 										<td><%=mList.getNo()%></td>
-										<td><%=mList.getuId()%></td>
+										<td class="reqId"><%=mList.getuId()%></td>
 										<td><%=mList.getuName()%></td>
 										<td><%=mList.getuBirthday()%></td>
 										<td><%=mList.getuGender()%></td>
 										<td><%=mList.getuEmail()%></td>
 										<td><%=mList.getuPhone()%></td>
-										<td><%=mList.getuZipcode()%></td>
-										<td class="uAddr"><%=mList.getuAddr()%></td>
-										<td><%=mList.getePay()%></td>
-										<td><%=mList.getTermsAds()%></td>
-										<td><%=mList.getmType()%></td>
+										<td><%=mList.getJoinDate()%></td>
+										<td class="btn-cont">
+											<button class="memberBtn agree">가입 승인</button>
+											<button class="memberBtn disagree">가입 거부</button>
+										</td>
 									</tr>
 									<%
 									}
@@ -117,9 +109,9 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 							</table>
 						</div>
 						<!-- div.manager-inner -->
-						
+
 						<%
-						if (memList.size()!=0) {
+						if (memList.size() != 0) {
 						%>
 						<div class="memberListFooter dFlex">
 							<div class="memberListPaging dFlex">
@@ -164,7 +156,9 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 							<!-- div.memberListSearch -->
 						</div>
 						<!-- div.memberListFooter -->
-						<%} %>
+						<%
+						}
+						%>
 					</div>
 					<!-- div.manager-cont -->
 				</div>

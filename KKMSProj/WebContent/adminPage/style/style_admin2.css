@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+/* 관리자 페이지 CSS 시작 */
+
+/* 메인 */
+div.adminMain-cont {
+	display: flex;
+	justify-content: center;
+}
+
+.adminMain-cont .adminMainTab {
+	width: 15%;
+	margin: 15px;
+	border: 1px solid red;
+}
+
+.adminMain-cont .adminMainTab .adminMainTabTitle {
+	text-align: center;
+	font-weight: bold;
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+.adminMain-cont .adminMainTab .adminSubTab {
+	border: 1px solid #000;
+	height: 100%;
+	padding: 10px;
+}
+
+.adminMain-cont .adminMainTab .adminSubTab ul li {
+	margin: 15px 0;
+}
+
+.managerPage .manager-cont .manager-tit p .sub-tit {
+	font-size: 16px;
+	color: #333;
+	font-weight: normal;
+}
+
+.managerPage .manager-cont .manager-tit p .sub-tit::before {
+	content: "> ";
+}
+
+.adminMain-cont .adminMainTab .adminSubTab ul li::before {
+	content: "";
+	display: inline-block;
+	position: relative;
+	top: -5px;
+	left: -3px;
+	border-radius: 50%;
+	width: 3px;
+	height: 3px;
+	background-color: #666;
+}
+/* 메인 */
+
+/* LNB메뉴, 공통 */
+aside.managerAside {
+	border: 1px solid red;
+	width: 220px;
+	padding: 10px;
+}
+
+.managerAside .managerMenu {
+	margin: 20px 5px;
+}
+
+.managerAside .managerMenu > a {
+	font-size: 22px;
+}
+
+.managerAside .managerMenu ul li {
+	margin: 10px;
+}
+
+.managerAside .managerMenu ul li::before {
+	content: "";
+	display: inline-block;
+	position: relative;
+	top: -5px;
+	left: -3px;
+	border-radius: 50%;
+	width: 3px;
+	height: 3px;
+	background-color: #666;
+}
+
+div.managerPage .manager-cont {
+	padding: 10px;
+	width: 100%;
+}
+
+div.managerPage .manager-tit {
+	margin-bottom: 15px;
+}
+
+div.managerPage .manager-tit p {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+/* LNB메뉴, 공통 */
+
+/* 회원관리메뉴 */
+.managerPage .manager-cont .manager-inner {
+	height: 90%;
+	border: 1px solid #333;
+}
+
+.managerPage .manager-cont .manager-inner table.memberTable {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.managerPage .manager-cont .manager-inner table.memberTable th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 5px 10px;
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+.managerPage .manager-cont .manager-inner table.memberTable td {
+	padding: 5px;
+	word-break:break-all;
+}
+
+.managerPage .manager-cont .manager-inner table.memberTable tr {
+	height: 55px;
+}
+
+.managerPage .manager-cont .manager-inner table.memberTable tr:hover {
+	background: #e1e1e1;
+}
+
+.managerPage .manager-cont .manager-inner table.memberTable td.uAddr {
+	text-align-last: left;
+}
+
+.managerPage .manager-cont .manager-inner table.memberTable td.btn-cont {
+	display: table-cell;
+}
+
+.managerPage .manager-cont .memberListFooter {
+	padding: 5px 10px;
+	justify-content: space-between;
+}
+
+.managerPage .manager-cont .memberListFooter .memberListPaging {
+	width: 30%;
+}
+
+.managerPage .manager-cont .memberListFooter .memberListPaging div {
+	padding: 3px 5px;
+	width: 15%;
+}
+
+.managerPage .manager-cont .memberListFooter .memberListPaging > a {
+	padding: 3px 5px;
+}
+
+.managerPage .manager-cont .memberListFooter .memberListSearch input ,
+.managerPage .manager-cont .memberListFooter .memberListSearch select {
+	height: 100%;
+}
+
+.managerPage .manager-cont .memberListFooter .memberListSearch button {
+	color: #fff;
+	background: #333;
+	border: none;
+	padding: 5px 10px;
+}
+
+.managerPage .manager-cont .memberListFooter .memberListSearch button:hover {
+	font-weight: bold;
+	background: #0086b8;
+}
+
+/* 회원관리메뉴 */
+
+/* 관리자 페이지 CSS 끝 */

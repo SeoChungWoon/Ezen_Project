@@ -89,8 +89,8 @@ public class MemberMgr {
 		boolean flag = false;
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, uZipcode, uAddr, termsAds, mType, ePay) ";
-			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1000)";
+			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, uZipcode, uAddr, termsAds, mType, ePay, joinDate) ";
+			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1000, date_format(now(), '%Y-%m-%d'))";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, rBean.getuId());
 			objPstmt.setString(2, rBean.getuPw());
@@ -119,8 +119,8 @@ public class MemberMgr {
 		boolean flag = false;
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, mType, joinWait) ";
-			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			sql = "insert into member (uId, uPw, uName, uBirthday, uGender, uEmail, uPhone, mType, joinWait, joinDate) ";
+			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, date_format(now(), '%Y-%m-%d'))";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, rBean.getuId());
 			objPstmt.setString(2, rBean.getuPw());
@@ -130,7 +130,7 @@ public class MemberMgr {
 			objPstmt.setString(6, rBean.getuEmail());
 			objPstmt.setString(7, rBean.getuPhone());
 			objPstmt.setString(8, mType);
-			objPstmt.setString(9, "Y");
+			objPstmt.setString(9, "N");
 			if (objPstmt.executeUpdate() == 1)
 				flag = true;
 		} catch (Exception e) {
@@ -142,7 +142,7 @@ public class MemberMgr {
 	}
 
 	
-	// 가입 승인 대기 조회 ('Y'면 대기상태)
+	// 가입 승인 대기 조회 ('N' 대기상태)
 	public boolean waitChk(String mId, String mPw) {
 		
 		boolean flag = false;
@@ -160,7 +160,7 @@ public class MemberMgr {
 			
 			chk = objRS.getString("joinWait");
 			if(chk != null) {
-				if(chk.equals("Y")) {
+				if(chk.equals("N")) {
 					flag = true;
 				}					
 			}

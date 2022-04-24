@@ -4,8 +4,8 @@
 	pageEncoding="UTF-8"%>
 <jsp:useBean id="aMgr" class="pack_Admin.AdminMgr" />
 <%
-String mType = "일반";
-String joinWait = null;
+String mType = "판매자";
+String joinWait = "Y";
 List memList = aMgr.memberList(mType, joinWait);
 
 int mCnt = memList.size();
@@ -54,7 +54,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 						<div class="manager-tit">
 							<!--  title -->
 							<p>
-								회원 관리 <span class="sub-tit">일반회원 목록 (<%=mCnt %>)</span>
+								회원 관리 <span class="sub-tit">판매회원 목록 (<%=mCnt %>)</span>
 							</p>
 						</div>
 						<div class="manager-inner">
@@ -67,10 +67,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 									<col width="5%" />
 									<col width="14%" />
 									<col width="9%" />
-									<col width="7%" />
-									<col width="14%" />
-									<col width="8%" />
-									<col width="6%" />
+									<col width="35%" />
 									<col width="6%" />
 								</colgroup>
 								<thead>
@@ -82,18 +79,13 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 										<th>성별</th>
 										<th>이메일 주소</th>
 										<th>휴대전화</th>
-										<th>우편번호</th>
-										<th>상세 주소</th>
-										<th>적립금</th>
-										<th>광고 동의</th>
+										<th>등록한 상품</th>
 										<th>회원 등급</th>
 									</tr>
 								</thead>
 								<tbody>
 									<%
-									for (int i = start; i < end; i++) {
-										if (i == memList.size())
-											break;
+									for (int i = 0; i < memList.size(); i++) {
 										AdminBean mList = (AdminBean) memList.get(i);
 									%>
 									<tr>
@@ -104,10 +96,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 										<td><%=mList.getuGender()%></td>
 										<td><%=mList.getuEmail()%></td>
 										<td><%=mList.getuPhone()%></td>
-										<td><%=mList.getuZipcode()%></td>
-										<td class="uAddr"><%=mList.getuAddr()%></td>
-										<td><%=mList.getePay()%></td>
-										<td><%=mList.getTermsAds()%></td>
+										<td></td>
 										<td><%=mList.getmType()%></td>
 									</tr>
 									<%
@@ -117,9 +106,8 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 							</table>
 						</div>
 						<!-- div.manager-inner -->
-						
 						<%
-						if (memList.size()!=0) {
+						if (memList.size() != 0) {
 						%>
 						<div class="memberListFooter dFlex">
 							<div class="memberListPaging dFlex">
@@ -164,7 +152,9 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 							<!-- div.memberListSearch -->
 						</div>
 						<!-- div.memberListFooter -->
-						<%} %>
+						<%
+						}
+						%>
 					</div>
 					<!-- div.manager-cont -->
 				</div>
