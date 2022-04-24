@@ -622,6 +622,7 @@ $(function() {
 		});
 		
 		$(".headCnt").each(function(e){
+			console.log(cntNum);
 			$(".increase").on("click",function(){
 				if($(".reservRst .date").text() == ""){
 					alert("날짜를 선택해주세요");
@@ -635,6 +636,7 @@ $(function() {
 						cntNum = 5;
 					}else{
 						cntNum++;
+						console.log(cntNum);
 						$(".increseRed").hide();
 						$(".decreseRed").hide();
 						$(this).siblings("span").text(cntNum);
@@ -725,6 +727,8 @@ $(function() {
 				if($(".resSMList .resSMChk").hasClass("checked")){
 					if(!$(".maxSMChk").hasClass("checked")){
 						$(".maxSMChk").addClass("checked");
+						console.log("11111");
+						
 						
 						cntNum = 1;
 						$(".resHeadCnt .cntNum").text("1");
@@ -757,6 +761,7 @@ $(function() {
 						$(".resCPrice .price").text(cngPrice);
 					}else{
 						$(".maxSMChk").removeClass("checked");
+						console.log("2222s");
 					}
 				}
 			});
@@ -926,9 +931,8 @@ function priceCalc() {
 			$("#oriRealPrice").val(priceCalc);
 			console.log(priceCalc)
 		}else{
-			$("#realPrice").val($("#oriPrice").val());
-			$("#oriRealPrice").val($("#oriPrice").val());
-			console.log($("#oriPrice").val() + " : 222")
+			$("#realPrice").val($("#oriMPrice").val());
+			$("#oriRealPrice").val($("#oriMPrice").val());
 		}
 
 		// not sale

@@ -926,9 +926,9 @@ function priceCalc() {
 			$("#oriRealPrice").val(priceCalc);
 			console.log(priceCalc)
 		}else{
-			$("#realPrice").val($("#oriPrice").val());
-			$("#oriRealPrice").val($("#oriPrice").val());
-			console.log($("#oriPrice").val() + " : 222")
+			$("#realPrice").val($("#oriMPrice").val());
+			$("#oriRealPrice").val($("#oriMPrice").val());
+			console.log(priceCalc + "222")
 		}
 
 		// not sale

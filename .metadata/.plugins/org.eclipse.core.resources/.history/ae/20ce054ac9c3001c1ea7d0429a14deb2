@@ -327,7 +327,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 								if(memberId != null){
 								%>
 								<div class="btn-cont">
-									<button type="button" class="resBtn">예매하기</button>
+									<button type="button" class="btn open-modal resBtn">예매하기</button>
 								</div>
 								<%
 								} else {

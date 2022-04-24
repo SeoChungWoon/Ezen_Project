@@ -924,11 +924,9 @@ function priceCalc() {
 			$(this).find("span.discount-price ins").text(priceCalc);
 			$("#realPrice").val(priceCalc);
 			$("#oriRealPrice").val(priceCalc);
-			console.log(priceCalc)
 		}else{
-			$("#realPrice").val($("#oriPrice").val());
-			$("#oriRealPrice").val($("#oriPrice").val());
-			console.log($("#oriPrice").val() + " : 222")
+			$("#realPrice").val($("#oriMPrice").val());
+			$("#oriRealPrice").val($("#oriMPrice").val());
 		}
 
 		// not sale

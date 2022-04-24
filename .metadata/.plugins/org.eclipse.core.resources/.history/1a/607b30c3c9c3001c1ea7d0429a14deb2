@@ -536,7 +536,9 @@ $(function() {
 	if($(".revDelBtn").length != 0){
 		$(".reviewInfo").each(function(e){
 			$(this).find(".revDelBtn").on("click", function(){
+				console.log(e);
 				var wUId = $(".reviewInfo").eq(e).find("#wUId").val();
+				console.log(wUId);
 				$.ajax({
 					type: "post",
 					url: "/product/listViewReDelProc.jsp",
@@ -579,6 +581,7 @@ $(function() {
 		var cntNum = 1;
 		var oriPriceCalc = $("#realPrice").val();
 		$("#orisavelPrice").val($("#oriRealPrice").val());
+		console.log(oriPriceCalc);
 		// 적립금
 		$(".resSMList .resSMChk label").on("click", function(){
 			if($(".reservRst .date").text() == ""){
@@ -622,6 +625,7 @@ $(function() {
 		});
 		
 		$(".headCnt").each(function(e){
+			console.log(cntNum);
 			$(".increase").on("click",function(){
 				if($(".reservRst .date").text() == ""){
 					alert("날짜를 선택해주세요");
@@ -635,6 +639,7 @@ $(function() {
 						cntNum = 5;
 					}else{
 						cntNum++;
+						console.log(cntNum);
 						$(".increseRed").hide();
 						$(".decreseRed").hide();
 						$(this).siblings("span").text(cntNum);
@@ -725,6 +730,8 @@ $(function() {
 				if($(".resSMList .resSMChk").hasClass("checked")){
 					if(!$(".maxSMChk").hasClass("checked")){
 						$(".maxSMChk").addClass("checked");
+						console.log("11111");
+						
 						
 						cntNum = 1;
 						$(".resHeadCnt .cntNum").text("1");
@@ -757,6 +764,7 @@ $(function() {
 						$(".resCPrice .price").text(cngPrice);
 					}else{
 						$(".maxSMChk").removeClass("checked");
+						console.log("2222s");
 					}
 				}
 			});
@@ -924,11 +932,9 @@ function priceCalc() {
 			$(this).find("span.discount-price ins").text(priceCalc);
 			$("#realPrice").val(priceCalc);
 			$("#oriRealPrice").val(priceCalc);
-			console.log(priceCalc)
 		}else{
-			$("#realPrice").val($("#oriPrice").val());
-			$("#oriRealPrice").val($("#oriPrice").val());
-			console.log($("#oriPrice").val() + " : 222")
+			$("#realPrice").val($("#oriMPrice").val());
+			$("#oriRealPrice").val($("#oriMPrice").val());
 		}
 
 		// not sale
@@ -945,14 +951,16 @@ function fileVal(a)
 	// 업로드 파일 제한
 	//fileName : 파일 경로 (C:\fakepath\파일이름.확장명)
 	let pWfile = $("#pWfile").val().trim();
+	console.log("pWfile : "+ pWfile);
 	let fileName = pWfile.substring(12);
+	console.log("fileName : "+ fileName);
 	$("#fileName").val(fileName);
 	
 	// extension. 확장자, lastIndexOf : idx 번호 가져옴, dotIdx : 의 위치 (위로써는 16)
 	let dotIdx = pWfile.lastIndexOf(".");
 	let ext = pWfile.substring(dotIdx + 1); // ''.확장명'을 +1 해서 '확장명'
 	ext = ext.toLowerCase(); // 대소문자 모두 소문자로 변경
-	
+	console.log("ext : " + ext);
 	
 	let forbidExt = ["jpg", "png", "gif"]; // 허용된 확장명들
 	let chk = false;
@@ -1016,7 +1024,9 @@ function modalOpen(id) {
 	if($(".revDelBtn").length != 0){
 		$(".reviewInfo").each(function(e){
 			$(this).find(".revDelBtn").on("click", function(){
+				console.log(e);
 				var wUId = $(".reviewInfo").eq(e).find("#wUId").val();
+				console.log(wUId);
 				$.ajax({
 					type: "post",
 					url: "/product/listViewReDelProc.jsp",
