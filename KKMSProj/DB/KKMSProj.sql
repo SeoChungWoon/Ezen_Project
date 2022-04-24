@@ -64,6 +64,7 @@ area4 char(20)
 create table bbsList (
 no		int	auto_increment	not null,
 divisions	char(20)	not null,
+header	char(20),
 title		char(50)	not null,
 wName	char(20)	not null,				/*wName = writerName*/
 content varchar(1000),

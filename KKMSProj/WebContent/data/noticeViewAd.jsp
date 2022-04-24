@@ -103,12 +103,12 @@ for(int i = 0; i<ntcNo.length; i++){
 					<%if(idx==(cnt-1)){ %>
 					<a class="noData">이전글</a>
 					<%}else{ %>
-					<a href="noticeViewAd.jsp?no=<%=ntcNo[idx+1] %>">이전글</a>
+					<a href="noticeViewAd.jsp?no=<%=ntcNo[idx+1] %>&header=<%=header%>">이전글</a>
 					<%} %>
 					<%if(idx==0) {%>
 					<a class="noData">다음글</a>
 					<%}else{ %>
-        			<a href="noticeViewAd.jsp?no=<%=ntcNo[idx-1] %>">다음글</a>
+        			<a href="noticeViewAd.jsp?no=<%=ntcNo[idx-1] %>&header=<%=header%>">다음글</a>
         			<%} %>
         				</div>
         				<!-- div.footerLeft -->
