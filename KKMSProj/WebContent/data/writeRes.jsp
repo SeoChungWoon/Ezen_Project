@@ -14,26 +14,33 @@ String divisions = request.getParameter("divisions");
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>E-Ticket :회원 관리</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
 <link rel="stylesheet" href="/style/style3.css">
+<link rel="stylesheet" href="/adminPage/style/style_admin.css">
+<link rel="stylesheet" href="/style/style_Event.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/source/gsap.min.js"></script>
 <script src="/script/script.js"></script>
 <script src="/script/script_bbs.js"></script>
 <script src="/script/memberScript.js"></script>
-<title>Insert title here</title>
+<script src="/script/eventScript.js"></script>
 </head>
 <body>
+<div id="wrap">
 
-	<div id="wrap">
-		<%@ include file="/include/header.jsp"%>
 		<div class="sub-body">
 			<div class="inner">
+				<div class="managerPage dFlex">
+					<%@ include file="/adminPage/inc/managerAside.jsp" %>
+					<div class="manager-cont">
+					<div class="manager-tit">
+						<!--  title -->
+						<p>게시판 관리 <span class="smallFont">&gt; 공지사항 관리 &gt; 글쓰기</span></p>
+					</div>
 				<div class="tit-cont">
-					<!--  title -->
 					<p class="tit" id="wirteRes-p">게시글이 성공적으로 등록되었습니다.</p>
 				</div>
 				<!--div.tit-cont  -->
@@ -42,12 +49,15 @@ String divisions = request.getParameter("divisions");
 						<button type="button" class="dlBtn list">목록으로</button>
 						<button type="button" class="dlBtn mainMove">메인으로</button>
 					</div>
-					<!-- div.get-send -->
+					<!-- div.btnArea -->
+					</div>
+					<!-- div.manager-cont -->
+				</div>
+				<!-- div.managerPage -->
 			</div>
 			<!-- div.inner -->
 		</div>
 		<!-- div.sub-body -->
-		<%@ include file="/include/footer.jsp"%>
 	</div>
 	<!-- div#wrap -->
 </body>

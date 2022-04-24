@@ -55,6 +55,8 @@ public class BoardDAO {
 				
 			}catch(Exception e) {
 				System.out.println("Exception : " + e.getMessage());
+			}finally {
+				pool.freeConnection(objConn, objPstmt, objRS);
 			}
 		
 		return boardList;
@@ -110,6 +112,8 @@ public class BoardDAO {
 
 	}catch (Exception e) {
 		System.out.println("Exception : " + e.getMessage());
+	}finally {
+		pool.freeConnection(objConn, objPstmt);
 	}
 		return res;
 }
@@ -142,7 +146,6 @@ public class BoardDAO {
 		}finally {
 			pool.freeConnection(objConn, objPstmt);
 		}
-		
 		
 		return count;
 	}
@@ -205,6 +208,8 @@ public class BoardDAO {
 				}
 		} catch (Exception e) {
 			System.out.println("Exception :" +e.getMessage());
+		}finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
 		}
 		return list;
 }
@@ -228,6 +233,8 @@ public class BoardDAO {
 				}
 			} catch (Exception e) {
 				System.out.println("Exception :" + e.getMessage());
+			}finally {
+				pool.freeConnection(objConn, objPstmt);
 			}
 		
 		return udChk;
@@ -262,8 +269,33 @@ public class BoardDAO {
 
 		} catch (Exception e) {
 			System.out.println("Exception:"+e.getMessage());
+		}finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
 		}
 		return ntcNo;
+	}
+	public boolean Delete(int no, String divisions) {
+		boolean dlChk = false;
+		String sql = "delete from bbsList where divisions=? and no=?";
+		
+		try {
+			objConn = pool.getConnection();
+			
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, divisions);
+			objPstmt.setInt(2, no);
+			
+			objPstmt.executeUpdate();
+			
+			if(objPstmt.executeUpdate()>0) {
+				dlChk = true;
+			}
+		} catch (Exception e) {
+			System.out.println("Exception :" +e.getMessage());
+		}finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		return dlChk;
 	}
 }
 

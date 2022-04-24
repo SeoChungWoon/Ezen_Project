@@ -47,55 +47,41 @@
 							<span id="scWord">"<%=searchText %>"</span>(으)로 조회된 결과는 <span id="scCnt"><%=list.size() %></span>개 입니다.
 					</div>
 					<!-- div.resMsg -->
-				<div class="scTblArea">
-					<table>
-		      		<colgroup>
-		      			<col width="20%" />
-		      			<col width="60%"/>
-		      			<col width="20%"/>
-		      		</colgroup>
-		      			<thead>
-		      				<tr>
-		      					<th>구분</th>
-		      					<th>제목</th>
-		      					<th>내용보기</th>
-		      				</tr>
-		      			</thead>
-						<%
-		      				// JSP 코드 영역
-		      				for(int i=0; i<list.size(); i++){
-		      					BoardVO objVO = (BoardVO)list.get(i);
-		      					
-		      			%>
-		      				<tbody>
-		      					<tr>
-		      						<td><%=objVO.getDivisions() %></td>
-		      						<td>
-		      						<label for="faqRow<%=i+1%>">
-		      						<%=objVO.getTitle() %>
-		      						</label>
-		      						</td>
-		      						<td>
-		      						<label for="faqRow<%=i+1%>">
-		      						<img src="/images/detailIcon.png" alt="펼침버튼" class="detailIcon">
-		      						</label>
-		      						<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
-		      						</td>
-		      					</tr>
-		      					<tr class="hidden">
-		      						<td class="hide" colspan="3">
+		      <div class="main">
+		      		<div class="listTop dFlex">
+		      				<div class="th-title">제목</div>
+		      		</div>
+		      		<!-- div.listTop -->
+		      		<%
+		      			for(int i=0; i<list.size(); i++){
+		      				BoardVO objVO = (BoardVO)list.get(i);
+		      			
+		      		%>
+		      		<div class="sub-main">
+		      				<div class="td-title">
+		      						<div class="title">
+		      							<label for="faqRow<%=i+1 %>">
+		      								<span><%=objVO.getTitle() %></span>
+		      							</label>
+		      							<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
+		      						</div>
+		      						<div class="content hidden">
 		      							<pre><%=objVO.getContent() %></pre>
-		      						</td>
-		      					</tr>		      		
-		      				<% 
-		      				}
-		      				%>
-		      		
-		      				</tbody>
-		      	</table>
-
-				</div>
-				<!--div.scTblArea  -->
+		      						</div>
+		      						<!-- div.content -->
+		      				</div>
+		      				<!-- div.td-title-->
+		      		</div>
+		      		<!-- div.sub-main -->
+		      		<%} %>
+		      </div>
+		      <!-- div.main -->
+		      <div class="btnArea">
+						<input type="hidden" class="orgDV" value="<%=divisions %>">
+						<button type="button" class="searchBtn list-notAd">목록으로</button>
+						<button type="button"class="searchBtn mainMove">메인으로</button>
+					</div>
+					<!-- div.get-send -->
 		</div>
         <!-- div.inner -->
 	</div>

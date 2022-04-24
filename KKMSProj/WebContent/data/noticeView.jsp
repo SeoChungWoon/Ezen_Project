@@ -13,6 +13,7 @@ String divisions = "공지사항";
 int no = Integer.parseInt(request.getParameter("no"));
 int prevNext = 1;
 
+String header = (String)request.getParameter("header");
 //조회수 가져오기
 int nowCnt = regDAO.viewCnt(no);
 
@@ -74,6 +75,7 @@ for(int i = 0; i<ntcNo.length; i++){
 
         				<div class="ntcTitle dFlex">
         						<div class="ntcTitle-left">
+        							<span><%=header %>&ensp;</span>
         							<span><%=objVO.getTitle() %></span>
         						</div>
         						<!-- div.ntcTitle-left -->
@@ -115,12 +117,6 @@ for(int i = 0; i<ntcNo.length; i++){
         		</div>
         		<!-- div.ntcFooter -->
         		<%} %>
-        		<%
-        		for(int j = 0 ; j<ntcNo.length; j++){
-        			out.print(ntcNo[j]+"<br>");
-        			
-        		}
-        		%>
         	</div>
         	<!-- div.ntcViewInner -->
         </div>

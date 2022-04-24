@@ -1,18 +1,19 @@
-<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
-
+<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
+<jsp:setProperty name="regVO" property="*" />
 <%
-	request.setCharacterEncoding("UTF-8");
-	String divisions = (String)request.getParameter("divisions");
-	int no = Integer.parseInt(request.getParameter("no"));
-	boolean deleteChk = false;
-	
-	if(regDAO.Delete(no, divisions)){
-		deleteChk = true;
-	}
+request.setCharacterEncoding("UTF-8");
+String title = (String)request.getParameter("title");
+String content = (String)request.getParameter("content");
+int no = Integer.parseInt(request.getParameter("no"));
+String divisions = (String)request.getParameter("divisions");
+
+boolean res = false;
+if(regDAO.Update(title, content, no, divisions)){
+	res = true;
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,7 +36,8 @@
 <script src="/script/eventScript.js"></script>
 </head>
 <body>
-	<div id="wrap">
+
+  <div id="wrap">
 
 		<div class="sub-body">
 			<div class="inner">
@@ -44,33 +46,26 @@
 					<div class="manager-cont">
 					<div class="manager-tit">
 						<!--  title -->
-						<%if(divisions.equals("FAQ")){ %>
-						<p>게시판 관리 <span class="smallFont">&gt; FAQ 관리 &gt; 삭제하기</span></p>
-						<%}else{ %>
-						<p>게시판 관리 <span class="smallFont">&gt; 공지사항 관리 &gt; 삭제하기</span></p>
-						<%} %>
+						<p>게시판 관리	 <span class="smallFont">&gt; FAQ 관리 &gt; 수정하기</span></p>
 					</div>
-	
 				<div class="tit-cont"> <!--  title -->
-					<p class="tit">게시물이 성공적으로 삭제 되었습니다.</p>
-					
+					<p class="tit">수정이 완료되었습니다.</p>
 				</div>
-				<!--div.tit-cont  -->
-					<div class="btnArea">
+				<!-- div.tit-cont -->
+					<div class="btnArea ">
 						<input type="hidden" class="orgDV" value="<%=divisions %>">
 						<button type="button" class="dlBtn list">목록으로</button>
-						<button type="button"class="dlBtn mainMove">메인으로</button>
+						<button type="button" class="dlBtn mainMove">메인으로</button>
 					</div>
-					<!-- div.get-send -->
-						</div>
+					<!-- div.btnArea -->
+					</div>
 					<!-- div.manager-cont -->
 				</div>
-				<!-- div.managerPage -->			
-				
-	</div>
-	<!-- div.inner -->
-	</div>
-	<!-- div.subbody -->
+				<!-- div.managerPage -->
+</div>
+<!-- div.inner -->
+</div>
+<!-- div.sub-body -->
   </div>
   <!-- div#wrap -->
 </body>

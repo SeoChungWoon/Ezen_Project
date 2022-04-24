@@ -59,7 +59,7 @@ if(cnt != 0){
 					<p class="tit">FAQ게시판</p>
 				</div>
 				<!--div.tit-cont  -->
-  	<form action="faqScRes.jsp" method="post" name="search">
+  	<form action="faqScRes.jsp" method="get" name="search">
   		<div class="searchArea">
   			<span>Search</span>
   			<select name="searchField" class="searchDV">
@@ -95,36 +95,42 @@ if(cnt != 0){
 		      		<span>페이지 : <%=nowPage %> / <%=pageCount %></span>
 		      	</div>
 		      	<!-- div.tblTop 끝 -->
-		      <div class="main">
-		      		<div class="listTop dFlex">
-		      				<div class="th-title">제목</div>
-		      		</div>
-		      		<!-- div.listTop -->
-		      		<%
-		      			for(int i=0; i<objList.size(); i++){
-		      				BoardVO objVO = (BoardVO)objList.get(i);
-		      			
-		      		%>
-		      		<div class="sub-main">
-		      				<div class="td-title">
-		      						<div class="title">
-		      							<label for="faqRow<%=i+1 %>">
-		      								<span><%=objVO.getTitle() %></span>
-		      							</label>
-		      							<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
-		      						</div>
-		      						<div class="content hidden">
-		      							<pre><%=objVO.getContent() %></pre>
-		      						</div>
-		      						<!-- div.content -->
-		      				</div>
-		      				<!-- div.td-title-->
-		      		</div>
-		      		<!-- div.sub-main -->
-		      		<%} %>
-		      </div>
-		      <!-- div.main -->
-		      
+		    <div class="main">
+					<div class="listTop dFlex">
+						<div class="th-title">제목</div>
+						<div class="th-btn">내용</div>
+					</div>
+					<!-- div.listTop -->
+					<%
+					for (int i = 0; i < objList.size(); i++) {
+						BoardVO objVO = (BoardVO) objList.get(i);
+					%>
+					<div class="sub-main">
+						<div class="td-title">
+						<div class="row dFlex">
+							<div class="title">
+								<label for="faqRow<%=i + 1%>"> 
+									<span><%=objVO.getTitle()%></span>
+								</label> 
+								<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i + 1%>">
+							</div>
+							<!-- div.title -->
+								<div class="slideBtn">
+								<label for="faqRow<%=i + 1 %>">
+									<img src="/images/detailIcon.png" alt="펼치기" class="detailIcon">
+								</label>								
+								</div>
+							</div>
+							<!-- div.row -->
+							<div class="content hidden">
+								<pre><%=objVO.getContent()%></pre>
+							</div>
+							<!-- div.content -->
+						</div>
+						<!-- div.td-title-->
+					</div>
+					<!-- div.sub-main -->
+		      <%} %>
 		      <div class="footerArea dFlex">
 		      	<div class="pageArea">
 		      		<%

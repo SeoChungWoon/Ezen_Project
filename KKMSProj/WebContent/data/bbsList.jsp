@@ -61,7 +61,7 @@ BoardVO objVO = null;
 					<p class="tit">공지게시판</p>
 				</div>
 				<!--div.tit-cont  -->
-  		<form action="searchRes.jsp" method="post" name="search">
+  		<form action="searchRes.jsp" method="get" name="search">
   		<div class="searchArea">
   			<span>Search</span>
   			<select name="searchField" class="searchDV">

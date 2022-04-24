@@ -35,29 +35,26 @@ $(function() {
 $(".faqBtn").on("click", function(){
 	let toggle = $(this).is(":checked");
 	if (toggle){
-		$(this).parent().next().slideDown(200);
+		$(this).parent().parent().next().slideDown(200);
 	} else{
-		$(this).parent().next().slideUp(200);
+		$(this).parent().parent().next().slideUp(200);
 	}
-});
-
-
-$(".faqBtn").on("click", function(){
-gsap.fromTo($(".detailIcon"), 1, {rotate: 0},{rotate: 180 });
 });
 
 $(".faqBtn").on("click",function(){
 	$(".content").css({
-		"border-top":"1px solid #ddd"
+		"border-bottom":"1px solid #555"
 		});
 });
 	
-$("button#faq-update").on("click",function(){
-	let chkNo = $("#hd-no").val().trim();
-	let chkTitle=$("#hd-title").val().trim();
-	let chkCont = $("#hd-content").val().trim();
+$("button.udBtn").on("click",function(){
+	let chkNo = $(this).prev().prev().val().trim();
+	let chkDV = $(this).prev().val().trim();
+	let chkTitle=$(this).next().next().val().trim();
+	let chkCont = $(this).next().next().next().val().trim();
 	
-	location.href="/data/faqUpdate.jsp?no="+chkNo+"&title="+chkTitle+"&content="+chkCont;
+	location.href="/data/faqUpdate.jsp?no="+chkNo+"&title="+chkTitle
+	+"&content="+chkCont+"&divisions="+chkDV;
 });
 
 		///////////////////faqList.jsp 영역 끝/////////////////
@@ -65,11 +62,12 @@ $("button#faq-update").on("click",function(){
  
  		///////////////////write.jsp 영역 시작/////////////////
  		
- 		$("#cannel").on("click",function(){
+ 		$("#cancel").on("click",function(){
 
-		let chk = confirm("글쓰기를 취소하시겠습니까?");
+		let chk = confirm("취소하시겠습니까?");
+		
 			if(chk){
-				location.href="/data/bbsListAd.jsp";
+				window.history.back();
 			}else {
 				window.location.reload();
 			}
@@ -124,9 +122,9 @@ $("button#faq-update").on("click",function(){
 			}
 		});
 
-		$("button#faq-delKey").on("click",function(){
-			let noChk = $("#hd-no").val().trim();
-			let dvChk1 = $("#hd-division").val().trim();
+		$("button.faq-del").on("click",function(){
+			let noChk = $(this).prev().prev().prev().val().trim();
+			let dvChk1 = $(this).prev().prev().val().trim();
 			let delChk1 = confirm("정말 삭제하시겠습니까?");
 			if(delChk1 == true){
 				location.href="/data/delete.jsp?no="+noChk+"&divisions="+dvChk1;
@@ -140,11 +138,14 @@ $("button#faq-update").on("click",function(){
 			let sendTi = $("#inputTi").val();
 			let sendCont = $("#inputCont").val();
 			let sendNo = $("#inputNo").val();
+			let sendHd = $(this).prev().prev().val();
 			
 			location.href="/data/update.jsp?no="+sendNo
-			+"&title="+sendTi+"&content="+sendCont;
+			+"&title="+sendTi+"&content="+sendCont+"&header="+sendHd;
 			
 		});
+		
+		
 		
 		$("button.adminPg").on("click",function(){
 			location.href="/data/bbsListAd.jsp";
@@ -172,7 +173,8 @@ $("button#faq-update").on("click",function(){
 		
 		///////////////////noData.jsp 영역 끝/////////////////
 		
-		
+		//////////////////Update 영역 시작//////////////////
+
 });	
 	
 	

@@ -39,31 +39,35 @@ if (cnt != 0) {
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>E-Ticket :회원 관리</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
 <link rel="stylesheet" href="/style/style3.css">
+<link rel="stylesheet" href="/adminPage/style/style_admin.css">
+<link rel="stylesheet" href="/style/style_Event.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
 <script src="/source/gsap.min.js"></script>
 <script src="/script/script.js"></script>
 <script src="/script/script_bbs.js"></script>
 <script src="/script/memberScript.js"></script>
-<title>Insert title here</title>
+<script src="/script/eventScript.js"></script>
 </head>
 <body>
 
 	<div id="wrap">
-		<%@ include file="/include/header.jsp"%>
+
 		<div class="sub-body">
 			<div class="inner">
-				<div class="tit-cont">
-					<!--  title -->
-					<p class="tit">FAQ게시판</p>
-				</div>
-				<!--div.tit-cont  -->
-
-				<form action="faqScRes.jsp" method="post" name="search">
+				<div class="managerPage dFlex">
+					<%@ include file="/adminPage/inc/managerAside.jsp" %>
+					<div class="manager-cont">
+					<div class="manager-tit">
+						<!--  title -->
+						<p>게시판 관리 <span class="smallFont">&gt; FAQ 관리 &gt; FAQ 리스트</span></p>
+					</div>
+				<div class="faqListArea">
+				<form action="faqScResAd.jsp" method="get" name="search">
 					<div class="searchArea">
 						<span>Search</span> <select name="searchField" class="searchDV">
 							<option value="0">선택</option>
@@ -99,6 +103,7 @@ if (cnt != 0) {
 				<div class="main">
 					<div class="listTop dFlex">
 						<div class="th-title">제목</div>
+						<div class="th-btn">내용</div>
 					</div>
 					<!-- div.listTop -->
 					<%
@@ -107,21 +112,31 @@ if (cnt != 0) {
 					%>
 					<div class="sub-main">
 						<div class="td-title">
+						<div class="row dFlex">
 							<div class="title">
-								<label for="faqRow<%=i + 1%>"> <span><%=objVO.getTitle()%></span>
-								</label> <input type="checkbox" class="faqBtn hidden"
-									id="faqRow<%=i + 1%>">
+								<label for="faqRow<%=i + 1%>"> 
+									<span><%=objVO.getTitle()%></span>
+								</label> 
+								<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i + 1%>">
 							</div>
+							<!-- div.title -->
+								<div class="slideBtn">
+								<label for="faqRow<%=i + 1 %>">
+									<img src="/images/detailIcon.png" alt="펼치기" class="detailIcon">
+								</label>								
+								</div>
+							</div>
+							<!-- div.row -->
 							<div class="content hidden">
-								<pre><%=objVO.getContent()%><%=objVO.getNo() %></pre>
+								<pre><%=objVO.getContent()%></pre>
 								<div class="btnArea">
-									<input type="hidden" id="hd-no" value="<%=objVO.getNo()%>">
-									<input type="hidden" id="hd-divisions"
-										value="<%=objVO.getDivisions()%>">
-									<input type="hidden" id="hd-title" value="<%=objVO.getTitle() %>">
-									<input type="hidden" id="hd-content" value="<%=objVO.getContent() %>">
+									<input type="hidden" class="hdNo" value="<%=objVO.getNo()%>">
+									<input type="hidden" class="hdDV"
+										value="<%=divisions%>">
 									<button type="button" class="udBtn" id="faq-update">수정</button>
-									<button type="button" class="udBtn faq-del" >삭제</button>
+									<button type="button" class="faq-del" >삭제</button>
+									<input type="hidden" class="hdTitle" value="<%=objVO.getTitle() %>">
+									<input type="hidden" class="hdCont" value="<%=objVO.getContent() %>">
 								</div>
 								<!-- div.btnArea -->
 							</div>
@@ -215,11 +230,16 @@ if (cnt != 0) {
 
 				</div>
 				<!-- div.footerArea -->
+				</div>
+				<!-- div.faqListArea -->
+						</div>
+					<!-- div.manager-cont -->
+				</div>
+				<!-- div.managerPage -->
 			</div>
 			<!-- div.inner -->
 		</div>
 		<!-- div.subbody -->
-		<%@ include file="/include/footer.jsp"%>
 	</div>
 	<!-- div#wrap -->
 </body>

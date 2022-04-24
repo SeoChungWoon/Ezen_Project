@@ -4,28 +4,28 @@
 /*/////////////////////bbsList.jsp 영역 시작///////////////////////*/
 
 /*div#serachArea 영역 시작*/
-div#wrap>.sub-body>.inner>form>.searchArea{
+div#wrap>.sub-body>.inner form>.searchArea{
 	text-align: center;
 	margin-bottom: 30px;
 	padding: 30px 0;
 	background-color: #f8f8f8;
 }
-div#wrap>.sub-body>.inner>form>.searchArea>span{
+div#wrap>.sub-body>.inner form>.searchArea>span{
 	font-size: 20px;
 	font-weight: bold;
 	margin-right: 10px;
 }
-div#wrap>.sub-body>.inner>form>.searchArea select.searchDV{
+div#wrap>.sub-body>.inner form>.searchArea select.searchDV{
 	height: 30px;
 	width: 100px;
 }
-div#wrap>.sub-body>.inner>form>.searchArea>input#searchBox{
+div#wrap>.sub-body>.inner form>.searchArea>input#searchBox{
 	height: 35px;
 	padding: 0 20px;
 	border: 1px solid #ddd;
 	margin-left: 15px;
 }
-div#wrap>.sub-body>.inner>form>.searchArea>button.btnImg{
+div#wrap>.sub-body>.inner form>.searchArea>button.btnImg{
 	width: 70px;
 	height: 35px;
 	font-weight: bold;
@@ -60,6 +60,8 @@ div#wrap>.sub-body>.inner>form>.searchArea>button.btnImg{
 	border-top: 3px solid #000;
 	border-bottom: 1px solid #ccc;
 }
+
+
 /*div#searchArea 영역 끝*/
 
 /*div.footerArea 시작*/
@@ -85,56 +87,56 @@ div.footerArea>.btnArea button{
 
 
 /*/////////////////////write.jsp 영역 시작///////////////////////*/
-#wrap>.sub-body>.inner>form#writeFrm>#main{
+#wrap>.sub-body>.inner .main>form#writeFrm{
 	width: 70%;
 	margin: 0 auto;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl{
 	width: 100%;
 }
 
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl select#header,
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#titleBox{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl select#header,
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl input#titleBox{
 	width: 100%;
 	margin: 7px 7px;
 	height: 35px;
 	border: 1px solid #d8d8d8;
 	font-size: 18px;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl td#bg{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl td#bg{
 	background-color: #fbfbfb;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl span#writer{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl span#writer{
 	display: inline-block;
 	margin-left: 5px;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table td:first-child{
+#wrap>.sub-body>.inner .main>form#writeFrm>table td:first-child{
 	text-align: left;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl input#titleBox::placeholder{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl input#titleBox::placeholder{
 	color: #aaa;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl img.icon{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl img.icon{
 	margin: 5px 7px;
 	cursor: pointer;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl img.icon:hover{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl img.icon:hover{
 	border: 3px solid #000;
 	border-radius: 5px;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl textarea#content{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl textarea#content{
 	width: 100%;
 	resize: none;
 	margin: 5px 7px;
 	font-size: 14px;
 }
-#wrap>.sub-body>.inner>form#writeFrm>#main>table#writeTbl textarea#content::placeholder{
+#wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl textarea#content::placeholder{
 	color: #aaa;
 	font-size: 18px;
 }
 .btnArea{
 	text-align: right;
-	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .btnArea>button{
 	width: 80px;
@@ -185,7 +187,7 @@ div#header>hr{
 
 /*/////////////////////noticeView.jsp 영역 시작///////////////////////*/
 
-#wrap>.sub-body>.inner>#ntcViewInner{
+#wrap>.sub-body>.inner #ntcViewInner{
 	width: 80%;
 	height: 600px;
 	margin: 0 auto;
@@ -255,10 +257,10 @@ div#header>hr{
 }
 /*/////////////////////noticeView.jsp 영역 끝///////////////////////*/
 /*/////////////////////searchRes.jsp 영역 시작///////////////////////*/
-#wrap>.sub-body>.inner>.resMsg{
+#wrap>.sub-body>.inner .resMsg{
 	margin-bottom: 20px;
 }
-#wrap>.sub-body>.inner>.resMsg span{
+#wrap>.sub-body>.inner .resMsg span{
 	font-size: 22px;
 	color: #f80;
 	font-weight: bold;
@@ -291,58 +293,53 @@ div#header>hr{
 
 
 /*/////////////////////faqList.jsp 영역 시작///////////////////////*/
-.tblArea>table>tbody>tr>td .detailIcon:hover{
-	
-	cursor: pointer;
-}
-.tblArea>table>tbody>tr>td.hide pre{
-	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
-}
-.tblArea>table>tbody>tr>td>label.faqTitle:hover{
-	cursor: pointer;
-}
-.tblArea>table>thead>tr>th input.allChk{
-	margin-left: 5px;
-}
-.tblArea>table>tbody>tr>td button.udBtn{
-	width: 100px;
-	height: 35px;
-	background-color: #fff;
-	font-size: 15px;
-	font-weight: bold;
-	color: #333;
-	border-radius: 5px;
-}
-div.main{
+
+div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 	width: 100%;
 	border-top: 3px solid #000;
 	text-align: center;
 }
 .main>.listTop{
-	padding: 5px 20px;
+	padding: 5px 0;
 	width: 100%;
 	border-bottom: 1px solid #aaa;
 	background-color: #f5f5f5;
 }
 .main>.listTop>.th-title{
-	width: 100%;
+	width: 94%;
 	padding: 10px 20px;
 	text-align: center;
 }
-.main>.sub-main>.td-title{
+.main>.listTop>.th-btn{
+	padding: 10px 0;
+	text-align: center;
+	width: 165px;
+}
+.main>.sub-main>.td-title>.row{
+		border-bottom: 1px solid #aaa;
+}
+.main>.sub-main>.td-title>.row>.title{
 	width: 100%;
 	text-align: center;
-	border-bottom: 1px solid #aaa;
+	
 }
-.main>.sub-main>.td-title>.title{
-	padding: 15px 50px;
+.main>.sub-main>.td-title>.row>.title{
+	padding: 15px 0;
 }
-.main>.sub-main>.td-title>.title span{
+.main>.sub-main>.td-title>.row>.title span{
 	font-weight: bold;
 	font-size: 18px;
 }
-.main>.sub-main>.td-title>.title span:hover{
+.main>.sub-main>.td-title .title span:hover,
+.main>.sub-main>.td-title .slideBtn img:hover{
 	cursor: pointer;
+}
+.main>.sub-main>.td-title .slideBtn{
+		
+		width: 180px;
+}
+.main>.sub.main>.td-title .scRes{
+	width: 120px;
 }
 .content{
 		border:none;
@@ -366,7 +363,7 @@ div.main{
 #wrap>.sub-body>.inner>section.sec4>div>p.tit {
 	margin-bottom: 40px;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 22px;
 }
 
 #wrap>.sub-body>.inner>section.sec4>div>p.txt {
@@ -467,7 +464,7 @@ div.main{
 
 /*/////////////////////writeRes.jsp 영역 시작///////////////////////*/
 
-#wrap>.sub-body>.inner>.tit-cont p#writeRes-p{
+#wrap>.sub-body>.inner .tit-cont p#writeRes-p{
 	font-size: 20px;
 }
 
@@ -479,11 +476,14 @@ div.main{
 	margin: 5px 10px;
 	transform: translateX(-280px);
 }
-
+#wrap>.sub-body>.inner .btnArea>.searchBtn{
+	margin: 5px 10px;
+}
 /*/////////////////////delete.jsp 영역 끝///////////////////////*/
 
 .btnArea>button.adminPg{
 	width: 300px;
+
 }
 
 

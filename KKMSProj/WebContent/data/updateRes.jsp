@@ -8,7 +8,7 @@ request.setCharacterEncoding("UTF-8");
 String title = (String)request.getParameter("title");
 String content = (String)request.getParameter("content");
 int no = Integer.parseInt(request.getParameter("no"));
-String divisions = "공지사항";
+String divisions = (String)request.getParameter("divisions");
 
 boolean res = false;
 if(regDAO.Update(title, content, no, divisions)){
@@ -18,31 +18,36 @@ if(regDAO.Update(title, content, no, divisions)){
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-     <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style1.css">
-	 <link rel="stylesheet" href="/style/style2.css">
-     <link rel="stylesheet" href="/style/style3.css">
-     <script src="/source/jquery-3.6.0.min.js"></script>
-	 <script src="/source/gsap.min.js"></script>
-	<script src="/script/script.js"></script>
-	 <script src="/script/script_bbs.js"></script>
-	 <script src="/script/memberScript.js"></script>
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Ticket :회원 관리</title>
+<link rel="stylesheet" href="/style/style_Common.css">
+<link rel="stylesheet" href="/style/style1.css">
+<link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet" href="/style/style3.css">
+<link rel="stylesheet" href="/adminPage/style/style_admin.css">
+<link rel="stylesheet" href="/style/style_Event.css">
+<script src="/source/jquery-3.6.0.min.js"></script>
+<script src="/source/gsap.min.js"></script>
+<script src="/script/script.js"></script>
+<script src="/script/script_bbs.js"></script>
+<script src="/script/memberScript.js"></script>
+<script src="/script/eventScript.js"></script>
 </head>
 <body>
 
   <div id="wrap">
- <%@ include file="/include/header.jsp"%>
-		<div class="sub-body dFlex">
-				<div class="mypageInner">
-					<%@include file="/include/myPageAside.jsp" %>				        
-         		</div>
-				<!-- div.mypageInner -->			
+
+		<div class="sub-body">
 			<div class="inner">
+				<div class="managerPage dFlex">
+					<%@ include file="/adminPage/inc/managerAside.jsp" %>
+					<div class="manager-cont">
+					<div class="manager-tit">
+						<!--  title -->
+						<p>게시판 관리	 <span class="smallFont">&gt; 공지사항 관리 &gt; 수정하기</span></p>
+					</div>
 				<div class="tit-cont"> <!--  title -->
 					<p class="tit">수정이 완료되었습니다.</p>
 				</div>
@@ -53,11 +58,14 @@ if(regDAO.Update(title, content, no, divisions)){
 						<button type="button" class="dlBtn mainMove">메인으로</button>
 					</div>
 					<!-- div.btnArea -->
+					</div>
+					<!-- div.manager-cont -->
+				</div>
+				<!-- div.managerPage -->
 </div>
 <!-- div.inner -->
 </div>
 <!-- div.sub-body -->
-	<%@ include file="/include/footer.jsp"%>
   </div>
   <!-- div#wrap -->
 </body>
