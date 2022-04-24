@@ -170,8 +170,9 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 						<!--  // infoBox -->
 						
 						<%
-						List objMList = mMgr.myPage(memberId);
-						RegisterBean mPList = (RegisterBean) objMList.get(0);
+						if(memberId != null) {
+							List objMList = mMgr.myPage(memberId);
+							RegisterBean mPList = (RegisterBean) objMList.get(0);
 						%>
 						<form action="" method="post" class="reserveForm">
 							<input type="hidden" name="rUId" id="rUId" value="<%=memberId %>"/>
@@ -197,8 +198,10 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 							<input type="hidden" name="remainPrice" id="remainPrice" value=""/>
 							<!-- 인원 수 --> 
 							<input type="hidden" name="headCnt" id="headCnt" value="1명"/>
-							
 						</form>
+						<%	
+						}
+						%>
 							<div class="reserveBox">
 								<div class="selDate">
 									<p class="txt">날짜/시간 선택</p>
@@ -255,6 +258,11 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 												<dt>시간</dt>
 												<dd><span class="time"></span></dd>
 											</dl>
+						<%
+						if(memberId != null) {
+							List objMList = mMgr.myPage(memberId);
+							RegisterBean mPList = (RegisterBean) objMList.get(0);
+						%>
 											<dl class="resSMList">
 												<dt>
 													<div class="resSMChk resChk">
@@ -279,6 +287,10 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 													</div>
 												</dd>
 											</dl>
+													
+							<% 
+						}
+							%>
 											<dl class="resHeadCnt">
 												<dt>인원</dt>
 												<dd>
@@ -321,7 +333,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 								} else {
 								%>
 								<div class="btn-cont">
-									<button type="button" onclick="alert('로그인 후 예매가능합니다.'); location.href='/member/login.jsp'">예매하기</button>
+									<button type="button" onclick="alert('날짜를 선택해주세요.');">예매하기</button>
 								</div>
 								<%
 								}

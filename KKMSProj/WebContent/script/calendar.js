@@ -8,7 +8,6 @@ var realToDay = date.getDate();
 //사용자가 클릭한 일자의 월, 일 객체
 var selectedMonth = null;
 var selectedDate = null;
-
 $(function() {
 	buildCalendar();
 });
@@ -100,34 +99,39 @@ function buildCalendar() {
 		// 예약 가능
 		} else {
 			cell.onclick = function() {
-				if(!$(this).hasClass("off")){
-					selectedTimeAndTotalPriceInit();
-					//선택된 날의 연, 월, 일 계산 (일자의 경우 id속성 참조)
-					clickedYear = today.getFullYear();
-					clickedMonth = (1 + today.getMonth());
-					clickedDate = this.getAttribute('id');
-	
-					clickedDate = clickedDate >= 10 ? clickedDate : '0' + clickedDate;
-					clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
-					clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
+				if($("#rUId").val() != null){
+					if(!$(this).hasClass("off")){
+						selectedTimeAndTotalPriceInit();
+						//선택된 날의 연, 월, 일 계산 (일자의 경우 id속성 참조)
+						clickedYear = today.getFullYear();
+						clickedMonth = (1 + today.getMonth());
+						clickedDate = this.getAttribute('id');
+		
+						clickedDate = clickedDate >= 10 ? clickedDate : '0' + clickedDate;
+						clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
+						clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
+						//
+						//하단에 예약일시 표시
+						// 날짜
+						inputField = document.getElementById("selectedDate");
+						inputField.value = clickedYMD;
+						$(".reservRst .date").text(clickedYMD);
+						
+						//선택된 월, 일 변수 저장
+						selectedMonth = today.getMonth() + 1;
+						selectedDate = this.getAttribute('id');
+						
+						//선택된 셀 색 변화
+						$("tr").find("a").removeClass("on");
+						$(this).find("a").addClass("on");
+						$(".choiceBlock").show();
+						$(".choiceBlock .timeChoice a").removeClass("on");
+					}
 					//
-					//하단에 예약일시 표시
-					// 날짜
-					inputField = document.getElementById("selectedDate");
-					inputField.value = clickedYMD;
-					$(".reservRst .date").text(clickedYMD);
-					
-					//선택된 월, 일 변수 저장
-					selectedMonth = today.getMonth() + 1;
-					selectedDate = this.getAttribute('id');
-					
-					//선택된 셀 색 변화
-					$("tr").find("a").removeClass("on");
-					$(this).find("a").addClass("on");
-					$(".choiceBlock").show();
-					$(".choiceBlock .timeChoice a").removeClass("on");
+				}else{
+					alert("로그인 후 예매가능합니다.");
+					location.href="/member/login.jsp";
 				}
-				//
 			}
 		}
 		cell.innerHTML = "<a href='javascript:'><span>" + i + "</span></a>";
