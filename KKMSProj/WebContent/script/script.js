@@ -68,17 +68,8 @@ $(function() {
 			$(this).find("label").off("click").on("click", function() {
 				if (!$(this).parent(".chk-group").hasClass("checked")) {
 					$(this).parent(".chk-group").addClass("checked");
-
-
-					if ($(this).parent(".chk-group").hasClass("like")) {
-						//alert("찜 목록에 추가되었습니다.");
-					}
 				} else {
 					$(this).parent(".chk-group").removeClass("checked");
-
-					if ($(this).parent(".chk-group").hasClass("like")) {
-						//alert("찜 목록에서 삭제되었습니다.");
-					}
 				}
 			});
 		});
@@ -210,15 +201,24 @@ $(function() {
 	//product price calc
 	if ($(".price.sale").length != 0) {
 		priceCalc();
-
+		
 		$(".price.sale").each(function(e) {
 			let oriPrice = parseInt($(this).find("del").text());
 			let disCPrice = parseInt($(this).find("ins").text());
 			oriPrice = oriPrice.toLocaleString();
 			disCPrice = disCPrice.toLocaleString();
-
+	
 			$(this).find("del").text(oriPrice);
 			$(this).find("ins").text(disCPrice);
+		});
+	
+	}
+	if ($(".localString").length != 0) {
+		$(".localString").each(function(e) {
+			let resCPrice = parseInt($(this).text());
+			resCPrice = resCPrice.toLocaleString();
+
+			$(this).text(resCPrice);
 		});
 	}
 
@@ -550,13 +550,234 @@ $(function() {
 			});
 		});
 	}
-
+	
+	// 상품 예매하기
+	if($(".reserveBox").length != 0){
+		// 시간 선택
+		$(".choiceBlock .timeChoice a").each(function(e){
+			$(this).on("click", function(){
+				$(".choiceBlock .timeChoice a").removeClass("on");
+				$(this).addClass("on");
+				
+				$("#selectedTime").val($(this).text());
+				$(".reservRst .time").text($(this).text());
+				$(".resCPrice .price").text($("#realPrice").val());
+				
+				let cngPrice = parseInt($(".resCPrice .price").text());
+				cngPrice = cngPrice.toLocaleString();
+	
+				$(".resCPrice .price").text(cngPrice);
+			})
+		});
+		// 상품 예매하기 버튼
+		$(".resBtn").on("click", function(){
+			if($(".reservRst .date").text() == ""){
+				alert("날짜를 선택해주세요");
+			}else if($(".reservRst .time").text() == ""){
+				alert("시간를 선택해주세요");
+			}
+		});
+		
+		var cntNum = 1;
+		var oriPriceCalc = $("#realPrice").val();
+		$("#orisavelPrice").val($("#oriRealPrice").val());
+		console.log(oriPriceCalc);
+		// 적립금
+		$(".resSMList .resSMChk label").on("click", function(){
+			if($(".reservRst .date").text() == ""){
+				alert("날짜를 선택해주세요");
+				$(this).parent(".resSMChk").removeClass("checked");
+			}else if($(".reservRst .time").text() == ""){
+				alert("시간를 선택해주세요");
+				$(this).parent(".resSMChk").removeClass("checked");
+			}else{
+				if(!$(this).parent("").hasClass("checked")){
+					if( $("#oriMPrice").val() < 10000){
+						alert("적립금은 만원 이상 남아있을 시 사용 가능합니다.");
+					}else{
+						cntNum = 1;
+						$(".resHeadCnt .cntNum").text("1");
+						$("#headCnt").val(cntNum+"명");
+						$(".resCPrice .price").text($("#oriRealPrice").val() * cntNum);
+						$("#realPrice").val($("#oriRealPrice").val() * cntNum);
+						
+						$(this).parent("").addClass("checked");
+						
+						let resCPrice = parseInt($(".resCPrice .price").text().trim());
+						resCPrice = resCPrice.toLocaleString();
+						$(".resCPrice .price").text(resCPrice);
+						
+						if($("#realPrice").val() >= 10000){
+							if (!$(this).parent("").hasClass("checked")) {
+								$("#resSMP").attr("disabled", true);
+							} else {
+								$("#resSMP").attr("disabled", false).focus();
+							}
+						}else{
+							alert("결제금액 만원 이상부터 적립금 사용 가능합니다.");
+							$(this).parent(".resSMChk").removeClass("checked");
+						}
+					}
+				}else{
+					$(this).parent("").removeClass("checked");
+				}
+			}
+		});
+		
+		$(".headCnt").each(function(e){
+			console.log(cntNum);
+			$(".increase").on("click",function(){
+				if($(".reservRst .date").text() == ""){
+					alert("날짜를 선택해주세요");
+				}else if($(".reservRst .time").text() == ""){
+					alert("시간를 선택해주세요");
+				}else{
+					if($(this).siblings("span").text() >= 5){
+						$(".increseRed").show();
+						$(".decreseRed").hide();
+						$(".resHeadCnt .cntNum").text("5");
+						cntNum = 5;
+					}else{
+						cntNum++;
+						console.log(cntNum);
+						$(".increseRed").hide();
+						$(".decreseRed").hide();
+						$(this).siblings("span").text(cntNum);
+						$("#headCnt").val(cntNum+"명");
+						
+						var headRCnt =  parseInt($("#orisavelPrice").val().trim()) * cntNum;
+						$(".resCPrice .price").text(headRCnt);
+						$("#realPrice").val(headRCnt);
+						
+						let resCPrice = parseInt($(".resCPrice .price").text().trim());
+						resCPrice = resCPrice.toLocaleString();
+						$(".resCPrice .price").text(resCPrice);
+					}
+				}
+			});
+			
+			$(".decrease").on("click",function(){
+				if($(".reservRst .date").text() == ""){
+					alert("날짜를 선택해주세요");
+				}else if($(".reservRst .time").text() == ""){
+					alert("시간를 선택해주세요");
+				}else{
+					if($(this).siblings("span").text() < 2){
+						$(".decreseRed").show();
+						$(".increseRed").hide();
+						$(".resHeadCnt .cntNum").text("1");
+						cntNum = 1;
+					}else{
+						cntNum--;
+						$(".decreseRed").hide();
+						$(".increseRed").hide();
+						$(this).siblings("span").text(cntNum);
+						$("#headCnt").val(cntNum+"명");
+					}
+					
+				}
+			});
+		});
+		
+		$("#resSMP").on("change", function() {
+			
+			if($(this).val() <= 5000){
+					
+				$(".remainSM .charge").text($("#oriMPrice").val());
+				$("#orisavelPrice").val($("#oriRealPrice").val());
+				$("#remainPrice").val($("#oriMPrice").val());
+				$("#realPrice").val($("#oriRealPrice").val());
+				$("#savePrice").val("0");
+				$(".resCPrice .price").text($("#oriRealPrice").val());
+				$(".maxSMChk").removeClass("checked");
+				
+				// 사용 적립금
+				$("#savePrice").val($(this).val().trim());
+				// 남은 적립금
+				$("#remainPrice").val($(".remainSM .charge").text());
+		
+				// 남은 적립금
+				var remainPrice = parseInt($(".remainSM .charge").text().trim());
+				var resSMP = $("#resSMP").val();
+				var remainCng = remainPrice - resSMP;
+				$("#remainPrice").val(remainCng);
+				$(".remainSM .charge").text(remainCng);
+				$("#orisavelPrice").val($("#oriRealPrice").val() - $("#savePrice").val());
+				
+				// 총 결제 금액
+				var realPrice = $("#realPrice").val(); 
+				var savePrice = $("#savePrice").val(); 
+				var saleCalc = realPrice - savePrice;
+				$("#realPrice").val(saleCalc);
+				
+				var cngPrice = parseInt(saleCalc);
+				cngPrice = cngPrice.toLocaleString();
+				$(".resCPrice .price").text(cngPrice);
+				
+				$(".resSMList p.redTxt").hide();
+				$("#resSMP").removeClass("red");
+			}else{
+				$(".resSMList p.redTxt").show();
+				$("#resSMP").addClass("red");
+				
+				$(".remainSM .charge").val($("#oriMPrice").val());
+				$(this).val("0").focus();
+			}
+		});
+		
+		$(".maxSMChk").each(function(e){
+			$(this).find("label").on("click", function(){
+				if($(".resSMList .resSMChk").hasClass("checked")){
+					if(!$(".maxSMChk").hasClass("checked")){
+						$(".maxSMChk").addClass("checked");
+						console.log("11111");
+						
+						
+						cntNum = 1;
+						$(".resHeadCnt .cntNum").text("1");
+						$("#headCnt").val(cntNum+"명");
+						
+						$("#orisavelPrice").val($("#oriRealPrice").val());
+						$(".remainSM .charge").text($("#oriMPrice").val());
+						$("#remainPrice").val($("#oriMPrice").val());
+						$("#realPrice").val($("#oriRealPrice").val());
+						$(".resCPrice .price").text($("#oriRealPrice").val());
+						$("#resSMP").val("5000");
+						$("#savePrice").val("5000");
+						
+						// 남은 적립금
+						var remainPrice = parseInt($(".remainSM .charge").text().trim());
+						var resSMP = $("#resSMP").val();
+						var remainCng = remainPrice - resSMP;
+						$("#remainPrice").val(remainCng);
+						$("#orisavelPrice").val($("#oriRealPrice").val() - 5000);
+						$(".remainSM .charge").text(remainCng);
+						
+						// 총 결제 금액
+						var realPrice = $("#realPrice").val(); 
+						var savePrice = $("#savePrice").val(); 
+						var saleCalc = realPrice - savePrice;
+						$("#realPrice").val(saleCalc);
+						
+						var cngPrice = parseInt(saleCalc);
+						cngPrice = cngPrice.toLocaleString();
+						$(".resCPrice .price").text(cngPrice);
+					}else{
+						$(".maxSMChk").removeClass("checked");
+						console.log("2222s");
+					}
+				}
+			});
+		});
+	}
+	
+	
 	// swiper
 	// review
 	if ($(".photo-list").length != 0) {
 		var revSwiper = new Swiper('.photo-list', {
 			slidesPerView: "auto",
-			spaceBetween: 10,
+//			spaceBetween: 10,
 			observer: true,
 			observeParents: true,
 			navigation: {
@@ -707,15 +928,22 @@ function priceCalc() {
 		var priceCalc = costPrice - (costPrice * sale);
 
 		// discounted price
-		$(this).find("span.discount-price ins").text(priceCalc);
+		if($(".discount-price").length > 0){
+			$(this).find("span.discount-price ins").text(priceCalc);
+			$("#realPrice").val(priceCalc);
+			$("#oriRealPrice").val(priceCalc);
+		}else{
+			$("#realPrice").val($("#oriMPrice").val());
+			$("#oriRealPrice").val($("#oriMPrice").val());
+		}
 
 		// not sale
 		if ($(this).children("span").length < 2) {
 			$(this).find(".original").addClass("keep");
 		}
-
 	});
 }
+
 // review file명 불러오기
 function fileVal(a)
 {

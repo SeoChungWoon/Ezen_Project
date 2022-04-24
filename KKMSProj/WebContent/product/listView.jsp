@@ -1,3 +1,4 @@
+<%@page import="pack_Member.RegisterBean"%>
 <%@page import="pack_Product.ProWSelBean"%>
 <%@page import="pack_Product.ProRevBean"%>
 <%@page import="pack_Product.ProListBean"%>
@@ -12,6 +13,7 @@
 <jsp:setProperty name="prodRevBean" property="*" />
 <jsp:useBean id="prodWSBean" class="pack_Product.ProWSelBean" />
 <jsp:setProperty name="prodWSBean" property="*" />
+<jsp:useBean id="mMgr" class="pack_Member.MemberMgr" />
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -21,6 +23,7 @@ int pNo1 = pNo - 1;
 
 List objList = prodMgr.listOutput();
 ProListBean mList = (ProListBean) objList.get(pNo1);
+
 
 %>
 <!DOCTYPE html>
@@ -165,57 +168,166 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 							</div>
 						</div>
 						<!--  // infoBox -->
-
-						<div class="reserveBox">
-							<div class="selDate">
-								<p class="txt">날짜/시간 선택</p>
-
-								<div class="date-desc">
-									<div class="dateBox">
-										<div class="dateYM">
-											<a href="javascript:" onclick="prevCalendar()" title="전"
-												class="prev"></a>
-											<p class="dateTxt" id="dateTxt"></p>
-											<p id="date"></p>
-											<a href="javascript:" onclick="nextCalendar()" title="후"
-												class="next"></a>
+						
+						<%
+						List objMList = mMgr.myPage(memberId);
+						RegisterBean mPList = (RegisterBean) objMList.get(0);
+						%>
+						<form action="" method="post" class="reserveForm">
+							<input type="hidden" name="rUId" id="rUId" value="<%=memberId %>"/>
+							<input type="hidden" name="rPNo" id="rPNo" value="<%=pNo %>"/>
+							
+							<input type="hidden" name="oriPrice" id="oriPrice" value="<%=mList.getpOriPrice()%>"/>
+							<input type="hidden" name="salePrice" id="salePrice" value="<%=mList.getpSalePercent()%>"/>
+							<!-- 총 결제 금액 --> 
+							<input type="hidden" name="oriRealPrice" id="oriRealPrice" value=""/>
+							<!-- 총 결제 금액(적립금 사용한 원가) --> 
+							<input type="hidden" name="orisavelPrice" id="orisavelPrice" value=""/>
+							<!-- 총 결제 금액(적립금 사용하면 바뀜) --> 
+							<input type="hidden" name="realPrice" id="realPrice" value=""/>
+							
+							<input type="hidden" name="selectedDate" id="selectedDate" value=""/>
+							<input type="hidden" name="selectedTime" id="selectedTime" value=""/>
+							
+							<!-- 기본 설정 적립금 --> 
+							<input type="hidden" name="oriMPrice" id="oriMPrice" value="<%=mPList.getePay() %>"/>
+							<!-- 사용한 적립금 --> 
+							<input type="hidden" name="savePrice" id="savePrice" value=""/>
+							<!-- 남은 적립금 --> 
+							<input type="hidden" name="remainPrice" id="remainPrice" value=""/>
+							<!-- 인원 수 --> 
+							<input type="hidden" name="headCnt" id="headCnt" value="1명"/>
+							
+						</form>
+							<div class="reserveBox">
+								<div class="selDate">
+									<p class="txt">날짜/시간 선택</p>
+	
+									<div class="date-desc">
+										<div class="dateBox">
+											<div class="dateYM">
+												<a href="javascript:" onclick="prevCalendar()" title="전"
+													class="prev"></a>
+												<p class="dateTxt" id="dateTxt"></p>
+												<p id="date"></p>
+												<a href="javascript:" onclick="nextCalendar()" title="후"
+													class="next"></a>
+											</div>
+											<table id="calendar">
+												<caption>전시 예매를 위한 날짜 선택의 대한 정보</caption>
+	
+												<colgroup>
+													<col />
+												</colgroup>
+												<tbody>
+													<tr>
+														<th><span class="red">일</span></th>
+														<th><span>월</span></th>
+														<th><span>화</span></th>
+														<th><span>수</span></th>
+														<th><span>목</span></th>
+														<th><span>금</span></th>
+														<th><span class="blue">토</span></th>
+													</tr>
+												</tbody>
+											</table>
 										</div>
-										<table id="calendar">
-											<caption>전시 예매를 위한 날짜 선택의 대한 정보</caption>
-
-											<colgroup>
-												<col />
-											</colgroup>
-											<tbody>
-												<tr>
-													<th><span class="red">일</span></th>
-													<th><span>월</span></th>
-													<th><span>화</span></th>
-													<th><span>수</span></th>
-													<th><span>목</span></th>
-													<th><span>금</span></th>
-													<th><span class="blue">토</span></th>
-												</tr>
-											</tbody>
-										</table>
+										<!-- // dateBox -->
+										<div class="timeBox">
+											<div class="choiceBlock">
+												<p class="timeChoice">
+													<a href="javascript:">오전 10시 30분</a>
+												</p>
+												<p class="timeChoice">
+													<a href="javascript:">오후 1시 00분</a>
+												</p>
+												<p class="timeChoice">
+													<a href="javascript:">오후 4시 00분</a>
+												</p>
+											</div>
+										</div>
+										<div class="reservRst">
+											<dl>
+												<dt>날짜</dt>
+												<dd><span class="date"></span></dd>
+											</dl>
+											<dl>
+												<dt>시간</dt>
+												<dd><span class="time"></span></dd>
+											</dl>
+											<dl class="resSMList">
+												<dt>
+													<div class="resSMChk resChk">
+														<input type="checkbox" name="" id="resSM" />
+														<label for="resSM">적립금</label>
+													</div>
+												</dt>
+												<dd>
+													<div class="maxSMChk resChk">
+														<input type="checkbox" name="maxSM" id="maxSM"/>
+														<label for="maxSM">최대 사용</label>
+													</div>
+													<p>	
+														
+														<input type="text" class="" name="resSMP" id="resSMP" value="0" disabled="disabled"/> <span>원</span>
+													</p>
+													<p class="redTxt">* 최대 5000원까지 사용가능합니다.</p>
+												</dd>
+												<dd>
+													<div class="remainSM">
+														<p class="txt">현재 남은 적립금 : <span class="charge"><%=mPList.getePay() %></span> 원</p>
+													</div>
+												</dd>
+											</dl>
+											<dl class="resHeadCnt">
+												<dt>인원</dt>
+												<dd>
+													<div class="headCnt">
+														<button type="button" class="decrease"><span class="blind">- 1</span></button>
+														<span class="cntNum">1</span>
+														<button type="button" class="increase"><span class="blind">+ 1</span></button>
+													</div>
+													<div class="txt">
+														<p class="increseRed">* 최대 5명까지 가능합니다.</p>
+														<p class="decreseRed">* 최소 1명까지 가능합니다.</p>
+													</div>
+												</dd>
+											</dl>
+											<dl class="resCPrice">
+												<dt>가격</dt>
+												<dd>
+													<p><span class="localString price">0</span> <span>원</span></p>
+												</dd>
+											</dl>
+										</div>
+										<!-- // reservRst -->
 									</div>
-									<!-- // dateBox -->
-									<div class="timeBox">시간 선택 영역</div>
+									
+									<ul class="contInfo">
+										<li>* 적립금은 5000원까지 사용가능합니다.</li>
+										<li>* 적립은 결제 금액의 1% 적립됩니다.</li>
+										<li>* 결제금액 만원 이상부터 적립금 사용 가능합니다.</li>
+									</ul>
 								</div>
+								<!-- // selDate -->
+								
+								<%
+								if(memberId != null){
+								%>
+								<div class="btn-cont">
+									<button type="button" class="btn open-modal resBtn" data-target="">예매하기</button>
+								</div>
+								<%
+								} else {
+								%>
+								<div class="btn-cont">
+									<button type="button" onclick="alert('로그인 후 예매가능합니다.'); location.href='/member/login.jsp'">예매하기</button>
+								</div>
+								<%
+								}
+								%>
 							</div>
-							<!-- // selDate -->
-							<div class="reserveRst">
-								<span>선택한 날짜 : </span> <input id="selectedDate"
-									name="selectedDate" value="" readonly /> <span>결제할 가격 :
-								</span> <input id="totalPrice" name="totalPrice" value="" readonly />
-							</div>
-							<!--  // reserveRst -->
-							<div class="btn-cont">
-								<button type="button">예매하기</button>
-								<button type="button">초기화</button>
-							</div>
-						</div>
-						<!--  // reserveBox -->
+							<!--  // reserveBox -->
 
 						<div class="detailBox">
 							<div class="detail-tab">
@@ -448,7 +560,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 										%>
 																<div class="chk-group checked">
 																	<input type="checkbox" name="rateStar" id="rateStar" value=""/> 
-																	<label for="rateStar"><a href="javascript:"><span class="blind">점</span></a></label>
+																	<label for="rateStar"><a href="javascript:"><span class="blind"></span></a></label>
 																</div>
 										<%
 												}
@@ -457,7 +569,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 										%>
 																<div class="chk-group">
 																	<input type="checkbox" name="rateStar" id="rateStar" value=""  /> 
-																	<label for="rateStar"><a href="javascript:"><span class="blind">점</span></a></label>
+																	<label for="rateStar"><a href="javascript:"><span class="blind"></span></a></label>
 																</div>
 										<%
 												}

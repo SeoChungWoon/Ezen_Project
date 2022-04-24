@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>전시 리스트</title>
+<title>E-Ticket : 전시 리스트</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
@@ -40,18 +40,6 @@
 					</ul>
 
 					<div class="area-desc">
-						<!-- 
-						<div class="desc-type">
-							<p class="txt">지역별 보기</p>
-						</div>
-
-						<ul class="area-tab">
-							<li class="on"><a href="javascript:">전체</a></li>
-							<li><a href="javascript:">서울</a></li>
-							<li><a href="javascript:">경기/인천</a></li>
-							<li><a href="javascript:">대전/충청/강원</a></li>
-						</ul>
-						 -->
 						<div class="right-srh">
 							<ul class="rank-tab">
 								<li class="on"><a href="javascript:">인기순</a></li>
@@ -99,7 +87,7 @@
 										<div class="wishRes hidden"></div>
 									</div>
 								</div>
-								<p class="img">
+								<p class="img">>
 									<img src="/images/<%=mList.getpImg()%>" alt="" />
 								</p>
 								<div class="txt-info">

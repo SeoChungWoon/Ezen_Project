@@ -194,3 +194,78 @@
 	<!-- // pop_body -->
 </div>
 <!-- // pop_wrap -->
+
+
+<!-- 예매하기 확인 -->
+<div class="pop_wrap modal imgPop" id="popup5">
+	
+	<div class="pop_body">
+		<div class="pop_div">
+			<p class="pop_tit">예매 내역</p>
+			
+			<div class="pop_reserve">
+				<div class="tit"><%=mList.getpTitle() %></div>
+				
+				<div class="desc-type">
+					<div class="left">
+						<p class="img"><img src="/images/<%=mList.getpImg() %>" alt="" /></p>
+					</div>
+					
+					<div class="right">
+						<dl class="date">
+							<dt>날짜</dt>
+							<dd></dd>
+						</dl>
+						<dl class="time">
+							<dt>시간</dt>
+							<dd></dd>
+						</dl>
+						<dl class="saveMoney">
+							<dt>사용한 적립금</dt>
+							<dd class="use"></dd>
+							<dt>현재 남은 적립금</dt>
+							<dd class="remain"></dd>
+						</dl>
+						<dl>
+							<dt>결제 금액</dt>
+							<dd></dd>
+						</dl>
+						<dl>
+							<dt>결제 수단 선택</dt>
+							<dd>
+								<div class="charge-cont">
+									<div class="radio-group">
+										<input type="radio" name="" id=""/>
+										<label for="">신용카드</label>
+									</div>
+									<div class="radio-group">
+										<input type="radio" name="" id=""/>
+										<label for="">무통장 입금</label>
+									</div>
+									<select name="" id="">
+										<option value="신한 110-000-000000 (예금주 : 서청운)">신한 110-000-000000 (예금주 : 서청운)</option>
+										<option value="우리 1002-000-000000 (예금주 : 서청운)">농협 1002-000-000000 (예금주 : 서청운)</option>
+										<option value="기업 010-1111-2222 (예금주 : 서청운)">기업 010-1111-2222 (예금주 : 서청운)</option>
+									</select>
+								</div>
+								<p class="txt">* 죄송합니다.현재 무통장입금 결제만 가능합니다.</p>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- // desc-type -->
+				<div class="btn-cont">
+					<button type="button" class="chargeBtn">결제하기</button>
+				</div>
+			</div>
+			<!-- // pop_reserve -->
+		</div>
+		<!-- // pop_div -->
+
+		<div class="pop_close">
+			<a href="javascript:" class="close-modal reviewBtn"><span class="blind">닫기</span></a>
+		</div>
+	</div>
+	<!-- // pop_body -->
+</div>
+<!-- // pop_wrap -->

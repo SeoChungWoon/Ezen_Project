@@ -27,10 +27,8 @@ function buildCalendar() {
 	let eYear = endDate.substring(0, 4);
 	let eMonth = endDate.substring(5, 7);
 	let eDay = endDate.substring(8,10);
-	//alert(eYear+" "+eMonth+" "+eDay);
-	//alert(eDate);
 	
-
+	
 	var firstDate = new Date(today.getFullYear(), today.getMonth(), 1);
 	var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 	//
@@ -41,7 +39,6 @@ function buildCalendar() {
 	while (calendarTable.rows.length > 2) {
 		calendarTable.deleteRow(calendarTable.rows.length - 1);
 	}
-	
 	row = calendarTable.insertRow();
 	
 	row = calendarTable.insertRow();
@@ -64,6 +61,7 @@ function buildCalendar() {
 
 		if (cnt % 7 == 1) {
 			cell.innerHTML = "<a href='javascript:'><span class='red'>" + i + "</span></a>";
+			$(cell).addClass("off");
 		}
 
 		if (cnt % 7 == 0) {
@@ -88,7 +86,7 @@ function buildCalendar() {
 				noCount += 1;
 			} else if (nowMonth >= eMonth && i < realToDay && nowMonth == realMonth) {
 				noCount += 1;
-			} else if ((nowMonth >= sMonth && i < realToDay) && nowMonth > eMonth) {
+			} else if ((nowMonth >= sMonth && i < realToDay) && nowMonth < eMonth && nowMonth == realMonth) {
 				noCount += 1;
 			} else if (nowMonth <= sMonth && (i < sDay || i <= realToDay)) {
 				noCount += 1;
@@ -102,30 +100,33 @@ function buildCalendar() {
 		// 예약 가능
 		} else {
 			cell.onclick = function() {
-				selectedTimeAndTotalPriceInit();
-
-
-				//선택된 날의 연, 월, 일 계산 (일자의 경우 id속성 참조)
-				clickedYear = today.getFullYear();
-				clickedMonth = (1 + today.getMonth());
-				clickedDate = this.getAttribute('id');
-
-				clickedDate = clickedDate >= 10 ? clickedDate : '0' + clickedDate;
-				clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
-				clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
-
-				document.getElementById("date").value = clickedYMD;
-
-				//
-				//하단에 예약일시 표시
-				inputField = document.getElementById("selectedDate");
-				inputField.value = clickedYMD;
-				//선택된 월, 일 변수 저장
-				selectedMonth = today.getMonth() + 1;
-				selectedDate = this.getAttribute('id');
-				//선택된 셀 색 변화
-				$("tr").find("a").removeClass("on");
-				$(this).find("a").addClass("on");
+				if(!$(this).hasClass("off")){
+					selectedTimeAndTotalPriceInit();
+					//선택된 날의 연, 월, 일 계산 (일자의 경우 id속성 참조)
+					clickedYear = today.getFullYear();
+					clickedMonth = (1 + today.getMonth());
+					clickedDate = this.getAttribute('id');
+	
+					clickedDate = clickedDate >= 10 ? clickedDate : '0' + clickedDate;
+					clickedMonth = clickedMonth >= 10 ? clickedMonth : '0' + clickedMonth;
+					clickedYMD = clickedYear + "-" + clickedMonth + "-" + clickedDate;
+					//
+					//하단에 예약일시 표시
+					// 날짜
+					inputField = document.getElementById("selectedDate");
+					inputField.value = clickedYMD;
+					$(".reservRst .date").text(clickedYMD);
+					
+					//선택된 월, 일 변수 저장
+					selectedMonth = today.getMonth() + 1;
+					selectedDate = this.getAttribute('id');
+					
+					//선택된 셀 색 변화
+					$("tr").find("a").removeClass("on");
+					$(this).find("a").addClass("on");
+					$(".choiceBlock").show();
+					$(".choiceBlock .timeChoice a").removeClass("on");
+				}
 				//
 			}
 		}
@@ -178,10 +179,35 @@ function thisMonth(todayMonth, dateMonth) {
 }
 //날자 클릭시 예약시간 및 결제정보 초기화
 function selectedTimeAndTotalPriceInit(){
+	// 날짜
 	resDateForm = document.getElementById("selectedDate");
 	resDateForm.value = "";
 
-	useTimeForm = document.getElementById("totalPrice");
-	useTimeForm.value = "";
+	// 시간
+	resTimeForm = document.getElementById("selectedTime");
+	resTimeForm.value = "";
+	$(".reservRst .time").text("");
+	
+	// 적립금
+	useSMPForm = document.getElementById("resSMP");
+	useSMPForm.value = "0";
+	$("#resSMP").attr("disabled", true);
+	$(".remainSM .charge").text($("#oriMPrice").val());
+	$("#remainPrice").val($("#oriMPrice").val());
+	$("#realPrice").val($("#oriRealPrice").val());		
+	$("#orisavelPrice").val($("#oriRealPrice").val());		
+	$("#resSMP").val("0");
+	$("#savePrice").val("0");
+	$("#headCnt").val("1명");
+	$(".resHeadCnt .cntNum").text("1");
+	$(".resCPrice .price").text($("#oriRealPrice").val());
+	$(".resSMList .resSMChk").removeClass("checked");
+	$(".maxSMChk").removeClass("checked");
+	$(".decreseRed").hide();
+	$(".increseRed").hide();
+	
+	let resCPrice = parseInt($(".resCPrice .price").text().trim());
+	resCPrice = resCPrice.toLocaleString();
+	$(".resCPrice .price").text(resCPrice);
 	
 }

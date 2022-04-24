@@ -558,7 +558,7 @@
 }
 
 .proList-view .detail-cont .reserveBox .selDate .date-desc>div {
-	flex: 1;
+	flex: 1.2;
 }
 
 .proList-view .detail-cont .reserveBox .selDate .date-desc>div+div {
@@ -566,7 +566,157 @@
 	padding-left: 20px;
 	border-left: 1px solid #ddd;
 }
-
+.proList-view .detail-cont .reserveBox .selDate .reservRst{
+	position: relative;
+	flex: 0.6 !important;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst dl{
+	padding: 10px 0 15px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst dl:not(:last-child){
+	border-bottom: 1px solid #ddd;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst dl dt{
+	font-weight: bold;
+	font-size: 18px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst dl dd{
+	padding-top: 15px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst dl.resCPrice dd p span.price{
+	font-size: 24px;
+	font-weight: bold;
+	color: #0cb4cf;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .resChk{
+	position: relative;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .resChk input{
+	position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 1px;
+    height: 1px;
+    opacity: .01;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .resChk label{
+	padding-left: 30px;
+	background: url(/images/icon-checked-off.png) no-repeat 0 center / 25px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .resChk.checked label{
+	background: url(/images/icon-checked-on.png) no-repeat 0 center / 25px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .resChk::before,
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .resChk.checked::before{
+	display: none;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList dl dd{
+	display: flex;
+	flex-wrap: nowrap;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList dd p,
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resCPrice dd p{
+	text-align: right;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList #resSMP{
+	padding: 5px;
+	text-align: right;
+	width: 100px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList #resSMP.red{
+	border: 1px solid #cd4a00;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList #resSMP:disabled{
+	background: #ddd;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .remainSM .txt{
+	font-size: 14px;
+	color: #666;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList .remainSM .txt .charge{
+	color: #0cb4cf;
+	font-size: 16px;
+	font-weight: bold;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList p.redTxt{
+	padding-top: 10px;
+	font-size: 12px;
+	color: #cd4a00;
+	display: none;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .headCnt{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	align-items: center;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .headCnt span{
+	border-top: 1px solid #222;
+	border-bottom: 1px solid #222;
+	height: 40px;
+	width: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .headCnt button{
+	background: #fff;
+	background-repeat: no-repeat;
+	-webkit-background-size: 20px 20px;
+	background-size: 20px 20px;
+	background-position: center center;
+	border: 1px solid #222;
+	padding: 10px;
+	border-radius: 0;
+	width: 40px;
+	height: 40px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .headCnt button.decrease{
+	background-image: url("/images/icon-head-minus.png");
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .headCnt button.increase{
+	background-image: url("/images/icon-head-plus.png");
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .headCnt button.decrease:hover{
+	background-image: url("/images/icon-head-minus-hover.png");
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .headCnt button.increase:hover{
+	background-image: url("/images/icon-head-plus-hover.png");
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .txt {
+	text-align: right;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resHeadCnt dd .txt > p {
+	padding-top: 10px;
+    font-size: 12px;
+    color: #cd4a00;
+    display: none;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .maxSMChk{
+	text-align: right;
+	margin-bottom: 10px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .maxSMChk.chk-group label{
+	font-size: 14px;
+	padding-left: 25px;
+	background: url(/images/icon-checked-off.png) no-repeat 0 center / 20px;
+}
+.proList-view .detail-cont .reserveBox .selDate .reservRst .maxSMChk.chk-group.checked label{
+	background: url(/images/icon-checked-on.png) no-repeat 0 center / 20px;
+}
+.proList-view .detail-cont .reserveBox .selDate .contInfo{
+	margin: 40px 0 0 5px;
+	text-align: right;
+}
+.proList-view .detail-cont .reserveBox .selDate .contInfo li{
+	display: block;
+	font-size: 12px;
+	color: #666;
+}
+.proList-view .detail-cont .reserveBox .selDate .contInfo li + li{
+	padding-top: 5px;
+}
 .proList-view .detail-cont .reserveBox .btn-cont {
 	margin: 50px 0;
 }
@@ -575,7 +725,30 @@
 	font-size: 18px;
 	padding: 15px 100px;
 }
-
+.proList-view .detail-cont .reserveBox .timeBox{
+	position: relative;	
+}
+.proList-view .detail-cont .reserveBox .timeBox .choiceBlock{
+	display: none;
+}
+.proList-view .detail-cont .reserveBox .timeBox .timeChoice{
+	width: 100%;
+}
+.proList-view .detail-cont .reserveBox .timeBox .timeChoice + .timeChoice{
+	margin-top: 20px;
+}
+.proList-view .detail-cont .reserveBox .timeBox .timeChoice a{
+	display: block;
+	border: 1px solid #ddd;
+	background: #fff;
+	padding: 10px;
+}
+.proList-view .detail-cont .reserveBox .timeBox .timeChoice a:hover,
+.proList-view .detail-cont .reserveBox .timeBox .timeChoice a.on{
+	border: 1px solid #ff8f50;
+	background: #ff8f50;
+	color: #fff;
+}
 .proList-view .detail-cont .detailBox {
 	padding-top: 100px;
 }
@@ -1269,16 +1442,12 @@
     background: url(/images/pop-file-close-icon.png) no-repeat center;
 }
 
-
 .proListMov {
 	padding: 50px 0 0;
 }
 .proListMov button{
 	padding: 10px 30px;
 }
-
-
-
 
 
 
