@@ -9,24 +9,33 @@ request.setCharacterEncoding("UTF-8");
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
-     <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style1.css">
-	 <link rel="stylesheet" href="/style/style2.css">
-     <link rel="stylesheet" href="/style/style3.css">
-     <script src="/source/jquery-3.6.0.min.js"></script>
-	 <script src="/source/gsap.min.js"></script>
-	<script src="/script/script.js"></script>
-	 <script src="/script/script_bbs.js"></script>
-	 <script src="/script/memberScript.js"></script>
-<title>Insert title here</title>
+     <title>E-Ticket : 회원 관리</title>
+<link rel="stylesheet" href="/style/style_Common.css">
+<link rel="stylesheet" href="/style/style1.css">
+<link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet" href="/style/style3.css">
+<link rel="stylesheet" href="/adminPage/style/style_admin.css">
+<link rel="stylesheet" href="/style/style_Event.css">
+<script src="/source/jquery-3.6.0.min.js"></script>
+<script src="/source/gsap.min.js"></script>
+<script src="/script/script.js"></script>
+<script src="/script/script_bbs.js"></script>
+<script src="/script/memberScript.js"></script>
+<script src="/script/eventScript.js"></script>
 </head>
 <body>
 
-  <div id="wrap">
-  <%@ include file="/include/header.jsp"%>
+	<div id="wrap">
+
 		<div class="sub-body">
 			<div class="inner">
+				<div class="managerPage dFlex">
+					<%@ include file="/adminPage/inc/managerAside.jsp" %>
+					<div class="manager-cont">
+					<div class="manager-tit">
+						<!--  title -->
+						<p>게시판 관리 <span class="smallFont">&gt; 공지사항 관리 &gt; 공지사항 리스트</span></p>
+					</div>
   <div class="noDataInner">
       <div class="tblArea">
 		      	<div class="tblTop">
@@ -66,10 +75,14 @@ request.setCharacterEncoding("UTF-8");
 		      <!-- div.tblArea 끝 -->
 		      	
 		      	  <div class="rpBtn btn-cont">
-		      	  	<button type="button" class="mainMove">메인으로</button>
+	    			<button type="button" class="re-write">글쓰기</button>
 	    		</div> 		
 </div>
 <!-- noDataInner -->
+			</div>
+			<!-- div.manager-cont -->
+		</div>
+		<!-- div.managerPage -->
 </div>
 <!-- div.inner -->
 </div>

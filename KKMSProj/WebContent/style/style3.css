@@ -5,33 +5,38 @@
 
 /*div#serachArea 영역 시작*/
 div#wrap>.sub-body>.inner form>.searchArea{
-	text-align: center;
 	margin-bottom: 30px;
 	padding: 30px 0;
 	background-color: #f8f8f8;
+	justify-content: center;
 }
-div#wrap>.sub-body>.inner form>.searchArea>span{
-	font-size: 20px;
+div#wrap>.sub-body>.inner form>.searchArea span{
+	font-size: 22px;
 	font-weight: bold;
 	margin-right: 10px;
 }
 div#wrap>.sub-body>.inner form>.searchArea select.searchDV{
-	height: 30px;
+	height: 40px;
 	width: 100px;
+	font-size: 17px;
 }
-div#wrap>.sub-body>.inner form>.searchArea>input#searchBox{
-	height: 35px;
-	padding: 0 20px;
+div#wrap>.sub-body>.inner form>.searchArea input#searchBox{
+	height: 40px;
+	width: 270px;
 	border: 1px solid #ddd;
-	margin-left: 15px;
+	margin-left: 10px;
+	padding-left: 10px;
+	transform: translateY(-2px);
 }
-div#wrap>.sub-body>.inner form>.searchArea>button.btnImg{
-	width: 70px;
-	height: 35px;
+div#wrap>.sub-body>.inner form>.searchArea input#searchBox::placeholder{
+	font-size: 17px;
+}
+div#wrap>.sub-body>.inner form>.searchArea button.btnImg{
+	width: 100px;
+	height: 40px;
 	font-weight: bold;
-	background-color: #fff;
 	font-size: 15px;
-	transform: translateY(2px);
+	margin-left: 10px;
 }
 .tblArea>table {
 	width: 100%;
@@ -39,12 +44,19 @@ div#wrap>.sub-body>.inner form>.searchArea>button.btnImg{
 }
 .tblTop{
 	text-align: right;
+	margin-bottom: 6px;
 }
 .tblArea>.tblTop span{
 	padding: 5px 10px;
 }
+.tblArea>table td{
+	padding: 19px 0;
+}
+.tblArea>table td:nth-child(2){
+	text-align: left;
+}
 .tblArea>table th,td{
-	padding: 10px 0;
+	padding: 14px 0;
 	text-align: center;
 	border-bottom: 1px solid #ccc;
 	border-top:1px solid #ccc;
@@ -56,7 +68,7 @@ div#wrap>.sub-body>.inner form>.searchArea>button.btnImg{
 	padding: 20px 30px;
 }
 .tblArea>table th{
-	background-color: #f5f5f5;
+	background-color: #eff5f7;
 	border-top: 3px solid #000;
 	border-bottom: 1px solid #ccc;
 }
@@ -75,11 +87,8 @@ div.footerArea>.pageArea a.nowPage{
 div.footerArea>.btnArea button{
 	width: 100px;
 	height: 35px;
-	background-color: #fff;
 	font-size: 15px;
 	font-weight: bold;
-	color: #333;
-	border-radius: 5px;
 }
 /*div.footerArea 끝*/
 
@@ -129,6 +138,7 @@ div.footerArea>.btnArea button{
 	resize: none;
 	margin: 5px 7px;
 	font-size: 14px;
+	overflow-y:scroll;
 }
 #wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl textarea#content::placeholder{
 	color: #aaa;
@@ -137,19 +147,15 @@ div.footerArea>.btnArea button{
 .btnArea{
 	text-align: right;
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 .btnArea>button{
-	width: 80px;
-	height: 35px;
+	width: 97px;
+	height: 40px;
 	font-size: 15px;
-	background-color: #fff;
-	color: #000;
 	font-weight: bold;
 	cursor: pointer;
 	margin: 0 5px;
-}
-.btnArea>button:hover {
-	background-color: #aaa;
 }
 /*/////////////////////write.jsp 영역 끝///////////////////////*/
 /*/////////////////////faqWrite.jsp 영역 시작///////////////////////*/
@@ -179,17 +185,23 @@ div#header>hr{
 	resize: none;
 	margin: 5px 0px;
 	font-size: 16px;
+	border: 1px solid #ccc;
+	overflow-y: scroll;
 }
 .writeArea>.cont-Area>textarea#content::placeholder{
 	font-size: 18px;
+}
+
+.writeBtnArea{
+	transform: translateX(187px);
 }
 /*/////////////////////faqWrite.jsp 영역 끝///////////////////////*/
 
 /*/////////////////////noticeView.jsp 영역 시작///////////////////////*/
 
 #wrap>.sub-body>.inner #ntcViewInner{
-	width: 80%;
-	height: 600px;
+	width: 100%;
+	height: 100%;
 	margin: 0 auto;
 	margin-top: 30px;
 }
@@ -199,7 +211,7 @@ div#header>hr{
 	border:1px solid #000;
 	border-top: 5px solid #000;
 	border-bottom:none;
-	background-color: #f5f5f5;
+	background-color: #eff5f7;
 	justify-content: space-between;
 }
 .ntcTitle>.ntcTitle-left>span{
@@ -218,13 +230,17 @@ div#header>hr{
 	width: 100%;
 	border: 1px solid #000;
 	padding: 10px;
-	font-size: 12px;
 	border-top: none;
 }
 .nt-content>pre{
+	width: 100%;
+	height: 100%;
 	padding:0;
-	font-size: 15px;
+	font-size: 18px;
 	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+	white-space: pre-wrap;
+	overflow:scroll;
+	padding: 10px -0px 100px;
 }
 .ntcFooter {
 	justify-content: space-between;
@@ -242,18 +258,16 @@ div#header>hr{
 	cursor: text;
 	color: #bbb;
 }
-.ntcFooter>.footerRight>button:hover{
-	opacity: 0.7;
-}
 .ntcFooter>.footerRight>button{
 	margin: 0 5px;
-	width: 80px;
-	height: 35px;
+	width: 83px;
+	height: 40px;
 	font-size: 15px;
-	background-color: #fff;
-	color: #000;
 	font-weight: bold;
 	cursor: pointer;
+}
+#ntcUdBtn{
+	transform:translateX(188px);
 }
 /*/////////////////////noticeView.jsp 영역 끝///////////////////////*/
 /*/////////////////////searchRes.jsp 영역 시작///////////////////////*/
@@ -278,7 +292,7 @@ div#header>hr{
 	text-align: center;
 }
 .scTblArea>table th{
-	background-color: #f5f5f5;
+	background-color: #eff5f7;
 	border-top: 3px solid #000;
 	border-bottom: 1px solid #ccc;
 }
@@ -300,10 +314,11 @@ div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 	text-align: center;
 }
 .main>.listTop{
-	padding: 5px 0;
+	padding: 2px 0;
 	width: 100%;
 	border-bottom: 1px solid #aaa;
-	background-color: #f5f5f5;
+	background-color: #eff5f7;
+	font-weight: bold;
 }
 .main>.listTop>.th-title{
 	width: 94%;
@@ -320,15 +335,16 @@ div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 }
 .main>.sub-main>.td-title>.row>.title{
 	width: 100%;
-	text-align: center;
-	
+	text-align: left;
+	padding: 17px 0;
 }
-.main>.sub-main>.td-title>.row>.title{
-	padding: 15px 0;
+.main>.sub-main>.td-title>.row>.title::before{
+	content: "Q. ";
+	font-weight: bold;
+	font-size: 28px;
 }
 .main>.sub-main>.td-title>.row>.title span{
-	font-weight: bold;
-	font-size: 18px;
+	font-size: 20px;
 }
 .main>.sub-main>.td-title .title span:hover,
 .main>.sub-main>.td-title .slideBtn img:hover{
@@ -346,9 +362,20 @@ div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 		padding: 15px 10px;
 		text-align: left;
 }
+.content>pre::before{
+	content: "A. ";
+	font-weight: bold;
+	font-size: 28px;
+	color: #00adee;
+}
 .content>pre{
-	font-size: 15px;
+	font-size: 18px;
 	font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
+}
+
+#faqBtnArea{
+	
+margin-left: 620px;
 }
 
 /*/////////////////////faqList.jsp 영역 끝///////////////////////*/
@@ -430,18 +457,12 @@ div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 /*/////////////////////useInfo.jsp 영역 끝///////////////////////*/
 /*/////////////////////noData.jsp 영역 시작///////////////////////*/
 
-#wrap .rpBtn {
-	text-align: center;
-}
 #wrap .rpBtn>button{
 	margin-right: 10px;
 	width: 100px;
 	height: 35px;
-	background-color: #fff;
 	font-size: 15px;
 	font-weight: bold;
-	color: #333;
-	border-radius: 5px;
 	margin-top: 20px;
 }
 .noDataInner{
@@ -459,31 +480,43 @@ div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 
 	cursor: pointer;
 }
+.scBtnArea{
+	margin-left: 735px;
+	margin-top: 10px;
+}
+#faqScBtn{
+	margin-left: 620px;
+}
 
 /*/////////////////////faqScRes.jsp 영역 끝///////////////////////*/
 
 /*/////////////////////writeRes.jsp 영역 시작///////////////////////*/
 
-#wrap>.sub-body>.inner .tit-cont p#writeRes-p{
-	font-size: 20px;
+#wrap>.sub-body>.inner .tit-cont p.resMsg{
+	font-size: 33px;
+	font-weight: bold;
 }
-
+#writeResBtn{
+	transform: translateX(480px);
+}
+#faqScRes{
+	transform: translateX(418px);
+}
 /*/////////////////////writeRes.jsp 영역 끝///////////////////////*/
 
 /*/////////////////////delete.jsp 영역 시작///////////////////////*/
 
 #wrap>.sub-body>.inner .btnArea>.dlBtn{
 	margin: 5px 10px;
-	transform: translateX(-280px);
-}
-#wrap>.sub-body>.inner .btnArea>.searchBtn{
-	margin: 5px 10px;
+	transform: translateX(180px);
 }
 /*/////////////////////delete.jsp 영역 끝///////////////////////*/
 
 .btnArea>button.adminPg{
 	width: 300px;
-
+}
+#udBtnArea{
+	margin-left: 390px;
 }
 
 

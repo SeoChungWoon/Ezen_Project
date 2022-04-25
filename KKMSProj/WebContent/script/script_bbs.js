@@ -14,9 +14,9 @@ $(function() {
 		$("button.list").on("click",function(){
 			let dvChk = $(".orgDV").val().trim();
 			if(dvChk=="공지사항"){
-			location.href="/data/bbsListAd.jsp?divisions="+dvChk;				
+			location.href="/adminPage/adminBoard/bbsListAd.jsp?divisions="+dvChk;				
 			}else{
-			location.href="/data/faqListAd.jsp?divisions="+dvChk;
+			location.href="/adminPage/adminBoard/faqListAd.jsp?divisions="+dvChk;
 			}
 		});
 		
@@ -53,11 +53,20 @@ $("button.udBtn").on("click",function(){
 	let chkTitle=$(this).next().next().val().trim();
 	let chkCont = $(this).next().next().next().val().trim();
 	
-	location.href="/data/faqUpdate.jsp?no="+chkNo+"&title="+chkTitle
+	location.href="/adminPage/adminBoard/faqUpdate.jsp?no="+chkNo+"&title="+chkTitle
 	+"&content="+chkCont+"&divisions="+chkDV;
 });
 
 		///////////////////faqList.jsp 영역 끝/////////////////
+		///////////////////bbsList.jsp 영역 시작/////////////////
+		
+		$(".searchDV").on("click",function(){
+			let chkHd = $(".chkHd").val().trim();
+			
+			
+		});
+		
+		///////////////////bbsList.jsp 영역 끝/////////////////
 
  
  		///////////////////write.jsp 영역 시작/////////////////
@@ -79,7 +88,7 @@ $("button.udBtn").on("click",function(){
 		
 		$(".write").on("click",function(){
 			let ChkDV = $(this).prev().val();		
-			location.href="/data/write.jsp?divisions="+ChkDV;
+			location.href="/adminPage/adminBoard/write.jsp?divisions="+ChkDV;
 		});
 		
 
@@ -101,7 +110,7 @@ $("button.udBtn").on("click",function(){
 		
 		$(".faq-write").on("click",function(){
 			let ChkDV = $(this).prev().val();
-			location.href="/data/faqWrite.jsp?divisions="+ChkDV;
+			location.href="/adminPage/adminBoard/faqWrite.jsp?divisions="+ChkDV;
 		});
 		
 		///////////////////faq-write.jsp 영역 끝/////////////////
@@ -116,7 +125,7 @@ $("button.udBtn").on("click",function(){
 			let dvChk=$(".orgDV").val().trim();
 			let delChk = confirm("정말 삭제하시겠습니까?");
 			if(delChk == true){	
-			location.href="/data/delete.jsp?no="+data+"&divisions="+dvChk;
+			location.href="/adminPage/adminBoard/delete.jsp?no="+data+"&divisions="+dvChk;
 			}else{
 				window.location.reroad;
 			}
@@ -127,7 +136,7 @@ $("button.udBtn").on("click",function(){
 			let dvChk1 = $(this).prev().prev().val().trim();
 			let delChk1 = confirm("정말 삭제하시겠습니까?");
 			if(delChk1 == true){
-				location.href="/data/delete.jsp?no="+noChk+"&divisions="+dvChk1;
+				location.href="/adminPage/adminBoard/delete.jsp?no="+noChk+"&divisions="+dvChk1;
 			}else{
 				window.location.reroad;	
 			}
@@ -140,7 +149,7 @@ $("button.udBtn").on("click",function(){
 			let sendNo = $("#inputNo").val();
 			let sendHd = $(this).prev().prev().val();
 			
-			location.href="/data/update.jsp?no="+sendNo
+			location.href="/adminPage/adminBoard/update.jsp?no="+sendNo
 			+"&title="+sendTi+"&content="+sendCont+"&header="+sendHd;
 			
 		});
@@ -148,27 +157,27 @@ $("button.udBtn").on("click",function(){
 		
 		
 		$("button.adminPg").on("click",function(){
-			location.href="/data/bbsListAd.jsp";
+			location.href="/adminPage/adminBoard/bbsListAd.jsp";
 		});
 		
 		$("button.faq_AdminPg").on("click",function(){
-			location.href="/data/faqListAd.jsp";
+			location.href="/adminPage/adminBoard/faqListAd.jsp";
 		});
 
 		$("button.adminPg-nv").on("click",function(){
 			let nvNo= $("input#nvNo").val();
 			let nvDV=$("input#nvDV").val();
-			location.href="/data/noticeViewAd.jsp?no="+nvNo+"&divisions="+nvDV;
+			location.href="/adminPage/adminBoard/noticeViewAd.jsp?no="+nvNo+"&divisions="+nvDV;
 		});
 		///////////////////noticeView.jsp 영역 끝/////////////////
 		///////////////////noData.jsp 영역 시작/////////////////
 		
 		$(".re-write").on("click",function(){
-			location.href="/data/write.jsp";
+			location.href="/adminPage/adminBoard/write.jsp";
 		});
 		
 		$(".re-faqWrite").on("click",function(){
-			location.href="/data/faqWrite.jsp";
+			location.href="/adminPage/adminBoard/faqWrite.jsp";
 		});
 		
 		///////////////////noData.jsp 영역 끝/////////////////

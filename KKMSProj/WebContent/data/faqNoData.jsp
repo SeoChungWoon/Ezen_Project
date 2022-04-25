@@ -38,16 +38,25 @@ request.setCharacterEncoding("UTF-8");
 		      	 <div class="main">
 		      		<div class="listTop dFlex">
 		      				<div class="th-title">제목</div>
+		      				<div class="th-btn">내용</div>
 		      		</div>
 		      		<!-- div.listTop -->
 	
 		      		<div class="sub-main">
 		      				<div class="td-title">
+		      				<div class="row dFlex">
 		      						<div class="title">
 		      								<span>등록된 게시물이 없습니다</span>
 		      						</div>
+		      						<!-- div.title -->
+
+		      				<div class="slideBtn">
+							</div>
+							<!-- div.slideBtn -->
+							</div>
+							<!-- div.td-title -->
 		      				</div>
-		      				<!-- div.td-title-->
+		      				<!-- div.row -->
 		      		</div>
 		      		<!-- div.sub-main -->
 
@@ -56,9 +65,8 @@ request.setCharacterEncoding("UTF-8");
 		      </div>
 		      <!-- div.tblArea 끝 -->
 		      	
-		      	  <div class="rpBtn">
-		      	  	<button type="button" class="list">메인으로</button>
-	    			<button type="button" class="re-faqWrite">글쓰기</button>
+		      	  <div class="rpBtn btn-cont">
+		      	  	<button type="button" class="mainMove">메인으로</button>
 	    		</div> 		
 </div>
 <!-- noDataInner -->

@@ -13,7 +13,7 @@ request.setCharacterEncoding("UTF-8");
 String divisions = "FAQ";
 BoardDAO objDAO = new BoardDAO();
 int cnt = objDAO.BoardCount(divisions);		//데이터 갯수
-int pageSize = 10;
+int pageSize = 7;
 
 String pageNum = request.getParameter("pageNum");
 if(pageNum==null){
@@ -56,11 +56,12 @@ if(cnt != 0){
 		<div class="sub-body">
 			<div class="inner">
 				<div class="tit-cont"> <!--  title -->
-					<p class="tit">FAQ게시판</p>
+					<p class="tit">F A Q</p>
 				</div>
 				<!--div.tit-cont  -->
   	<form action="faqScRes.jsp" method="get" name="search">
-  		<div class="searchArea">
+  		<div class="searchArea dFlex">
+  			<div class="searchTxt">
   			<span>Search</span>
   			<select name="searchField" class="searchDV">
   				<option value="0">선택</option>
@@ -69,7 +70,12 @@ if(cnt != 0){
   			</select>
   			<input type="text" placeholder="제목 및 내용을 검색해보세요" id="searchBox" name="searchText" size="30"
   			  onfocus="this.placeholder=''" onblur="this.placeholder='제목 및 내용을 검색해보세요'">
+  			  </div>
+  			  <!-- div.searchTxt -->
+  			  <div class="btn-cont">
   			<button type="submit" class="btnImg">검색</button>
+  			</div>
+  			<!-- div.btn-cont -->
   		</div>
   		<!-- div.searchArea -->
   		</form>
@@ -110,7 +116,7 @@ if(cnt != 0){
 						<div class="row dFlex">
 							<div class="title">
 								<label for="faqRow<%=i + 1%>"> 
-									<span><%=objVO.getTitle()%></span>
+									<span>&ensp;<%=objVO.getTitle()%></span>
 								</label> 
 								<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i + 1%>">
 							</div>
@@ -123,7 +129,7 @@ if(cnt != 0){
 							</div>
 							<!-- div.row -->
 							<div class="content hidden">
-								<pre><%=objVO.getContent()%></pre>
+								<pre>&ensp;<%=objVO.getContent()%></pre>
 							</div>
 							<!-- div.content -->
 						</div>
@@ -202,14 +208,14 @@ if(cnt != 0){
 		      		<%
 		      			}
 					%>
-				<div class="btnArea">
-	    			<button type="button" class="faq_AdminPg">관리 페이지</button>
-	    		</div> 		
 	    	 		
 </div>
 <!-- div.footerArea -->
 </div>
+
+</div>
 <!-- div.inner -->
+
 </div>
 <!-- div.subbody -->
 		<%@ include file="/include/footer.jsp"%>

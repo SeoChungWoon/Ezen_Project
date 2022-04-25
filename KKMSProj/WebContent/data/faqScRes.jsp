@@ -40,7 +40,7 @@
 		<div class="sub-body">
 			<div class="inner">
 				<div class="tit-cont"> <!--  title -->
-					<p class="tit">FAQ게시판</p>
+					<p class="tit">F A Q</p>
 				</div>
 				<!--div.tit-cont  -->
 		      		<div class="resMsg">
@@ -50,6 +50,7 @@
 		      <div class="main">
 		      		<div class="listTop dFlex">
 		      				<div class="th-title">제목</div>
+		      				<div class="th-btn">내용</div>
 		      		</div>
 		      		<!-- div.listTop -->
 		      		<%
@@ -59,14 +60,23 @@
 		      		%>
 		      		<div class="sub-main">
 		      				<div class="td-title">
+		      				<div class="row dFlex">
 		      						<div class="title">
 		      							<label for="faqRow<%=i+1 %>">
-		      								<span><%=objVO.getTitle() %></span>
+		      								<span>&ensp;<%=objVO.getTitle() %></span>
 		      							</label>
 		      							<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
 		      						</div>
+		      						<!-- div.title -->
+		      							<div class="slideBtn">
+		      								<label for="faqRow<%=i + 1 %>">
+											<img src="/images/detailIcon.png" alt="펼치기" class="detailIcon">
+											</label>
+		      							</div>
+		      						</div>
+		      						<!-- div.row -->
 		      						<div class="content hidden">
-		      							<pre><%=objVO.getContent() %></pre>
+		      							<pre>&ensp;<%=objVO.getContent() %></pre>
 		      						</div>
 		      						<!-- div.content -->
 		      				</div>
@@ -76,7 +86,7 @@
 		      		<%} %>
 		      </div>
 		      <!-- div.main -->
-		      <div class="btnArea">
+		      		<div class="btnArea btn-cont" id="faqScRes">
 						<input type="hidden" class="orgDV" value="<%=divisions %>">
 						<button type="button" class="searchBtn list-notAd">목록으로</button>
 						<button type="button"class="searchBtn mainMove">메인으로</button>

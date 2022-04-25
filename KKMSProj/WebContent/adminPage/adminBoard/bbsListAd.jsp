@@ -30,8 +30,6 @@ if(cnt != 0){
 	objList = objDAO.BoardList(firstData,pageSize,divisions);
 }
 BoardVO objVO = null;
-
-
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -39,31 +37,37 @@ BoardVO objVO = null;
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>공지사항</title>
-     <link rel="stylesheet" href="/style/style_Common.css">
-     <link rel="stylesheet" href="/style/style1.css">
-	 <link rel="stylesheet" href="/style/style2.css">
-     <link rel="stylesheet" href="/style/style3.css">
-     <script src="/source/jquery-3.6.0.min.js"></script>
-	 <script src="/source/gsap.min.js"></script>
-	<script src="/script/script.js"></script>
-	 <script src="/script/script_bbs.js"></script>
-	 <script src="/script/memberScript.js"></script>
-<title>Insert title here</title>
+     <title>E-Ticket : 회원 관리</title>
+<link rel="stylesheet" href="/style/style_Common.css">
+<link rel="stylesheet" href="/style/style1.css">
+<link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet" href="/style/style3.css">
+<link rel="stylesheet" href="/adminPage/style/style_admin.css">
+<link rel="stylesheet" href="/style/style_Event.css">
+<script src="/source/jquery-3.6.0.min.js"></script>
+<script src="/source/gsap.min.js"></script>
+<script src="/script/script.js"></script>
+<script src="/script/script_bbs.js"></script>
+<script src="/script/memberScript.js"></script>
+<script src="/script/eventScript.js"></script>
 </head>
 <body>
 
-  <div id="wrap">
-  	<%@ include file="/include/header.jsp"%>
+	<div id="wrap">
+
 		<div class="sub-body">
 			<div class="inner">
-				<div class="tit-cont"> <!--  title -->
-					<p class="tit">공지사항</p>
-				</div>
-				<!--div.tit-cont  -->
-  		<form action="searchRes.jsp" method="get" name="search">
+				<div class="managerPage dFlex">
+					<%@ include file="/adminPage/inc/managerAside.jsp" %>
+					<div class="manager-cont">
+					<div class="manager-tit">
+						<!--  title -->
+						<p>게시판 관리 <span class="smallFont">&gt; 공지사항 관리 &gt; 공지사항 리스트</span></p>
+					</div>
+					<div class="bbssListArea">
+  		<form action="searchResAd.jsp" method="get" name="search">
   		<div class="searchArea dFlex">
-  			<div class="searchTxt">
+  			<div class="seachTxt">
   			<span>Search</span>
   			<select name="searchField" class="searchDV">
   				<option value="0">선택</option>
@@ -73,11 +77,11 @@ BoardVO objVO = null;
   			<input type="text" placeholder="제목 및 내용을 검색해보세요" name='searchText' id="searchBox" size="30"
   			  onfocus="this.placeholder=''" onblur="this.placeholder='제목 및 내용을 검색해보세요'">
   			  </div>
-  			  <!-- searchTxt -->
-  			  <div class="btn-cont">
+  			  <!-- div.seatchTxt -->
+  			<div class="btn-cont">
   			<button type="submit" class="btnImg">검색</button>
   			</div>
-  			<!-- btn-cont -->
+  			<!-- div.btn-cont -->
   		</div>
   		<!-- div.searchArea -->
   		</form>
@@ -126,27 +130,19 @@ BoardVO objVO = null;
 		      				<tbody>
 		      				<%
 		      				// JSP 코드 영역
-							
 		      				for(int i=0; i<objList.size(); i++){
 		      					objVO = (BoardVO)objList.get(i);
-		      					
-		      				
-		      					
 		      				%>
 		      					<tr>
+		      						<td><%=objVO.getHeader() %></td>
 		      						<td>
-		      						<input type="hidden" class="chkHd" value="<%=objVO.getHeader() %>">
-		      						<%=objVO.getHeader() %></td>
-		      						<td>
-		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&division=<%=divisions%>&header=<%=objVO.getHeader()%>"><%=objVO.getTitle() %></a>
-		      						</td>
+		      						<a href="noticeViewAd.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&divisions=<%=divisions%>&header=<%=objVO.getHeader()%>"><%=objVO.getTitle() %></a></td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
 		      					</tr>
 		      				
-		      				<%
-		      				
+		      				<% 
 		      				}
 		      				%>
 		      		
@@ -161,7 +157,7 @@ BoardVO objVO = null;
 		      		//처음 페이지 이동 할 때
 		      			if(startPage > pageBlock){
 		      				%>
-		      				<a href="bbsList.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
+		      				<a href="bbsListAd.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
 		      				<%
 		      			}else{
 		      				%>
@@ -171,12 +167,12 @@ BoardVO objVO = null;
 		      		// 이전 페이지 이동 할 때 
 		      		if(nowPage > 1){
 		      		%>
-		      		<a href="bbsList.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
+		      		<a href="bbsListAd.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
 		      		<%
 		      			
 		      		}else if(nowPage == startPage){
 		      		%>
-		      		<a href="bbsList.jsp?pageNum=<%=nowPage %>">&lt;</a>
+		      		<a href="bbsListAd.jsp?pageNum=<%=nowPage %>">&lt;</a>
 		      		<%
 		      		}
 		      		
@@ -187,18 +183,18 @@ BoardVO objVO = null;
 		      			pageCnt++;
 		      			if(i == nowPage){		//현재 페이지 일때
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
+		      			<a href="bbsListAd.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
 		      		<%
 		      			}else{		//현재 페이지가 아닐때
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=i %>"><%=i %></a>
+		      			<a href="bbsListAd.jsp?pageNum=<%=i %>"><%=i %></a>
 		      		<%
 		      			}
 		      		}
 		      		//다음 페이지 이동 할 때
 		      		if(nowPage < pageCount){
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
+		      			<a href="bbsListAd.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
 		      		<%
 		      		}else{
 		      		%>
@@ -209,7 +205,7 @@ BoardVO objVO = null;
 		      		// 끝 페이지로 이동 할 때
 		      		if(endPage < pageCount){
 		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
+		      			<a href="bbsListAd.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
 		      		<%
 		      		}else{
 		      		%>
@@ -222,19 +218,28 @@ BoardVO objVO = null;
 		      		<%
 		      			}else{
 		      		%>
-		      			  <script>location.href = "/data/noData.jsp";</script>
+		      			  <script>location.href = "/adminPage/adminBoard/noDataAd.jsp";</script>
 		      		<%
 		      			}
 	    	 		%>
 					
+	    		<div class="btnArea btn-cont">
+	    			<input type="hidden" class="chkWrite" value="<%=divisions %>">
+	    			<button type="button" class="write">글쓰기</button>
+	    		</div> 		
 	   
 </div>
 <!-- div.footerArea -->
 </div>
+<!-- div.bbsListArea -->
+			</div>
+			<!-- div.manager-cont -->
+		</div>
+		<!-- div.managerPage -->
+</div>
 <!-- div.inner -->
 </div>
 <!-- div.subbody -->
-		<%@ include file="/include/footer.jsp"%>
   </div>
   <!-- div#wrap -->
 </body>
