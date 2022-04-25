@@ -407,19 +407,19 @@ public class MemberMgr {
 		
 		return flag;
 	}
-	
+
 	// 적립금
-	public boolean remainPriceCng (ProReservBean pResvBean, String pResUId) {
+	public boolean remainPriceCng (int rPrice, String pResUId) {
 		boolean chk = false;
 	
 		try {
 			objConn = pool.getConnection();
 				sql = "update member set ePay = ? where uId = '" + pResUId + "'";
 				objPstmt = objConn.prepareStatement(sql);
-				objPstmt.setInt(1, pResvBean.getpResRemainM());
+				objPstmt.setInt(1, rPrice);
 				if (objPstmt.executeUpdate()>0)
 					chk = true;
-				System.out.println( pResvBean.getpResRemainM());
+				System.out.println(rPrice);
 			
 		} catch (Exception e) {
 			System.out.println("remainPriceCng e : " + e.getMessage());
@@ -429,5 +429,6 @@ public class MemberMgr {
 		
 		return chk;
 	}
+		
 		
 }

@@ -8,12 +8,12 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-
+int rPrice = pResvBean.getpResRemainM();
 String pResUId = request.getParameter("pResUId");
 boolean result = pMgr.listRsvOutput(pResvBean);
-boolean chk = mMgr.remainPriceCng(pResvBean, pResUId);
+boolean chk = mMgr.remainPriceCng(rPrice, pResUId);
 
-if(result){
+if(result && chk){
 %>
 	<script>
 	location.href="/member/mypage.jsp"
