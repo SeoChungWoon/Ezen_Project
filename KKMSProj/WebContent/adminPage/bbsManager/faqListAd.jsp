@@ -15,7 +15,7 @@ request.setCharacterEncoding("UTF-8");
 String divisions = "FAQ";
 BoardDAO objDAO = new BoardDAO();
 int cnt = objDAO.BoardCount(divisions); //데이터 갯수
-int pageSize = 10;
+int pageSize = 7;
 
 String pageNum = request.getParameter("pageNum");
 if (pageNum == null) {
@@ -68,7 +68,8 @@ if (cnt != 0) {
 					</div>
 				<div class="faqListArea">
 				<form action="faqScResAd.jsp" method="get" name="search">
-					<div class="searchArea">
+					<div class="searchArea dFlex">
+						<div class="searchTxt">
 						<span>Search</span> <select name="searchField" class="searchDV">
 							<option value="0">선택</option>
 							<option value="title">제목</option>
@@ -76,7 +77,12 @@ if (cnt != 0) {
 						</select> <input type="text" placeholder="제목 및 내용을 검색해보세요" id="searchBox"
 							name="searchText" size="30" onfocus="this.placeholder=''"
 							onblur="this.placeholder='제목 및 내용을 검색해보세요'">
+							</div>
+							<!-- searchTxt -->
+						<div class="btn-cont">
 						<button type="submit" class="btnImg">검색</button>
+						</div>
+						<!-- div.btn-cont -->
 					</div>
 					<!-- div.searchArea -->
 				</form>
@@ -129,12 +135,12 @@ if (cnt != 0) {
 							<!-- div.row -->
 							<div class="content hidden">
 								<pre><%=objVO.getContent()%></pre>
-								<div class="btnArea">
+								<div class="btnArea btn-cont" id="faqBtnArea">
 									<input type="hidden" class="hdNo" value="<%=objVO.getNo()%>">
 									<input type="hidden" class="hdDV"
 										value="<%=divisions%>">
-									<button type="button" class="udBtn" id="faq-update">수정</button>
-									<button type="button" class="faq-del" >삭제</button>
+									<button type="button" class="udBtn faqBtn" id="faq-update">수정</button>
+									<button type="button" class="faq-del faqBtn" >삭제</button>
 									<input type="hidden" class="hdTitle" value="<%=objVO.getTitle() %>">
 									<input type="hidden" class="hdCont" value="<%=objVO.getContent() %>">
 								</div>
@@ -219,11 +225,11 @@ if (cnt != 0) {
 					<%
 					} else {
 					%>
-					<script>location.href = "/data/faqNoData.jsp";</script>
+					<script>location.href = "/adminPage/bbsManager/faqNoDataAd.jsp";</script>
 					<%
 					}
 					%>
-					<div class="btnArea">
+					<div class="btnArea btn-cont">
 						<input type="hidden" class="chkWrite" value="<%=divisions%>">
 						<button type="button" class="faq-write">글쓰기</button>
 					</div>

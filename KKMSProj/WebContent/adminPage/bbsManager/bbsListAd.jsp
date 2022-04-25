@@ -218,7 +218,7 @@ BoardVO objVO = null;
 		      		<%
 		      			}else{
 		      		%>
-		      			  <script>location.href = "/adminPage/adminBoard/noDataAd.jsp";</script>
+		      			  <script>location.href = "/adminPage/bbsManager/noDataAd.jsp";</script>
 		      		<%
 		      			}
 	    	 		%>

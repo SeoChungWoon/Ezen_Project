@@ -1,18 +1,16 @@
 <%@page import="java.util.List"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="pack_DBCP.DBConnectionMgr"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
+    
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
+<jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
 <jsp:setProperty name="regVO" property="*" />
 <%
-	request.setCharacterEncoding("UTF-8");
-	String title = (String)request.getParameter("title");
-	String content = (String)request.getParameter("content");
-	int no = Integer.parseInt(request.getParameter("no"));
-	String divisions = "FAQ";
-
-
+request.setCharacterEncoding("UTF-8");
+String divisions = "FAQ";
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -35,8 +33,7 @@
 <script src="/script/eventScript.js"></script>
 </head>
 <body>
-
- <div id="wrap">
+	<div id="wrap">
 
 		<div class="sub-body">
 			<div class="inner">
@@ -45,14 +42,14 @@
 					<div class="manager-cont">
 					<div class="manager-tit">
 						<!--  title -->
-						<p>게시판 관리 <span class="smallFont">&gt; FAQ 관리 &gt; 수정하기</span></p>
+						<p>게시판 관리 <span class="smallFont">&gt; FAQ 관리 &gt; 글쓰기</span></p>
 					</div>
 
         <div class="main">
-        <form action="/adminPage/adminBoard/faqUpdateRes.jsp" id="writeFrm" method="get">
+        <form action="/adminPage/bbsManager/faqWriteRes.jsp" id="writeFrm" method="get">
         
  		<div id="header">
-        <hr id="headHR">
+        	<hr id="headHR">
         </div>
         <!-- div#header -->
        
@@ -64,11 +61,15 @@
         		</div>
         		<!-- div.writerArea -->
 
+        			<div class="hidden">
+        				<input type="hidden" id="writeChk" name="divisions" value="<%=divisions %>">
+        			</div>
+        			<!-- div.hidden-->
+
         			<div class="titleArea">
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
         					id="titleBox" onfocus="this.placeholder=''"
-        					onblur="this.placeholder='제목을 입력해 주세요.'"
-        					value="<%=title%>">
+        					onblur="this.placeholder='제목을 입력해 주세요.'">
         			</div>
         			<!-- div.titleArea -->
     
@@ -76,24 +77,22 @@
         				<textarea name="content" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
-        				  onblur="this.placeholder='내용을 입력해주세요'"><%=content %></textarea>
+        				  onblur="this.placeholder='내용을 입력해주세요'"></textarea>
         			</div>
         			<!-- div.cont-Area -->
         </div>
         <!-- writeArea -->
- 		<div class="btnArea btn-cont" id="udBtnArea">
- 			<input type="hidden" id="orgNo" name="no" value="<%=no %>">
- 			<input type="hidden" id="dvChk" name="divisions" value="<%=divisions %>">
- 			<button type="submit" class="updateBtn" id="formSave">작성하기</button>
+ 		<div class="btnArea btn-cont writeBtnArea">
+ 			<button type="submit" class="writeBtn" id="formSave">작성하기</button>
  			<button type="button" class="writeBtn" id="cancel">취소</button>
  		</div>
  		<!-- div#btnArea -->
 
          </form>
         </div>
- 		<!-- div.main -->
+ 		<!-- div#main -->
 
-				</div>
+					</div>
 					<!-- div.manager-cont -->
 				</div>
 				<!-- div.managerPage -->
@@ -102,8 +101,7 @@
 <!-- div.inner -->
 </div>
 <!-- div.sub-body -->
-
-
+	<%@ include file="/include/footer.jsp"%>
   </div>
   <!-- div#wrap -->
 </body>
