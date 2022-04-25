@@ -783,8 +783,13 @@ $(function() {
 						$("#remainPrice").val($("#oriMPrice").val());
 						$("#realPrice").val($("#oriRealPrice").val());
 						$(".resCPrice .price").text($("#oriRealPrice").val());
-						$("#resSMP").val("5000");
-						$("#savePrice").val("5000");
+						if($("#resSMP").val() < 5000){
+							$("#resSMP").val($("#oriMPrice").val());
+							$("#savePrice").val($("#oriMPrice").val());
+						}else{
+							$("#resSMP").val("5000");
+							$("#savePrice").val("5000");
+						}
 						
 						// 남은 적립금
 						var remainPrice = parseInt($(".remainSM .charge").text().trim());
