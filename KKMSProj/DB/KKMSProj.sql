@@ -29,7 +29,7 @@ alter table member add column joinDate date;
 alter table member drop column ePay;
 
 
-insert into member values (1, 'admin', 'admin', '관리자', '00000000', 'null', 'null', '01012345678', 'null', 'null', '', '관리자', '');
+insert into member values (200, 'admin', 'admin', '관리자', '00000000', 'null', 'null', '01012345678', 'null', 'null', '', '관리자', '');
 select count(*) from member where uId = 'a';
 
 insert into member (uId, uPw, uName, uEmail, uPhone, mType, joinWait, joinDate) values ('seller1', '1234', '테스트', 'hera6223@naver.com', '01077045339', '판매자', 'N', date_format(now(), '%Y-%m-%d'));
@@ -112,8 +112,10 @@ where no=3;
 ## pGroup : 분류 (전체, 전시, 체험/행사, 기타)
 ## pRegDate : 등록시간 => 최신순 탭
 ## pViewCnt : 조회수 => 인기순 탭
+## joinWait : 관리자 등록승인
 create table proList(
 pNo					int				auto_increment		not null,
+pUId					char(15)		,
 pFlag1				char(10)		,
 pFlag2				char(10)		,
 pFlag3				char(10)		,
@@ -133,24 +135,26 @@ pViewTime			char(100)		,
 pClass				char(10)		,
 pDelivery			char(10)		,
 pImg					char(100)		,
+pDetailImg			char(100)		,
+joinWait 			char(2)			,
 constraint primary key (pNo)
 );
 
-insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg) values 
+insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg, pDetailImg, joinWait) values 
  ('바로사용', '강원', '동해', '전시', '온라인 예매 시 당일사용가능', '앤서니 브라운의 원더랜드 뮤지엄展 - 예술의전당', '2022.04.28', '2022.05.31', 
- '예술의 전당 한가람미술관 2층', 20000, 58, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장마감: 18:00) / 매주 월요일 휴관', '전체관람가', '현장수령', 'product-list-img1.jpg');
-insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg) values 
+ '예술의 전당 한가람미술관 2층', 20000, 58, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장마감: 18:00) / 매주 일요일 휴관', '전체관람가', '현장수령', 'product-list-img1.jpg', 'product-detail-img1.png', 'N');
+insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg, pDetailImg, joinWait) values 
  ('투데이특가', '바로사용', '대전', '도룡동', '기타', '오늘 마지막!! 온라인 예매 투데이 특가 할인 당일사용가능', '빈센트 반 고흐: 향기를 만나다展', 
- '2022.04.16', '2022.08.28', '갤러리 헤이리스', 10000, 50, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장 마감 18:00) / 매주 월요일 휴관(공휴일일 경우 정상 운영, 홈페이지 참조)', '전체관람가', '현장수령', 'product-list-img2.jpg');
-insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg) values 
+ '2022.04.16', '2022.08.28', '갤러리 헤이리스', 10000, 50, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00 (입장 마감 18:00) / 매주 일요일 휴관(공휴일일 경우 정상 운영, 홈페이지 참조)', '전체관람가', '현장수령', 'product-list-img2.jpg', 'product-detail-img2.png', 'N');
+insert into proList (pFlag1, pFlag2, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg, pDetailImg, joinWait) values 
  ('MD추천', '바로사용', '인천', '센트럴로', '행사', '온라인 예매 쿠폰 할인 전시 정상 운영중', '어느 봄날, 테레사 프레이타스 사진전', 
- '2022.01.29', '2022.07.24', '더현대 서울 ALT.1', 13000, 0, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00(입장마감 18:00) / 더현대 서울 월별 휴무일 휴관 (별도공지)', '전체관람가', '현장수령', 'product-list-img3.jpg');
-insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg) values 
+ '2022.01.29', '2022.07.24', '더현대 서울 ALT.1', 13000, 0, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00(입장마감 18:00) / 매주 일요일 휴관', '전체관람가', '현장수령', 'product-list-img3.jpg', 'product-detail-img3.png', 'N');
+insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg, pDetailImg, joinWait) values 
  ('바로사용', '경기', '안산시', '체험', '온라인 예매할인 당일사용가능', '로그아웃 - 지금 당신에게 필요한 순간', 
- '2021.12.21', '2023.03.01', '뚝섬미술관', 15000, 10, date_format(now(), '%Y-%m-%d'), '10: 00 ~ 19:00 (입장 마감 18:00)', '전체관람가', '현장수령', 'product-list-img4.jpg');
-insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg) values 
+ '2021.12.21', '2023.03.01', '뚝섬미술관', 15000, 10, date_format(now(), '%Y-%m-%d'), '10: 00 ~ 19:00 (입장 마감 18:00) / 매주 일요일 휴관', '전체관람가', '현장수령', 'product-list-img4.jpg', 'product-detail-img4.png', 'N');
+insert into proList (pFlag1, pArea, pLocation, pGroup, pInfoTxt, pTitle, pDate1, pDate2, pContent, pOriprice, pSalePercent, pRegDate, pViewTime, pClass, pDelivery, pImg, pDetailImg, joinWait) values 
  ('투데이특가', '서울', '용산', '전시', '온라인 예매 투데이 특가 할인', '영국 현대미술의 거장, 마이클 크레이그 마틴展', 
- '2022.04.08', '2022.05.22', '예술의 전당 한가람미술관 1층', 20000, 30, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00  (입장마감: 18:00) / 매주 월요일 휴관', '전체관람가', '현장수령', 'product-list-img12345.jpg');
+ '2022.04.08', '2022.05.22', '예술의 전당 한가람미술관 1층', 20000, 30, date_format(now(), '%Y-%m-%d'), '10:00 ~ 19:00  (입장마감: 18:00) / 매주 일요일 휴관', '전체관람가', '현장수령', 'product-list-img12345.jpg', 'product-detail-img5.png', 'N');
 
 
 
@@ -159,6 +163,7 @@ desc proList;
 truncate proList;
 select * from proList;
 select * from proList order by pNo Asc;
+
 ## 판매자 문의
 create table pWSel(
 pWPNo		int,
@@ -174,9 +179,13 @@ truncate pWSel;
 select count(*) from pWSel where pWUId = 'hi';
 
 ## 리뷰 리스트
+## pRevPhoto : 사진 유무
+## pRevImg : 사진명
+## pRevRecom : 추천수
+## pRevStar : 별점
 create table pRevList(
-pRevPNo			int,
 pRevNo			int		auto_increment unique,
+pRevPNo			int,
 pRevUId			char(15),
 pRevPhoto		int,
 pRevImg			varchar(100),
@@ -213,6 +222,27 @@ select * from pRevList;
 select * from pRevList where pRevPNo = 1 order by pRevDate Desc;
 select * from pRevList where pRevUId = 'hello' and pRevPNo = 3;
 select count(*) from pRevList where pRevUId = 'hello';
+
+## 예약하기
+create table pReserve(
+pResNo				int auto_increment unique,
+pResPNo				int,
+pResUId				char(15),
+pResDate			date,
+pResTime			char(20),
+pResUseM			int,
+pResRemainM		int,
+pResHead			int,
+pResPrice			int,
+pResCPay			char(10),
+pResCAccount		varchar(100)
+);
+
+desc pReserve;
+truncate pReserve;
+select * from pReserve;
+drop table pReserve;
+
 /* // 상품 리스트 */
 
 

@@ -197,68 +197,103 @@
 
 
 <!-- 예매하기 확인 -->
-<div class="pop_wrap modal imgPop" id="popup5">
-	
+<div class="pop_wrap modal reservePop" id="popup5">
+
 	<div class="pop_body">
 		<div class="pop_div">
 			<p class="pop_tit">예매 내역</p>
-			
-			<div class="pop_reserve">
-				<div class="tit"><%=mList.getpTitle() %></div>
+	
+			<form action="/product/listReserveProc.jsp" method="post" class="reserveForm">
+				<input type="hidden" name="pResPNo" id="pResPNo" value="<%=pNo %>"/>
+				<input type="hidden" name="pResUId" id="pResUId" value="<%=memberId %>"/>
+				<!-- 시간 -->
+				<input type="hidden" name="pResDate" id="pResDate" value=""/>
+				<!-- 날짜 -->
+				<input type="hidden" name="pResTime" id="pResTime" value=""/>
+				<!-- 사용한 적립금 -->
+				<input type="hidden" name="pResUseM" id="pResUseM" value=""/>
+				<!-- 남은 적립금 -->
+				<input type="hidden" name="ePay" id="ePay" value=""/>
+				<!-- 인원 수 -->
+				<input type="hidden" name="pResHead" id="pResHead" value=""/>
+				<!-- 결제 가격 -->
+				<input type="hidden" name="pResPrice" id="pResPrice" value=""/>
+				<!-- 무통장 입금 -->
+				<input type="hidden" name="pResCPay" id="pResCPay" value=""/>
+				<!-- 입금 계좌 번호 -->
+				<input type="hidden" name="pResCAccount" id="pResCAccount" value=""/>
 				
-				<div class="desc-type">
-					<div class="left">
-						<p class="img"><img src="/images/<%=mList.getpImg() %>" alt="" /></p>
-					</div>
+				<div class="pop_reserve">
+					<div class="tit"><%=mList.getpTitle() %></div>
 					
-					<div class="right">
-						<dl class="date">
-							<dt>날짜</dt>
-							<dd></dd>
-						</dl>
-						<dl class="time">
-							<dt>시간</dt>
-							<dd></dd>
-						</dl>
-						<dl class="saveMoney">
-							<dt>사용한 적립금</dt>
-							<dd class="use"></dd>
-							<dt>현재 남은 적립금</dt>
-							<dd class="remain"></dd>
-						</dl>
-						<dl>
-							<dt>결제 금액</dt>
-							<dd></dd>
-						</dl>
-						<dl>
-							<dt>결제 수단 선택</dt>
-							<dd>
-								<div class="charge-cont">
-									<div class="radio-group">
-										<input type="radio" name="" id=""/>
-										<label for="">신용카드</label>
+					<div class="desc-type">
+						<div class="left">
+							<p class="img"><img src="/images/<%=mList.getpImg() %>" alt="" /></p>
+						</div>
+						
+						<div class="right">
+							<dl class="date">
+								<dt>날짜</dt>
+								<dd></dd>
+							</dl>
+							<dl class="time">
+								<dt>시간</dt>
+								<dd></dd>
+							</dl>
+							<dl class="headCnt">
+								<dt>인원</dt>
+								<dd>
+									<span class="num"></span> <span>명</span>
+								</dd>
+							</dl>
+							<dl class="useSM">
+								<dt>사용한 적립금</dt>
+								<dd class="use"></dd>
+							</dl>
+							<dl class="remainSM">
+								<dt>현재 남은 적립금</dt>
+								<dd class="remain"></dd>
+							</dl>
+							<dl class="getPrice">
+								<dt>결제 금액</dt>
+								<dd>
+									<span class="price"></span> <span>원</span>
+								</dd>
+							</dl>
+							<dl>
+								<dt>결제 수단 선택</dt>
+								<dd>
+									<div class="charge-cont">
+										<div class="radio-desc">
+											<div class="radio-group">
+												<input type="radio" name="rCharge" id="credit" disabled/>
+												<label for="credit">신용카드</label>
+											</div>
+											<div class="radio-group rChecked">
+												<input type="radio" name="rCharge" id="account" />
+												<label for="account">무통장 입금</label>
+											</div>
+										</div>
+										<select name="resSel" id="resSel" title="입금 계좌번호 선택">
+											<option value="">계좌 선택하기</option>
+											<option value="신한 110-000-000000 (예금주 : 서청운)">신한 110-000-000000 (예금주 : 서청운)</option>
+											<option value="우리 1002-000-000000 (예금주 : 서청운)">농협 1002-000-000000 (예금주 : 서청운)</option>
+											<option value="기업 010-1111-2222 (예금주 : 서청운)">기업 010-1111-2222 (예금주 : 서청운)</option>
+										</select>
 									</div>
-									<div class="radio-group">
-										<input type="radio" name="" id=""/>
-										<label for="">무통장 입금</label>
-									</div>
-									<select name="" id="">
-										<option value="신한 110-000-000000 (예금주 : 서청운)">신한 110-000-000000 (예금주 : 서청운)</option>
-										<option value="우리 1002-000-000000 (예금주 : 서청운)">농협 1002-000-000000 (예금주 : 서청운)</option>
-										<option value="기업 010-1111-2222 (예금주 : 서청운)">기업 010-1111-2222 (예금주 : 서청운)</option>
-									</select>
-								</div>
-								<p class="txt">* 죄송합니다.현재 무통장입금 결제만 가능합니다.</p>
-							</dd>
-						</dl>
+									<p class="txtRed">* 죄송합니다.현재 무통장입금 결제만 가능합니다.</p>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					<!-- // desc-type -->
+					<div class="btn-cont">
+						<button type="button" class="chargeBtn">결제하기</button>
 					</div>
 				</div>
-				<!-- // desc-type -->
-				<div class="btn-cont">
-					<button type="button" class="chargeBtn">결제하기</button>
-				</div>
-			</div>
-			<!-- // pop_reserve -->
+				<!-- // pop_reserve -->
+			</form>
+	
 		</div>
 		<!-- // pop_div -->
 

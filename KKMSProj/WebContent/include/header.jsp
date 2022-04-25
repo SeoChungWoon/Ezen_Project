@@ -28,8 +28,8 @@
 						<a href="javascript:">새소식</a>
 						<ul class="two-dep">
 							<li><a href="/event/eventPage.jsp"><span>이벤트</span></a></li>
-							<li><a href="javascript:"><span>보도자료</span></a></li>
-							<li><a href="javascript:"><span>000 소식</span></a></li>
+							<li><a href="javascript:" class="disabled"><span>보도자료</span></a></li>
+							<li><a href="javascript:" class="disabled"><span>000 소식</span></a></li>
 						</ul>
 					</div>
 				</div>

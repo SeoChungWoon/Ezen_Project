@@ -2,6 +2,7 @@ package pack_Product;
 
 public class ProListBean {
 	private	int			pNo;			// 번호
+	private	String		pUId;			// id
 	private	String		pFlag1;		// label
 	private	String		pFlag2;
 	private	String		pArea;		// 지역별 탭
@@ -18,6 +19,8 @@ public class ProListBean {
 	private	String		pClass;		// 관람등급
 	private	String		pDelivery;	// 배송정보
 	private	String		pImg;			// 이미지
+	private	String		pDetailImg;	// 상세 이미지
+	private	String		joinWait;		// 승인여부(D : N)
 
 	
 	public int getpNo() {
@@ -25,6 +28,12 @@ public class ProListBean {
 	}
 	public void setpNo(int pNo) {
 		this.pNo = pNo;
+	}
+	public String getpUId() {
+		return pUId;
+	}
+	public void setpUId(String pUId) {
+		this.pUId = pUId;
 	}
 	public String getpFlag1() {
 		return pFlag1;
@@ -121,6 +130,20 @@ public class ProListBean {
 	}
 	public void setpImg(String pImg) {
 		this.pImg = pImg;
+	}
+
+	public String getpDetailImg() {
+		return pDetailImg;
+	}
+	public void setpDetailImg(String pDetailImg) {
+		this.pDetailImg = pDetailImg;
+	}
+
+	public String getjoinWait() {
+		return pImg;
+	}
+	public void setjoinWait(String joinWait) {
+		this.joinWait = joinWait;
 	}
 
 }

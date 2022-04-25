@@ -2,6 +2,7 @@
 <%@page import="pack_Product.ProWSelBean"%>
 <%@page import="pack_Product.ProRevBean"%>
 <%@page import="pack_Product.ProListBean"%>
+<%@page import="pack_Product.ProReservBean"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -174,7 +175,6 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 							List objMList = mMgr.myPage(memberId);
 							RegisterBean mPList = (RegisterBean) objMList.get(0);
 						%>
-						<form action="" method="post" class="reserveForm">
 							<input type="hidden" name="rUId" id="rUId" value="<%=memberId %>"/>
 							<input type="hidden" name="rPNo" id="rPNo" value="<%=pNo %>"/>
 							
@@ -197,11 +197,12 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 							<!-- 남은 적립금 --> 
 							<input type="hidden" name="remainPrice" id="remainPrice" value=""/>
 							<!-- 인원 수 --> 
-							<input type="hidden" name="headCnt" id="headCnt" value="1명"/>
-						</form>
+							<input type="hidden" name="headCnt" id="headCnt" value="1"/>
+							<div class="reserveHidden"></div>
 						<%	
 						}
 						%>
+						
 							<div class="reserveBox">
 								<div class="selDate">
 									<p class="txt">날짜/시간 선택</p>
@@ -327,7 +328,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 								if(memberId != null){
 								%>
 								<div class="btn-cont">
-									<button type="button" class="resBtn">예매하기</button>
+									<button type="button" class="btn open-modal resBtn" data-target="popup5">예매하기</button>
 								</div>
 								<%
 								} else {
@@ -343,24 +344,16 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 
 						<div class="detailBox">
 							<div class="detail-tab">
-								<a href="javascript:"><span>상세정보</span></a> <a
+								<a href="javascript:" class="on"><span>상세정보</span></a> <a
 									href="javascript:"><span>판매자 문의</span></a> <a
-									href="javascript:" class="on"><span>관람후기</span></a> <a
+									href="javascript:"><span>관람후기</span></a> <a
 									href="javascript:"><span>예매안내</span></a>
 							</div>
 
 							<div class="detail-desc">
 								<section class="sec1" id="sec1">
 									<p class="img">
-										<%
-										for (int img = 1; img < objList.size(); img++) {
-										%>
-										<img
-											src="/images/product-detail-img<%=mList.getpNo()%>-<%=img%>.jpg"
-											alt="" />
-										<%
-										}
-										%>
+										<img src="/images/<%=mList.getpDetailImg()%>" alt="" />
 									</p>
 								</section>
 								<section class="sec2" id="sec2">
@@ -700,6 +693,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 							</div>
 							<!-- // detail-desc -->
 						</div>
+						<!-- // detail-box -->
 					</div>
 					<!-- // detail-cont -->
 					<div class="btn-cont proListMov">

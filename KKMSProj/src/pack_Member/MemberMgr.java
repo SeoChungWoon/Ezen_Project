@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Vector;
 
 import pack_DBCP.DBConnectionMgr;
+import pack_Product.ProReservBean;
 
 public class MemberMgr {
 
@@ -405,6 +406,28 @@ public class MemberMgr {
 		}
 		
 		return flag;
+	}
+	
+	// 적립금
+	public boolean remainPriceCng (ProReservBean pResvBean, String pResUId) {
+		boolean chk = false;
+	
+		try {
+			objConn = pool.getConnection();
+				sql = "update member set ePay = ? where uId = '" + pResUId + "'";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setInt(1, pResvBean.getpResRemainM());
+				if (objPstmt.executeUpdate()>0)
+					chk = true;
+				System.out.println( pResvBean.getpResRemainM());
+			
+		} catch (Exception e) {
+			System.out.println("remainPriceCng e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		
+		return chk;
 	}
 		
 }

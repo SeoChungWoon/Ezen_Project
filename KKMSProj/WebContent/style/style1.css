@@ -1441,6 +1441,93 @@
     height: 10px;
     background: url(/images/pop-file-close-icon.png) no-repeat center;
 }
+/* 예약 팝업 */
+.pop_reserve{
+	position: relative;
+}
+.pop_reserve .tit{
+	font-size: 22px;
+	font-weight: bold;
+}
+.pop_reserve .desc-type{
+	display: flex;
+	flex-wrap:nowrap;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin-top: 40px;
+}
+.pop_reserve .desc-type > div.left{
+	padding-right: 10px;
+	flex: 0.6;
+}
+.pop_reserve .desc-type > div.left .img{
+	padding: 0;
+	width: 100%;
+	height: auto;
+	text-align: left;
+}
+.pop_reserve .desc-type > div.left .img img{
+	width: 100%;
+}
+.pop_reserve .desc-type > div.right{
+	flex: 1.4;
+}
+.pop_reserve .desc-type > div.right dl{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+.pop_reserve .desc-type > div.right dl + dl{
+	margin-top: 20px;
+}
+.pop_reserve .desc-type > div.right dt{
+	width: 150px;
+	padding-right: 10px;
+	font-weight: bold;
+}
+.pop_reserve .desc-type > div.right dl.getPrice dd .price{
+	color: #0086b8;
+	font-weight: bold;
+	font-size: 20px;
+}
+.pop_reserve .desc-type > div.right dl.getPrice dd span + span{
+	color: #999;
+	font-size: 14px;
+}
+.pop_reserve .charge-cont .radio-desc{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+} 
+.pop_reserve .btn-cont{
+	margin-top: 50px;
+}
+.pop_reserve .btn-cont button.chargeBtn{
+	padding: 10px 40px;
+}
+.pop_reserve .charge-cont #resSel{
+	width: 270px;
+	margin-top: 10px;
+}
+.pop_reserve .txtRed{
+	color: #f91919;
+	font-size: 12px;
+	padding-top: 5px;
+}
+.pop_reserve #resSel{
+	width: 270px;
+    margin-top: 10px;
+    padding: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.pop_reserve #resSel{
+	-webkit-appearance: none;
+	background: url("/images/icon-select-down.png")no-repeat right 5px center / 12px;
+}
+
 
 .proListMov {
 	padding: 50px 0 0;

@@ -10,17 +10,6 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
-/*
-int pRevWNo = Integer.parseInt(request.getParameter("pNo"));
-String uId = request.getParameter("uId");
-String pRevWrite = request.getParameter("qnaContRev");
-int pRevWStar = Integer.parseInt(request.getParameter("rateCalc"));
-String pRevWPhoto = request.getParameter("fileName");
-*/
-//boolean chk = pMgr.writeRevChk(pRevWNo, uId, pRevWrite, pRevWStar, pRevWPhoto);
-//boolean listChk = 	pMgr.listRevChk(pRevWNo, uId, pRevWrite, pRevWStar, pRevWPhoto);
-
-
 //파일 업로드
 String saveFolder = "D:/Ezen/infoProc_1119/scw/silsp/p07_JSP/DWProj_Community/WebContent/images/fileUpload"; // 각자 경로 설정해주세요 ★★★
 int maxSize = 10 * 1024 * 1024;

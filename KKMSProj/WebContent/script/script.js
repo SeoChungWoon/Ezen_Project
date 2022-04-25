@@ -89,6 +89,18 @@ $(function() {
 			});
 		});
 	}
+	
+	// radio chk
+	if ($(".radio-group").length != 0) {
+    	$(".radio-desc").each(function (q) {
+	        $(this).find(".radio-group").each(function (k) {
+	            $(this).find("input[type='radio']").off("change").on("change", function () {
+	                $(".radio-group").eq(q).find(".radio-group").removeClass("rChecked");
+	                $(this).parent(".radio-group").addClass("rChecked");
+	            });
+	        });
+	    });
+	}
 
 	//찜 목록 버튼
 	if ($(".likeClk").length != 0) {
@@ -133,14 +145,17 @@ $(function() {
 	if ($(".btn.open-modal").length != 0) {
 		$(document).on("click", ".btn.open-modal", function(e) {
 			var id = '#' + $(this).attr("data-target");
+			
+			if(!$(id).is("#popup5")){
 
-			$(this).addClass("modal-opened").attr("tabindex", "-1");
-
-			$("html, body").css("overflow", "hidden");
-			$("header").css("z-index", 3);
-			$(".sub-body").css("z-index", "auto");
-
+				$(this).addClass("modal-opened").attr("tabindex", "-1");
+	
+				$("html, body").css("overflow", "hidden");
+				$("header").css("z-index", 3);
+				$(".sub-body").css("z-index", "auto");
+			}
 			modalOpen(id);
+			
 			return false;
 		});
 
@@ -573,6 +588,34 @@ $(function() {
 				alert("날짜를 선택해주세요");
 			}else if($(".reservRst .time").text() == ""){
 				alert("시간를 선택해주세요");
+			}else{
+				$("#popup5").show();
+				var pResPNo = $("#rPNo").val();
+				var pResUId = $("#rUId").val();
+				var pResDate = $("#selectedDate").val();
+				var pResTime = $("#selectedTime").val();
+				var pResUseM = $("#savePrice").val();
+				var pResRemainM = $("#remainPrice").val();
+				var pResHead = $("#headCnt").val();
+				var pResPrice = $("#realPrice").val();
+				
+				
+				$("#pResDate").val(pResDate);
+				$(".pop_reserve .desc-type .date dd").text(pResDate);
+				$("#pResTime").val(pResTime);
+				$(".pop_reserve .desc-type .time dd").text(pResTime);
+				$("#pResUseM").val(pResUseM);
+				$(".pop_reserve .desc-type .useSM dd").text(pResUseM);
+				$("#ePay").val(pResRemainM);
+				$(".pop_reserve .desc-type .remainSM dd").text(pResRemainM);
+				$("#pResHead").val(pResHead);
+				$(".pop_reserve .desc-type .headCnt dd .num").text(pResHead);
+				$("#pResPrice").val(pResPrice);
+				$(".pop_reserve .desc-type .getPrice .price").text(pResPrice);
+				
+				let resCPrice = parseInt($(".getPrice .price").text().trim());
+				resCPrice = resCPrice.toLocaleString();
+				$(".getPrice .price").text(resCPrice);
 			}
 		});
 		
@@ -589,12 +632,12 @@ $(function() {
 				$(this).parent(".resSMChk").removeClass("checked");
 			}else{
 				if(!$(this).parent("").hasClass("checked")){
-					if( $("#oriMPrice").val() < 10000){
-						alert("적립금은 만원 이상 남아있을 시 사용 가능합니다.");
+					if( parseInt($("#oriMPrice").val()) >= parseInt($("#realPrice").val())){
+						alert("적립금은 결제 금액보다 적을 경우 사용 가능합니다.");
 					}else{
 						cntNum = 1;
 						$(".resHeadCnt .cntNum").text("1");
-						$("#headCnt").val(cntNum+"명");
+						$("#headCnt").val(cntNum);
 						$(".resCPrice .price").text($("#oriRealPrice").val() * cntNum);
 						$("#realPrice").val($("#oriRealPrice").val() * cntNum);
 						
@@ -604,16 +647,12 @@ $(function() {
 						resCPrice = resCPrice.toLocaleString();
 						$(".resCPrice .price").text(resCPrice);
 						
-						if($("#realPrice").val() >= 10000){
-							if (!$(this).parent("").hasClass("checked")) {
-								$("#resSMP").attr("disabled", true);
-							} else {
-								$("#resSMP").attr("disabled", false).focus();
-							}
-						}else{
-							alert("결제금액 만원 이상부터 적립금 사용 가능합니다.");
-							$(this).parent(".resSMChk").removeClass("checked");
+						if (!$(this).parent("").hasClass("checked")) {
+							$("#resSMP").attr("disabled", true);
+						} else {
+							$("#resSMP").attr("disabled", false).focus();
 						}
+						
 					}
 				}else{
 					$(this).parent("").removeClass("checked");
@@ -621,57 +660,63 @@ $(function() {
 			}
 		});
 		
-		$(".headCnt").each(function(e){
-			$(".increase").on("click",function(){
-				if($(".reservRst .date").text() == ""){
-					alert("날짜를 선택해주세요");
-				}else if($(".reservRst .time").text() == ""){
-					alert("시간를 선택해주세요");
+		$(".increase").on("click",function(){
+			if($(".reservRst .date").text() == ""){
+				alert("날짜를 선택해주세요");
+			}else if($(".reservRst .time").text() == ""){
+				alert("시간를 선택해주세요");
+			}else{
+				if($(this).siblings("span").text() >= 5){
+					$(".increseRed").show();
+					$(".decreseRed").hide();
+					$(".resHeadCnt .cntNum").text("5");
+					cntNum = 5;
 				}else{
-					if($(this).siblings("span").text() >= 5){
-						$(".increseRed").show();
-						$(".decreseRed").hide();
-						$(".resHeadCnt .cntNum").text("5");
-						cntNum = 5;
-					}else{
-						cntNum++;
-						$(".increseRed").hide();
-						$(".decreseRed").hide();
-						$(this).siblings("span").text(cntNum);
-						$("#headCnt").val(cntNum+"명");
-						
-						var headRCnt =  parseInt($("#orisavelPrice").val().trim()) * cntNum;
-						$(".resCPrice .price").text(headRCnt);
-						$("#realPrice").val(headRCnt);
-						
-						let resCPrice = parseInt($(".resCPrice .price").text().trim());
-						resCPrice = resCPrice.toLocaleString();
-						$(".resCPrice .price").text(resCPrice);
-					}
-				}
-			});
-			
-			$(".decrease").on("click",function(){
-				if($(".reservRst .date").text() == ""){
-					alert("날짜를 선택해주세요");
-				}else if($(".reservRst .time").text() == ""){
-					alert("시간를 선택해주세요");
-				}else{
-					if($(this).siblings("span").text() < 2){
-						$(".decreseRed").show();
-						$(".increseRed").hide();
-						$(".resHeadCnt .cntNum").text("1");
-						cntNum = 1;
-					}else{
-						cntNum--;
-						$(".decreseRed").hide();
-						$(".increseRed").hide();
-						$(this).siblings("span").text(cntNum);
-						$("#headCnt").val(cntNum+"명");
-					}
+					cntNum++;
+					$(".increseRed").hide();
+					$(".decreseRed").hide();
+					$(this).siblings("span").text(cntNum);
+					$("#headCnt").val(cntNum);
 					
+					var headRCnt =  parseInt($("#orisavelPrice").val().trim()) * cntNum;
+					$(".resCPrice .price").text(headRCnt);
+					$("#realPrice").val(headRCnt);
+					
+					let resCPrice = parseInt($(".resCPrice .price").text().trim());
+					resCPrice = resCPrice.toLocaleString();
+					$(".resCPrice .price").text(resCPrice);
 				}
-			});
+			}
+		});
+		
+		$(".decrease").on("click",function(){
+			if($(".reservRst .date").text() == ""){
+				alert("날짜를 선택해주세요");
+			}else if($(".reservRst .time").text() == ""){
+				alert("시간를 선택해주세요");
+			}else{
+				if($(this).siblings("span").text() < 2){
+					$(".decreseRed").show();
+					$(".increseRed").hide();
+					$(".resHeadCnt .cntNum").text("1");
+					cntNum = 1;
+				}else{
+					cntNum--;
+					$(".decreseRed").hide();
+					$(".increseRed").hide();
+					$(this).siblings("span").text(cntNum);
+					$("#headCnt").val(cntNum);
+					
+					var headRCnt =  parseInt($("#realPrice").val().trim()) - parseInt($("#orisavelPrice").val().trim());
+					$(".resCPrice .price").text(headRCnt);
+					$("#realPrice").val(headRCnt);
+					
+					let resCPrice = parseInt($(".resCPrice .price").text().trim());
+					resCPrice = resCPrice.toLocaleString();
+					$(".resCPrice .price").text(resCPrice);
+				}
+				
+			}
 		});
 		
 		$("#resSMP").on("change", function() {
@@ -685,6 +730,9 @@ $(function() {
 				$("#savePrice").val("0");
 				$(".resCPrice .price").text($("#oriRealPrice").val());
 				$(".maxSMChk").removeClass("checked");
+				cntNum = 1;
+				$(".resHeadCnt .cntNum").text("1");
+				$("#headCnt").val("1");
 				
 				// 사용 적립금
 				$("#savePrice").val($(this).val().trim());
@@ -728,7 +776,7 @@ $(function() {
 						
 						cntNum = 1;
 						$(".resHeadCnt .cntNum").text("1");
-						$("#headCnt").val(cntNum+"명");
+						$("#headCnt").val(cntNum);
 						
 						$("#orisavelPrice").val($("#oriRealPrice").val());
 						$(".remainSM .charge").text($("#oriMPrice").val());
@@ -763,13 +811,49 @@ $(function() {
 		});
 	}
 	
+	if($(".reservePop").length != 0){
+		$("#pResCPay").val($(".radio-group.rChecked label").text());
+		$("#resSel").on("change", function(){
+			$("#pResCAccount").val($("#resSel option:selected").val());
+		});
+		
+		$(".chargeBtn").on("click", function(){
+			var pResPNo = $("#pResPNo").val();
+			var pResUId = $("#pResUId").val();
+			var pResDate = $("#pResDate").val();
+			var pResTime = $("#pResTime").val();
+			var pResUseM = $("#pResUseM").val();
+			var ePay = $("#ePay").val();
+			var pResHead = $("#pResHead").val();
+			var pResPrice = $("#pResPrice").val();
+			var pResCPay = $("#pResCPay").val();
+			var pResCAccount = $("#pResCAccount").val();
+			
+			if($("#pResCAccount").val() == ""){
+				alert("결제 수단을 선택해주세요.");
+				$("#resSel").focus();
+			}else{
+				$.ajax({
+					type: "post",
+					url: "/product/listReserveProc.jsp",
+					data: {"pResPNo" : pResPNo, "pResUId" : pResUId, "pResDate" : pResDate, "pResTime" : pResTime, "pResUseM" : pResUseM, "pResRemainM" : ePay, "pResHead" : pResHead, "pResPrice" : pResPrice, "pResCPay" : pResCPay, "pResCAccount" : pResCAccount},
+					success: function(txt) {
+						$(".reserveHidden").html(txt);
+					}
+				});
+			}
+		});
+	};
+		
+	
+	
 	
 	// swiper
 	// review
 	if ($(".photo-list").length != 0) {
 		var revSwiper = new Swiper('.photo-list', {
 			slidesPerView: "auto",
-//			spaceBetween: 10,
+			spaceBetween: 10,
 			observer: true,
 			observeParents: true,
 			navigation: {
@@ -924,11 +1008,9 @@ function priceCalc() {
 			$(this).find("span.discount-price ins").text(priceCalc);
 			$("#realPrice").val(priceCalc);
 			$("#oriRealPrice").val(priceCalc);
-			console.log(priceCalc)
 		}else{
 			$("#realPrice").val($("#oriPrice").val());
 			$("#oriRealPrice").val($("#oriPrice").val());
-			console.log($("#oriPrice").val() + " : 222")
 		}
 
 		// not sale
@@ -1009,6 +1091,7 @@ function modalOpen(id) {
 	$(id).addClass("in").show();
 
 	modalDimOpen(id); //dim show
+	
 
 	//return false;
 	

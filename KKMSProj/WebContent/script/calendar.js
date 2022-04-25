@@ -202,7 +202,7 @@ function selectedTimeAndTotalPriceInit(){
 	$("#orisavelPrice").val($("#oriRealPrice").val());		
 	$("#resSMP").val("0");
 	$("#savePrice").val("0");
-	$("#headCnt").val("1명");
+	$("#headCnt").val("1");
 	$(".resHeadCnt .cntNum").text("1");
 	$(".resCPrice .price").text($("#oriRealPrice").val());
 	$(".resSMList .resSMChk").removeClass("checked");

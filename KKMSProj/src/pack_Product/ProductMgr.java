@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Vector;
 
 import pack_DBCP.DBConnectionMgr;
+import pack_Member.RegisterBean;
 
 public class ProductMgr {
 
@@ -38,6 +39,7 @@ public class ProductMgr {
 			while (objRS.next()) {
 				ProListBean pLBean = new ProListBean();
 				pLBean.setpNo(objRS.getInt("pNo"));
+				pLBean.setpUId(objRS.getString("pUId"));
 				pLBean.setpFlag1(objRS.getString("pFlag1"));
 				pLBean.setpFlag2(objRS.getString("pFlag2"));
 				pLBean.setpArea(objRS.getString("pArea"));
@@ -54,6 +56,8 @@ public class ProductMgr {
 				pLBean.setpClass(objRS.getString("pClass"));
 				pLBean.setpDelivery(objRS.getString("pDelivery"));
 				pLBean.setpImg(objRS.getString("pImg"));
+				pLBean.setpDetailImg(objRS.getString("pDetailImg"));
+				pLBean.setjoinWait(objRS.getString("joinWait"));
 				pList.add(pLBean);
 			}
 		} catch (Exception e) {
@@ -126,6 +130,36 @@ public class ProductMgr {
 		}
 
 		return pRevList;
+	}
+
+	// 예매하기
+	public boolean listRsvOutput(ProReservBean pResvBean) {
+		boolean chk = false;
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "insert into pReserve (pResPNo, pResUId, pResDate, pResTime, pResUseM, pResRemainM, pResHead, pResPrice, pResCPay, pResCAccount) ";
+			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, pResvBean.getpResPNo());
+			objPstmt.setString(2, pResvBean.getpResUId());
+			objPstmt.setString(3, pResvBean.getpResDate());
+			objPstmt.setString(4, pResvBean.getpResTime());
+			objPstmt.setInt(5, pResvBean.getpResUseM());
+			objPstmt.setInt(6, pResvBean.getpResRemainM());
+			objPstmt.setInt(7, pResvBean.getpResHead());
+			objPstmt.setInt(8, pResvBean.getpResPrice());
+			objPstmt.setString(9, pResvBean.getpResCPay());
+			objPstmt.setString(10, pResvBean.getpResCAccount());
+			if (objPstmt.executeUpdate() == 1)
+				chk = true;
+				System.out.println(chk);
+		} catch (Exception e) {
+			System.out.println("listRsvOutput e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		return chk;
 	}
 
 	// 데이터 있는 지 확인
