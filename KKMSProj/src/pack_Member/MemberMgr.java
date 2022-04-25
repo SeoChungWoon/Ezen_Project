@@ -452,7 +452,6 @@ public class MemberMgr {
 					objPstmt.setInt(1, rPrice);
 					if (objPstmt.executeUpdate()>0)
 						chk = true;
-					System.out.println(rPrice);
 				
 			} catch (Exception e) {
 				System.out.println("remainPriceCng e : " + e.getMessage());

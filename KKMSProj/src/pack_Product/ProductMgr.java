@@ -153,7 +153,6 @@ public class ProductMgr {
 			objPstmt.setString(10, pResvBean.getpResCAccount());
 			if (objPstmt.executeUpdate() == 1)
 				chk = true;
-				System.out.println(chk);
 		} catch (Exception e) {
 			System.out.println("listRsvOutput e : " + e.getMessage());
 		} finally {

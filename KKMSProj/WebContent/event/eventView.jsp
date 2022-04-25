@@ -222,19 +222,19 @@ $('img[usemap]').rwdImageMaps();
 							<%
 							}
 							%>
-							<div class="eventReplyPaging dFlex">
+							<div class="eventReplyPaging dFlex pagingComm">
 								<div class="eventReplyPagingPrev">
 									<%
 									if (pageCnt>1&&nowPage!=1) {
 									%>
-									<a href="?pageNo=1&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingStartBtn">&lt;&lt;</a>
-									<a href="?pageNo=<%=nowPage-1 %>&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingPrevBtn">&lt;</a>
+									<a href="?pageNo=1&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingStartBtn" class="firMove"><span class="blind">맨 처음으로 이동</span></a>
+									<a href="?pageNo=<%=nowPage-1 %>&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingPrevBtn" class="prevMove"><span class="blind">이전으로 이동</span></a>
 									<% } %>
 								</div>
 								<%
 								for (int i = startPage; i <= endPage; i++) {
 								%>
-								<a href="?pageNo=<%=i %>&eNo=<%=eNo %>#eventRefTxt" class="eventReplyPagingNo <%
+								<a href="?pageNo=<%=i %>&eNo=<%=eNo %>#eventRefTxt" class="pageNum eventReplyPagingNo <%
 								if(i==nowPage) {
 								%>selected<%} %>"><%=i%></a>
 								<% } %>
@@ -242,8 +242,8 @@ $('img[usemap]').rwdImageMaps();
 									<%
 									if (pageCnt != nowPage) {
 									%>
-									<a href="?pageNo=<%=nowPage+1 %>&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingNextBtn">&gt;</a>
-									<a href="?pageNo=<%=pageCnt %>&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingEndBtn">&gt;&gt;</a>
+									<a href="?pageNo=<%=nowPage+1 %>&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingNextBtn" class="nextMove"><span class="blind">다음으로 이동</span></a>
+									<a href="?pageNo=<%=pageCnt %>&eNo=<%=eNo %>#eventRefTxt" id="eventReplyPagingEndBtn" class="endMove"><span class="blind">맨 뒤로 이동</span></a>
 									<% } %>
 								</div>
 							</div>

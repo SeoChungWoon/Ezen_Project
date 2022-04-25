@@ -572,3 +572,67 @@ footer .fInfo .fSns a img{
 .radio-group input[type=radio]:disabled + label{
 	color: #999;
 }
+
+/* paging */
+.pagingComm{
+	position: relative;
+	margin-top: 40px;
+}
+.pagingComm .pageNum{
+	color: #0086b8;
+	border: 1px solid #0086b8;
+	padding: 5px;
+	background: #fff;
+	width: 30px;
+	height: 30px;
+	display: block;
+}
+.pagingComm .firMove{
+	width: 30px;
+	height: 30px;
+	display: block;;
+	border: 1px solid #0086b8;
+	padding: 5px;
+	background: #fff url("/images/icon-arrow-paging-first.png")no-repeat center / 15px;
+}
+.pagingComm .prevMove{
+	width: 30px;
+	height: 30px;
+	display: block;;
+	border: 1px solid #0086b8;
+	padding: 5px;
+	background: #fff url("/images/icon-arrow-paging-prev.png")no-repeat center / 15px;
+}
+.pagingComm .nextMove{
+	width: 30px;
+	height: 30px;
+	display: block;;
+	border: 1px solid #0086b8;
+	padding: 5px;
+	background: #fff url("/images/icon-arrow-paging-next.png")no-repeat center / 15px;
+}
+.pagingComm .endMove{
+	width: 30px;
+	height: 30px;
+	display: block;;
+	border: 1px solid #0086b8;
+	padding: 5px;
+	background: #fff url("/images/icon-arrow-paging-end.png")no-repeat center / 15px;
+}
+.pagingComm .pageNum + .pageNum{
+	margin-left: 5px;
+}
+.pagingComm .pageNum.selected{
+	color: #fff;
+	background: #0086b8;
+	
+}
+.pagingComm > div{
+	display: flex;
+	flex-wrap: nowrap;
+	margin: 0 10px;
+	min-width: 65px;
+}
+.pagingComm > div a + a{
+	margin-left: 5px;
+}

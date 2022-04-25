@@ -721,7 +721,7 @@ $(function() {
 		
 		$("#resSMP").on("change", function() {
 			
-			if($(this).val() <= 5000){
+			if($(this).val() <= 5000 && $(this).val() <= $("#oriMPrice").val()){
 					
 				$(".remainSM .charge").text($("#oriMPrice").val());
 				$("#orisavelPrice").val($("#oriRealPrice").val());
@@ -758,20 +758,34 @@ $(function() {
 				$(".resCPrice .price").text(cngPrice);
 				
 				$(".resSMList p.redTxt").hide();
+				$(".resSMList p.redOverTxt").hide();
 				$("#resSMP").removeClass("red");
-			}else{
+				
+			}else if($(this).val() > 5000){
 				$(".resSMList p.redTxt").show();
 				$("#resSMP").addClass("red");
 				
 				$(".remainSM .charge").val($("#oriMPrice").val());
 				$(this).val("0").focus();
+				$("#savePrice").val($("#oriMPrice").val());
+				$(".remainSM .charge").text($("#oriMPrice").val());
+				
+			}else if($(this).val() > $("#oriMPrice").val()){
+				$(".resSMList p.redOverTxt").show();
+				$("#resSMP").addClass("red");
+				
+				$(".remainSM .charge").val($("#oriMPrice").val());
+				$(this).val("0").focus();
+				$("#savePrice").val($("#oriMPrice").val());
+				$(".remainSM .charge").text($("#oriMPrice").val());
+				
 			}
 		});
 		
 		$(".maxSMChk").each(function(e){
 			$(this).find("label").on("click", function(){
 				if($(".resSMList .resSMChk").hasClass("checked")){
-					if(!$(".maxSMChk").hasClass("checked")){
+					if(!$(".maxSMChk").hasClass("checked") &&  parseInt($("#oriMPrice").val()) >= 5000){
 						$(".maxSMChk").addClass("checked");
 						
 						cntNum = 1;

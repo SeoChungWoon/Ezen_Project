@@ -639,7 +639,8 @@
 	font-size: 16px;
 	font-weight: bold;
 }
-.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList p.redTxt{
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList p.redTxt,
+.proList-view .detail-cont .reserveBox .selDate .reservRst .resSMList p.redOverTxt{
 	padding-top: 10px;
 	font-size: 12px;
 	color: #cd4a00;

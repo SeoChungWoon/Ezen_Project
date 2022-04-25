@@ -281,6 +281,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 														<input type="text" class="" name="resSMP" id="resSMP" value="0" disabled="disabled"/> <span>원</span>
 													</p>
 													<p class="redTxt">* 최대 5000원까지 사용가능합니다.</p>
+													<p class="redOverTxt">* 남은 적립금의 초과 금액은 사용불가합니다.</p>
 												</dd>
 												<dd>
 													<div class="remainSM">
@@ -319,6 +320,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 									<ul class="contInfo">
 										<li>* 적립금은 5000원까지 사용가능합니다.</li>
 										<li>* 적립은 결제 금액의 1% 적립됩니다.</li>
+										<li>* 적립금 최대 사용은 5천원 이상 남아있을 시 사용가능합니다.</li>
 										<li>* 결제금액 만원 이상부터 적립금 사용 가능합니다.</li>
 									</ul>
 								</div>

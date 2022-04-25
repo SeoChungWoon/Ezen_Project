@@ -5,8 +5,9 @@
 <%
 request.setCharacterEncoding("UTF-8");
 
+int pWpNo = Integer.parseInt(request.getParameter("pWpNo"));
 String pWUId = request.getParameter("pWUId");
-boolean delChk = pMgr.writeDelChk(pWUId);
+boolean delChk = pMgr.writeDelChk(pWpNo, pWUId);
 
 
 if(delChk) {
