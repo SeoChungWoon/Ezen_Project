@@ -295,9 +295,27 @@ $(function() {
 		});
 
 	});
+	$("#sellerModifyPwBtn").click(function(){
+		let modifyPw = $("#modifyPw").val();
+		$.ajax({
+			type: "post",
+			url: "/sellerPage/sellerModifyChk.jsp",
+			data: { "modifyPw": modifyPw },
+			success: function(txt) {
+				$("#modifyErrMsg").html(txt);
+				$("#modifyErrMsg *").css({
+					"text-align": "left",
+					"color": "red",
+					"margin-bottom": "10px"
+				});
+			}
+		});
+
+	});
 	$("#modifyPw").keypress(function(event){
 		if(event.which == 13) {
 			$("#modifyPwBtn").click();
+			$("#sellerModifyPwBtn").click();
 		}
 	});
 /* 회원정보 수정 비밀번호 유효성 검사 */
@@ -320,9 +338,26 @@ $(function() {
 			}
 		});
 	});
+	$("#sellerWithdrawPwBtn").click(function(){
+		let withdrawPw = $("#withdrawPw").val();
+		$.ajax({
+			type: "post",
+			url: "/sellerPage/sellerWithdrawChk.jsp",
+			data: { "withdrawPw": withdrawPw },
+			success: function(txt) {
+				$("#withdrawErrMsg").html(txt);
+				$("#withdrawErrMsg *").css({
+					"text-align": "left",
+					"color": "red",
+					"margin-bottom": "10px"
+				});
+			}
+		});
+	});
 	$("#withdrawPw").keypress(function(event){
 		if(event.which == 13) {
 			$("#withdrawPwBtn").click();
+			$("#sellerWithdrawPwBtn").click();
 		}
 	});
 /* 회원탈퇴 비밀번호 유효성 검사 */
@@ -445,6 +480,36 @@ function modifyConfirm(formName) {
 	if (formName.uZipcode.value == "") {
 		alert("주소를 확인해 주세요.");
 		formName.addr2.focus();
+		return;
+	}	
+	uPhone = formName.uPhone.value;
+	if (uPhone == "" || uPhone.length < 11) {
+		alert("휴대폰 번호를 확인해 주세요.");
+		formName.uPhone.focus();
+		return;
+	}
+	
+	formName.submit();
+}
+function sellerModifyConfirm(formName) {
+	if (formName.uPw.value != formName.uPwChk.value) {
+		alert("비밀번호를 확인해 주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.uPw.value.length != 0 && (formName.uPw.value.length < 8 || formName.uPw.value.length > 16)) {
+		alert("비밀번호는 8~16자 사이로 설정해주세요.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.uPw.value == formName.mPw.value) {
+		alert("기존과 동일한 비밀번호는 사용하실 수 없습니다.");
+		formName.uPw.focus();
+		return;
+	}
+	if (formName.nEmail.value == "") {
+		alert("이메일 주소를 입력해 주세요.");
+		formName.nEmail.focus();
 		return;
 	}	
 	uPhone = formName.uPhone.value;

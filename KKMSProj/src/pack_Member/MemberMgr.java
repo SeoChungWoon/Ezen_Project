@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Vector;
 
 import pack_DBCP.DBConnectionMgr;
-import pack_Product.ProReservBean;
 
 public class MemberMgr {
 
@@ -321,6 +320,39 @@ public class MemberMgr {
 		return flag;
 	}
 	
+	// 판매자 회원정보 수정
+		public boolean sellerModify (String uId, String nPw, String nEmail, String nPhone) {
+			boolean flag = false;
+			
+			try {
+				objConn = pool.getConnection();
+				if(nPw == "") {
+					sql = "update member set uEmail = ?, uPhone = ? where uId=?";
+					objPstmt = objConn.prepareStatement(sql);
+					objPstmt.setString(1, nEmail);
+					objPstmt.setString(2, nPhone);
+					objPstmt.setString(3, uId);
+					if (objPstmt.executeUpdate()>0)
+						flag = true;
+				} else if (nPw != "") {
+					sql = "update member set uPw = ?, uEmail = ?, uPhone = ? where uId=?";
+					objPstmt = objConn.prepareStatement(sql);
+					objPstmt.setString(1, nPw);
+					objPstmt.setString(2, nEmail);
+					objPstmt.setString(3, nPhone);
+					objPstmt.setString(4, uId);
+					if (objPstmt.executeUpdate()>0)
+						flag = true;
+				}
+			} catch (Exception e) {
+				System.out.println("modify e : " + e.getMessage());
+			} finally {
+				pool.freeConnection(objConn, objPstmt);
+			}
+			
+			return flag;
+		}
+	
 	// 아이디 찾기
 	public String findId (String fName, String fData, String howTo) {
 		
@@ -407,28 +439,5 @@ public class MemberMgr {
 		
 		return flag;
 	}
-
-	// 적립금
-	public boolean remainPriceCng (int rPrice, String pResUId) {
-		boolean chk = false;
-	
-		try {
-			objConn = pool.getConnection();
-				sql = "update member set ePay = ? where uId = '" + pResUId + "'";
-				objPstmt = objConn.prepareStatement(sql);
-				objPstmt.setInt(1, rPrice);
-				if (objPstmt.executeUpdate()>0)
-					chk = true;
-				System.out.println(rPrice);
-			
-		} catch (Exception e) {
-			System.out.println("remainPriceCng e : " + e.getMessage());
-		} finally {
-			pool.freeConnection(objConn, objPstmt);
-		}
-		
-		return chk;
-	}
-		
 		
 }

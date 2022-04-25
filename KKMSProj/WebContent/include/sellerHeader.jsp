@@ -11,27 +11,11 @@
 			<nav id="gnb">
 				<div class="menu">
 					<div class="one-dep">
-						<a href="javascript:">상품등록</a>
+						<a href="javascript:">상품관리</a>
 						<ul class="two-dep">
-							<li><a href="/product/list.jsp"><span>상품등록</span></a></li>
-							<li><a href="/product/list.jsp"><span>등록 상품 수정</span></a></li>
-							<li><a href="/product/list.jsp"><span>내 상품</span></a></li>
-						</ul>
-					</div>
-					<div class="one-dep">
-						<a href="javascript:">고객지원</a>
-						<ul class="two-dep">
-							<li><a href="/data/bbsList.jsp"><span>공지사항</span></a></li>
-							<li><a href="/data/useInfo.jsp"><span>이용안내</span></a></li>
-							<li><a href="/data/faqList.jsp"><span>FAQ</span></a></li>
-						</ul>
-					</div>
-					<div class="one-dep">
-						<a href="javascript:">새소식</a>
-						<ul class="two-dep">
-							<li><a href="/event/eventPage.jsp"><span>이벤트</span></a></li>
-							<li><a href="javascript:"><span>보도자료</span></a></li>
-							<li><a href="javascript:"><span>000 소식</span></a></li>
+							<li><a href="javascript:"><span>상품 등록</span></a></li>
+							<li><a href="javascript:"><span>판매중인 상품</span></a></li>
+							<li><a href="javascript:"><span>대기중인 상품</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -46,8 +30,8 @@
 					if (memberId != null) {
 					%>
 					<li><a href="javascript:"><span><%=memberId%>님</span></a></li>
-					<li><a href="/member/mypage.jsp"><span>My page</span></a></li>
-					<li><a href="/member/logoutOther.jsp"><span>로그아웃</span></a></li>
+					<li><a href="/sellerPage/sellerMypage.jsp"><span>My page</span></a></li>
+					<li><a href="/sellerPage/sellerLogout.jsp"><span>로그아웃</span></a></li>
 					<%
 					} else {
 					%>

@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<%@ include file="/include/header.jsp"%>
+		<%@ include file="/include/sellerHeader.jsp"%>
 		<%
 		if (memberId == null) {
 		%>
@@ -44,13 +44,13 @@
 				<div class="mypageInner dFlex">
 					<aside class="mypageAside">
 						<div class="mypageMenu mLnbOn">
-							<a href="/member/mypage.jsp">My page</a>
+							<a href="/sellerPage/sellerMypage.jsp">My page</a>
 						</div>
 						<div class="mypageMenu">
-							<a href="/member/modify.jsp">회원정보 수정</a>
+							<a href="/sellerPage/sellerModify.jsp">회원정보 수정</a>
 						</div>
 						<div class="mypageMenu">
-							<a href="/member/withdraw.jsp">회원 탈퇴</a>
+							<a href="/sellerPage/sellerWithdraw.jsp">회원 탈퇴</a>
 						</div>
 					</aside>
 					<div class="mypageArea">
@@ -79,17 +79,7 @@
 						</div>
 						
 						<div class="mypageRow dFlex">
-							<div class="mypageTitle">보유중인 적립금</div>
-							<div class="mypageVal"><span class="myEpay"><%=mList.getePay() %></span></div>
-						</div>
-						
-						<div class="mypageRow dFlex">
-							<div class="mypageTitle">예약 내역</div>
-							<div class="mypageVal">(작업예정)</div>
-						</div>
-						
-						<div class="mypageRow dFlex">
-							<div class="mypageTitle">찜 목록 <span class="smallFont">(<%=objWishList.size() %>개)</span></div>
+							<div class="mypageTitle">내 상품 <span class="smallFont">(<%=objWishList.size() %>개)</span></div>
 								<div class="mypageVal">
 								<%if(objWishList.size()>0) { %>
 									<div class="wishSwiper swiper-container">
@@ -104,7 +94,7 @@
 												%>
 													<div class="mypageWishList swiper-slide">
 													<a href="/product/listView.jsp?pNo=<%=pNo%>">
-													<img src="/images/<%=pList.getpImg() %>" alt="" />
+													<img src="/images/<%=pList.getpImg()%>" alt="" />
 													</a>
 													</div>
 												<%
@@ -115,7 +105,7 @@
 				        					<div class="swiper-button-next"></div>
 									</div>
 									<%} else { %>
-									<span>찜 목록이 비었습니다.</span>
+									<span>내 상품이 없습니다.</span>
 									<%} %>
 								</div>
 							

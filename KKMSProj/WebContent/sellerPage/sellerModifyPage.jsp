@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<%@ include file="/include/header.jsp"%>
+		<%@ include file="/include/sellerHeader.jsp"%>
 		<%
 		String mPw = request.getParameter("mPw");
 		if (memberId == null || mPw == "" || mPw == null) {
@@ -44,13 +44,13 @@
 				<div class="mypageInner dFlex">
 					<aside class="mypageAside">
 						<div class="mypageMenu">
-							<a href="/member/mypage.jsp">My page</a>
+							<a href="/sellerPage/sellerMypage.jsp">My page</a>
 						</div>
 						<div class="mypageMenu mLnbOn">
-							<a href="/member/modify.jsp">회원정보 수정</a>
+							<a href="/sellerPage/sellerModify.jsp">회원정보 수정</a>
 						</div>
 						<div class="mypageMenu">
-							<a href="/member/withdraw.jsp">회원 탈퇴</a>
+							<a href="/sellerPage/sellerWithdraw.jsp">회원 탈퇴</a>
 						</div>
 					</aside>
 
@@ -58,7 +58,7 @@
 						<div class="mypageTit">
 							<h1>회원정보 수정</h1>
 						</div>
-						<form action="/member/modifyConfirm.jsp" id="modifyForm"
+						<form action="/sellerPage/sellerModifyConfirm.jsp" id="modifyForm"
 							method="post">
 							<div class="modifyRow dFlex">
 								<div class="modifyTitle">
@@ -152,70 +152,7 @@
 							</div>
 							<!-- div.modifyRow -->
 
-							<div class="modifyAddrArea">
-								<div class="modifyRow dFlex">
-									<div class="modifyTitle">
-										<span>주소</span>
-									</div>
-									<!-- div.modifyTitle -->
-									<div class="modifyVal">
-										<input type="text" class="readonlyInput" value="<%=mList.getuZipcode()%>" readonly>
-									</div>
-									<!-- div.modifyVal -->
-								</div>
-								<!-- div.modifyRow -->
-
-
-								<div class="modifyRow dFlex">
-									<div class="modifyTitle">
-										<span>상세 주소</span>
-									</div>
-									<!-- div.modifyTitle -->
-									<div class="modifyVal">
-										<input type="text" class="readonlyInput" value="<%=mList.getuAddr()%>" readonly>
-									</div>
-									<!-- div.modifyVal -->
-									<div class="modifyBtnArea">
-										<button type="button" class="modifyAddrBtn">수정</button>
-									</div>
-									<!-- div.modifyBtn -->
-								</div>
-								<!-- div.modifyRow -->
-							</div>
-							<!-- div.modifyAddrArea -->
-
-							<div id="changeAddr" class="hidden">
-								<div class="modifyRow dFlex">
-									<div class="modifyTitle">
-										<span>주소</span>
-									</div>
-									<div class="modifyValGroup">
-										<div class="modifyZipcodeFind dFlex">
-											<div class="modifyVal">
-												<input type="text" class="readonlyInput" id="uZipcode" name="nZipcode"
-													value="<%=mList.getuZipcode()%>" readonly>
-												<button type="button" id="zipChk">우편번호 찾기</button>
-											</div>
-											<div class="modifyBtnArea">
-											</div>
-										</div>
-										<div class="modifyRow">
-											<input type="text" id="addr1" class="readonlyInput" name="addr1" readonly>
-										</div>
-									</div>
-								</div>
-
-								<div class="modifyRow dFlex">
-									<div class="modifyTitle">
-										<span>상세 주소</span>
-									</div>
-									<input type="text" id="addr2" name="addr2"
-										onkeyup="addr(this.form)">
-								</div>
-								<input type="hidden" id="uAddr" name="nAddr"
-									value="<%=mList.getuAddr()%>">
-							</div>
-
+							
 							<div class="modifyRow dFlex">
 								<div class="modifyTitle lh2">
 									<span>휴대전화 번호</span>
@@ -239,7 +176,7 @@
 							<div class="modifyRow">
 								<div class="modifyFinal btn-cont">
 									<button type="button" class="modifyFinalBtn"
-										onclick="modifyConfirm(this.form)">저장</button>
+										onclick="sellerModifyConfirm(this.form)">저장</button>
 									<button type="reset" id="modifyResetBtn" class="modifyFinalBtn">취소</button>
 								</div>
 								<!-- div.modifyBtn -->
