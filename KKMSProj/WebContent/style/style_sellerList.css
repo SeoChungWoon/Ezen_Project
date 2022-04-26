@@ -1,0 +1,212 @@
+@charset "UTF-8";
+@import url(/source/style_Reset.css);
+
+@import url(/style/style_fonts.css);
+
+/* input */
+.sRegister-cont input[type=text]{
+	width: 100%;
+	height: 40px;
+	padding: 5px;
+	font-size: 16px;
+}
+.sRegister-cont input[type=text]::placeholder{
+	font-size: 12px;
+}
+/* chk */
+.sRegister-cont .chk{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+.sRegister-cont .flag.chk .chk-sList{
+	position: relative;
+	min-width: 100px;
+}
+.sRegister-cont .flag.chk .chk-sList label{
+	background: #fff;
+	border: 1px solid #0086b8;
+	padding: 5px 10px;
+	cursor: pointer;
+	display: block;
+	text-align: center;
+	font-size: 14px;
+}
+.sRegister-cont .chk .chk-sList  + .chk-sList {
+	margin-left: 10px;
+}
+.sRegister-cont .flag.chk .chk-sList.checked label{
+	background: #0086b8;
+	color: #fff;
+	font-weight: bold;
+}
+
+.sRegister-cont .flag.chk input,
+.sRegister-cont .saleChk.chk input[type=checkbox],
+.sRegister-cont .radio input[type=radio]{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	opacity: 0.01;
+}
+
+/* radio */
+.sRegister-cont .radio{
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+.sRegister-cont .radio .radio-sList  + .radio-sList {
+	margin-left: 10px;
+}
+.sRegister-cont .radio-sList{
+	position: relative;
+}
+.sRegister-cont .radio-sList label{
+	padding-left: 20px;
+    font-size: 14px;
+    background: url(/images/radioUnchecked.png)no-repeat 0 center / 15px;
+}
+.sRegister-cont .radio-sList.rChecked label{
+	padding-left: 20px;
+    font-size: 14px;
+    background: url(/images/radioChecked.png)no-repeat 0 center / 15px;
+}
+
+
+
+.sRegister-cont .top-cont{
+    padding-bottom: 30px;
+    border-bottom: 2px solid #333;
+}
+.sRegister-cont .top-cont > div + div{
+	margin-top: 10px;
+}
+.sRegister-cont .txt.blue{
+	font-size:12px;
+	padding: 5px 0;
+}
+
+.sRegister-cont .detail-cont{
+	margin-top: 20px;
+}
+.sRegister-cont .detail-cont .infoBox .left {
+    width: 35%;
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+.sRegister-cont .detail-cont .infoBox {
+    display: flex;
+    flex-wrap: nowrap;
+}
+.sRegister-cont .detail-cont .infoBox .right {
+    width: calc(100% - 35%);
+}
+.sRegister-cont .detail-cont .infoBox .right .info-desc {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.sRegister-cont .detail-cont .infoBox .right .info-desc dl {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.sRegister-cont .detail-cont .infoBox .right .info-desc dl+dl {
+    margin-top: 40px;
+}
+.sRegister-cont .detail-cont .infoBox .right .info-desc dl dd {
+	width: calc(100% - 170px);
+}
+.sRegister-cont .detail-cont .infoBox .right .info-desc dl dd.date input{
+	width: 200px;
+}
+
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dl {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dt {
+    min-width: 150px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    min-width: 150px;
+    margin-right: 20px;
+}
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dd {
+	width: calc(100% - 170px);
+    font-size: 20px;
+}
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale #sListOriPrice{
+	width: 200px;
+}
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale #sListSalePercent{
+	width: 100px;
+}
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale .saleChk.chk{
+	margin-top: 10px;
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sRegister-cont .btn-cont{
+	margin-top: 50px;
+}
+.sRegister-cont .btn-cont button{
+	font-size: 18px;
+    padding: 15px 100px;
+}
+.sRegister-cont .detail-cont .infoBox .right .info-desc dt {
+    font-weight: bold;
+    font-size: 24px;
+    min-width: 150px;
+    margin-right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

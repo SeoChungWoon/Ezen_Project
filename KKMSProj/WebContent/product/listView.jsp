@@ -321,7 +321,6 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 										<li>* 적립금은 5000원까지 사용가능합니다.</li>
 										<li>* 적립은 결제 금액의 1% 적립됩니다.</li>
 										<li>* 적립금 최대 사용은 5천원 이상 남아있을 시 사용가능합니다.</li>
-										<li>* 결제금액 만원 이상부터 적립금 사용 가능합니다.</li>
 									</ul>
 								</div>
 								<!-- // selDate -->
