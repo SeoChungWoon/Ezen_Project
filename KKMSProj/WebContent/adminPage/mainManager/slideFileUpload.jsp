@@ -3,8 +3,14 @@
 <%@ page import="com.oreilly.servlet.*" %>
 <%@ page import="com.oreilly.servlet.multipart.*" %>
 
+
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
+
 
 <%
 String imgFolder = "C:/Users/user/Documents/GitHub/munPJ/mainPJ_MJH/KKMSProj/WebContent/images/main_images";
@@ -67,12 +73,10 @@ MultipartRequest multi = new MultipartRequest(
 					
 						<div class="slide-upload">
 							<form name="file" method="post" enctype="multipart/form-data" action="fileAction.jsp">
-								 번호 : <input type="text" name="mNo" ><br>
-								 제목: <input	type="text" name="title"><br>
-								  파일명: <input type="file"	name="uploadFile"><br>
+								  이미지 업로드 : <input type="file"	name="uploadFile"><br>
+								  
 								     <input type="submit" value="파일 업로드">
-
-
+								  
 							</form>
 								
 							

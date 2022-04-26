@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Vector;
 
 import pack_DBCP.DBConnectionMgr;
+import pack_Member.RegisterBean;
 
 public class MainconMgr {
 	
@@ -32,16 +33,13 @@ public class MainconMgr {
 		
 		try {
 			objConn = pool.getConnection();
-			sql = "select * from proList order by pNo Asc";
+			sql = "select * from mainslidelist order by mNo Asc";
 			objPstmt = objConn.prepareStatement(sql);
 			objRS = objPstmt.executeQuery();
 			while(objRS.next()) {
 				MainContentsBean mCBean = new MainContentsBean();
 				mCBean.setmNo(objRS.getInt("mNo"));
-				mCBean.setmFileRealName(objRS.getString("mFileRealName"));
 				mCBean.setmFileName(objRS.getString("mFileName"));
-				mCBean.setmDate1(objRS.getString("mDate1"));
-				mCBean.setmDate1(objRS.getString("mDate2"));
 				mList.add(mCBean);
 				
 				
@@ -55,12 +53,37 @@ public class MainconMgr {
 		return mList;
 	}
 	
+	
+	// 업로드된 파일 DB insert
+	public boolean insertImgFile(MainContentsBean mCBean) {
+		
+		boolean flag = false;
+		try {
+			objConn = pool.getConnection();
+			sql = "insert into mainslidelist values (mNo, mFileName) ";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setInt(1, mCBean.getmNo());
+			objPstmt.setString(2, mCBean.getmFileName());
+			
+			if (objPstmt.executeUpdate() == 1)
+				flag = true;
+		} catch (Exception e) {
+			System.out.println("insertImgFile e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
+		return flag;
+	}
+	
+	
+	
+	// 데이터 있는지 확인
 	public int mListCount() {
 		int count = 0;
 		
 		try {
 			objConn = pool.getConnection();
-			sql = "select * from proList order by pNo Asc";
+			sql = "select * from mainslidelist order by mNo Asc";
 			objPstmt = objConn.prepareStatement(sql);
 			objRS = objPstmt.executeQuery();
 			

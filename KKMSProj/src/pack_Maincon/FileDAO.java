@@ -26,17 +26,14 @@ public class FileDAO {
 		}
 	}
 	
-	public int upload(int mNo, String mFileRealName, String mFileName, String mDate1, String mDate2) {
+	public int upload(int mNo, String mFileName) {
 		sql = "INSERT INTO mainslidelist VALUES (?,?,?,?,?)";
 		try {
 			objConn=pool.getConnection();
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, mNo);
-			objPstmt.setString(2, mFileRealName);
-			objPstmt.setString(3, mFileName);
-			objPstmt.setString(4, mDate1);
-			objPstmt.setString(5, mDate2);
-			return objPstmt.executeUpdate();
+			objPstmt.setString(2, mFileName);
+			objPstmt.executeUpdate();
 			
 		}catch(Exception e) {
 			e.printStackTrace();

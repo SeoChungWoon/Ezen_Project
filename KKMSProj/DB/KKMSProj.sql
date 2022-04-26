@@ -473,23 +473,16 @@ select * from wishList;
 
 /* 메인슬라이더 이미지 */
 create table mainslidelist(
-	mNo int auto_increment not null,
-    mTitle char(100),
-    mImg char(100) not null,
-    mDate1 char(30),
-    mDate2 char(30),
-    constraint primary key (mNo)
+	mNo int auto_increment unique,
+    mFileName char(100),
+    constraint primary key (mFileName)
 );
 
 drop table mainslidelist;
 
-insert into mainslidelsit(mTitle, mImg, mDate1, mDate2) values('앤서니 브라운의 원더랜드 뮤지엄展', 'product-list-slideimg1.jpg', '2022.04.28', '2022.05.31');
-insert into mainslidelsit(mTitle, mImg, mDate1, mDate2) values('빈센트 반 고흐: 향기를 만나다展', 'product-list-slideimg2.jpg', '2022.04.16', '2022.08.28');
-insert into mainslidelsit(mTitle, mImg, mDate1, mDate2) values('어느 봄날, 테레사 프레이타스 사진전', 'product-list-slideimg3.jpg', '2022.01.29', '2022.07.24');
-insert into mainslidelsit(mTitle, mImg, mDate1, mDate2) values('로그아웃 - 지금 당신에게 필요한 순간', 'product-list-slideimg4.jpg', '2021.12.21', '2023.03.01');
-insert into mainslidelsit(mTitle, mImg, mDate1, mDate2) values('영국 현대미술의 거장, 마이클 크레이그 마틴展', 'product-list-slideimg5.jpg', '2022.04.08', '2022.05.22');
-insert into mainslidelsit(mTitle, mImg, mDate1, mDate2) values('우연히 웨스 앤더슨', 'product-list-slideimg6.jpg', '2021.11.27', '2022.06.06');
-insert into mainslidelsit(mTitle, mImg, mDate1, mDate2) values('빛: 영국 테이트미술관 특별전', 'product-list-slideimg7.jpg', '2021.12.21', '2022.05.08');
+truncate mainslidelist;
 
+
+insert into mainslidelist(mFileName) values('product-list-slideimg1.jpg');
 
 select * from mainslidelist;
