@@ -11,8 +11,9 @@ String header = request.getParameter("header");
 String title = request.getParameter("title");
 String wName = request.getParameter("wName");
 String content = request.getParameter("content");
+String filePath = request.getParameter("filePath");
 
-boolean res = memMgr.mtdWrite(divisions,header,title,wName,content);
+boolean res = memMgr.mtdWrite(divisions,header,title,wName,content,filePath);
 %>
 <!DOCTYPE html>
 <html lang="ko">

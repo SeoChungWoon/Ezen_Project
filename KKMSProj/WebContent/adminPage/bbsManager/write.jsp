@@ -8,6 +8,7 @@
 
 <% 
 	String divisions = request.getParameter("divisions");
+	String fileName = request.getParameter("fileName");
 %> 
 <!DOCTYPE html>
 <html lang="ko">
@@ -75,38 +76,39 @@
         		<tr>
         			<td>
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
-        					id="titleBox" onfocus="this.placeholder=''"
+        					class="txtBox" onfocus="this.placeholder=''"
         					onblur="this.placeholder='제목을 입력해 주세요.'">
         			</td>
         		</tr>
 
         		<tr>
         			<td>
-        				<textarea name="content" id="content" cols="50" rows="15"
+        				<textarea name="content" class="txtArea" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
-        				  onblur="this.placeholder='내용을 입력해주세요'"></textarea>
+        				  onblur="this.placeholder='내용을 입력해주세요'"
+        				  wrap="hard"></textarea>
         			</td>
         		</tr>
         		 <tr>
         			<td id="bg" class="dFlex">
         			<div class="fileArea">
-        				<input type="file" name="ntcFile" id="ntcFile" class="hidden"
-        				 onchange="javascript:document.getElementById('fileName').value = this.value">
-        				<label for="ntcFile">
+        				<input type="file" name="fileName" id="fileName" class="hidden"
+        				 onchange="javascript:document.getElementById('viewFname').value = this.value">
+        				<label for="fileName">
         				<img src="/images/fileIcon.png" alt="파일" class='icon'>
         				</label>
         			</div>
         			<!-- fileArea -->
         			<div class="fNameArea">
-        				<input type="text" id="fileName" name="fileName" readonly>
+        				<input type="text" class="viewFname" id="viewFname" name="viewFname" readonly>
         			</div>
         			</td>
         		</tr>
         	</tbody>
         </table>
  		<div class="btnArea btn-cont writeBtnArea">
- 			<button type="submit" class="writeBtn" id="formSave">작성하기</button>
+ 			<button type="button" class="writeBtn" id="formSave">작성하기</button>
  			<button type="button" class="writeBtn" id="cancel">취소</button>
  		</div>
  		<!-- div#btnArea -->

@@ -68,13 +68,13 @@ String divisions = "FAQ";
 
         			<div class="titleArea">
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
-        					id="titleBox" onfocus="this.placeholder=''"
+        					class="txtBox" onfocus="this.placeholder=''"
         					onblur="this.placeholder='제목을 입력해 주세요.'">
         			</div>
         			<!-- div.titleArea -->
     
         			<div class="cont-Area">
-        				<textarea name="content" id="content" cols="50" rows="15"
+        				<textarea name="content" class="txtArea" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
         				  onblur="this.placeholder='내용을 입력해주세요'"></textarea>

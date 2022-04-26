@@ -78,16 +78,9 @@
         		<tr>
         			<td>
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
-        					id="titleBox" onfocus="this.placeholder=''"
+        					class="txtBox" onfocus="this.placeholder=''"
         					onblur="this.placeholder='제목을 입력해 주세요.'"
         					value="<%=title %>">
-        			</td>
-        		</tr>
-        		<tr>
-        			<td id="bg">
-        				<img src="/images/fileIcon.png" alt="파일" class='icon'>
-        				<img src="/images/pictureIcon.png" alt="사진" class='icon'>
-        				<img src="/images/videoIcon.png" alt="동영상" class='icon'>
         			</td>
         		</tr>
         		<tr>
@@ -96,6 +89,21 @@
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
         				  onblur="this.placeholder='내용을 입력해주세요'"><%=content %></textarea>
+        			</td>
+        		</tr>
+        		 <tr>
+        			<td id="bg" class="dFlex">
+        			<div class="fileArea">
+        				<input type="file" name="fileName" id="fileName" class="hidden"
+        				 onchange="javascript:document.getElementById('viewFname').value = this.value">
+        				<label for="fileName">
+        				<img src="/images/fileIcon.png" alt="파일" class='icon'>
+        				</label>
+        			</div>
+        			<!-- fileArea -->
+        			<div class="fNameArea">
+        				<input type="text" id="viewFname" class="viewFname" name="viewFname" readonly>
+        			</div>
         			</td>
         		</tr>
         	</tbody>

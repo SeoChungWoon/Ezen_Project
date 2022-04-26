@@ -1,3 +1,5 @@
+<%@page import="java.io.IOException"%>
+<%@page import="java.util.Enumeration"%>
 <%@page import="java.util.List"%>
 <%@page import="java.io.File"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
@@ -12,7 +14,6 @@
 
 request.setCharacterEncoding("UTF-8");
 
-
 String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/images/bbsFileUpload";		
 String encType = "UTF-8";				//변환형식
 int maxSize=5*1024*1024;				//사진의 size
@@ -23,10 +24,16 @@ int maxSize=5*1024*1024;				//사진의 size
 		
 MultipartRequest multi = null;
 
+try{
 //파일업로드를 직접적으로 담당		
 multi = new MultipartRequest(request,saveFolder,maxSize,encType,new DefaultFileRenamePolicy());
+Enumeration objFileEnum = multi.getFileNames();
 
 String fileName = multi.getFilesystemName("fileName");
+String nameFile = (String)objFileEnum.nextElement();
+fileName = multi.getFilesystemName(nameFile);
+
+/*
 String bbsTitle = multi.getParameter("title");
 String bbsContent = multi.getParameter("content");
 
@@ -36,15 +43,15 @@ if(fileName != null){
 	oldFile.renameTo(newFile);
 
 }
-
-String divisions = request.getParameter("divisions");
-String header = request.getParameter("header");
-String title = request.getParameter("title");
-String wName = request.getParameter("wName");
-String content = request.getParameter("content");
+*/
+String divisions = multi.getParameter("divisions");
+String header = multi.getParameter("header");
+String title = multi.getParameter("title");
+String wName = multi.getParameter("wName");
+String content = multi.getParameter("content");
 
 boolean res = false;
-if(memMgr.mtdWrite(divisions,header,title,wName,content)){
+if(memMgr.mtdWrite(divisions,header,title,wName,content,fileName)){
 	res = true;
 }
 %>
@@ -84,10 +91,9 @@ if(memMgr.mtdWrite(divisions,header,title,wName,content)){
 					<p class="resMsg">게시글이 성공적으로 등록되었습니다.</p>
 				</div>
 				<!--div.tit-cont  -->
-					<div class="btnArea btn-cont">
-					<input type="text" class="orgDV" value="<%=title %>">
-						<input type="text" class="orgDV" value="<%=divisions %>">
-						<button type="button" class="dlBtn list">목록으로</button>
+					<div class="btnArea btn-cont">					
+					<input type="hidden" class="orgDV" value="<%=divisions %>">
+					<button type="button" class="dlBtn list">목록으로</button>
 					</div>
 					<!-- div.btnArea -->
 					</div>
@@ -100,5 +106,7 @@ if(memMgr.mtdWrite(divisions,header,title,wName,content)){
 		<!-- div.sub-body -->
 	</div>
 	<!-- div#wrap -->
+	<%}catch (IOException e) {
+	}%>
 </body>
 </html>

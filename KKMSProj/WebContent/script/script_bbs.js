@@ -1,14 +1,5 @@
 
-		
-  //////////faqList 체크박스/////////
-  function selectAll(selectAll)  {
-  const checkboxes 
-       = document.getElementsByName("chkBox");
-  
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked;
-  });
-}
+
 $(function() {
 			///////////////////공통영역 시작/////////////////
 		$("button.list").on("click",function(){
@@ -58,15 +49,6 @@ $("button.udBtn").on("click",function(){
 });
 
 		///////////////////faqList.jsp 영역 끝/////////////////
-		///////////////////bbsList.jsp 영역 시작/////////////////
-		
-		$(".searchDV").on("click",function(){
-			let chkHd = $(".chkHd").val().trim();
-			
-			
-		});
-		
-		///////////////////bbsList.jsp 영역 끝/////////////////
 
  
  		///////////////////write.jsp 영역 시작/////////////////
@@ -93,18 +75,16 @@ $("button.udBtn").on("click",function(){
 		
 		
 		$("#formSave").on("click",function(){
-			let title = $("titleBox").val().trim();
-			let content = $("content").val().trim();
+			let title = $(".txtBox").val().trim();
+			let content = $(".txtArea").val().trim();
 			
-			if(title.equals("")||content.equals("")){
-				alert("제목 또는 내용을 입력해주세요.")
+			if(title==""||content==""){
+				alert("제목 또는 내용을 입력해주세요.");
+			}else{
+				$("#formSave").submit();
 			}
 		});
 		
-		$("#ntcFile").on("change",function(){
-				$("#fileName").val() = $(this).val();
-		});
- 		
  		///////////////////write.jsp 영역 끝/////////////////
 
 		///////////////////faq-write.jsp 영역 시작/////////////////
@@ -148,7 +128,7 @@ $("button.udBtn").on("click",function(){
 			let sendTi = $("#inputTi").val();
 			let sendCont = $("#inputCont").val();
 			let sendNo = $("#inputNo").val();
-			let sendHd = $(this).prev().prev().val();
+			let sendHd = $(this).prev().prev().prev().val();
 			
 			location.href="/adminPage/bbsManager/update.jsp?no="+sendNo
 			+"&title="+sendTi+"&content="+sendCont+"&header="+sendHd;
@@ -170,6 +150,8 @@ $("button.udBtn").on("click",function(){
 			let nvDV=$("input#nvDV").val();
 			location.href="/adminPage/bbsManager/noticeViewAd.jsp?no="+nvNo+"&divisions="+nvDV;
 		});
+		
+		
 		///////////////////noticeView.jsp 영역 끝/////////////////
 		///////////////////noData.jsp 영역 시작/////////////////
 		

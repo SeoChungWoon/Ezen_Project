@@ -7,6 +7,7 @@
  
 <jsp:useBean id="regDAO" class="pack_EzPro.BoardDAO" />
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
+<jsp:setProperty name="regVO" property="*" />
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -76,10 +77,8 @@ String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/imag
         					<%
         					for(int i=0; i<ntcList.size(); i++){
         						BoardVO objVO = (BoardVO)ntcList.get(i);
-        		
+        						String str = objVO.getFileName();
         					%>
-        						
-        				
 
         				<div class="ntcTitle dFlex">
         						<div class="ntcTitle-left">
@@ -95,23 +94,27 @@ String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/imag
         						<!-- div.nteTitle-right -->
         				</div>
         				<!-- div.ntcTitle -->
+        				
+
 
         		<div class="nt-content">
+        		<%
+        		if(objVO.getFileName()!=null){%>
+					<br><img src = "/images/bbsFileUpload/<%=objVO.getFileName() %>" alt="사진" id="imgView"><br><br>
         			<pre><%=objVO.getContent() %></pre>
+        		<% }else{%>
+        			<pre><%=objVO.getContent() %></pre>
+        		<%} %>
         		</div>
         		<!-- div.content -->
-        		<% 
-        			File viewFile = new File(saveFolder+"\\사진.jpg");
-					if(viewFile.exists()){
-				%>
-				<div class="fileArea">
-					<br><br><img src = "<%=saveFolder %>/<%=no %>사진.jpg" alt="사진"><br><br>
-				</div>
-				<% }else{%>
-					<br><br>
-				<%} %>
+        		<hr id="fileLine">
+        		<div class="filePath">
+        		<a href="/images/bbsFileUpload/<%=objVO.getFileName() %>"><%=objVO.getFileName() %></a>
+        		</div>
+        		<!-- div.filePath -->
+        		<hr>
         		<div class="ntcFooter dFlex">
-        
+
         		           <div class="footerLeft">
 					<%if(idx==(cnt-1)){ %>
 					<a class="noData">이전글</a>
@@ -129,8 +132,8 @@ String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/imag
         					<input type="hidden" id="inputNo" value="<%=objVO.getNo() %>">
         					<input type="hidden" id="inputTi" value="<%=objVO.getTitle() %>">
         					<input type="hidden" id="inputCont" value="<%=objVO.getContent() %>">
-        					<input type="hidden" class="orgDV" value="<%=divisions %>">
         					<input type="hidden" id="inputHd" value="<%=header %>">
+        					<input type="hidden" class="orgDV" value="<%=divisions %>">
                 			<button type="button" class="list">목록으로</button>
         					<button type="button" id="update">수정하기</button>
         					<button type="button" id="delKey">삭제하기</button>

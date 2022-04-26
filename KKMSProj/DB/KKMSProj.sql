@@ -68,6 +68,7 @@ header	char(20),
 title		char(50)	not null,
 wName	char(20),				/*wName = writerName*/
 content varchar(1000)	not null,
+fileName  char(100),
 postDate	date,
 count	int,
 constraint primary key (no)
