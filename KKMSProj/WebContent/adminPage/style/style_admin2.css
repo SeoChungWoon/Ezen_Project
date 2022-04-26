@@ -2,105 +2,6 @@
 
 /* 관리자 페이지 CSS 시작 */
 
-/* 메인 */
-div.adminMain-cont {
-	display: flex;
-	justify-content: center;
-}
-
-.adminMain-cont .adminMainTab {
-	width: 15%;
-	margin: 15px;
-	border: 1px solid red;
-}
-
-.adminMain-cont .adminMainTab .adminMainTabTitle {
-	text-align: center;
-	font-weight: bold;
-	font-size: 28px;
-	margin-bottom: 10px;
-}
-
-.adminMain-cont .adminMainTab .adminSubTab {
-	border: 1px solid #000;
-	height: 100%;
-	padding: 10px;
-}
-
-.adminMain-cont .adminMainTab .adminSubTab ul li {
-	margin: 15px 0;
-}
-
-.managerPage .manager-cont .manager-tit p .sub-tit {
-	font-size: 16px;
-	color: #333;
-	font-weight: normal;
-}
-
-.managerPage .manager-cont .manager-tit p .sub-tit::before {
-	content: "> ";
-}
-
-.adminMain-cont .adminMainTab .adminSubTab ul li::before {
-	content: "";
-	display: inline-block;
-	position: relative;
-	top: -5px;
-	left: -3px;
-	border-radius: 50%;
-	width: 3px;
-	height: 3px;
-	background-color: #666;
-}
-/* 메인 */
-
-/* LNB메뉴, 공통 */
-aside.managerAside {
-	border: 1px solid red;
-	width: 220px;
-	padding: 10px;
-}
-
-.managerAside .managerMenu {
-	margin: 20px 5px;
-}
-
-.managerAside .managerMenu > a {
-	font-size: 22px;
-}
-
-.managerAside .managerMenu ul li {
-	margin: 10px;
-}
-
-.managerAside .managerMenu ul li::before {
-	content: "";
-	display: inline-block;
-	position: relative;
-	top: -5px;
-	left: -3px;
-	border-radius: 50%;
-	width: 3px;
-	height: 3px;
-	background-color: #666;
-}
-
-div.managerPage .manager-cont {
-	padding: 10px;
-	width: 100%;
-}
-
-div.managerPage .manager-tit {
-	margin-bottom: 15px;
-}
-
-div.managerPage .manager-tit p {
-	font-size: 28px;
-	font-weight: bold;
-}
-
-/* LNB메뉴, 공통 */
-
 /* 회원관리메뉴 */
 .managerPage .manager-cont .manager-inner {
 	height: 90%;
@@ -145,24 +46,36 @@ div.managerPage .manager-tit p {
 
 .managerPage .manager-cont .memberListFooter {
 	padding: 5px 10px;
-	justify-content: space-between;
 }
 
 .managerPage .manager-cont .memberListFooter .memberListPaging {
-	width: 30%;
+	width: 50%;
+	text-align: center;
+	justify-content: center;
+	position: relative;
+    bottom: 40px;
+    left: 21%;
 }
 
 .managerPage .manager-cont .memberListFooter .memberListPaging div {
-	padding: 3px 5px;
+	justify-content: center;
+	padding: 0 5px;
 	width: 15%;
 }
 
 .managerPage .manager-cont .memberListFooter .memberListPaging > a {
-	padding: 3px 5px;
+	padding: 4px;
+}
+
+.managerPage .manager-cont .memberListFooter .memberListSearch {
+	position: absolute;
+	top: 54px;
+	right: 12px;
 }
 
 .managerPage .manager-cont .memberListFooter .memberListSearch input ,
 .managerPage .manager-cont .memberListFooter .memberListSearch select {
+	padding: 4px;
 	height: 100%;
 }
 

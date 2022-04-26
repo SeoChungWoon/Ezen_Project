@@ -1,10 +1,20 @@
-<%@page import="pack_Product.ProListBean"%>
 <%@page import="pack_Member.RegisterBean"%>
+<%@page import="pack_Product.ProListBean"%>
+<%@page import="pack_Product.ProRevBean"%>
+<%@page import="pack_Member.ZipcodeBean"%>
+<%@page import="java.util.Vector"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <jsp:useBean id="mMgr" class="pack_Member.MemberMgr" />
 <jsp:useBean id="pMgr" class="pack_Product.ProductMgr" />
+
+<%
+request.setCharacterEncoding("UTF-8");
+%>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,6 +43,7 @@
 		</script>
 		<%
 		} else {
+		List objRList = mMgr.myReviewList(memberId);
 		List objWishList = pMgr.wishList(memberId);
 		List objPList = pMgr.listOutput();
 		List objList = mMgr.myPage(memberId);
@@ -84,6 +95,13 @@
 						</div>
 						
 						<div class="mypageRow dFlex">
+							<div class="mypageTitle">내가 쓴 리뷰</div>
+							<div class="mypageVal btn-cont">
+								<button type="button" class="btn open-modal" data-target="popup1">리뷰 보기</button>
+							</div>
+						</div>
+						
+						<div class="mypageRow dFlex">
 							<div class="mypageTitle">예약 내역</div>
 							<div class="mypageVal">(작업예정)</div>
 						</div>
@@ -128,6 +146,7 @@
 			<!-- div.inner -->
 		</div>
 		<!-- div.sub-body -->
+		<%@ include file="/popup/mypagePop.jsp" %>
 		<%
 		}
 		%>

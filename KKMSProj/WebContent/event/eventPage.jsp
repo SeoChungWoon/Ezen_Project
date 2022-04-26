@@ -79,22 +79,26 @@ List eList = eMgr.eventList();
 										<%=evList.geteTitle()%>
 									</div>
 									<div class="eventDate">
-										<span class="eDate"><%=evList.geteStart()%> ~ </span> <span
+										<span class="eDateTit">이벤트 기간 : </span><span
+											class="eDate"><%=evList.geteStart()%> ~ </span> <span
 											class="eDate"><%=evList.geteEnd()%></span>
-										<%
-										if (evList.geteRes() != null) {
-										%>
-										<span class="eDate"> | <%=evList.geteRes()%> 발표
-										</span>
-										<%
-										}
-										%>
+									</div>
+									<div class="eventDate">
+									<%
+									if (evList.geteRes() != null) {
+									%>
+										<span class="resDateTit">당첨자 발표 : </span><span
+											class="resDate"><%=evList.geteRes()%> </span>
+									<%
+									}
+									%>
+									</div>
+									<div class="eventDday"></div>
+									<div class="eventDdayBar">
+										<span class="percentBar"></span>
 									</div>
 								</div>
-								<div class="eventDdayBar">
-								<span class="percentBar"></span>
-								</div>
-								<div class="eventDday"></div>
+								<!-- div.eventLink -->
 							</a>
 						</div>
 						<%

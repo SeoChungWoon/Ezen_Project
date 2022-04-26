@@ -11,7 +11,7 @@
 request.setCharacterEncoding("UTF-8");
 
 //파일 업로드
-String saveFolder = "D:/Ezen/infoProc_1119/scw/silsp/p07_JSP/DWProj_Community/WebContent/images/fileUpload"; // 각자 경로 설정해주세요 ★★★
+String saveFolder = "D:/goo/silsp/p07_JSP/KKMSProj/WebContent/images/fileUpload"; // 각자 경로 설정해주세요 ★★★
 int maxSize = 10 * 1024 * 1024;
 String encType = "UTF-8";
 

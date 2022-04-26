@@ -93,8 +93,8 @@
 						</p>
 						<div class="adminSubTab">
 							<ul>
-								<li><a href="/data/bbsListAd.jsp">공지게시판</a></li>
-								<li><a href="/data/faqListAd.jsp">FAQ</a></li>
+								<li><a href="/adminPage/bbsManager/bbsListAd.jsp">공지게시판</a></li>
+								<li><a href="/adminPage/bbsManager/faqListAd.jsp">FAQ</a></li>
 							</ul>
 						</div>
 					</div>

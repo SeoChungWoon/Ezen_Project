@@ -66,7 +66,7 @@
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<%=uId %>
+									<%=uId%>
 									<input type="hidden" value="<%=uId%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
@@ -80,31 +80,30 @@
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal mPwArea">
-									<div class="modifyPwTitle">
-										<span>변경할 비밀번호</span>
+									<div class="mPwWrap dFlex">
+										<div class="modifyPwTitle">
+											<span class="mPwTit">변경할 비밀번호</span>
+										<input type="password" id="uPw" class="joinPw" name="nPw"
+											maxlength="16" onkeyup="pwChk(this.form)">
+										</div>
+										<!-- div.modifyValTitle -->
+										<div class="modifyPwTitle">
+											<span class="mPwTit">변경할 비밀번호 확인</span>
+										<input type="password" id="uPwChk" class="joinPw"
+											name="nPwChk" maxlength="16" onkeyup="pwChk(this.form)">
+										<input type="hidden" id="pwMatch"> <input
+											type="hidden" id="mPw" name="mPw" value="<%=mPw%>">
+										</div>
+										<!-- div.modifyValTitle -->
 									</div>
-									<!-- div.modifyValTitle -->
-									<input type="password" id="uPw" class="joinPw" name="nPw"
-										maxlength="16" onkeyup="pwChk(this.form)">
-								</div>
-								<!-- div.modifyVal -->
-								<div class="modifyVal mPwArea">
-									<div class="modifyPwTitle">
-										<span>변경할 비밀번호 확인</span>
+									<!-- div.mPwWrap -->
+									<div id="pwChkRes" class="hidden">
+										<p id="pwChkMsg">* 비밀번호가 일치하지 않습니다.</p>
 									</div>
-									<!-- div.modifyValTitle -->
-									<input type="password" id="uPwChk" class="joinPw" name="nPwChk"
-										maxlength="16" onkeyup="pwChk(this.form)"> <input
-										type="hidden" id="pwMatch"> <input type="hidden"
-										id="mPw" name="mPw" value="<%=mPw%>">
-
 								</div>
 								<!-- div.modifyVal -->
 							</div>
 							<!-- div.modifyRow -->
-								<div id="pwChkRes" class="hidden">
-									<p id="pwChkMsg">* 비밀번호가 일치하지 않습니다.</p>
-								</div>
 
 
 							<div class="modifyRow dFlex">
@@ -113,7 +112,7 @@
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<%=uName %>
+									<%=uName%>
 									<input type="hidden" value="<%=uName%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
@@ -127,7 +126,7 @@
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<%=uBirth %>
+									<%=uBirth%>
 									<input type="hidden" value="<%=uBirth%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
@@ -141,8 +140,8 @@
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" id="nEmail" class="readonlyInput" name="nEmail"
-										value="<%=mList.getuEmail()%>" readonly>
+									<input type="text" id="nEmail" class="readonlyInput"
+										name="nEmail" value="<%=mList.getuEmail()%>" readonly>
 								</div>
 								<!-- div.modifyVal -->
 								<div class="modifyBtnArea lh2">
@@ -159,7 +158,8 @@
 									</div>
 									<!-- div.modifyTitle -->
 									<div class="modifyVal">
-										<input type="text" class="readonlyInput" value="<%=mList.getuZipcode()%>" readonly>
+										<input type="text" class="readonlyInput"
+											value="<%=mList.getuZipcode()%>" readonly>
 									</div>
 									<!-- div.modifyVal -->
 								</div>
@@ -172,7 +172,8 @@
 									</div>
 									<!-- div.modifyTitle -->
 									<div class="modifyVal">
-										<input type="text" class="readonlyInput" value="<%=mList.getuAddr()%>" readonly>
+										<input type="text" class="readonlyInput"
+											value="<%=mList.getuAddr()%>" readonly>
 									</div>
 									<!-- div.modifyVal -->
 									<div class="modifyBtnArea">
@@ -192,15 +193,15 @@
 									<div class="modifyValGroup">
 										<div class="modifyZipcodeFind dFlex">
 											<div class="modifyVal">
-												<input type="text" class="readonlyInput" id="uZipcode" name="nZipcode"
-													value="<%=mList.getuZipcode()%>" readonly>
+												<input type="text" class="readonlyInput" id="uZipcode"
+													name="nZipcode" value="<%=mList.getuZipcode()%>" readonly>
 												<button type="button" id="zipChk">우편번호 찾기</button>
 											</div>
-											<div class="modifyBtnArea">
-											</div>
+											<div class="modifyBtnArea"></div>
 										</div>
 										<div class="modifyRow">
-											<input type="text" id="addr1" class="readonlyInput" name="addr1" readonly>
+											<input type="text" id="addr1" class="readonlyInput"
+												name="addr1" readonly>
 										</div>
 									</div>
 								</div>
@@ -222,9 +223,11 @@
 								</div>
 								<!-- div.modifyTitle -->
 								<div class="modifyVal">
-									<input type="text" id="uPhone" class="readonlyInput" name="nPhone" maxlength="11"
-										placeholder="휴대전화 번호 입력('-'없이 숫자만 입력)" onkeyup="pNum(this.form)"
-										value="<%=mList.getuPhone()%>" readonly>
+									<input type="text" id="uPhone" class="readonlyInput"
+										name="nPhone" maxlength="11"
+										placeholder="휴대전화 번호 입력('-'없이 숫자만 입력)"
+										onkeyup="pNum(this.form)" value="<%=mList.getuPhone()%>"
+										readonly>
 								</div>
 								<!-- div.modifyVal -->
 								<div class="modifyBtnArea lh2">

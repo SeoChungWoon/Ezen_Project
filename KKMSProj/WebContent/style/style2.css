@@ -347,7 +347,9 @@ div.joinOkBtnArea a:hover {
 
 /* 우편번호 검색 영역 시작 */
 
-.sub-body > .zipChkInner .tit-cont {
+.sub-body > .zipChkInner .tit-cont ,
+.sub-body > .myRevInner .tit-cont ,
+.sub-body > .myResInner .tit-cont {
 	padding-top: 0;
 }
 
@@ -472,7 +474,7 @@ div.otherLoginArea {
 }
 
 div.otherLoginArea > div.otherLoginBtn {
-	border: 1px solid #aaa;
+	border: 1px solid #ddd;
 	border-radius: 35px;
 	padding: 11px;
 	height: 70px;
@@ -589,7 +591,7 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 }
 
 div.modifyPwTitle {
-	padding: 5px 0;
+	padding: 5px 5px 0 0;
 }
 
 .modifyAddrArea .modifyRow {
@@ -622,7 +624,7 @@ div.modifyPwTitle {
 	font-size: 15px;
 	text-align: center;
 	width: 100px;
-	height: 50px;
+	height: 39px;
 	margin-left: 10px;
 	padding: 5px;
 	background: #333;
@@ -655,16 +657,17 @@ div.modifyPwTitle {
     padding-left: 10px;
 }
 
-.modifyRow .mPwArea {
-	width: 300px;
-}
-
 .mypageRow .mypageVal {
 	font-size: 17px;
     width: calc((100%-190px));
     margin: 6px;
     text-align-last: left;
     padding-left: 10px;
+}
+
+.modifyRow .modifyVal .mPwWrap .modifyPwTitle .mPwTit {
+	margin-bottom: 5px;
+	display: inline-block;
 }
 
 div#changeAddr >modify.Row > input#uZipcode {

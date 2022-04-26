@@ -18,7 +18,7 @@ $(function() {
 
 /* 우편번호 찾기 새창 띄우기 */
 	$("#zipChk").click(function() {
-		window.open("/member/zipChk.jsp","우편번호 찾기","width=700, height=700, left=600, _blank");
+		window.open("/member/zipChk.jsp","E-Ticket: 우편번호 찾기","width=700, height=700, left=600, _blank");
 	});
 /* 우편번호 찾기 새창 띄우기 */
 
@@ -106,6 +106,9 @@ $(function() {
 		});
 
 	});
+	$(".otherLoginBtn").on("click", function(){
+		alert("준비중입니다.");
+	});
 /* 로그인 유효성 검사 */
 
 
@@ -168,6 +171,7 @@ $(function() {
 		let toggle = $(this).is(":checked");
 		if (toggle) {
 			$(".fToggle").not(this).prop("checked", false);
+			$(".fToggle").not(this).siblings().find("img").css({"transform" : "rotate(0deg)"});
 			$(".fToggle").not(this).parent().next().slideUp(200);
 			$(this).parent().next().slideDown(200);
 			$(".findValArea input").val("");
@@ -385,7 +389,7 @@ $("#withdrawDisagree").click(function(){
 
 /* 마이페이지 정보 수정 버튼 */
 $(".modifyBtn").on("click", function(){
-	$(this).parent().siblings(".modifyVal").children("input[type=text]").attr("readonly", false).val('');
+	$(this).parent().siblings(".modifyVal").children("input[type=text]").attr("readonly", false);
 	$(this).parent().siblings(".modifyVal").children("input[type=text]").removeClass("readonlyInput");
 	$(this).parent().siblings(".modifyVal").children("input[type=text]").focus();
 });
@@ -424,6 +428,18 @@ $(document).ready(function(){
 	}  
 });
 /* 적립금 천단위 구분 기호 */
+
+
+/* 내가 쓴 리뷰 새창 띄우기 */
+$("#myReviewBtn").click(function() {
+		window.open("/member/myReview.jsp", "E-Ticket :내가 쓴 리뷰", "width=700, height=700, left=600, _blank");
+	});
+	
+$(".mypagePopClose button").on("click", function(){
+	self.close();
+});
+/* 내가 쓴 리뷰 새창 띄우기 */
+
 
 
 /****** 마이페이지 영역 *****/

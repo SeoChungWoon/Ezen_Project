@@ -37,6 +37,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet" href="/adminPage/style/admin_Common.css">
 <link rel="stylesheet" href="/adminPage/style/style_admin2.css">
 <link rel="stylesheet" href="/style/style_Event.css">
 <script src="/source/jquery-3.6.0.min.js"></script>
@@ -110,13 +111,13 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 						if (memList.size() != 0) {
 						%>
 						<div class="memberListFooter dFlex">
-							<div class="memberListPaging dFlex">
+							<div class="memberListPaging dFlex pagingComm">
 								<div class="memberListPagingPrev">
 									<%
 									if (pageCnt > 1 && nowPage != 1) {
 									%>
-									<a href="?pageNo=1" id="">&lt;&lt;</a> <a
-										href="?pageNo=<%=nowPage - 1%>" id="">&lt;</a>
+									<a href="?pageNo=1" class="firMove"><span class="blind">맨 처음으로 이동</span></a>
+									<a href="?pageNo=<%=nowPage - 1%>" class="prevMove"><span class="blind">이전으로 이동</span></a>
 									<%
 									}
 									%>
@@ -125,7 +126,7 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 								for (int i = startPage; i <= endPage; i++) {
 								%>
 								<a href="?pageNo=<%=i%>"
-									class="memberListPagingNo <%if (i == nowPage) {%>selected<%}%>"><%=i%></a>
+									class="pageNum memberListPagingNo <%if (i == nowPage) {%>selected<%}%>"><%=i%></a>
 								<%
 								}
 								%>
@@ -133,8 +134,8 @@ if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
 									<%
 									if (pageCnt != nowPage) {
 									%>
-									<a href="?pageNo=<%=nowPage + 1%>" id="">&gt;</a> <a
-										href="?pageNo=<%=pageCnt%>" id="">&gt;&gt;</a>
+									<a href="?pageNo=<%=nowPage + 1%>" class="nextMove"><span class="blind">다음으로 이동</span></a>
+									<a href="?pageNo=<%=pageCnt%>" class="endMove"><span class="blind">맨 뒤로 이동</span></a>
 									<%
 									}
 									%>
