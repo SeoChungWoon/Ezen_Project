@@ -142,15 +142,15 @@
 									<span>이메일 주소</span>
 								</div>
 								<!-- div.modifyTitle -->
-								<div class="modifyVal">
+								<div class="modifyVal dFlex">
 									<input type="text" id="nEmail" class="readonlyInput"
 										name="nEmail" value="<%=mList.getuEmail()%>" readonly>
+									<div class="modifyBtnArea">
+										<button type="button" class="modifyBtn">수정</button>
+									</div>
+									<!-- div.modifyBtn -->
 								</div>
 								<!-- div.modifyVal -->
-								<div class="modifyBtnArea lh2">
-									<button type="button" class="modifyBtn">수정</button>
-								</div>
-								<!-- div.modifyBtn -->
 							</div>
 							<!-- div.modifyRow -->
 
@@ -160,18 +160,18 @@
 									<span>휴대전화 번호</span>
 								</div>
 								<!-- div.modifyTitle -->
-								<div class="modifyVal">
+								<div class="modifyVal dFlex">
 									<input type="text" id="uPhone" class="readonlyInput"
 										name="nPhone" maxlength="11"
 										placeholder="휴대전화 번호 입력('-'없이 숫자만 입력)"
 										onkeyup="pNum(this.form)" value="<%=mList.getuPhone()%>"
 										readonly>
+									<div class="modifyBtnArea">
+										<button type="button" class="modifyBtn">수정</button>
+									</div>
+									<!-- div.modifyBtn -->
 								</div>
 								<!-- div.modifyVal -->
-								<div class="modifyBtnArea lh2">
-									<button type="button" class="modifyBtn">수정</button>
-								</div>
-								<!-- div.modifyBtn -->
 							</div>
 							<!-- div.modifyRow -->
 							<%

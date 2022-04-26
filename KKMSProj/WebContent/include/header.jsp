@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
-	
-	<header id="header" class="dFlex">
+
+<header id="header" class="dFlex">
 		<div class="inner">
 			<div class="hLogo">
 				<a href="/index.jsp"><img src="/images/h-logo.png" alt="LOGO" /></a>

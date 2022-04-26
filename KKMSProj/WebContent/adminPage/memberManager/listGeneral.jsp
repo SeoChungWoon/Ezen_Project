@@ -15,15 +15,15 @@ if (pageNo == null) {
 	pageNo = "1";
 }
 int nowPage = Integer.parseInt(pageNo);
-int pageSize = 10;
+int pageSize = 9;
 int listSize = memList.size();
-int pageCnt = mCnt % 10 == 0 ? mCnt / 10 : mCnt / 10 + 1;
-int start = nowPage * pageSize - 10;
+int pageCnt = mCnt % 9 == 0 ? mCnt / 9 : mCnt / 9 + 1;
+int start = nowPage * pageSize - 9;
 int end = start + pageSize;
-int startPage = (nowPage - 2 <= 0) ? 1 : nowPage - 2;
-int endPage = nowPage < pageCnt - 2 ? startPage + 9 : pageCnt;
-if (pageCnt - 2 > 1 && pageCnt - 2 <= nowPage) {
-	startPage = pageCnt - 9;
+int startPage = (nowPage - 9 <= 0) ? 1 : nowPage - 9;
+int endPage = nowPage < pageCnt - 4 ? startPage + 8 : pageCnt;
+if (pageCnt - 4 > 1 && pageCnt - 4 <= nowPage) {
+	startPage = pageCnt - 8;
 }
 %>
 

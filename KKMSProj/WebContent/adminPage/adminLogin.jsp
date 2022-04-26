@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
+<link rel="stylesheet" href="/adminPage/style/admin_Common.css">
 <link rel="stylesheet" href="/adminPage/style/style_admin2.css">
 <link rel="stylesheet" href="/style/style_Event.css">
 <script src="/source/jquery-3.6.0.min.js"></script>

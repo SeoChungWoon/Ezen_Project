@@ -71,7 +71,7 @@ request.setCharacterEncoding("UTF-8");
 						<!-- div.mypageTit -->
 						<div class="mypageRow dFlex">
 							<div class="mypageTitle">아이디</div>
-							<div class="mypageVal"><%=mList.getuId()%></div>
+							<div class="mypageVal mypageId"><%=mList.getuId()%></div>
 						</div>
 						
 						<div class="mypageRow dFlex">
@@ -95,7 +95,7 @@ request.setCharacterEncoding("UTF-8");
 						</div>
 						
 						<div class="mypageRow dFlex">
-							<div class="mypageTitle">내가 쓴 리뷰</div>
+							<div class="mypageTitle">내가 쓴 리뷰 <span class="smallFont">(<%=objRList.size() %>)</span></div>
 							<div class="mypageVal btn-cont">
 								<button type="button" class="btn open-modal" data-target="popup1">리뷰 보기</button>
 							</div>

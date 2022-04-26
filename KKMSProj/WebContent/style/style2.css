@@ -144,7 +144,7 @@ div.termsTxtInner {
 	font-size: 18px;
 	padding: 10px;
 	height: 80%;
-	width: 10%;
+	width: 70px;
 	margin: 0 10px;
 }
 
@@ -318,7 +318,7 @@ radio:fisrt-child {
 	font-size: 18px;
 	padding: 10px 10px;
 	margin: 0 15px;
-	width: 20%;
+	width: 100px;
 }
 
 div.joinOkBtnArea {
@@ -533,6 +533,10 @@ div.mypageInner > aside > div.mypageMenu > a:hover {
 	margin: 20px auto;
 }
 
+.mypageArea .mypageRow .btn-cont {
+	justify-content: flex-start;
+}
+
 .mypageTit > h1 {
 	margin-bottom: 50px;
 	color: #0086b8;
@@ -598,18 +602,13 @@ div.modifyPwTitle {
 	margin: 0;
 }
 
-.modifyRow .modifyBtnArea {
-	width: 45px;
-	padding: 5px;
-}
-
 .modifyRow .modifyBtnArea button {
 	font-size: 15px;
 	text-align: center;
 	width: 50px;
 	height: 40px;
 	margin-left: 10px;
-	padding: 5px;
+	padding-left: 10px;
 	background: #333;
 	border: none;
 	color: #fff;
@@ -684,7 +683,7 @@ div#changeAddr >modify.Row > input#uZipcode {
 	font-size: 20px;
 	padding: 10px 10px;
 	font-weight: bold;
-	width: 20%;
+	width: 100px;
 }
 
 .modifyFinal button:first-child {
@@ -788,6 +787,95 @@ div#withdrawBtnArea {
 	border: 1px solid #ccc;
 }
 
+
+/* 내가 쓴 리뷰 시작 */
+
+.myReviewArea .resMsg {
+	text-align: center;
+	margin: 40px 0;
+	font-size: 20px;
+}
+
+.myReviewArea hr {
+	margin-bottom: 32px;
+}
+
+.myReviewArea .myReviewRow {
+	height: 170px;
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+.myReviewArea .myReviewRow .myReviewBanner img {
+	height: 100%;
+}
+
+.myReviewArea .myReviewRow .myReview-cont {
+	width: 100%;
+	position: relative;
+	padding: 10px;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewContent {
+	height: 170px;
+	width: 100%;
+	justify-content: space-between;
+}
+
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewContent .myReviewTxt {
+	flex: 4;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewContent img {
+	vertical-align: middle;
+	height: 70%;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewStar {
+	position: absolute;
+	overflow: hidden;
+	height: 17px;
+	bottom: 22px;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewStar img {
+	height: 32px;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewStarpoint {
+	position: absolute;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewDate {
+	position: absolute;
+	bottom: 1px
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewRecom {
+	position: absolute;
+	bottom: -4px;
+	left: 30%;
+	display: block;
+    color: #777;
+    font-size: 12px;
+    padding: 5px 10px 5px 30px;
+    border-radius: 20px;
+    border: 1px solid #4a90e2;
+    background: url(/images/icon-recommend-off.png)no-repeat 3px center / 22px;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewDel {
+	position: absolute;
+	bottom: -3px;
+	left: 41%;
+}
+
+.myReviewArea .myReviewRow .myReview-cont .myReviewUp {
+	position: absolute;
+}
+
+/* 내가 쓴 리뷰 끝 */
 
 /* 마이페이지 영역 끝 */
 

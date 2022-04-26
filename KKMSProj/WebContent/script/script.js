@@ -558,14 +558,43 @@ $(function() {
 		$(".reviewInfo").each(function(e){
 			$(this).find(".revDelBtn").on("click", function(){
 				var wUId = $(".reviewInfo").eq(e).find("#wUId").val();
-				$.ajax({
-					type: "post",
-					url: "/product/listViewReDelProc.jsp",
-					data: {"wUId" : wUId},
-					success: function(txt) {
-						$(".reviewRef").html(txt);
-					}
-				});
+				var wPNo = $("#wPNo").val();
+				if(confirm("리뷰를 삭제하시겠습니까?") == true) {
+					$.ajax({
+						type: "post",
+						url: "/product/listViewReDelProc.jsp",
+						data: {"wUId" : wUId, "wPNo" : wPNo},
+						success: function(txt) {
+							alert("리뷰가 삭제되었습니다.");
+							location.reload();
+						}
+					});					
+				} else {
+					return;
+				}
+			});
+		});
+	}
+	// 마이페이지에서 나의 리뷰 삭제
+	if($(".myReviewDel").length != 0){
+		$(".myReviewRow").each(function(e){
+			$(this).find(".myReviewDel").on("click", function(){
+				var wUId = $(".mypageId").text();
+				wUId = wUId.trim();
+				var wPNo = $(".myReviewRow").eq(e).find(".rPNo").val();
+				if(confirm("리뷰를 삭제하시겠습니까?") == true) {
+					$.ajax({
+						type: "post",
+						url: "/product/listViewReDelProc.jsp",
+						data: {"wUId" : wUId, "wPNo" : wPNo},
+						success: function(txt) {
+							alert("리뷰가 삭제되었습니다.");
+							location.reload();						
+						}
+					});					
+				} else {
+					return;
+				}
 			});
 		});
 	}
@@ -981,6 +1010,14 @@ $(window).on("load", function() {
 				$(this).prop("checked", true);
 				$(this).parent(".chk-group").addClass("checked");
 			} 
+		});
+	}
+	
+	if ($(".myReviewStar").length != 0) {
+		$(".myReviewStar").each(function(e){
+			let star = $(".myReviewStarpoint").eq(e).val();
+			let width = star*23;
+			$(this).css({"width": width+"px"})
 		});
 	}
 

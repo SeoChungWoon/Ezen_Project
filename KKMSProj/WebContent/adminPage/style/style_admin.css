@@ -28,7 +28,7 @@ div.adminMain-cont {
 }
 
 .adminMain-cont .adminMainTab .adminSubTab ul li {
-	border: 1px solid blue;
+	border: 1px solid #d9ecf3;
 	margin: 15px 0;
 }
 
@@ -77,13 +77,12 @@ aside.managerAside {
 }
 
 div.managerPage .manager-cont {
-	border: 1px solid #000;
+	position: relative;
 	padding: 10px;
 	width: 80%;
 }
 
 div.managerPage .manager-tit {
-	border: 1px solid blue;
 	margin-bottom: 15px;
 }
 
@@ -97,9 +96,6 @@ div.managerPage .manager-tit p {
 
 
 /* 메인 관리 CSS */
-.slide-select{
-	
-}
 .slide-select .imgbox{
 	margin: 5px;
 	height: 200px;

@@ -508,6 +508,11 @@ footer .fInfo .fSns a img{
 	font-size: 16px;
 }
 
+.scroll_div {
+	height: 700px;
+	overflow-y: auto;
+}
+
 /* sns */
 .sns-line .tit {
 	float: left;

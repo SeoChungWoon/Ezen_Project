@@ -7,17 +7,7 @@
 request.setCharacterEncoding("UTF-8");
 
 String wUId = request.getParameter("wUId");
-boolean chk = pMgr.revDelCnt(wUId);
-out.print(chk);
+int wPNo = Integer.parseInt(request.getParameter("wPNo"));
+boolean chk = pMgr.revDelCnt(wUId, wPNo);
 
-if(chk) {
-	%>
-	<script>
-	if(confirm("리뷰를 삭제하시겠습니까?") == true){
-		alert("리뷰가 삭제되었습니다.");
-		location.reload();
-	}
-	</script>
-<%
-}
 %>
