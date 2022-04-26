@@ -356,14 +356,15 @@ public class ProductMgr {
 	}
 	
 	// 나의 리뷰 삭제
-	public boolean revDelCnt (String wUId) {
+	public boolean revDelCnt (String wUId, int wPNo) {
 		boolean chk = false;
 		
 		try {
 			objConn = pool.getConnection();
-			sql = "delete from pRevList where pRevUId = ?";
+			sql = "delete from pRevList where pRevUId = ? and pRevPNo = ?";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setString(1, wUId);
+			objPstmt.setInt(2, wPNo);
 			if(objPstmt.executeUpdate()>0) {
 				chk = true;
 			}
