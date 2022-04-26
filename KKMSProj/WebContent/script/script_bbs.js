@@ -12,7 +12,7 @@
 $(function() {
 			///////////////////공통영역 시작/////////////////
 		$("button.list").on("click",function(){
-			let dvChk = $(".orgDV").val().trim();
+			let dvChk = $(this).prev().val();
 			if(dvChk=="공지사항"){
 			location.href="/adminPage/bbsManager/bbsListAd.jsp?divisions="+dvChk;				
 			}else{
@@ -91,9 +91,6 @@ $("button.udBtn").on("click",function(){
 			location.href="/adminPage/bbsManager/write.jsp?divisions="+ChkDV;
 		});
 		
-
-		
-	
 		
 		$("#formSave").on("click",function(){
 			let title = $("titleBox").val().trim();
@@ -102,6 +99,10 @@ $("button.udBtn").on("click",function(){
 			if(title.equals("")||content.equals("")){
 				alert("제목 또는 내용을 입력해주세요.")
 			}
+		});
+		
+		$("#ntcFile").on("change",function(){
+				$("#fileName").val() = $(this).val();
 		});
  		
  		///////////////////write.jsp 영역 끝/////////////////

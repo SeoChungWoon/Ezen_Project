@@ -5,11 +5,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
-<jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
-<jsp:setProperty name="regVO" property="*" />
+
 <% 
-	String divisions = "공지사항";
+	String divisions = request.getParameter("divisions");
 %> 
 <!DOCTYPE html>
 <html lang="ko">
@@ -47,7 +45,8 @@
 					</div>
 
         <div class="main">
-        <form action="/adminPage/bbsManager/writeRes.jsp" id="writeFrm" method="get">
+        <form action="/adminPage/bbsManager/writeRes.jsp" id="writeFrm" method="post"
+        enctype="multipart/form-data">
         
  		<div id="header">
         	<hr id="headHR">
@@ -80,19 +79,28 @@
         					onblur="this.placeholder='제목을 입력해 주세요.'">
         			</td>
         		</tr>
-        		<tr>
-        			<td id="bg">
-        				<img src="/images/fileIcon.png" alt="파일" class='icon'>
-        				<img src="/images/pictureIcon.png" alt="사진" class='icon'>
-        				<img src="/images/videoIcon.png" alt="동영상" class='icon'>
-        			</td>
-        		</tr>
+
         		<tr>
         			<td>
         				<textarea name="content" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
         				  onblur="this.placeholder='내용을 입력해주세요'"></textarea>
+        			</td>
+        		</tr>
+        		 <tr>
+        			<td id="bg" class="dFlex">
+        			<div class="fileArea">
+        				<input type="file" name="ntcFile" id="ntcFile" class="hidden"
+        				 onchange="javascript:document.getElementById('fileName').value = this.value">
+        				<label for="ntcFile">
+        				<img src="/images/fileIcon.png" alt="파일" class='icon'>
+        				</label>
+        			</div>
+        			<!-- fileArea -->
+        			<div class="fNameArea">
+        				<input type="text" id="fileName" name="fileName" readonly>
+        			</div>
         			</td>
         		</tr>
         	</tbody>

@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="pack_EzPro.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@page import="pack_EzPro.BoardDAO"%>
@@ -32,6 +33,8 @@ for(int i = 0; i<ntcNo.length; i++){
 
 	}
 }
+String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/images/bbsFileUpload";
+
 
 %>
 
@@ -97,6 +100,16 @@ for(int i = 0; i<ntcNo.length; i++){
         			<pre><%=objVO.getContent() %></pre>
         		</div>
         		<!-- div.content -->
+        		<% 
+        			File viewFile = new File(saveFolder+"\\사진.jpg");
+					if(viewFile.exists()){
+				%>
+				<div class="fileArea">
+					<br><br><img src = "<%=saveFolder %>/<%=no %>사진.jpg" alt="사진"><br><br>
+				</div>
+				<% }else{%>
+					<br><br>
+				<%} %>
         		<div class="ntcFooter dFlex">
         
         		           <div class="footerLeft">

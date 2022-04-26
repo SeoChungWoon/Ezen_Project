@@ -5,8 +5,14 @@
 <jsp:setProperty name="regVO" property="*" />
 <%
 request.setCharacterEncoding("UTF-8");
-boolean res = memMgr.mtdWrite(regVO);
+
 String divisions = request.getParameter("divisions");
+String header = request.getParameter("header");
+String title = request.getParameter("title");
+String wName = request.getParameter("wName");
+String content = request.getParameter("content");
+
+boolean res = memMgr.mtdWrite(divisions,header,title,wName,content);
 %>
 <!DOCTYPE html>
 <html lang="ko">

@@ -84,7 +84,7 @@ public class BoardDAO {
 		
 		return count;
 	}
-	public boolean mtdWrite(BoardVO vo) {
+	public boolean mtdWrite(String divisions,String header,String title,String wName,String content) {
 			
 		boolean res = false;
 		
@@ -99,11 +99,11 @@ public class BoardDAO {
 	 		String sql = "insert into bbsList (divisions,header, title, wName,content,postDate, count) values ";
 	 				sql += "(?,?,?,?,?,date_format(now(), '%Y-%m-%d'),0)";
 	 		objPstmt = objConn.prepareStatement(sql);
-	 		objPstmt.setString(1,vo.getDivisions());
-	 		objPstmt.setString(2,vo.getHeader());
-	 		objPstmt.setString(3,vo.getTitle());
-	 		objPstmt.setString(4,vo.getwName());
-	 		objPstmt.setString(5, vo.getContent());
+	 		objPstmt.setString(1,"divisions");
+	 		objPstmt.setString(2,"header");
+	 		objPstmt.setString(3,"title");
+	 		objPstmt.setString(4,"wName");
+	 		objPstmt.setString(5, "content");
 	 		
 	 		if(objPstmt.executeUpdate()>0) {
 	 			res = true;
@@ -166,6 +166,7 @@ public class BoardDAO {
 				
 				objVO.setNo(objRS.getInt("no"));
 				objVO.setDivisions(objRS.getString("divisions"));
+				objVO.setHeader(objRS.getString("header"));
 				objVO.setTitle(objRS.getString("title"));
 				objVO.setwName(objRS.getString("wName"));
 				objVO.setPostDate(objRS.getString("postDate"));
@@ -197,6 +198,7 @@ public class BoardDAO {
 					
 					objVO.setNo(objRS.getInt("no"));
 					objVO.setDivisions(objRS.getString("divisions"));
+					objVO.setHeader(objRS.getString("header"));
 					objVO.setTitle(objRS.getString("title"));
 					objVO.setwName(objRS.getString("wName"));
 					objVO.setPostDate(objRS.getString("postDate"));

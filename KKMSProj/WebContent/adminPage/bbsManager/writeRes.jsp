@@ -1,12 +1,52 @@
+<%@page import="java.util.List"%>
+<%@page import="java.io.File"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
 <jsp:useBean id="memMgr" class="pack_EzPro.BoardDAO" />
 <jsp:setProperty name="regVO" property="*" />
 <%
+
 request.setCharacterEncoding("UTF-8");
-boolean res = memMgr.mtdWrite(regVO);
+
+
+String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/images/bbsFileUpload";		
+String encType = "UTF-8";				//변환형식
+int maxSize=5*1024*1024;				//사진의 size
+
+
+//ServletContext context = this.getServletContext();		//절대경로
+//realFolder = //context.getRealPath(saveFolder);			//saveFolder의 절대경로를 얻음
+		
+MultipartRequest multi = null;
+
+//파일업로드를 직접적으로 담당		
+multi = new MultipartRequest(request,saveFolder,maxSize,encType,new DefaultFileRenamePolicy());
+
+String fileName = multi.getFilesystemName("fileName");
+String bbsTitle = multi.getParameter("title");
+String bbsContent = multi.getParameter("content");
+
+if(fileName != null){
+	File oldFile = new File(saveFolder+"\\"+fileName);
+	File newFile = new File(saveFolder+"\\사진.jpg");
+	oldFile.renameTo(newFile);
+
+}
+
 String divisions = request.getParameter("divisions");
+String header = request.getParameter("header");
+String title = request.getParameter("title");
+String wName = request.getParameter("wName");
+String content = request.getParameter("content");
+
+boolean res = false;
+if(memMgr.mtdWrite(divisions,header,title,wName,content)){
+	res = true;
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -45,7 +85,8 @@ String divisions = request.getParameter("divisions");
 				</div>
 				<!--div.tit-cont  -->
 					<div class="btnArea btn-cont">
-						<input type="hidden" class="orgDV" value="<%=divisions %>">
+					<input type="text" class="orgDV" value="<%=title %>">
+						<input type="text" class="orgDV" value="<%=divisions %>">
 						<button type="button" class="dlBtn list">목록으로</button>
 					</div>
 					<!-- div.btnArea -->
