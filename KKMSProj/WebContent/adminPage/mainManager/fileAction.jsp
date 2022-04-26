@@ -1,9 +1,9 @@
 <%@ page import="pack_Maincon.FileDAO" %>
-<%@ page import="java.util.*" %>
 <%@ page import="java.io.File" %>
-<%@page import="java.io.IOException"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@ page import="java.util.*" %>
+<%@page import="java.io.IOException"%>
 <%@ page import="pack_Maincon.MainconMgr" %>
 <%@ page import="pack_Maincon.MainContentsBean" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,9 +11,8 @@
 
 <jsp:useBean id="slideMgr" class="pack_Maincon.MainconMgr" />
 <jsp:useBean id="mCBean" class="pack_Maincon.MainContentsBean"/>
-<%
-boolean result = slideMgr.insertImgFile(mCBean);
-%>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -41,16 +40,22 @@ boolean result = slideMgr.insertImgFile(mCBean);
 						try {
 							MultipartRequest mReq = null;
 
-							mReq = new MultipartRequest(request, saveFolder, maxSize, encType, new DefaultFileRenamePolicy());
-
-							int mNo = Integer.parseInt(mReq.getParameter("mNo"));
-							String mFileName = mReq.getParameter("title");
-
-							new FileDAO().upload(mNo, mFileName);
-
+							mReq = new MultipartRequest(request, 
+																		saveFolder, 
+																		maxSize, 
+																		encType, 
+																		new DefaultFileRenamePolicy());
+							
+							String mTitle = mReq.getParameter("mTitle");
+							String mFileName = mReq.getFilesystemName("mFileName");
+									
+							new FileDAO().upload(mFileName, mTitle);
+ 							/* out.write("파일명 : " + mFileName); */
 						} catch (Exception e) {
 							e.getMessage();
 						}
+						
+						
 						%>
    <div id="wrap">
 		
@@ -62,39 +67,17 @@ boolean result = slideMgr.insertImgFile(mCBean);
 					<div class="manager-cont">
 					<div class="manager-tit">
 						<!--  title -->
-						<p>메인 관리 <span class="smallFont">&gt; 현재 등록된 슬라이드 이미지</span></p>
+						<p>메인 관리 <span class="smallFont">&gt; 이미지 업로드완료</span></p>
 					</div>
 
-					<%request.setCharacterEncoding("UTF-8");
-					List objList = slideMgr.ListOutput();
-					int cnt = slideMgr.mListCount();
-					boolean fileChk = false;
 					
-					if(cnt !=0){
-						for(int i = 0; i <objList.size(); i++){
-							MainContentsBean mList = (MainContentsBean) objList.get(i);
-							
-					%>
 					<div class="slide-list">
-						<img src="/images/main_images/product-list-slideimg<%= i+1%>.jpg" alt="슬라이드 이미지">
-								
+						이미지 업로드완료
 					</div>
-					<%} } %>	
 					
 					
-					
-					
-					
-					
-					
-					
-					
-
-
-
-
 					</div>
-										
+					
 					</div>
 					<!-- div.manager-cont -->
 				</div>

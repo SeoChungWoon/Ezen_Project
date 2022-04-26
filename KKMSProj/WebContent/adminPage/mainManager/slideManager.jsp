@@ -1,17 +1,12 @@
-<%@page import="pack_Product.ProListBean"%>
-<%@page import="pack_Product.ProductMgr"%>
+<%@page import="pack_Maincon.MainContentsBean"%>
+<%@ page import="pack_Maincon.MainconMgr" %>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<jsp:useBean id="mCMgr" class="pack_Maincon.MainconMgr" />
+<jsp:useBean id="mCBean" class="pack_Maincon.MainContentsBean"/>	
 
-<jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />	
-<jsp:useBean id="eMgr" class="pack_Event.eventMgr" />
-<%
-int eCount = eMgr.eListCnt();
-
-List eList = eMgr.eventList();
-%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -32,9 +27,6 @@ List eList = eMgr.eventList();
 	<script src="/script/eventScript.js"></script>
 </head>
 
-
-
-
 <body>
    <div id="wrap">
         <div class="sub-body">
@@ -44,21 +36,23 @@ List eList = eMgr.eventList();
 					<div class="manager-cont">
 					<div class="manager-tit">
 						<!--  title -->
-						<p>메인 관리 <span class="smallFont">&gt; 메인 슬라이드 수정</span></p>
+						<p>메인 관리 <span class="smallFont">&gt; 업로드 된 슬라이드 이미지파일</span></p>
 					</div>
 					
+						
 						<div class="slide-select">
 							<%
 							request.setCharacterEncoding("UTF-8");
-							List objList = prodMgr.listOutput();
-						 	int cnt = prodMgr.proListCount();
+							List objList = mCMgr.ListOutput();
+						 	int cnt = mCMgr.mListCount();
 							
 						 	if(cnt != 0){
-					      		for(int i = 0; i < 1; i++){
-									ProListBean mList = (ProListBean) objList.get(i);
+					      		for(int i = 0; i < objList.size(); i++){
+					      			MainContentsBean mList = (MainContentsBean) objList.get(i);
 							%>
 							<div class="imgbox">
-							 	<img src="/images/main_images/product-list-slideimg<%= i+1%>.jpg" alt="슬라이드 이미지" class="slideimg" />
+								<p class="title"><%=mList.getmTitle() %></p>
+							 	<img src="/images/main_images/<%=mList.getmFileName()%>" alt="슬라이드 이미지">
 							</div>
 							<%} }%>
 							

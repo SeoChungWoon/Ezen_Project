@@ -3,10 +3,16 @@ package pack_Maincon;
 public class MainContentsBean {
 	private int mNo;        // 번호
 	private String mFileName;   // // 전시회 파일이름
+	private String mTitle;
 	
 	
 	
-	
+	public String getmTitle() {
+		return mTitle;
+	}
+	public void setmTitle(String mTitle) {
+		this.mTitle = mTitle;
+	}
 	public int getmNo() {
 		return mNo;
 	}

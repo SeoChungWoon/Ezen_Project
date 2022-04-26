@@ -2,41 +2,9 @@
 <%@ page import="java.io.*" %>
 <%@ page import="com.oreilly.servlet.*" %>
 <%@ page import="com.oreilly.servlet.multipart.*" %>
-
-
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
-
-
-<%
-String imgFolder = "C:/Users/user/Documents/GitHub/munPJ/mainPJ_MJH/KKMSProj/WebContent/images/main_images";
-int maxSize = 10 * 1024 * 1024;
-String encType = "UTF-8";
-String mFileRealName = "";
-String mFileName = "";
-String mDate1= "";
-String mDate2="";
-
-
-try{
-MultipartRequest multi = new MultipartRequest(
-												request, 
-												imgFolder, 
-												maxSize, 
-												encType, 
-												new DefaultFileRenamePolicy());
-	mFileRealName=multi.getParameter("mFileRealName");
-	mFileName = multi.getParameter("mFileName");
-	mDate1 = multi.getParameter("mData1");
-	mDate2 = multi.getParameter("mData2");
-}catch(Exception e){
-	e.printStackTrace();
-}
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -56,9 +24,6 @@ MultipartRequest multi = new MultipartRequest(
 	<script src="/script/eventScript.js"></script>
 </head>
 
-
-
-
 <body>
    <div id="wrap">
         <div class="sub-body">
@@ -68,12 +33,13 @@ MultipartRequest multi = new MultipartRequest(
 					<div class="manager-cont">
 					<div class="manager-tit">
 						<!--  title -->
-						<p>메인 관리 <span class="smallFont">&gt; 슬라이드 파일 관리</span></p>
+						<p>메인 관리 <span class="smallFont">&gt; 슬라이드 파일 업로드</span></p>
 					</div>
 					
 						<div class="slide-upload">
 							<form name="file" method="post" enctype="multipart/form-data" action="fileAction.jsp">
-								  이미지 업로드 : <input type="file"	name="uploadFile"><br>
+								  전시 제목 : <input type="text" name="mTitle"><br>
+								  이미지 업로드 : <input type="file" name="mFileName"><br>
 								  
 								     <input type="submit" value="파일 업로드">
 								  

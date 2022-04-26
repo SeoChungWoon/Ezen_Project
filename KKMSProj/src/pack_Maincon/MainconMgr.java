@@ -40,6 +40,7 @@ public class MainconMgr {
 				MainContentsBean mCBean = new MainContentsBean();
 				mCBean.setmNo(objRS.getInt("mNo"));
 				mCBean.setmFileName(objRS.getString("mFileName"));
+				mCBean.setmTitle(objRS.getString("mTitle"));
 				mList.add(mCBean);
 				
 				
@@ -60,7 +61,7 @@ public class MainconMgr {
 		boolean flag = false;
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into mainslidelist values (mNo, mFileName) ";
+			sql = "insert into mainslidelist (mNo, mFileName) values (?, ?) ";
 			objPstmt = objConn.prepareStatement(sql);
 			objPstmt.setInt(1, mCBean.getmNo());
 			objPstmt.setString(2, mCBean.getmFileName());

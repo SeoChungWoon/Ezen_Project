@@ -30,23 +30,22 @@
 					<div class="managerMenu">
 						<a href="javascript:">상품 관리</a>
 						<ul>
-							<li><a href="/adminPage/productManager/listAllProduct.jsp">전체상품 리스트</a></li>
+							<li><a href="javascript:">전체상품 리스트</a></li>
 							<li><a href="javascript:">상품 등록요청</a></li>
 						</ul>
 					</div>
 					<div class="managerMenu">
 						<a href="javascript:">메인 관리</a>
 						<ul>
-							<li><a href="/adminPage/mainManager/slideManager.jsp">메인 슬라이드 수정</a></li>
-							<li><a href="javascript:">a</a></li>
-							<li><a href="javascript:">b</a></li>
+							<li><a href="/adminPage/mainManager/slideManager.jsp">업로드 된 슬라이드 이미지파일</a></li>
+							<li><a href="/adminPage/mainManager/slideFileUpload.jsp">슬라이드 이미지 업로드</a></li>
 						</ul>
 					</div>
 					<div class="managerMenu">
 						<a href="javascript:">게시판 관리</a>
 						<ul>
-							<li><a href="/adminPage/bbsManager/bbsListAd.jsp">공지게시판</a></li>
-							<li><a href="/adminPage/bbsManager/faqListAd.jsp">FAQ</a></li>
+							<li><a href="/data/bbsListAd.jsp">공지게시판</a></li>
+							<li><a href="/data/faqListAd.jsp">FAQ</a></li>
 						</ul>
 					</div>
 					<div class="managerMenu">
