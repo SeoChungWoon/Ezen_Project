@@ -38,10 +38,10 @@ public class MainconMgr {
 			while(objRS.next()) {
 				MainContentsBean mCBean = new MainContentsBean();
 				mCBean.setmNo(objRS.getInt("mNo"));
-				mCBean.setmTitle("mTitle");
-				mCBean.setmImg("mImg");
-				mCBean.setmDate1("mDate1");
-				mCBean.setmDate1("mDate2");
+				mCBean.setmFileRealName(objRS.getString("mFileRealName"));
+				mCBean.setmFileName(objRS.getString("mFileName"));
+				mCBean.setmDate1(objRS.getString("mDate1"));
+				mCBean.setmDate1(objRS.getString("mDate2"));
 				mList.add(mCBean);
 				
 				

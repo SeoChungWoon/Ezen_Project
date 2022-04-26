@@ -2,8 +2,8 @@ package pack_Maincon;
 
 public class MainContentsBean {
 	private int mNo;        // 번호
-	private String mTitle;  // 전시회 제목
-	private String mImg;   // 파일이름
+	private String mFileRealName;  // 실제 파일이름
+	private String mFileName;   // // 전시회 파일이름
 	private String mDate1; // 전시회 시작날짜
 	private String mDate2; // 전시회 종료날짜
 	
@@ -16,17 +16,17 @@ public class MainContentsBean {
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}
-	public String getmTitle() {
-		return mTitle;
+	public String getmFileRealName() {
+		return mFileRealName;
 	}
-	public void setmTitle(String mTitle) {
-		this.mTitle = mTitle;
+	public void setmFileRealName(String mFileRealName) {
+		this.mFileRealName = mFileRealName;
 	}
-	public String getmImg() {
-		return mImg;
+	public String getmFileName() {
+		return mFileName;
 	}
-	public void setmImg(String mImg) {
-		this.mImg = mImg;
+	public void setmFileName(String mFileName) {
+		this.mFileName = mFileName;
 	}
 	public String getmDate1() {
 		return mDate1;
