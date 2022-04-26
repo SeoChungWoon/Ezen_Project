@@ -425,7 +425,17 @@ $(document).ready(function(){
 		ePay = ePay.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		ePay += " 원";
 		$(".myEpay").text(ePay);
-	}  
+	}
+	
+	if($(".myReservePrice").length != 0) {
+		$(".myReservePrice").each(function(e){
+			let data = $(".reservePrice").eq(e).text();
+			data = data.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			data += " 원";
+			$(".reservePrice").eq(e).text(data);			
+		});
+	}
+	  
 });
 /* 적립금 천단위 구분 기호 */
 

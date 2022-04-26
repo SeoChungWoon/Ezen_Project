@@ -6,9 +6,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />	
+<jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />
 <jsp:useBean id="eMgr" class="pack_Event.eventMgr" />
 <%
+
 int eCount = eMgr.eListCnt();
 
 List eList = eMgr.eventList();
@@ -20,7 +21,7 @@ List eList = eMgr.eventList();
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>메인페이지</title>
+<title>E-Ticket</title>
 <link rel="stylesheet" href="/style/style_Common.css">
 <link rel="stylesheet" href="/style/style_main.css">
 <link rel="stylesheet" href="/style/style1.css">
@@ -95,33 +96,6 @@ List eList = eMgr.eventList();
 				}	}
 				%>
 			</div>
-		</section>
-
-
-		<section class="sec02 exhibit-news">
-			<div class="sec02-inner">
-				<h2>E-TICKET 소식</h2>
-				
-				<div class="exhibit-news-list">
-					
-					<div class="news-box">
-					<!-- 슬라이더생성후 공지사항내용 표시 -->
-						<h3>공지사항 제목</h3>
-							<p>공지사항 내용</p>
-							
-					</div>
-				
-					<div class="event-box">
-						<!-- 슬라이더생성후 이벤트 목록 표시 -->
-							<div><img src="/images/main_images/product-list-img1.jpg" alt="" />
-							<p>asdfsadfas</p></div>
-							<div><img src="/images/main_images/product-list-img1.jpg" alt="" /></div>
-							<div><img src="/images/main_images/product-list-img1.jpg" alt="" /></div>
-					</div>
-				</div>
-				
-			</div>
-			
 		</section>
 
 

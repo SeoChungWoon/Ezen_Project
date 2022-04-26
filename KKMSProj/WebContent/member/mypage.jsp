@@ -1,6 +1,7 @@
 <%@page import="pack_Member.RegisterBean"%>
 <%@page import="pack_Product.ProListBean"%>
 <%@page import="pack_Product.ProRevBean"%>
+<%@page import="pack_Product.ProReservBean"%>
 <%@page import="pack_Member.ZipcodeBean"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.util.List"%>
@@ -44,6 +45,7 @@ request.setCharacterEncoding("UTF-8");
 		<%
 		} else {
 		List objRList = mMgr.myReviewList(memberId);
+		List objRsvList = pMgr.reserveList(memberId);
 		List objWishList = pMgr.wishList(memberId);
 		List objPList = pMgr.listOutput();
 		List objList = mMgr.myPage(memberId);
@@ -95,15 +97,17 @@ request.setCharacterEncoding("UTF-8");
 						</div>
 						
 						<div class="mypageRow dFlex">
-							<div class="mypageTitle">내가 쓴 리뷰 <span class="smallFont">(<%=objRList.size() %>)</span></div>
+							<div class="mypageTitle">내가 쓴 리뷰 <span class="smallFont">(<%=objRList.size() %>개)</span></div>
 							<div class="mypageVal btn-cont">
 								<button type="button" class="btn open-modal" data-target="popup1">리뷰 보기</button>
 							</div>
 						</div>
 						
 						<div class="mypageRow dFlex">
-							<div class="mypageTitle">예약 내역</div>
-							<div class="mypageVal">(작업예정)</div>
+							<div class="mypageTitle">예매 내역 <span class="smallFont">(<%=objRsvList.size() %>건)</span></div>
+							<div class="mypageVal btn-cont">
+								<button type="button" class="btn open-modal" data-target="popup2">예매 내역 보기</button>
+							</div>
 						</div>
 						
 						<div class="mypageRow dFlex">

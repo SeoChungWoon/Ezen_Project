@@ -30,7 +30,7 @@
 					<div class="managerMenu">
 						<a href="javascript:">상품 관리</a>
 						<ul>
-							<li><a href="javascript:">전체상품 리스트</a></li>
+							<li><a href="/adminPage/productManager/listAllProduct.jsp">전체상품 리스트</a></li>
 							<li><a href="javascript:">상품 등록요청</a></li>
 						</ul>
 					</div>

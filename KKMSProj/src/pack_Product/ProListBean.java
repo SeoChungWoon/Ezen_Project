@@ -140,7 +140,7 @@ public class ProListBean {
 	}
 
 	public String getjoinWait() {
-		return pImg;
+		return joinWait;
 	}
 	public void setjoinWait(String joinWait) {
 		this.joinWait = joinWait;

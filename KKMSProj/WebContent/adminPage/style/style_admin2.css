@@ -93,4 +93,25 @@
 
 /* 회원관리메뉴 */
 
+/* 상품관리메뉴 */
+
+.managerPage .manager-cont .manager-inner .memberTable .adminPTitle {
+	text-align-last: left;
+}
+
+.managerPage .manager-cont .manager-inner .memberTable .adminPImg {
+	height: 70px;
+}
+
+.managerPage .manager-cont .manager-inner .memberTable .adminPImg img {
+	height: 100%;
+}
+
+.managerPage .manager-cont .manager-inner .memberTable .joinWaitSelect {
+	padding: 3px 5px;
+	margin-right: 5px;
+}
+
+/* 상품관리메뉴 */
+
 /* 관리자 페이지 CSS 끝 */

@@ -9,8 +9,8 @@ request.setCharacterEncoding("UTF-8");
 
 String pResDate = request.getParameter("pResDate");
 String pResTime = request.getParameter("pResTime");
-int pResHead = Integer.parseInt(request.getParameter("pResHead"));
-int pResPrice = Integer.parseInt(request.getParameter("pResPrice"));
+String pResHead = request.getParameter("pResHead");
+String pResPrice = request.getParameter("pResPrice");
 String pResCPay = request.getParameter("pResCPay");
 String pResCAccount = request.getParameter("pResCAccount");
 %>

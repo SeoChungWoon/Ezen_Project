@@ -14,6 +14,7 @@ public class ProductMgr {
 
 	private DBConnectionMgr pool = null;
 	private Connection objConn = null;
+	private Statement objStmt = null;
 	private PreparedStatement objPstmt = null;
 	private ResultSet objRS = null;
 	private String sql = "";
@@ -33,7 +34,7 @@ public class ProductMgr {
 
 		try {
 			objConn = pool.getConnection();
-			sql = "select * from proList joinWait = 'Y' order by pNo Asc ";
+			sql = "select * from proList where joinWait='Y' order by pNo Asc ";
 			objPstmt = objConn.prepareStatement(sql);
 			objRS = objPstmt.executeQuery();
 			while (objRS.next()) {
@@ -462,75 +463,157 @@ public class ProductMgr {
 
 		return wList;
 	}
+	
 	// 내 예매내역 불러오기
-   public List reserveList (String uId) {
-      
-      List objRList = new Vector();
-      
-      try {
-         objConn = pool.getConnection();
-         sql = "select * from pReserve where pResUId=?";
-         objPstmt = objConn.prepareStatement(sql);
-         objPstmt.setString(1, uId);
-         objRS = objPstmt.executeQuery();
-         while (objRS.next()) {
-            
-            ProReservBean rBean = new ProReservBean();
-            rBean.setpResPNo(objRS.getInt("pResPNo"));
-            rBean.setpResDate(objRS.getString("pResDate"));
-            rBean.setpResTime(objRS.getString("pResTime"));
-            rBean.setpResHead(objRS.getInt("pResHead"));
-            rBean.setpResPrice(objRS.getInt("pResPrice"));
-            rBean.setpResCPay(objRS.getString("pResCPay"));
-            rBean.setpResCAccount(objRS.getString("pResCAccount"));
-            objRList.add(rBean);
-            
-         }
-         
-         
-      } catch (Exception e) {
-         System.out.println("reserveList e : " + e.getMessage());
-      } finally {
-         pool.freeConnection(objConn, objPstmt, objRS);
-      }
-      
-      return objRList;
-   }
+	public List reserveList (String uId) {
+		
+		List objRList = new Vector();
+		
+		try {
+			objConn = pool.getConnection();
+			sql = "select * from pReserve where pResUId=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uId);
+			objRS = objPstmt.executeQuery();
+			while (objRS.next()) {
+				
+				ProReservBean rBean = new ProReservBean();
+				rBean.setpResPNo(objRS.getInt("pResPNo"));
+				rBean.setpResDate(objRS.getString("pResDate"));
+				rBean.setpResTime(objRS.getString("pResTime"));
+				rBean.setpResHead(objRS.getInt("pResHead"));
+				rBean.setpResPrice(objRS.getInt("pResPrice"));
+				rBean.setpResCPay(objRS.getString("pResCPay"));
+				rBean.setpResCAccount(objRS.getString("pResCAccount"));
+				objRList.add(rBean);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println("reserveList e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+		
+		return objRList;
+	}
 	
 	///////////////판매자////////////////
 	// 상품 등록
 	public boolean sellerListRegist(String sLUId, String sLF1, String sLF2, String sLF3, String sListTitle, String sLGroup, String sLArea, String sListLocation, String sListInfoTxt, String sListDate1, String sListDate2, int sListOriPrice, int sListSalePercent, String fileName1, String fileName2, String sListContent) {
-		boolean chk = false;
-
+	boolean chk = false;
+	
+	try {
+		objConn = pool.getConnection();
+		sql = "insert into proList (pUId, pFlag1, pFlag2, pFlag3, pTitle, pGroup, pArea, pLocation, pInfoTxt, pDate1, pDate2, pContent, pOriPrice, pSalePercent, pImg, pDetailImg, pClass, pViewTime, pDelivery, joinWait) ";
+		sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '전체관람가', '10:00 ~ 19:00 (입장마감: 18:00) / 매주 일요일 휴관', '현장수령', 'N')";
+		objPstmt = objConn.prepareStatement(sql);
+		objPstmt.setString(1, sLUId);
+		objPstmt.setString(2, sLF1);
+		objPstmt.setString(3, sLF2);
+		objPstmt.setString(4, sLF3);
+		objPstmt.setString(5, sListTitle);
+		objPstmt.setString(6, sLGroup);
+		objPstmt.setString(7, sLArea);
+		objPstmt.setString(8, sListLocation);
+		objPstmt.setString(9, sListInfoTxt);
+		objPstmt.setString(10, sListDate1);
+		objPstmt.setString(11, sListDate2);
+		objPstmt.setString(12, sListContent);
+		objPstmt.setInt(13, sListOriPrice);
+		objPstmt.setInt(14, sListSalePercent);
+		objPstmt.setString(15, fileName1);
+		objPstmt.setString(16, fileName2);
+		if (objPstmt.executeUpdate() > 0)
+			chk = true;
+	} catch (Exception e) {
+		System.out.println("sellerListRegist e : " + e.getMessage());
+	} finally {
+		pool.freeConnection(objConn, objPstmt);
+	}
+	return chk;
+	}
+	
+	// 상품 노출여부 변경
+	public boolean productOnOff (String joinWait, int pNo) {
+		boolean flag = false;
+		
 		try {
 			objConn = pool.getConnection();
-			sql = "insert into proList (pUId, pFlag1, pFlag2, pFlag3, pTitle, pGroup, pArea, pLocation, pInfoTxt, pDate1, pDate2, pContent, pOriPrice, pSalePercent, pImg, pDetailImg, pClass, pViewTime, pDelivery, joinWait) ";
-			sql += "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '전체관람가', '10:00 ~ 19:00 (입장마감: 18:00) / 매주 일요일 휴관', '현장수령', 'N')";
+			sql = "update proList set joinWait=? where pNo=?";
 			objPstmt = objConn.prepareStatement(sql);
-			objPstmt.setString(1, sLUId);
-			objPstmt.setString(2, sLF1);
-			objPstmt.setString(3, sLF2);
-			objPstmt.setString(4, sLF3);
-			objPstmt.setString(5, sListTitle);
-			objPstmt.setString(6, sLGroup);
-			objPstmt.setString(7, sLArea);
-			objPstmt.setString(8, sListLocation);
-			objPstmt.setString(9, sListInfoTxt);
-			objPstmt.setString(10, sListDate1);
-			objPstmt.setString(11, sListDate2);
-			objPstmt.setString(12, sListContent);
-			objPstmt.setInt(13, sListOriPrice);
-			objPstmt.setInt(14, sListSalePercent);
-			objPstmt.setString(15, fileName1);
-			objPstmt.setString(16, fileName2);
-			if (objPstmt.executeUpdate() > 0)
-				chk = true;
+			objPstmt.setString(1, joinWait);
+			objPstmt.setInt(2, pNo);
+			if(objPstmt.executeUpdate()>0) {
+				flag=true;
+			}
 		} catch (Exception e) {
-			System.out.println("sellerListRegist e : " + e.getMessage());
+			System.out.println("productOnOff e : "+e.getMessage());
 		} finally {
 			pool.freeConnection(objConn, objPstmt);
 		}
-		return chk;
+		
+		return flag;
+	}
+	
+	// 상품 리스트 검색
+	public List searchProList (String tag, String srhTxt) {
+		List objPList = new Vector();
+		try {
+			objConn = pool.getConnection();
+			sql = "select * from proList where "+tag+" like '%"+srhTxt+"%'";
+			objStmt = objConn.createStatement();
+			objRS = objStmt.executeQuery(sql);
+			while(objRS.next()) {
+				ProListBean pBean = new ProListBean();
+				pBean.setpNo(objRS.getInt("pNo"));
+				pBean.setpUId(objRS.getString("pUId"));
+				pBean.setpTitle(objRS.getString("pTitle"));
+				pBean.setpImg(objRS.getString("pImg"));
+				pBean.setpOriPrice(objRS.getInt("pOriPrice"));
+				pBean.setpSalePercent(objRS.getInt("pSalePercent"));
+				pBean.setjoinWait(objRS.getString("joinWait"));
+				objPList.add(pBean);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("searchProList e : "+e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objStmt, objRS);
+		}
+		
+		return objPList;
+	}
+	
+	// 관리자페이지 리스트 출력
+	public List<ProListBean> adminListOutput() {
+
+		List<ProListBean> pList = new Vector<ProListBean>();
+
+		try {
+			objConn = pool.getConnection();
+			sql = "select * from proList order by pNo Asc ";
+			objPstmt = objConn.prepareStatement(sql);
+			objRS = objPstmt.executeQuery();
+			while (objRS.next()) {
+				ProListBean pLBean = new ProListBean();
+				pLBean.setpNo(objRS.getInt("pNo"));
+				pLBean.setpUId(objRS.getString("pUId"));
+				pLBean.setpTitle(objRS.getString("pTitle"));
+				pLBean.setpOriPrice(objRS.getInt("pOriPrice"));
+				pLBean.setpSalePercent(objRS.getInt("pSalePercent"));
+				pLBean.setpImg(objRS.getString("pImg"));
+				pLBean.setjoinWait(objRS.getString("joinWait"));
+				pList.add(pLBean);
+			}
+		} catch (Exception e) {
+			System.out.println("listOutput e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
+		}
+
+		return pList;
 	}
 }
 

@@ -790,12 +790,6 @@ div#withdrawBtnArea {
 
 /* 내가 쓴 리뷰 시작 */
 
-.myReviewArea .resMsg {
-	text-align: center;
-	margin: 40px 0;
-	font-size: 20px;
-}
-
 .myReviewArea hr {
 	margin-bottom: 32px;
 }
@@ -876,6 +870,70 @@ div#withdrawBtnArea {
 }
 
 /* 내가 쓴 리뷰 끝 */
+
+/* 예매 내역 시작 */
+
+.pop_wrap .rsvWidth {
+	width: 900px !important;
+}
+
+.pop_div .resMsg {
+	text-align: center;
+	margin: 40px 0;
+	font-size: 20px;
+}
+
+.myReserveArea hr {
+	margin-bottom: 32px;
+}
+
+.myReserveArea .myReserveRow {
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+.myReserveArea .myReserveRow .myReserveBanner {
+	height: 350px;
+}
+
+.myReserveArea .myReserveRow .myReserveBanner img {
+	height: 100%;
+}
+
+.myReserveArea .myReserveRow .myReserve-cont {
+	width: 100%;
+	padding: 20px;
+}
+
+.myReserveArea .myReserveRow .myReserve-cont .myReserveContent {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.myReserveArea .myReserveRow .myReserve-cont .myReserveDate .reserveDate {
+	margin-bottom: 15px;
+}
+
+.myReserveArea .myReserveRow .myReserve-cont .myReserveHead {
+	margin: 15px 0;
+}
+
+.myReserveArea .myReserveRow .myReserve-cont .myReservePay .howToPay {
+	margin: 15px 0;
+}
+
+.myReserveArea .myReserveRow .myReserve-cont .myReservePay .payAccount .payAccountTitle{
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 90px;
+}
+
+.myReserveArea .myReserveRow .myReserve-cont .myReservePay .payAccountVal {
+	margin-top: 10px;	
+}
+
+/* 예매 내역 끝 */
 
 /* 마이페이지 영역 끝 */
 
