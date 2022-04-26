@@ -203,7 +203,7 @@
 		<div class="pop_div">
 			<p class="pop_tit">예매 내역</p>
 	
-			<form action="/product/listReserveProc.jsp" method="post" class="reserveForm">
+			<form action="/product/listReserveComplete.jsp" method="post" class="reserveForm">
 				<input type="hidden" name="pResPNo" id="pResPNo" value="<%=pNo %>"/>
 				<input type="hidden" name="pResUId" id="pResUId" value="<%=memberId %>"/>
 				<!-- 시간 -->

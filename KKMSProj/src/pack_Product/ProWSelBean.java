@@ -2,7 +2,7 @@ package pack_Product;
 
 public class ProWSelBean {
 	
-	private 	int			pWPNo;
+	private int		pWPNo;
 	private	String		pWUId;
 	private	String		pWrite;
 	

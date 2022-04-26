@@ -212,6 +212,12 @@ $(function() {
 			});
 		});
 	}
+	if ($(".revList").length != 0) {
+		$(".revList .chk-group a").off("click").on("click", function(e){
+			e.preventDefault();
+			e.stopPropagation();
+		});
+	}
 
 	//product price calc
 	if ($(".price.sale").length != 0) {
@@ -632,9 +638,9 @@ $(function() {
 				$(this).parent(".resSMChk").removeClass("checked");
 			}else{
 				if(!$(this).parent("").hasClass("checked")){
-					if( parseInt($("#oriMPrice").val()) >= parseInt($("#realPrice").val())){
-						alert("적립금은 결제 금액보다 적을 경우 사용 가능합니다.");
-					}else{
+					//if( parseInt($("#oriMPrice").val()) >= parseInt($("#realPrice").val())){
+						//alert("적립금은 결제 금액보다 적을 경우 사용 가능합니다.");
+					//}else{
 						cntNum = 1;
 						$(".resHeadCnt .cntNum").text("1");
 						$("#headCnt").val(cntNum);
@@ -653,9 +659,21 @@ $(function() {
 							$("#resSMP").attr("disabled", false).focus();
 						}
 						
-					}
+					//}
 				}else{
 					$(this).parent("").removeClass("checked");
+					$(".maxSMChk").removeClass("checked");
+					$("#resSMP").val("0");
+					$("#savePrice").val("0");
+					$("#remainPrice").val($("#oriMPrice").val());
+					$(".remainSM .charge").text($("#oriMPrice").val());
+					$(".resCPrice .price").text($("#oriRealPrice").val());
+					$("#realPrice").val($("#oriRealPrice").val());
+					$("#orisavelPrice").val($("#oriRealPrice").val());
+	
+					let resCPrice = parseInt($(".resCPrice .price").text().trim());
+					resCPrice = resCPrice.toLocaleString();
+					$(".resCPrice .price").text(resCPrice);
 				}
 			}
 		});
@@ -721,7 +739,7 @@ $(function() {
 		
 		$("#resSMP").on("change", function() {
 			
-			if($(this).val() <= 5000 && $(this).val() <= $("#oriMPrice").val()){
+			if(parseInt($(this).val()) <= 5000 && parseInt($(this).val()) <= parseInt($("#oriMPrice").val())){
 					
 				$(".remainSM .charge").text($("#oriMPrice").val());
 				$("#orisavelPrice").val($("#oriRealPrice").val());
@@ -761,7 +779,7 @@ $(function() {
 				$(".resSMList p.redOverTxt").hide();
 				$("#resSMP").removeClass("red");
 				
-			}else if($(this).val() > 5000){
+			}else if(parseInt($(this).val()) > 5000){
 				$(".resSMList p.redTxt").show();
 				$("#resSMP").addClass("red");
 				
@@ -770,7 +788,7 @@ $(function() {
 				$("#savePrice").val($("#oriMPrice").val());
 				$(".remainSM .charge").text($("#oriMPrice").val());
 				
-			}else if($(this).val() > $("#oriMPrice").val()){
+			}else if(parseInt($(this).val()) > parseInt($("#oriMPrice").val())){
 				$(".resSMList p.redOverTxt").show();
 				$("#resSMP").addClass("red");
 				
@@ -797,13 +815,13 @@ $(function() {
 						$("#remainPrice").val($("#oriMPrice").val());
 						$("#realPrice").val($("#oriRealPrice").val());
 						$(".resCPrice .price").text($("#oriRealPrice").val());
-						if($("#resSMP").val() < 5000){
-							$("#resSMP").val($("#oriMPrice").val());
-							$("#savePrice").val($("#oriMPrice").val());
-						}else{
+						//if($("#resSMP").val() < 5000){
+							//$("#resSMP").val($("#oriMPrice").val());
+							//$("#savePrice").val($("#oriMPrice").val());
+						//}else{
 							$("#resSMP").val("5000");
 							$("#savePrice").val("5000");
-						}
+						//}
 						
 						// 남은 적립금
 						var remainPrice = parseInt($(".remainSM .charge").text().trim());
@@ -858,6 +876,7 @@ $(function() {
 					data: {"pResPNo" : pResPNo, "pResUId" : pResUId, "pResDate" : pResDate, "pResTime" : pResTime, "pResUseM" : pResUseM, "pResRemainM" : ePay, "pResHead" : pResHead, "pResPrice" : pResPrice, "pResCPay" : pResCPay, "pResCAccount" : pResCAccount},
 					success: function(txt) {
 						$(".reserveHidden").html(txt);
+						$(".reserveForm").submit();
 					}
 				});
 			}
@@ -936,15 +955,14 @@ $(window).on("load", function() {
 			if(result>0){
 				let percent = 100-((result/50)*100);
 				$(this).html("D - " + result);
-				$(this).css({"color": "red"});
+				$(this).css({"color": "red", "font-weight": "bold"});
 				gsap.to($(this).siblings("div").find("span.percentBar"), 0.7, { width: percent+"%", ease: Power3.easeOut });
-				$(this).siblings("div").find("span.percentBar").css({"background-color": "#0086b8"});
+				$(this).siblings("div").find("span.percentBar").css({"background-color": "blue"});
 			} else if (result==0) {
 				$(this).html("D-Day");
-				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "e64949"});
+				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "red"});
 			} else {
-				$(this).html("종료");
-				$(this).css({"background-color": "#ddd", "color": "#222"});
+				$(this).html("이미 종료된 이벤트입니다.");
 				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "grey"});
 			}
 		});
@@ -1082,10 +1100,6 @@ function fileVal(a)
 			$("#pWfile").val("").clone(true);
 			$(".fileBtn").focus();
 		}
-	}
-	
-	if($(".file-name").display == "flex"){
-		
 	}
 	
 }

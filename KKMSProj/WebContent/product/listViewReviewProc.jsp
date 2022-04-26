@@ -35,7 +35,6 @@ try {
 
 	/* file을 제외한 전송 데이터 처리 시작 */
 	Enumeration objEnum = mReq.getParameterNames();
-	
 
 	int pRevWNo = Integer.parseInt(mReq.getParameter("pNo"));
 	String uId = mReq.getParameter("uId");
@@ -45,8 +44,6 @@ try {
 
 	while (objEnum.hasMoreElements()) {
 		String nameParam = (String)objEnum.nextElement();
-		//out.print(nameParam + " : " + mReq.getParameter(nameParam) + "<br>");
-		
 	}
 	
 	boolean listChk = 	pMgr.listRevChk(pRevWNo, uId, pRevWrite, pRevWStar, pRevWPhoto);
@@ -61,54 +58,18 @@ try {
 	}
 	/* file을 제외한 전송 데이터 처리 끝 */
 	
-	out.print("<br>-------------------------------<br>");
 	/* 전송된 file 데이터 처리 시작 */	
 	Enumeration objFileEnum = mReq.getFileNames();
 	while (objFileEnum.hasMoreElements()) {
 		String nameFile = (String)objFileEnum.nextElement();
-
-		//out.print("원본파일 : " + mReq.getOriginalFileName(nameFile) + "<br>");
-		//out.print("업로드파일 : " + mReq.getFilesystemName(nameFile) + "<br>");
-		//out.print("파일종류(=형식) : " + mReq.getContentType(nameFile) + "<br>");
 		
 		File objFile = mReq.getFile(nameFile);
-		//out.print("파일크기 : " + objFile.length() + "<br>");
-		
 	}
-	
 	/* 전송된 file 데이터 처리 끝 */
-	
-	/*
-	writer = mReq.getParameter("writer");    
-	txtArea = mReq.getParameter("txtArea");    
-	
-	originalFName = mReq.getOriginalFileName("fName");
-	uploadFName = mReq.getFilesystemName("fName");
-	fileType = mReq.getContentType("fName");
-	File objFile = mReq.getFile("fName");
-	fileSize = (int)objFile.length();
-	*/
-	
-	   
 
 } catch(IOException e){
 	out.print(e.getMessage());
 } catch(Exception e){
 	out.print(e.getMessage());
 }
-
-
-
-
-
-
-//if( listChk) {
-	%>
-	<script>
-	//alert("리뷰가 작성되었습니다.");
-	//window.location = document.referrer;
-	</script>
-	<%
-//}
-
 %>

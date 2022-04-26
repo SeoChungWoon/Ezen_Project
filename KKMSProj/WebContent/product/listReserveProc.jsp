@@ -16,7 +16,7 @@ boolean chk = mMgr.remainPriceCng(rPrice, pResUId);
 if(result && chk){
 %>
 	<script>
-	location.href="/member/mypage.jsp"
+	location.href="/product/listReserveComplete.jsp"
 	</script>
 <%
 }

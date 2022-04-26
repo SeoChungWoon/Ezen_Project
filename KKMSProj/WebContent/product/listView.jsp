@@ -407,8 +407,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 												} else{
 										%>
 										<div class="btn-cont">
-											<button type="button" class="btn open-modal write"
-												data-target="popup1">문의 작성하기</button>
+											<button type="button" class="btn open-modal write" data-target="popup1">문의 작성하기</button>
 										</div>
 										<%
 												}
