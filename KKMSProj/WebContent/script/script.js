@@ -936,14 +936,15 @@ $(window).on("load", function() {
 			if(result>0){
 				let percent = 100-((result/50)*100);
 				$(this).html("D - " + result);
-				$(this).css({"color": "red", "font-weight": "bold"});
+				$(this).css({"color": "red"});
 				gsap.to($(this).siblings("div").find("span.percentBar"), 0.7, { width: percent+"%", ease: Power3.easeOut });
-				$(this).siblings("div").find("span.percentBar").css({"background-color": "blue"});
+				$(this).siblings("div").find("span.percentBar").css({"background-color": "#0086b8"});
 			} else if (result==0) {
 				$(this).html("D-Day");
-				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "red"});
+				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "e64949"});
 			} else {
-				$(this).html("이미 종료된 이벤트입니다.");
+				$(this).html("종료");
+				$(this).css({"background-color": "#ddd", "color": "#222"});
 				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "grey"});
 			}
 		});
