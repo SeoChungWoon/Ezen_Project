@@ -13,6 +13,9 @@
 .sRegister-cont input[type=text]::placeholder{
 	font-size: 12px;
 }
+.sRegister-cont input[type=text]:disabled{
+	background: #e1e1e1;
+}
 /* chk */
 .sRegister-cont .chk{
 	display: flex;
@@ -22,6 +25,9 @@
 .sRegister-cont .flag.chk .chk-sList{
 	position: relative;
 	min-width: 100px;
+}
+.sRegister-cont .chk .chk-sList.checked::before{
+	display: none;
 }
 .sRegister-cont .flag.chk .chk-sList label{
 	background: #fff;
@@ -40,7 +46,6 @@
 	color: #fff;
 	font-weight: bold;
 }
-
 .sRegister-cont .flag.chk input,
 .sRegister-cont .saleChk.chk input[type=checkbox],
 .sRegister-cont .radio input[type=radio]{
@@ -75,6 +80,80 @@
     font-size: 14px;
     background: url(/images/radioChecked.png)no-repeat 0 center / 15px;
 }
+/* file */
+.sRegister-cont .file-cont{
+	position: relative;
+}
+.sRegister-cont .file-group{
+	position: relative;
+}
+.sRegister-cont .file-cont input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 1px;
+}
+.sRegister-cont .file-cont button.fileBtn {
+    padding: 5px 27px 5px 10px;
+    background-color: #666;
+    background-image: url(/images/icon-file-upload.png);
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    background-size: 17px;
+    border: 1px solid #666;
+    color: #fff;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+.sRegister-cont .file-cont button.fileBtn:hover {
+    background-color: #0086b8;
+    border: 1px solid #0086b8;
+    font-weight: bold;
+}
+.sRegister-cont .file-cont .file-name {
+    position: relative;
+    padding-right: 25px;
+    display: flex;
+    align-items: center;
+    display: none;
+}
+.sRegister-cont .file-cont .file-name span {
+    font-size: 14px;
+}
+.sRegister-cont .file-cont .file-name a {
+    position: relative;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: url(/images/pop-file-close-icon.png) no-repeat center;
+    margin-left: 10px;
+}
+.sRegister-cont .file-cont .file-name span {
+    font-size: 14px;
+}
+.sRegister-cont .file-group + p.txt {
+    color: #666;
+    font-size: 12px;
+    padding-top: 10px;
+}
+.sRegister-cont .file-cont + .file-cont{
+	margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -145,19 +224,36 @@
     font-size: 20px;
 }
 .sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale #sListOriPrice{
-	width: 200px;
+	width: 265px;
 }
 .sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale #sListSalePercent{
-	width: 100px;
+	width: 200px;
+	margin-left: 10px;
 }
 .sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale .saleChk.chk{
 	margin-top: 10px;
 	display: flex;
 	flex-wrap: nowrap;
 }
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale .saleChk.chk .chk-sList label{
+	padding-left: 30px;
+	font-size: 14px;
+    background: url(/images/icon-checked-off.png) no-repeat 0 center / 25px;
+}
+.sRegister-cont .detail-cont .infoBox .right .detail-desc dd .price.sale .saleChk.chk .chk-sList.checked label{
+	padding-left: 30px;
+    background: url(/images/icon-checked-on.png) no-repeat 0 center / 25px;
+}
 
 
-
+.register-chk .txt{
+	text-align: center;
+	padding: 50px 0 30px;
+}
+.register-chk .btn-cont button{
+	font-size: 18px;
+	padding: 10px 30px;
+}
 
 
 

@@ -467,7 +467,9 @@
 	min-width: 150px;
 	margin-right: 20px;
 }
-
+.proList-view .detail-cont .infoBox .right .info-desc dd{
+	width: calc(100% - 170px);
+}
 .proList-view .detail-cont .infoBox .right .detail-desc dd {
 	font-size: 20px;
 }
@@ -490,6 +492,7 @@
 }
 
 .proList-view .detail-cont .infoBox .right .detail-desc dd {
+	width: calc(100% - 170px);
 	font-size: 20px;
 }
 

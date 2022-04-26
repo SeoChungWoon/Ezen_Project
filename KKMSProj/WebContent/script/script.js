@@ -153,8 +153,9 @@ $(function() {
 				$("html, body").css("overflow", "hidden");
 				$("header").css("z-index", 3);
 				$(".sub-body").css("z-index", "auto");
+	
+				modalOpen(id);
 			}
-			modalOpen(id);
 			
 			return false;
 		});
@@ -475,7 +476,7 @@ $(function() {
 		});
 	}
 	// 리뷰 작성
-	if ($(".pop_review").length != 0) {
+	if ($(".file-group").length != 0) {
 		$(".file-group").each(function(e){
 			// 파일 첨부
 			$(this).find(".fileBtn").on("click", function(e){
@@ -625,6 +626,8 @@ $(function() {
 				alert("시간를 선택해주세요");
 			}else{
 				$("#popup5").show();
+				
+				modalDimOpen($("#popup5")); //dim show
 				var pResPNo = $("#rPNo").val();
 				var pResUId = $("#rUId").val();
 				var pResDate = $("#selectedDate").val();
@@ -1012,7 +1015,7 @@ $(window).on("load", function() {
 			} 
 		});
 	}
-	
+
 	if ($(".myReviewStar").length != 0) {
 		$(".myReviewStar").each(function(e){
 			let star = $(".myReviewStarpoint").eq(e).val();
@@ -1020,7 +1023,6 @@ $(window).on("load", function() {
 			$(this).css({"width": width+"px"})
 		});
 	}
-
 });
 
 
@@ -1108,7 +1110,7 @@ function fileVal(a)
 	//$("#fileName").val(a.files[0].name);
 	// 업로드 파일 제한
 	//fileName : 파일 경로 (C:\fakepath\파일이름.확장명)
-	let pWfile = $("#pWfile").val().trim();
+	let pWfile = $(a).val().trim();
 	let fileName = pWfile.substring(12);
 	$("#fileName").val(fileName);
 	
@@ -1129,10 +1131,10 @@ function fileVal(a)
 	
 	if (!chk) {
 		alert("확장자가 " + ext + "인 파일은 업로드 하실 수 없습니다.");
-		$(".fileBtn").focus();
+		$(a).siblings(".fileBtn").focus();
 	} else{
-		$(".file-name").css("display", "flex");
-		$(".file-name span").text(a.files[0].name);
+		$(a).siblings(".file-name").css("display", "flex");
+		$(a).siblings(".file-name").find("span").text(a.files[0].name);
 		//$("#fileName").val(a.files[0].name);
 		
 		let x = document.getElementById("pWfile");
@@ -1141,8 +1143,58 @@ function fileVal(a)
 
 		if (fileSize > 10 * 1024 * 1024) {
 			alert("최대 업로드 크기는 10MB입니다.");
-			$("#pWfile").val("").clone(true);
-			$(".fileBtn").focus();
+			$(a).val("").clone(true);
+			$(a).siblings(".fileBtn").focus();
+		}
+	}
+	
+}
+
+// 여러개 파일 올릴 시
+function fileValM(a)
+{
+	console.log($(a));
+	
+	//$("#fileName").val(a.files[0].name);
+	// 업로드 파일 제한
+	//fileName : 파일 경로 (C:\fakepath\파일이름.확장명)
+	var fileData = "#" + $(a).attr("data-target");
+	let pWfile = $(a).val().trim();
+	let fileName = pWfile.substring(12);
+	$(fileData).val(fileName);
+	console.log(fileData);
+	
+	// extension. 확장자, lastIndexOf : idx 번호 가져옴, dotIdx : 의 위치 (위로써는 16)
+	let dotIdx = pWfile.lastIndexOf(".");
+	let ext = pWfile.substring(dotIdx + 1); // ''.확장명'을 +1 해서 '확장명'
+	ext = ext.toLowerCase(); // 대소문자 모두 소문자로 변경
+	
+	
+	let forbidExt = ["jpg", "png", "gif"]; // 허용된 확장명들
+	let chk = false;
+	
+	for (let x of forbidExt) {
+		if (x == ext) {
+			chk = true;
+		}
+	}
+	
+	if (!chk) {
+		alert("확장자가 " + ext + "인 파일은 업로드 하실 수 없습니다.");
+		$(a).siblings(".fileBtn").focus();
+	} else{
+		$(a).siblings(".file-name").css("display", "flex");
+		$(a).siblings(".file-name").find("span").text(a.files[0].name);
+		//$("#fileName").val(a.files[0].name);
+		
+		let x = document.getElementById("pWfile");
+		//let len = x.files.length; // 업로드할 파일의 개수
+		let fileSize = x.files[0].size; // 업로드되는 파일을 배열로 처리
+
+		if (fileSize > 10 * 1024 * 1024) {
+			alert("최대 업로드 크기는 10MB입니다.");
+			$(a).val("").clone(true);
+			$(a).siblings(".fileBtn").focus();
 		}
 	}
 	

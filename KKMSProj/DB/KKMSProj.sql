@@ -278,7 +278,7 @@ pFlag1				char(10)		,
 pFlag2				char(10)		,
 pFlag3				char(10)		,
 pArea				char(10)		,
-pLocation			char(10)		,
+pLocation			varchar(100)	,
 pGroup				char(10)		,
 pInfoTxt				char(100)		,
 pTitle					char(100)		,
@@ -328,13 +328,10 @@ pWPNo		int,
 pWUId		char(15),
 pWrite		varchar(500)
 );
-select pWUId from pWSel where pWUId = 'admin' and pWPNo = 3;
-drop table pWsel;
-delete from pWSel where pWPNo = 3 and pWUId = 'hello';
-select * from pWSel;
-truncate pWSel;
 
-select count(*) from pWSel where pWUId = 'hi';
+drop table pWsel;
+truncate pWSel;
+select * from pWSel;
 
 ## 리뷰 리스트
 ## pRevPhoto : 사진 유무
@@ -374,12 +371,7 @@ set sql_safe_updates = 0;
 drop table pRevList;
 desc pRevList;
 truncate pRevList;
-delete from pRevList where pRevUId = 'admin';
-update pRevList set pRevRecom = 0 where pRevUId = 'hi' and pRevPNo = 1;
 select * from pRevList;
-select * from pRevList where pRevPNo = 1 order by pRevDate Desc;
-select * from pRevList where pRevUId = 'hello' and pRevPNo = 3;
-select count(*) from pRevList where pRevUId = 'hello';
 
 ## 예약하기
 create table pReserve(

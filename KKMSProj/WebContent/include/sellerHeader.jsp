@@ -13,7 +13,7 @@
 					<div class="one-dep">
 						<a href="javascript:">상품관리</a>
 						<ul class="two-dep">
-							<li><a href="javascript:"><span>상품 등록</span></a></li>
+							<li><a href="/sellerPage/sellerListRegister.jsp"><span>상품 등록</span></a></li>
 							<li><a href="javascript:"><span>판매중인 상품</span></a></li>
 							<li><a href="javascript:"><span>대기중인 상품</span></a></li>
 						</ul>
