@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import pack_DBCP.DBConnectionMgr;
 import pack_Product.ProReservBean;
+import pack_Product.ProRevBean;
 
 public class MemberMgr {
 
@@ -442,24 +443,57 @@ public class MemberMgr {
 	}
 	
 	// 적립금
-		public boolean remainPriceCng (int rPrice, String pResUId) {
-			boolean chk = false;
+	public boolean remainPriceCng (int rPrice, String pResUId) {
+		boolean chk = false;
+	
+		try {
+			objConn = pool.getConnection();
+				sql = "update member set ePay = ? where uId = '" + pResUId + "'";
+				objPstmt = objConn.prepareStatement(sql);
+				objPstmt.setInt(1, rPrice);
+				if (objPstmt.executeUpdate()>0)
+					chk = true;
+				System.out.println(rPrice);
+			
+		} catch (Exception e) {
+			System.out.println("remainPriceCng e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt);
+		}
 		
-			try {
-				objConn = pool.getConnection();
-					sql = "update member set ePay = ? where uId = '" + pResUId + "'";
-					objPstmt = objConn.prepareStatement(sql);
-					objPstmt.setInt(1, rPrice);
-					if (objPstmt.executeUpdate()>0)
-						chk = true;
-				
-			} catch (Exception e) {
-				System.out.println("remainPriceCng e : " + e.getMessage());
-			} finally {
-				pool.freeConnection(objConn, objPstmt);
+		return chk;
+	}
+		
+	// 내가 쓴 리뷰
+	public List myReviewList (String uId) {
+		List objList = new Vector();
+	
+		try {
+			objConn = pool.getConnection();
+			sql = "select * from pRevList where pRevUId=?";
+			objPstmt = objConn.prepareStatement(sql);
+			objPstmt.setString(1, uId);
+			objRS = objPstmt.executeQuery();
+			while(objRS.next()) {
+				ProRevBean rBean = new ProRevBean();
+				rBean.setpRevPNo(objRS.getInt("pRevPNo"));
+				rBean.setpRevCont(objRS.getString("pRevCont"));
+				rBean.setpRevImg(objRS.getString("pRevImg"));
+				rBean.setpRevPhoto(objRS.getInt("pRevPhoto"));
+				rBean.setpRevDate(objRS.getString("pRevDate"));
+				rBean.setpRevRecom(objRS.getInt("pRevRecom"));
+				rBean.setpRevStar(objRS.getInt("pRevStar"));
+				objList.add(rBean);
 			}
 			
-			return chk;
+			
+		} catch (Exception e) {
+			System.out.println("myReviewList e : " + e.getMessage());
+		} finally {
+			pool.freeConnection(objConn, objPstmt, objRS);
 		}
+		
+		return objList;
+	}
 		
 }
