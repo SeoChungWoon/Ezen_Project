@@ -214,6 +214,8 @@
 				<input type="hidden" name="pResUseM" id="pResUseM" value=""/>
 				<!-- 남은 적립금 -->
 				<input type="hidden" name="ePay" id="ePay" value=""/>
+				<!-- 적립 예정 적립금 -->
+				<input type="hidden" name="pResplanM" id="pResplanM" value=""/>
 				<!-- 인원 수 -->
 				<input type="hidden" name="pResHead" id="pResHead" value=""/>
 				<!-- 결제 가격 -->
@@ -253,6 +255,10 @@
 							<dl class="remainSM">
 								<dt>현재 남은 적립금</dt>
 								<dd class="remain"></dd>
+							</dl>
+							<dl class="planSM">
+								<dt>적립 예정 적립금</dt>
+								<dd class="plan"></dd>
 							</dl>
 							<dl class="getPrice">
 								<dt>결제 금액</dt>

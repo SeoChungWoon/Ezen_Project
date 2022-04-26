@@ -604,6 +604,8 @@ $(function() {
 				var pResRemainM = $("#remainPrice").val();
 				var pResHead = $("#headCnt").val();
 				var pResPrice = $("#realPrice").val();
+				var pResplanM = parseInt($("#realPrice").val()) * 0.01;
+				console.log(parseInt($("#realPrice").val()))
 				
 				
 				$("#pResDate").val(pResDate);
@@ -618,6 +620,8 @@ $(function() {
 				$(".pop_reserve .desc-type .headCnt dd .num").text(pResHead);
 				$("#pResPrice").val(pResPrice);
 				$(".pop_reserve .desc-type .getPrice .price").text(pResPrice);
+				$("#pResplanM").val(pResplanM);
+				$(".pop_reserve .desc-type .planSM .plan").text(pResplanM);
 				
 				let resCPrice = parseInt($(".getPrice .price").text().trim());
 				resCPrice = resCPrice.toLocaleString();
@@ -670,6 +674,7 @@ $(function() {
 					$(".resCPrice .price").text($("#oriRealPrice").val());
 					$("#realPrice").val($("#oriRealPrice").val());
 					$("#orisavelPrice").val($("#oriRealPrice").val());
+					$("#resSMP").attr("disabled", true);
 	
 					let resCPrice = parseInt($(".resCPrice .price").text().trim());
 					resCPrice = resCPrice.toLocaleString();
@@ -860,7 +865,9 @@ $(function() {
 			var pResDate = $("#pResDate").val();
 			var pResTime = $("#pResTime").val();
 			var pResUseM = $("#pResUseM").val();
+			var pResplanM = $("#pResplanM").val();
 			var ePay = $("#ePay").val();
+			ePay = parseInt(ePay) + parseInt(pResplanM);
 			var pResHead = $("#pResHead").val();
 			var pResPrice = $("#pResPrice").val();
 			var pResCPay = $("#pResCPay").val();
