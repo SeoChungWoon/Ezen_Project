@@ -387,7 +387,7 @@ pResUseM			int,
 pResRemainM		int,
 pResHead			int,
 pResPrice			int,
-pResCPay			char(10),
+pResCPay			varchar(100),
 pResCAccount		varchar(100)
 );
 

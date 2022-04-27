@@ -85,9 +85,14 @@ $(function(){
 			}else if($("#sListOriPrice").val() == ""){
 				alert("판매 가격을 작성해주세요.");
 				$("#sListOriPrice").focus();
+			}else if(parseInt($("#sListOriPrice").val()) < 5000){
+				alert("최소 5천원부터 적용가능합니다.");
+				$("#sListOriPrice").focus();
 			}else{
 				$(".sellerListRegisterForm").submit();
 			}
+			
+			
 		});
 	}
 });
