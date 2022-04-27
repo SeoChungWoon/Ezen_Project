@@ -8,7 +8,15 @@ public class BoardVO {
 	String wName;
 	String postDate;
 	String content;
+	String fileName;
 	int count;
+	
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 	public String getHeader() {
 		return header;
 	}

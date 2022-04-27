@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="pack_EzPro.BoardVO"%>
 <%@page import="pack_EzPro.BoardDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -11,6 +12,26 @@
 	String searchText = request.getParameter("searchText");
 	ArrayList list = objDAO.getSearch(searchField, searchText,divisions);
 	
+
+	int cnt = objDAO.BoardCount(divisions);		//데이터 갯수
+	int pageSize = 8;
+
+	String pageNum = request.getParameter("pageNum");
+	if(pageNum==null){
+		pageNum = "1";
+	}
+
+	int nowPage = Integer.parseInt(pageNum);
+	int firstData = (nowPage-1)*pageSize;
+	int lastData = nowPage * pageSize-1;
+
+	List objList = null;
+
+	if(cnt != 0){
+		objList = objDAO.BoardList(firstData,pageSize,divisions);
+	}
+	
+	BoardVO objVO = null;
 	
 	
 
@@ -51,15 +72,33 @@
 							<span id="scWord">"<%=searchText %>"</span>(으)로 조회된 결과는 <span id="scCnt"><%=list.size() %></span>개 입니다.
 					</div>
 					<!-- div.resMsg -->
+			<%
+	
+	    		
+	    		if(list.size() != 0){
+	    			int pageCount = cnt/pageSize + (cnt%pageSize == 0?0:1);
+	    			
+	    			int pageBlock = 3;		//전체 페이지 갯수
+	    			
+	    		 	int startPage = ((nowPage-1)/pageBlock) * pageBlock + 1;
+		          	
+		          	//8-4. 페이지블럭의 끝페이지번호
+		          	int endPage = startPage + pageBlock - 1;
+		          	if(endPage > pageCount){
+		          		endPage = pageCount;
+	    		}
+	    		
+		      %>
+
+		      	<div class="tblTop">
+		      		<span>전체 게시물 : <%=cnt %>개</span>
+		      		<span>페이지 : <%=nowPage %> / <%=pageCount %></span>
+		      	</div>
+		      	<!-- div.tblTop 끝 -->
 		      <div class="main">
-		      		<div class="listTop dFlex">
-		      				<div class="th-title">제목</div>
-		      				<div class="th-btn">내용</div>
-		      		</div>
-		      		<!-- div.listTop -->
 		      		<%
 		      			for(int i=0; i<list.size(); i++){
-		      				BoardVO objVO = (BoardVO)list.get(i);
+		      				objVO = (BoardVO)list.get(i);
 		      			
 		      		%>
 		      		<div class="sub-main">
@@ -68,15 +107,11 @@
 		      						<div class="title">
 		      							<label for="faqRow<%=i+1 %>">
 		      								<span><%=objVO.getTitle() %></span>
+									<img src="/images/icon-arrow-open-blue.png" alt="펼치기" >
 		      							</label>
 		      							<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i+1 %>">
 		      						</div>
 		      						<!-- div.title -->
-		      						<div class="slideBtn scRes">
-								<label for="faqRow<%=i + 1 %>">
-									<img src="/images/detailIcon.png" alt="펼치기" class="detailIcon">
-								</label>								
-								</div>
 		      						</div>
 		      						<!-- div.row -->
 		      						<div class="content hidden">
@@ -98,13 +133,82 @@
 		      		</div>
 		      		<!-- div.sub-main -->
 		      		<%} %>
-		      </div>
-		      <!-- div.main -->
+		        <div class="footerArea dFlex">
+					<div class="dFlex pagingComm">
+					<div class="pagingPrev">
+						<%
+						if (startPage > pageBlock) {
+						%>
+						<a href="?pageNum=<%=startPage-pageBlock %>" class="firMove"><span class="blind">맨 처음으로 이동</span></a>
+						<%
+						} else if(nowPage > 1) {
+						%>
+						<a href="?pageNum=<%=nowPage-1 %>" class="prevMove"><span class="blind">이전으로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+					<%
+					for (int i = startPage; i <= endPage; i++) {
+					%>
+					<a href="?pageNum=<%=i %>"
+						class="pageNum <%if (i == nowPage) {%>selected<%}%>"><%=i%></a>
+					<%
+					}
+					%>
+					<div class="pagingNext">
+						<%
+						if (nowPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=nowPage+1 %>" class="nextMove"><span class="blind">다음으로 이동</span></a>
+						<%}
+						if(endPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=startPage+pageBlock %>" class="endMove"><span class="blind">맨 뒤로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+				</div>
+				<%
+	    		}else{
+				%>
+					<div class="tblArea">
+						<div class="tblTop">
+							<span>전체 게시물 : 0개</span> <span>페이지 : 0 / 0</span>
+						</div>
+						<!-- div.tblTop 끝 -->
+
+						<div class="main">
+
+							<div class="sub-main">
+								<div class="td-title">
+									<div class="row dFlex">
+										<div class="title">
+											<span>등록된 게시물이 없습니다</span>
+										</div>
+										<!-- div.title -->
+									</div>
+									<!-- div.td-title -->
+								</div>
+								<!-- div.row -->
+
+							</div>
+							<!-- div.sub-main -->
+
+						</div>
+						<!-- div.main -->
+					</div>
+					<!-- div.tblArea 끝 -->
+					<%} %>
 		      <div class="btnArea btn-cont scBtnArea">
 						<input type="hidden" class="orgDV" value="<%=divisions %>">
 						<button type="button" class="searchBtn list">목록으로</button>
 					</div>
 					<!-- div.get-send -->
+					</div>
+					</div>
+
 				</div>
 					<!-- div.manager-cont -->
 				</div>

@@ -107,17 +107,15 @@ BoardVO objVO = null;
 		      	
 		      	<table>
 		      		<colgroup>
-		      			<col width="10%"/>
-		      			<col width="40%"/>
-		      			<col width="20%"/>
 		      			<col width="15%"/>
+		      			<col width="45%"/>
+		      			<col width="25%"/>
 		      			<col width="15%"/>
 		      		</colgroup>
 		      			<thead>
 		      				<tr>	    
 		      					<th>구분</th>
 		      					<th>제목</th>
-		      					<th>작성자</th>
 		      					<th>게시일</th>
 		      					<th>조회수</th>
 		      				</tr>
@@ -139,7 +137,6 @@ BoardVO objVO = null;
 		      						<td>
 		      						<a href="noticeView.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&division=<%=divisions%>&header=<%=objVO.getHeader()%>"><%=objVO.getTitle() %></a>
 		      						</td>
-		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
 		      					</tr>
@@ -154,7 +151,7 @@ BoardVO objVO = null;
 		      <!-- div.tblArea 끝 -->
 		      
 		      <div class="footerArea dFlex">
-		      	<div class="dFlex pagingComm">
+		<div class="dFlex pagingComm">
 					<div class="pagingPrev">
 						<%
 						if (startPage > pageBlock) {
@@ -193,7 +190,36 @@ BoardVO objVO = null;
 		      		<%
 		      			}else{
 		      		%>
-		      			  <script>location.href = "/data/noData.jsp";</script>
+		  	     <div class="tblArea">
+		      	<div class="tblTop">
+		      		<span>전체 게시물 : 0개</span>
+		      		<span>페이지 : 0 / 0</span>
+		      	</div>
+		      	<!-- div.tblTop 끝 -->
+		      	
+		      	<table>
+		      		<colgroup>
+		      			<col width="15%"/>
+		      			<col width="45%"/>
+		      			<col width="25%"/>
+		      			<col width="15%"/>
+		      		</colgroup>
+		      			<thead>
+		      				<tr>	    
+		      					<th>구분</th>
+		      					<th>제목</th>
+		      					<th>게시일</th>
+		      					<th>조회수</th>
+		      				</tr>
+		      			</thead>
+		      				<tbody>
+		      					<tr>
+		      						<td colspan=4><span>등록된 게시물이 없습니다.</span></td>
+		      					</tr>
+		      				</tbody>
+		      	</table>
+		      </div>
+		      <!-- div.tblArea 끝 -->
 		      		<%
 		      			}
 	    	 		%>

@@ -48,6 +48,7 @@ public class BoardDAO {
 					objVO.setwName(objRS.getString("wName"));
 					objVO.setPostDate(objRS.getString("postDate"));
 					objVO.setCount(objRS.getInt("count"));
+					objVO.setFileName(objRS.getString("FileName"));
 					
 					boardList.add(objVO);
 					
@@ -84,7 +85,7 @@ public class BoardDAO {
 		
 		return count;
 	}
-	public boolean mtdWrite(String divisions,String header,String title,String wName,String content) {
+	public boolean mtdWrite(String divisions,String header,String title,String wName,String content,String fileName) {
 			
 		boolean res = false;
 		
@@ -96,14 +97,15 @@ public class BoardDAO {
 	 	try{
 	 		objConn = pool.getConnection();
 	 		
-	 		String sql = "insert into bbsList (divisions,header, title, wName,content,postDate, count) values ";
-	 				sql += "(?,?,?,?,?,date_format(now(), '%Y-%m-%d'),0)";
+	 		String sql = "insert into bbsList (divisions,header, title, wName,content,fileName,postDate, count) values ";
+	 				sql += "(?,?,?,?,?,?,date_format(now(), '%Y-%m-%d'),0)";
 	 		objPstmt = objConn.prepareStatement(sql);
-	 		objPstmt.setString(1,"divisions");
-	 		objPstmt.setString(2,"header");
-	 		objPstmt.setString(3,"title");
-	 		objPstmt.setString(4,"wName");
-	 		objPstmt.setString(5, "content");
+	 		objPstmt.setString(1,divisions);
+	 		objPstmt.setString(2,header);
+	 		objPstmt.setString(3,title);
+	 		objPstmt.setString(4,wName);
+	 		objPstmt.setString(5,content);
+	 		objPstmt.setString(6,fileName);
 	 		
 	 		if(objPstmt.executeUpdate()>0) {
 	 			res = true;
@@ -172,6 +174,7 @@ public class BoardDAO {
 				objVO.setPostDate(objRS.getString("postDate"));
 				objVO.setCount(objRS.getInt("count"));
 				objVO.setContent(objRS.getString("content"));
+				objVO.setFileName(objRS.getString("fileName"));
 				
 				objList.add(objVO);
 			}
@@ -215,9 +218,9 @@ public class BoardDAO {
 		}
 		return list;
 }
-	public boolean Update(String title, String content, int no, String divisions) {
+	public boolean Update(String title, String content, int no, String divisions, String header, String fileName) {
 		boolean udChk = false;
-			String sql = "update bbsList set title=? , content=? where divisions=? and no=?";
+			String sql = "update bbsList set title=? , content=?,  header=?, fileName=? where divisions=? and no=?";
 			
 			try {
 				objConn=pool.getConnection();
@@ -225,8 +228,10 @@ public class BoardDAO {
 				objPstmt = objConn.prepareStatement(sql);
 				objPstmt.setString(1, title);
 				objPstmt.setString(2, content);
-				objPstmt.setString(3,divisions);
-				objPstmt.setInt(4, no);
+				objPstmt.setString(3,header);
+				objPstmt.setString(4,fileName);
+				objPstmt.setString(5,divisions);
+				objPstmt.setInt(6, no);
 				
 				objPstmt.executeUpdate();
 				

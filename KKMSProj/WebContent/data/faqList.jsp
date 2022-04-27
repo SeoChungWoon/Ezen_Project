@@ -62,7 +62,7 @@ if(cnt != 0){
   	<form action="faqScRes.jsp" method="get" name="search">
   		<div class="searchArea dFlex">
   			<div class="searchTxt">
-<!--   			<span>Search</span> -->
+  			<span>Search</span>
   			<select name="searchField" class="searchDV">
   				<option value="0">선택</option>
   				<option value="title">제목</option>
@@ -102,10 +102,10 @@ if(cnt != 0){
 		      	</div>
 		      	<!-- div.tblTop 끝 -->
 		    <div class="main">
-<!-- 					<div class="listTop dFlex"> -->
-<!-- 						<div class="th-title">제목</div> -->
-<!-- 						<div class="th-btn">내용</div> -->
-<!-- 					</div> -->
+	<!-- 				<div class="listTop dFlex">	 -->
+	<!-- 					<div class="th-title">제목</div>		 -->
+	<!-- 					<div class="th-btn">내용</div>		 -->
+	<!-- 				</div>													
 					<!-- div.listTop -->
 					<%
 					for (int i = 0; i < objList.size(); i++) {
@@ -113,7 +113,7 @@ if(cnt != 0){
 					%>
 					<div class="sub-main">
 						<div class="td-title">
-							<div class="row dFlex">
+				<div class="row dFlex">
 								<div class="title">
 									<label for="faqRow<%=i + 1%>"> 
 										<span>&ensp;<%=objVO.getTitle()%></span>
@@ -134,7 +134,7 @@ if(cnt != 0){
 					<!-- div.sub-main -->
 		      <%} %>
 		      <div class="footerArea dFlex">
-		      	<div class="dFlex pagingComm">
+		 	<div class="dFlex pagingComm">
 					<div class="pagingPrev">
 						<%
 						if (startPage > pageBlock) {
@@ -169,11 +169,34 @@ if(cnt != 0){
 						}
 						%>
 					</div>
-				</div>
-		      		<%
+				</div>		      		
+				<%
 		      			}else{
 		      		%>
-		      			<script>location.href = "/data/faqNoData.jsp";</script>
+		      					<div class="tblArea">
+						<div class="tblTop">
+							<span>전체 게시물 : 0개</span> <span>페이지 : 0 / 0</span>
+						</div>
+						<!-- div.tblTop 끝 -->
+						<div class="main">
+							<div class="sub-main">
+								<div class="td-title">
+									<div class="row dFlex">
+										<div class="noData">
+											<span>등록된 게시물이 없습니다</span>
+										</div>
+										<!-- div.title -->
+									</div>
+									<!-- div.row -->
+								</div>
+								<!-- div.td-title -->
+
+							</div>
+							<!-- div.sub-main -->
+							</div>
+							<!-- div.main -->
+					</div>
+					<!-- div.tblArea 끝 -->
 		      		<%
 		      			}
 					%>

@@ -46,7 +46,7 @@
 					</div>
 
         <div class="main">
-        <form  id="writeFrm" method="post" onsubmit="return false;"
+        <form  id="writeFrm" method="post" onsubmit="return false;" action = "/adminPage/bbsManager/writeRes.jsp"
         enctype="multipart/form-data">
         
  		<div id="header">

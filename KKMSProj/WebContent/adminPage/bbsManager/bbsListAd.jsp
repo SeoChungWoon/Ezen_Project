@@ -112,17 +112,15 @@ BoardVO objVO = null;
 		      	
 		      	<table>
 		      		<colgroup>
-		      			<col width="10%"/>
-		      			<col width="40%"/>
-		      			<col width="20%"/>
 		      			<col width="15%"/>
+		      			<col width="45%"/>
+		      			<col width="25%"/>
 		      			<col width="15%"/>
 		      		</colgroup>
 		      			<thead>
 		      				<tr>	    
 		      					<th>구분</th>
 		      					<th>제목</th>
-		      					<th>작성자</th>
 		      					<th>게시일</th>
 		      					<th>조회수</th>
 		      				</tr>
@@ -137,7 +135,6 @@ BoardVO objVO = null;
 		      						<td><%=objVO.getHeader() %></td>
 		      						<td>
 		      						<a href="noticeViewAd.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&divisions=<%=divisions%>&header=<%=objVO.getHeader()%>&fileName=<%=objVO.getFileName()%>"><%=objVO.getTitle() %></a></td>
-		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
 		      					</tr>
@@ -152,73 +149,75 @@ BoardVO objVO = null;
 		      <!-- div.tblArea 끝 -->
 		      
 		      <div class="footerArea dFlex">
-		      	<div class="pageArea">
+		<div class="dFlex pagingComm">
+					<div class="pagingPrev">
+						<%
+						if (startPage > pageBlock) {
+						%>
+						<a href="?pageNum=<%=startPage-pageBlock %>" class="firMove"><span class="blind">맨 처음으로 이동</span></a>
+						<%
+						} else if(nowPage > 1) {
+						%>
+						<a href="?pageNum=<%=nowPage-1 %>" class="prevMove"><span class="blind">이전으로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+					<%
+					for (int i = startPage; i <= endPage; i++) {
+					%>
+					<a href="?pageNum=<%=i %>"
+						class="pageNum <%if (i == nowPage) {%>selected<%}%>"><%=i%></a>
+					<%
+					}
+					%>
+					<div class="pagingNext">
+						<%
+						if (nowPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=nowPage+1 %>" class="nextMove"><span class="blind">다음으로 이동</span></a>
+						<%}
+						if(endPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=startPage+pageBlock %>" class="endMove"><span class="blind">맨 뒤로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+				</div>
 		      		<%
-		      		//처음 페이지 이동 할 때
-		      			if(startPage > pageBlock){
-		      				%>
-		      				<a href="bbsListAd.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
-		      				<%
 		      			}else{
-		      				%>
-		      				<a href="javascript:">&lt;&lt;</a>
-		      				<%
-		      			}
-		      		// 이전 페이지 이동 할 때 
-		      		if(nowPage > 1){
 		      		%>
-		      		<a href="bbsListAd.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
-		      		<%
-		      			
-		      		}else if(nowPage == startPage){
-		      		%>
-		      		<a href="bbsListAd.jsp?pageNum=<%=nowPage %>">&lt;</a>
-		      		<%
-		      		}
-		      		
-		      		int pageCnt = 1;
-		      		
-		      		// 페이지 표시
-		      		for(int i = startPage; i <= endPage ; i++){
-		      			pageCnt++;
-		      			if(i == nowPage){		//현재 페이지 일때
-		      		%>
-		      			<a href="bbsListAd.jsp?pageNum=<%=i %>" class="nowPage"><b><%=i %></b></a>
-		      		<%
-		      			}else{		//현재 페이지가 아닐때
-		      		%>
-		      			<a href="bbsListAd.jsp?pageNum=<%=i %>"><%=i %></a>
-		      		<%
-		      			}
-		      		}
-		      		//다음 페이지 이동 할 때
-		      		if(nowPage < pageCount){
-		      		%>
-		      			<a href="bbsListAd.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
-		      		<%
-		      		}else{
-		      		%>
-		      			<a href="javascript:">&gt;</a>	
-		      		<%
-		      		}
-		      		
-		      		// 끝 페이지로 이동 할 때
-		      		if(endPage < pageCount){
-		      		%>
-		      			<a href="bbsListAd.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
-		      		<%
-		      		}else{
-		      		%>
-		      			<a href="javascript:">&gt;&gt;</a>	
-		      		<%
-		      		}
-		      		%>
+		  	     <div class="tblArea">
+		      	<div class="tblTop">
+		      		<span>전체 게시물 : 0개</span>
+		      		<span>페이지 : 0 / 0</span>
 		      	</div>
-		      	<!-- div.pageArea -->
-		      		<%
-		      			}else{
-		      		%>
-		      			  <script>location.href = "/adminPage/bbsManager/noDataAd.jsp";</script>
+		      	<!-- div.tblTop 끝 -->
+		      	
+		      	<table>
+		      		<colgroup>
+		      			<col width="15%"/>
+		      			<col width="45%"/>
+		      			<col width="25%"/>
+		      			<col width="15%"/>
+		      		</colgroup>
+		      			<thead>
+		      				<tr>	    
+		      					<th>구분</th>
+		      					<th>제목</th>
+		      					<th>게시일</th>
+		      					<th>조회수</th>
+		      				</tr>
+		      			</thead>
+		      				<tbody>
+		      					<tr>
+		      						<td colspan=4><span>등록된 게시물이 없습니다.</span></td>
+		      					</tr>
+		      				</tbody>
+		      	</table>
+		      </div>
+		      <!-- div.tblArea 끝 -->
 		      		<%
 		      			}
 	    	 		%>
