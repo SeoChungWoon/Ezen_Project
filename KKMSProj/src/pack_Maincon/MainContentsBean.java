@@ -4,7 +4,7 @@ public class MainContentsBean {
 	private int mNo;        // 번호
 	private String mFileName;   // // 전시회 파일이름
 	private String mTitle;
-	private String mExpalin;
+	private String mExplain;
 	private String mType;
 	private String mDate1;
 	private String mDate2;
@@ -28,11 +28,11 @@ public class MainContentsBean {
 	public void setmTitle(String mTitle) {
 		this.mTitle = mTitle;
 	}
-	public String getmExpalin() {
-		return mExpalin;
+	public String getmExplain() {
+		return mExplain;
 	}
-	public void setmExpalin(String mExpalin) {
-		this.mExpalin = mExpalin;
+	public void setmExplain(String mExplain) {
+		this.mExplain = mExplain;
 	}
 	public String getmType() {
 		return mType;

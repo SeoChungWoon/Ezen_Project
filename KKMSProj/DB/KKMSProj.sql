@@ -471,7 +471,7 @@ create table mainslidelist(
 	mNo int auto_increment unique,
     mFileName char(100) ,
     mTitle char(30),
-    mExpalin char(50),
+    mExplain char(50),
     mType char(20),
     mDate1 char(20),
     mDate2 char(20),
@@ -484,15 +484,16 @@ drop table mainslidelist;
 truncate mainslidelist;
 
 
-insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
-'product-list-slideimg1.jpg','앤서니 브라운의 원더랜드 뮤지엄展','상상력으로 소통하고 모두함께 즐기는','전시','2022.04.28 ','2022.05.31','예술의 전당');
-insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
-'product-list-slideimg2.jpg','빈센트 반 고흐: 향기를 만나다展','마지막까지 예술혼을 불태운 예술가','전시','2022.04.16  ','2022.08.28','갤러리 헤이리스');
-insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
-'product-list-slideimg3.jpg','어느 봄날, 테레사 프레이타스 사진전','나는 항상, 언제나 꽃이 있어야 한다.','전시','2022.01.29  ','2022.07.24','더현대');
-insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
+insert into mainslidelist(mFileName, mTitle, mExplain, mType, mDate1, mDate2, mPlace) values(
+'main-slide-img1.jpg','스톤 THE STONE','용광로 속으로 사라진 작은 우주','뮤지컬','2022. 02. 27','2022. 05. 22','예스24스테이지 3관');
+insert into mainslidelist(mFileName, mTitle, mExplain, mType, mDate1, mDate2, mPlace) values(
+'main-slide-img2.jpg','차미','모두의 워너비 그녀가 돌아왔다','뮤지컬','2022. 04. 22  ','2022. 07. 16','플러스씨어터');
+insert into mainslidelist(mFileName, mTitle, mExplain, mType, mDate1, mDate2, mPlace) values(
+'product-list-slideimg3.jpg','넥스트 투 노멀','모두가 기다려온 완벽한 뮤지컬','뮤지컬','2022. 05. 17','2022. 07. 31','광림아트센터 BBCH홀');
+
+insert into mainslidelist(mFileName, mTitle, mExplain, mType, mDate1, mDate2, mPlace) values(
 'product-list-slideimg4.jpg','로그아웃 - 지금 당신에게 필요한 순간','로그아웃이 필요한 순간 용기있는 한 걸음이 필요합니다.','전시','2021.12.21  ','2023.03.01','뚝섬미술관');
-insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
+insert into mainslidelist(mFileName, mTitle, mExplain, mType, mDate1, mDate2, mPlace) values(
 'product-list-slideimg5.jpg','영국 현대미술의 거장, 마이클 크레이그 마틴展','세계 최초, 최대 회고전이 시작됩니다','전시','2022.04.08  ','2022.05.22','예술의 전당');
 
 

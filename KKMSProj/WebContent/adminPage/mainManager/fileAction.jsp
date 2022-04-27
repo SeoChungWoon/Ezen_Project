@@ -48,7 +48,7 @@
 							
 							String mFileName = mReq.getFilesystemName("mFileName");
 							String mTitle = mReq.getParameter("mTitle");
-							String mExpalin = mReq.getParameter("mExpalin");
+							String mExpalin = mReq.getParameter("mExplain");
 							String mType = mReq.getParameter("mType");
 							String mDate1 = mReq.getParameter("mDate1");
 							String mDate2 = mReq.getParameter("mDate2");

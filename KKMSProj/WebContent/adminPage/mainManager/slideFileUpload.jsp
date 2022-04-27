@@ -68,7 +68,7 @@
 									
 													<td><input type="file" name="mFileName"></td>
 													<td><input type="text" name="mTitle"></td>												
-								  		     		<td><input type="text" name="mExpalin"></td>
+								  		     		<td><input type="text" name="mExplain"></td>
 								  		     		<td><input type="text" name="mType"></td>
 								  		     		<td><input type="text" name="mDate1"></td>
 								  		     		<td><input type="text" name="mDate2"></td>

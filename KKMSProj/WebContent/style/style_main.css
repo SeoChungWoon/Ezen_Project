@@ -56,8 +56,8 @@
 	color: #fff;
 	opacity: 0;
 	position: relative;
-	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: #000000;
+/* 	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #000000; */
 	top: 50px;
 }
 .swiper-slide .txt-area > p.sub-tit{

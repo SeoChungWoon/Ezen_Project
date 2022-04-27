@@ -72,7 +72,7 @@ List eList = eMgr.eventList();
 							<img src="/images/main_images/<%=mList.getmFileName()%>" alt="">
 						</div>
 						<div class="txt-area">
-							<p class="sub-tit" ><%=mList.getmExpalin()%></p>
+							<p class="sub-tit" ><%=mList.getmExplain()%></p>
 							<p class="main-tit"> <%=mList.getmType()%><br><%=mList.getmTitle()%>
 							</p>
 							<p class="info-tit"><%=mList.getmDate1()%> ~ <%=mList.getmDate2()%>. <%=mList.getmPlace()%></p>
