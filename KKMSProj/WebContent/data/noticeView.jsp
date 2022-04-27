@@ -88,10 +88,26 @@ for(int i = 0; i<ntcNo.length; i++){
         				</div>
         				<!-- div.ntcTitle -->
 
-        		<div class="nt-content">
+         		<div class="nt-content">
+        		<%
+        		if(objVO.getFileName()!=null){%>
+					<br><img src = "/images/bbsFileUpload/<%=objVO.getFileName() %>" alt="사진" id="imgView"><br><br>
         			<pre><%=objVO.getContent() %></pre>
+        		<% }else{%>
+        			<pre><%=objVO.getContent() %></pre>
+        		<%} %>
         		</div>
         		<!-- div.content -->
+        		<hr id="fileLine">
+        		<div class="filePath">
+        		<% if(objVO.getFileName()!=null){%>
+        		<a href="/images/bbsFileUpload/<%=objVO.getFileName() %>"><%=objVO.getFileName() %></a>
+        		<%}else{ %>
+        		<span>첨부파일이 없습니다.</span>
+        		<%} %>
+        		</div>
+        		<!-- div.filePath -->
+        		<hr>
         		<div class="ntcFooter dFlex">
         
         		       <div class="footerLeft">

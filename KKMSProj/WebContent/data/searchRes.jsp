@@ -91,6 +91,12 @@
 
 				</div>
 				<!--div.scTblArea  -->
+					<div class="btnArea btn-cont" id="scBtn">
+						<input type="hidden" class="orgDV" value="<%=divisions %>">
+						<button type="button" class="searchBtn list-notAd">목록으로</button>
+						<button type="button"class="searchBtn mainMove">메인으로</button>
+					</div>
+					<!-- div.get-send -->
 		</div>
         <!-- div.inner -->
 	</div>

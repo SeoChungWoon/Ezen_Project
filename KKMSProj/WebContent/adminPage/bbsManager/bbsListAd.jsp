@@ -13,7 +13,7 @@ request.setCharacterEncoding("UTF-8");
 String divisions = "공지사항";
 BoardDAO objDAO = new BoardDAO();
 int cnt = objDAO.BoardCount(divisions);		//데이터 갯수
-int pageSize = 7;
+int pageSize = 8;
 
 String pageNum = request.getParameter("pageNum");
 if(pageNum==null){
@@ -136,7 +136,7 @@ BoardVO objVO = null;
 		      					<tr>
 		      						<td><%=objVO.getHeader() %></td>
 		      						<td>
-		      						<a href="noticeViewAd.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&divisions=<%=divisions%>&header=<%=objVO.getHeader()%>"><%=objVO.getTitle() %></a></td>
+		      						<a href="noticeViewAd.jsp?no=<%=objVO.getNo() %>&title=<%=objVO.getTitle() %>&count=<%=objVO.getCount() %>&divisions=<%=divisions%>&header=<%=objVO.getHeader()%>&fileName=<%=objVO.getFileName()%>"><%=objVO.getTitle() %></a></td>
 		      						<td><%=objVO.getwName() %></td>
 		      						<td><%=objVO.getPostDate() %></td>
 		      						<td><%=objVO.getCount() %></td>
@@ -183,7 +183,7 @@ BoardVO objVO = null;
 		      			pageCnt++;
 		      			if(i == nowPage){		//현재 페이지 일때
 		      		%>
-		      			<a href="bbsListAd.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
+		      			<a href="bbsListAd.jsp?pageNum=<%=i %>" class="nowPage"><b><%=i %></b></a>
 		      		<%
 		      			}else{		//현재 페이지가 아닐때
 		      		%>

@@ -27,6 +27,7 @@ div#wrap>.sub-body>.inner form>.searchArea input#searchBox{
 	margin-left: 10px;
 	padding-left: 10px;
 	transform: translateY(-2px);
+	font-size: 18px;
 }
 div#wrap>.sub-body>.inner form>.searchArea input#searchBox::placeholder{
 	font-size: 17px;
@@ -82,7 +83,10 @@ div.footerArea{
 	margin-top: 30px;
 }
 div.footerArea>.pageArea a.nowPage{
-	cursor: none;
+	cursor: text;
+}
+div.footerArea>.pageArea a{
+	padding: 0 5px;
 }
 div.footerArea>.btnArea button{
 	width: 100px;
@@ -96,8 +100,11 @@ div.footerArea>.btnArea button{
 
 
 /*/////////////////////write.jsp 영역 시작///////////////////////*/
+#wrap>.sub-body>.inner .main{
+	width: 100%;
+}
 #wrap>.sub-body>.inner .main>form#writeFrm{
-	width: 70%;
+	width: 100%;
 	margin: 0 auto;
 }
 #wrap>.sub-body>.inner .main>form#writeFrm>table#writeTbl{
@@ -176,7 +183,7 @@ div#header>hr{
 	width: 100%;
 	padding: 5px 0px;
 }
-.writeArea>.titleArea>input#titleBox{
+.writeArea>.titleArea>input.titleBox{
 	width: 100%;
 	margin: 7px 0px;
 	height: 35px;
@@ -198,7 +205,7 @@ div#header>hr{
 }
 
 .writeBtnArea{
-	transform: translateX(187px);
+	margin-left: 832px;
 }
 /*/////////////////////faqWrite.jsp 영역 끝///////////////////////*/
 
@@ -255,6 +262,9 @@ hr#fileLine{
 .filePath>a:hover{
 	color: #0086b8;
 }
+.filePath span{
+	color: #aaa;
+}
 .ntcFooter {
 	justify-content: space-between;
 	margin-top: 20px;
@@ -304,6 +314,9 @@ hr#fileLine{
 	padding: 10px 0;
 	text-align: center;
 }
+.scTblArea>table td{
+	padding: 19px 0;
+}
 .scTblArea>table th{
 	background-color: #eff5f7;
 	border-top: 3px solid #000;
@@ -315,12 +328,15 @@ hr#fileLine{
 .scTblArea>table td.hide{
 	text-align: left;
 }
+.btn-cont
 /*/////////////////////searchRes.jsp 영역 끝///////////////////////*/
 
 
 
 /*/////////////////////faqList.jsp 영역 시작///////////////////////*/
-
+div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea{
+	width: 100%;
+}
 div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 	width: 100%;
 	border-top: 3px solid #000;
@@ -363,6 +379,9 @@ div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 .main>.sub-main>.td-title .slideBtn img:hover{
 	cursor: pointer;
 }
+.main>.sub-main>.td-title .slideBtn img{
+	transform: translateY(10px);
+}
 .main>.sub-main>.td-title .slideBtn{
 		
 		width: 180px;
@@ -388,7 +407,7 @@ div#wrap>.sub-body>.inner>.managerPage>.manager-cont>.faqListArea .main{
 
 #faqBtnArea{
 	
-margin-left: 620px;
+margin-left: 813px;
 }
 
 /*/////////////////////faqList.jsp 영역 끝///////////////////////*/
@@ -500,6 +519,13 @@ margin-left: 620px;
 #faqScBtn{
 	margin-left: 620px;
 }
+#faqScRes{
+	margin-left: 304px;
+	margin-top: 20px;
+}
+#faqSc {
+	margin-left: 641px;
+}
 
 /*/////////////////////faqScRes.jsp 영역 끝///////////////////////*/
 
@@ -530,7 +556,7 @@ margin-left: 620px;
 	width: 300px;
 }
 #udBtnArea{
-	margin-left: 390px;
+	margin-left: 847px;
 }
 
 

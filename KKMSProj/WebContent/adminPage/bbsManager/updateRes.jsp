@@ -1,3 +1,7 @@
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="java.io.IOException"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="regVO" class="pack_EzPro.BoardVO" />
@@ -5,13 +9,35 @@
 <jsp:setProperty name="regVO" property="*" />
 <%
 request.setCharacterEncoding("UTF-8");
-String title = (String)request.getParameter("title");
-String content = (String)request.getParameter("content");
-int no = Integer.parseInt(request.getParameter("no"));
-String divisions = (String)request.getParameter("divisions");
+
+
+String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/images/bbsFileUpload";		
+String encType = "UTF-8";				//변환형식
+int maxSize=5*1024*1024;				//사진의 size
+
+MultipartRequest multi = null;
+
+
+try{
+//파일업로드를 직접적으로 담당		
+multi = new MultipartRequest(request,saveFolder,maxSize,encType,new DefaultFileRenamePolicy());
+Enumeration objFileEnum = multi.getFileNames();
+
+String fileName = multi.getFilesystemName("fileName");
+String nameFile = (String)objFileEnum.nextElement();
+fileName = multi.getFilesystemName(nameFile);
+
+
+int no = Integer.parseInt(multi.getParameter("no"));
+String divisions = multi.getParameter("divisions");
+String header = multi.getParameter("header");
+String title = multi.getParameter("title");
+String wName = multi.getParameter("wName");
+String content = multi.getParameter("content");
+
 
 boolean res = false;
-if(regDAO.Update(title, content, no, divisions)){
+if(regDAO.Update(title, content, no, divisions,header,fileName)){
 	res = true;
 }
 %>
@@ -67,5 +93,7 @@ if(regDAO.Update(title, content, no, divisions)){
 <!-- div.sub-body -->
   </div>
   <!-- div#wrap -->
+  	<%}catch (IOException e) {
+	}%>
 </body>
 </html>

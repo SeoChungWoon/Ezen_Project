@@ -66,7 +66,7 @@
 
         			<div class="titleArea">
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
-        					id="titleBox" onfocus="this.placeholder=''"
+        					class="titleBox" onfocus="this.placeholder=''"
         					onblur="this.placeholder='제목을 입력해 주세요.'"
         					value="<%=title%>">
         			</div>

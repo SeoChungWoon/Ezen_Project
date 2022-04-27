@@ -68,7 +68,7 @@ String divisions = "FAQ";
 
         			<div class="titleArea">
         				<input type="text" name="title" placeholder="제목을 입력해 주세요."
-        					class="txtBox" onfocus="this.placeholder=''"
+        					class="titleBox" onfocus="this.placeholder=''"
         					onblur="this.placeholder='제목을 입력해 주세요.'">
         			</div>
         			<!-- div.titleArea -->

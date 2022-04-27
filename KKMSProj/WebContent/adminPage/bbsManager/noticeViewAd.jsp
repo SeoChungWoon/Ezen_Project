@@ -109,7 +109,11 @@ String saveFolder = "D:/infoProc_1119/kmj/silsp/p07_JSP/KKMSProj/WebContent/imag
         		<!-- div.content -->
         		<hr id="fileLine">
         		<div class="filePath">
+        		<% if(objVO.getFileName()!=null){%>
         		<a href="/images/bbsFileUpload/<%=objVO.getFileName() %>"><%=objVO.getFileName() %></a>
+        		<%}else{ %>
+        		<span>첨부파일이 없습니다.</span>
+        		<%} %>
         		</div>
         		<!-- div.filePath -->
         		<hr>

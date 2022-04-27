@@ -9,9 +9,11 @@ String title = (String)request.getParameter("title");
 String content = (String)request.getParameter("content");
 int no = Integer.parseInt(request.getParameter("no"));
 String divisions = (String)request.getParameter("divisions");
+String header = (String)request.getParameter("header");
+String fileName = (String)request.getParameter("fileName");
 
 boolean res = false;
-if(regDAO.Update(title, content, no, divisions)){
+if(regDAO.Update(title, content, no, divisions,header,fileName)){
 	res = true;
 }
 %>

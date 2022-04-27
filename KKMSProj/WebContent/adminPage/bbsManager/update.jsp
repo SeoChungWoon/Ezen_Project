@@ -48,7 +48,8 @@
 					</div>
 				<!-- div.tit-cont -->
         <div class="main">
-        <form action="/adminPage/bbsManager/updateRes.jsp" id="writeFrm" method="get">
+        <form action="/adminPage/bbsManager/updateRes.jsp" id="writeFrm" method="post"
+        enctype="multipart/form-data">
         
  		<div id="header">
         <hr id="headHR">
@@ -88,7 +89,7 @@
         				<textarea name="content" id="content" cols="50" rows="15"
         				  placeholder="내용을 입력해주세요" 
         				  onfocus="this.placeholder=''"
-        				  onblur="this.placeholder='내용을 입력해주세요'"><%=content %></textarea>
+        				  onblur="this.placeholder='내용을 입력해주세요'" wrap="hard"><%=content %></textarea>
         			</td>
         		</tr>
         		 <tr>

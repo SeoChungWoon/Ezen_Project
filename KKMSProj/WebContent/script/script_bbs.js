@@ -77,12 +77,16 @@ $("button.udBtn").on("click",function(){
 		$("#formSave").on("click",function(){
 			let title = $(".txtBox").val().trim();
 			let content = $(".txtArea").val().trim();
+			let form = document.getElementById("writeFrm");
+			
 			
 			if(title==""||content==""){
 				alert("제목 또는 내용을 입력해주세요.");
-			}else{
-				$("#formSave").submit();
+				return false;
 			}
+			form.action = "/adminPage/bbsManager/writeRes.jsp";
+			form.method="POST";
+			form.submit();
 		});
 		
  		///////////////////write.jsp 영역 끝/////////////////
