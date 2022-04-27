@@ -41,6 +41,11 @@ public class MainconMgr {
 				mCBean.setmNo(objRS.getInt("mNo"));
 				mCBean.setmFileName(objRS.getString("mFileName"));
 				mCBean.setmTitle(objRS.getString("mTitle"));
+				mCBean.setmExpalin(objRS.getString("mExpalin"));
+				mCBean.setmType(objRS.getString("mType"));				
+				mCBean.setmDate1(objRS.getString("mDate1"));
+				mCBean.setmDate2(objRS.getString("mDate2"));
+				mCBean.setmPlace(objRS.getString("mPlace"));
 				mList.add(mCBean);
 				
 				

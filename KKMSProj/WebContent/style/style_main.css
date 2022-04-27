@@ -56,18 +56,21 @@
 	color: #fff;
 	opacity: 0;
 	position: relative;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #000000;
 	top: 50px;
 }
 .swiper-slide .txt-area > p.sub-tit{
-	font-size: 30px;
+	font-size: 46px;
 	padding-bottom: 40px;
 }
 .swiper-slide .txt-area > p.main-tit{
 	font-size: 80px;
 	padding-bottom: 30px;
 }
+
 .swiper-slide .txt-area > p.info-tit{
-	font-size: 16px;
+	font-size: 26px;
 }
 .swiper-button-prev{
 	background-image: url("/images/icon-review-arrow-prev.png");

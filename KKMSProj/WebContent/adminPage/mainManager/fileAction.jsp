@@ -33,7 +33,7 @@
 </head>
 <body>
 						<%
-						String saveFolder = "C:/Users/user/Documents/GitHub/munPJ/mainPJ_MJH/KKMSProj/WebContent/images/main_images";
+						String saveFolder = "C:/Users/Mun/Documents/GitHub/mainPJ_MJH/KKMSProj/WebContent/images/main_images";
 						String encType = "UTF-8";
 						int maxSize = 10 * 1024 * 1024;
 
@@ -48,8 +48,13 @@
 							
 							String mFileName = mReq.getFilesystemName("mFileName");
 							String mTitle = mReq.getParameter("mTitle");
+							String mExpalin = mReq.getParameter("mExpalin");
+							String mType = mReq.getParameter("mType");
+							String mDate1 = mReq.getParameter("mDate1");
+							String mDate2 = mReq.getParameter("mDate2");
+							String mPlace = mReq.getParameter("mPlace");
 									
-							new FileDAO().upload(mFileName, mTitle);
+							new FileDAO().upload(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace);
  							/* out.write("파일명 : " + mFileName); */
 						} catch (Exception e) {
 							e.getMessage();

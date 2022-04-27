@@ -15,7 +15,9 @@
 	<link rel="stylesheet" href="/style/style_Common.css">
 	<link rel="stylesheet" href="/style/style1.css">
 	<link rel="stylesheet" href="/style/style2.css">
+	<link rel="stylesheet" href="/adminPage/style/style_admin_Common.css">
 	<link rel="stylesheet" href="/adminPage/style/style_admin.css">
+	<link rel="stylesheet" href="/adminPage/style/style_adminMain.css">
 	<link rel="stylesheet" href="/style/style_Event.css">
 	<script src="/source/jquery-3.6.0.min.js"></script>
 	<script src="/source/gsap.min.js"></script>
@@ -38,12 +40,50 @@
 					
 						<div class="slide-upload">
 							<form name="file" method="post" enctype="multipart/form-data" action="fileAction.jsp">
-								 
-								 
-								  이미지 업로드 : <input type="file" name="mFileName"><br>
-								  전시 제목 : <input type="text" name="mTitle"><br>
-								  
-								     <input type="submit" value="파일 업로드">
+								 <div class="manager-inner">
+									<table class="mainSlideTable">
+										<colgroup>
+											<col width="14%" />
+											<col width="14%" />
+											<col width="13%" />
+											<col width="13%" />
+											<col width="13%" />
+											<col width="13%" />
+											<col width="13%" />
+											<col width="7%" />
+										</colgroup>
+											 <thead>
+												<tr>
+													<th>이미지 선택</th>
+													<th>제목</th>
+													<th>설명</th>
+													<th>종류</th>
+													<th>시작일</th>
+													<th>종료일</th>
+													<th>장소</th>
+													<th>전송</th>														
+												</tr>
+								  		     </thead>
+												<tr>
+									
+													<td><input type="file" name="mFileName"></td>
+													<td><input type="text" name="mTitle"></td>												
+								  		     		<td><input type="text" name="mExpalin"></td>
+								  		     		<td><input type="text" name="mType"></td>
+								  		     		<td><input type="text" name="mDate1"></td>
+								  		     		<td><input type="text" name="mDate2"></td>
+								  		     		<td><input type="text" name="mPlace"></td>
+								  		     		<td>
+								  		     		<div class="btn-cont">								  		     		
+								  		     		<!-- <input type="submit" value="파일 업로드" > --> 
+								  		     		<button type="submit" class="btnIMg">등록하기</button>
+								  		     		</div>
+													</td>
+											  
+											  
+								  		     </tr>
+								  	</table>
+								  </div>
 								  
 							</form>
 								

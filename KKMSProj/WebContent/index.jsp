@@ -1,3 +1,5 @@
+
+<%@page import="pack_Maincon.MainContentsBean"%>
 <%@page import="pack_Product.ProListBean"%>
 <%@page import="pack_Event.eventBean"%>
 <%@page import="java.util.List"%>
@@ -8,11 +10,19 @@
 
 <jsp:useBean id="prodMgr" class="pack_Product.ProductMgr" />
 <jsp:useBean id="eMgr" class="pack_Event.eventMgr" />
+<jsp:useBean id="mCMgr" class="pack_Maincon.MainconMgr" />
+<jsp:useBean id="mCBean" class="pack_Maincon.MainContentsBean"/>	
 <%
+request.setCharacterEncoding("UTF-8");
+List mCBList = mCMgr.ListOutput();
+int mcnt = mCMgr.mListCount();
+int fCnt = mCBList.size();
+
 int eCount = eMgr.eListCnt();
 
 List eList = eMgr.eventList();
 %>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -52,39 +62,27 @@ List eList = eMgr.eventList();
 			<div class="swiper-container">
 				<div class="swiper-wrapper">
 					<!-- 슬라이드 이미지 삽입란 -->
+					<%
+					if (mcnt != 0) {
+						for (int i = 0; i < fCnt; i++) {
+							MainContentsBean mList = (MainContentsBean) mCBList.get(i);
+					%>
 					<div class="swiper-slide">
 						<div class="bg">
-							<img src="/images/main_images/main-slide-img1.jpg" alt="">
+							<img src="/images/main_images/<%=mList.getmFileName()%>" alt="">
 						</div>
 						<div class="txt-area">
-							<p class="sub-tit" >용광로 속으로 사라진 작은 우주</p>
-							<p class="main-tit"> 뮤지컬<br>스톤 THE STONE
+							<p class="sub-tit" ><%=mList.getmExpalin()%></p>
+							<p class="main-tit"> <%=mList.getmType()%><br><%=mList.getmTitle()%>
 							</p>
-							<p class="info-tit">2022. 02. 27. ~ 2022. 05. 22. 예스24스테이지 3관</p>
+							<p class="info-tit"><%=mList.getmDate1()%> ~ <%=mList.getmDate2()%>. <%=mList.getmPlace()%></p>
 						</div>
 					</div>
-					<div class="swiper-slide">
-						<div class="bg">
-							<img src="/images/main_images/main-slide-img2.jpg" alt="">
-						</div>
-						<div class="txt-area">
-							<p class="sub-tit" >모두의 워너비 그녀가 돌아왔다주</p>
-							<p class="main-tit"> 뮤지컬<br>차미
-							</p>
-							<p class="info-tit">2022. 04. 22. ~ 2022. 07. 16. 플러스씨어터</p>
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="bg">
-							<img src="/images/main_images/main-slide-img3.jpg" alt="">
-						</div>
-						<div class="txt-area">
-							<p class="sub-tit" >모두가 기다려온 완벽한 뮤지컬</p>
-							<p class="main-tit"> 뮤지컬<br>넥스트 투 노멀
-							</p>
-							<p class="info-tit">2022. 05. 17. ~ 2022. 07. 31. 광림아트센터 BBCH홀</p>
-						</div>
-					</div>
+					<%
+					}
+
+					}
+					%>
 				</div>
 			</div>
 		</div>
@@ -94,7 +92,6 @@ List eList = eMgr.eventList();
 			<h1>WHAT'S HOT</h1>
 			<div class="hot_list_section">
 				<%
-				request.setCharacterEncoding("UTF-8");
 				List objList = prodMgr.listOutput();
 				int cnt = prodMgr.proListCount();
 				if (cnt != 0) {

@@ -469,8 +469,13 @@ select * from wishList;
 /* 메인슬라이더 이미지 */
 create table mainslidelist(
 	mNo int auto_increment unique,
-    mFileName char(100),
+    mFileName char(100) ,
     mTitle char(30),
+    mExpalin char(50),
+    mType char(20),
+    mDate1 char(20),
+    mDate2 char(20),
+    mPlace char(30),    
     constraint primary key (mFileName)
 );
 
@@ -479,6 +484,16 @@ drop table mainslidelist;
 truncate mainslidelist;
 
 
-insert into mainslidelist(mFileName) values('product-list-slideimg1.jpg');
+insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
+'product-list-slideimg1.jpg','앤서니 브라운의 원더랜드 뮤지엄展','상상력으로 소통하고 모두함께 즐기는','전시','2022.04.28 ','2022.05.31','예술의 전당');
+insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
+'product-list-slideimg2.jpg','빈센트 반 고흐: 향기를 만나다展','마지막까지 예술혼을 불태운 예술가','전시','2022.04.16  ','2022.08.28','갤러리 헤이리스');
+insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
+'product-list-slideimg3.jpg','어느 봄날, 테레사 프레이타스 사진전','나는 항상, 언제나 꽃이 있어야 한다.','전시','2022.01.29  ','2022.07.24','더현대');
+insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
+'product-list-slideimg4.jpg','로그아웃 - 지금 당신에게 필요한 순간','로그아웃이 필요한 순간 용기있는 한 걸음이 필요합니다.','전시','2021.12.21  ','2023.03.01','뚝섬미술관');
+insert into mainslidelist(mFileName, mTitle, mExpalin, mType, mDate1, mDate2, mPlace) values(
+'product-list-slideimg5.jpg','영국 현대미술의 거장, 마이클 크레이그 마틴展','세계 최초, 최대 회고전이 시작됩니다','전시','2022.04.08  ','2022.05.22','예술의 전당');
+
 
 select * from mainslidelist;
