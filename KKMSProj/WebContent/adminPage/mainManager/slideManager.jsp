@@ -54,7 +54,13 @@
 								<p class="title"><%=mList.getmTitle() %></p>
 							 	<img src="/images/main_images/<%=mList.getmFileName()%>" alt="슬라이드 이미지">
 							</div>
-							<%} }%>
+							<%}
+								
+							}else{
+								out.print("데이터가없습니다.");
+							}
+								%>
+							
 							
 								
 							

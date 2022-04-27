@@ -38,8 +38,10 @@
 					
 						<div class="slide-upload">
 							<form name="file" method="post" enctype="multipart/form-data" action="fileAction.jsp">
-								  전시 제목 : <input type="text" name="mTitle"><br>
+								 
+								 
 								  이미지 업로드 : <input type="file" name="mFileName"><br>
+								  전시 제목 : <input type="text" name="mTitle"><br>
 								  
 								     <input type="submit" value="파일 업로드">
 								  

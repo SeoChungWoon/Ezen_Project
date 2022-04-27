@@ -470,6 +470,7 @@ select * from wishList;
 create table mainslidelist(
 	mNo int auto_increment unique,
     mFileName char(100),
+    mTitle char(30),
     constraint primary key (mFileName)
 );
 

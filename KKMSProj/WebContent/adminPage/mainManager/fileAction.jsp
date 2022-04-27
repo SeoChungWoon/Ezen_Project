@@ -33,7 +33,7 @@
 </head>
 <body>
 						<%
-						String saveFolder = "C:/Users/Mun/Documents/GitHub/mainPJ_MJH/KKMSProj/WebContent/images/main_images";
+						String saveFolder = "C:/Users/user/Documents/GitHub/munPJ/mainPJ_MJH/KKMSProj/WebContent/images/main_images";
 						String encType = "UTF-8";
 						int maxSize = 10 * 1024 * 1024;
 
@@ -46,8 +46,8 @@
 																		encType, 
 																		new DefaultFileRenamePolicy());
 							
-							String mTitle = mReq.getParameter("mTitle");
 							String mFileName = mReq.getFilesystemName("mFileName");
+							String mTitle = mReq.getParameter("mTitle");
 									
 							new FileDAO().upload(mFileName, mTitle);
  							/* out.write("파일명 : " + mFileName); */
