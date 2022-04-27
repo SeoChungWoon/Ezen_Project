@@ -213,6 +213,11 @@ header nav .two-dep {
 	padding-top: 20px;
 }
 
+header nav .two-dep li a.disabled{
+   color: #c3c3c3;
+   cursor: auto;
+}
+
 header nav .two-dep li:not(:first-child) {
 	margin-top: 10px;
 }

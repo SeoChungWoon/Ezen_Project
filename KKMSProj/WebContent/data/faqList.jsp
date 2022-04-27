@@ -56,13 +56,13 @@ if(cnt != 0){
 		<div class="sub-body">
 			<div class="inner">
 				<div class="tit-cont"> <!--  title -->
-					<p class="tit">F A Q</p>
+					<p class="tit">FAQ</p>
 				</div>
 				<!--div.tit-cont  -->
   	<form action="faqScRes.jsp" method="get" name="search">
   		<div class="searchArea dFlex">
   			<div class="searchTxt">
-  			<span>Search</span>
+<!--   			<span>Search</span> -->
   			<select name="searchField" class="searchDV">
   				<option value="0">선택</option>
   				<option value="title">제목</option>
@@ -97,15 +97,15 @@ if(cnt != 0){
 	    		
 		      %>
 		      <!-- HTML 코드 시작  -->
-		      	<div class="tblTop">
+		      	<div class="tblTop right">
 		      		<span>페이지 : <%=nowPage %> / <%=pageCount %></span>
 		      	</div>
 		      	<!-- div.tblTop 끝 -->
 		    <div class="main">
-					<div class="listTop dFlex">
-						<div class="th-title">제목</div>
-						<div class="th-btn">내용</div>
-					</div>
+<!-- 					<div class="listTop dFlex"> -->
+<!-- 						<div class="th-title">제목</div> -->
+<!-- 						<div class="th-btn">내용</div> -->
+<!-- 					</div> -->
 					<!-- div.listTop -->
 					<%
 					for (int i = 0; i < objList.size(); i++) {
@@ -113,23 +113,19 @@ if(cnt != 0){
 					%>
 					<div class="sub-main">
 						<div class="td-title">
-						<div class="row dFlex">
-							<div class="title">
-								<label for="faqRow<%=i + 1%>"> 
-									<span>&ensp;<%=objVO.getTitle()%></span>
-								</label> 
-								<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i + 1%>">
-							</div>
-							<!-- div.title -->
-								<div class="slideBtn">
-								<label for="faqRow<%=i + 1 %>">
-									<img src="/images/detailIcon.png" alt="펼치기" class="detailIcon">
-								</label>								
+							<div class="row dFlex">
+								<div class="title">
+									<label for="faqRow<%=i + 1%>"> 
+										<span>&ensp;<%=objVO.getTitle()%></span>
+										<img src="/images/icon-arrow-open-blue.png" alt="" />
+									</label> 
+									<input type="checkbox" class="faqBtn hidden" id="faqRow<%=i + 1%>">
 								</div>
+								<!-- div.title -->
 							</div>
 							<!-- div.row -->
 							<div class="content hidden">
-								<pre>&ensp;<%=objVO.getContent()%></pre>
+								<pre><%=objVO.getContent()%></pre>
 							</div>
 							<!-- div.content -->
 						</div>
@@ -138,69 +134,42 @@ if(cnt != 0){
 					<!-- div.sub-main -->
 		      <%} %>
 		      <div class="footerArea dFlex">
-		      	<div class="pageArea">
-		      		<%
-		      		//처음 페이지 이동 할 때
-		      			if(startPage > pageBlock){
-		      				%>
-		      				<a href="faqList.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
-		      				<%
-		      			}else{
-		      				%>
-		      				<a href="javascript:">&lt;&lt;</a>
-		      				<%
-		      			}
-		      		// 이전 페이지 이동 할 때 
-		      		if(nowPage > 1){
-		      		%>
-		      		<a href="faqList.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
-		      		<%
-		      			
-		      		}else if(nowPage == startPage){
-		      		%>
-		      		<a href="faqList.jsp?pageNum=<%=nowPage %>">&lt;</a>
-		      		<%
-		      		}
-		      		
-		      		int pageCnt = 1;
-		      		
-		      		// 페이지 표시
-		      		for(int i = startPage; i <= endPage ; i++){
-		      			pageCnt++;
-		      			if(i == nowPage){		//현재 페이지 일때
-		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=i %>" class="nowPage"><%=i %></a>
-		      		<%
-		      			}else{		//현재 페이지가 아닐때
-		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=i %>"><%=i %></a>
-		      		<%
-		      			}
-		      		}
-		      		//다음 페이지 이동 할 때
-		      		if(nowPage < pageCount){
-		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
-		      		<%
-		      		}else{
-		      		%>
-		      			<a href="javascript:">&gt;</a>	
-		      		<%
-		      		}
-		      		
-		      		// 끝 페이지로 이동 할 때
-		      		if(endPage < pageCount){
-		      		%>
-		      			<a href="faqList.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
-		      		<%
-		      		}else{
-		      		%>
-		      			<a href="javascript:">&gt;&gt;</a>	
-		      		<%
-		      		}
-		      		%>
-		      	</div>
-		      	<!-- div.pageArea -->
+		      	<div class="dFlex pagingComm">
+					<div class="pagingPrev">
+						<%
+						if (startPage > pageBlock) {
+						%>
+						<a href="?pageNum=<%=startPage-pageBlock %>" class="firMove"><span class="blind">맨 처음으로 이동</span></a>
+						<%
+						} else if(nowPage > 1) {
+						%>
+						<a href="?pageNum=<%=nowPage-1 %>" class="prevMove"><span class="blind">이전으로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+					<%
+					for (int i = startPage; i <= endPage; i++) {
+					%>
+					<a href="?pageNum=<%=i %>"
+						class="pageNum <%if (i == nowPage) {%>selected<%}%>"><%=i%></a>
+					<%
+					}
+					%>
+					<div class="pagingNext">
+						<%
+						if (nowPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=nowPage+1 %>" class="nextMove"><span class="blind">다음으로 이동</span></a>
+						<%}
+						if(endPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=startPage+pageBlock %>" class="endMove"><span class="blind">맨 뒤로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+				</div>
 		      		<%
 		      			}else{
 		      		%>

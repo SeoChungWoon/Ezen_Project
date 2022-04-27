@@ -18,6 +18,17 @@
 	overflow: hidden;
 	height: 300px;
 	margin-bottom: 10px;
+	
+}
+
+.eventPageArea .eventInner .eventRow .eventBanner::after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	opacity: 0;
 }
 
 .eventPageArea .eventInner .eventRow .eventBanner Img {
@@ -25,11 +36,7 @@
 	width: 100%;
 }
 
-.eventPageArea .eventInner .eventRow:hover {
-	border: 1px solid #aaa;
-}
-
-.eventPageArea .eventInner .eventRow:hover .eventBanner Img {
+.eventPageArea .eventInner .eventRow:hover .eventBanner::after{
 	opacity: 0.5;
 }
 
@@ -375,7 +382,6 @@ hr.eventHR {
 	z-index: 3;
 	right: 38px;
 	bottom: 126px;
-	color: red;
     border: 1px solid #ddd;
     font-weight: bold;
     border-radius: 40px;

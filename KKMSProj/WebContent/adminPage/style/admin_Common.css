@@ -11,7 +11,7 @@ div.adminMain-cont {
 .adminMain-cont .adminMainTab {
 	width: 15%;
 	margin: 15px;
-	border: 1px solid red;
+	height: 270px;
 }
 
 .adminMain-cont .adminMainTab .adminMainTabTitle {
@@ -22,13 +22,17 @@ div.adminMain-cont {
 }
 
 .adminMain-cont .adminMainTab .adminSubTab {
-	border: 1px solid #000;
+	border: 1px solid #ccc;
 	height: 100%;
-	padding: 10px;
+	padding: 15px 25px;
 }
 
 .adminMain-cont .adminMainTab .adminSubTab ul li {
-	margin: 15px 0;
+	margin: 15px 0 5px 0;
+}
+
+.adminMain-cont .adminMainTab .adminSubTab ul li a:hover {
+	border-bottom: 1px solid #0086b8;
 }
 
 .managerPage .manager-cont .manager-tit p .sub-tit {

@@ -952,6 +952,43 @@ $(function() {
 			},
 		});
 	}
+	if ($(".mainslide").length != 0) {
+	 var mainSwiper = new Swiper('.mainslide .swiper-container', {
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            slidesPerView:"auto",
+            speed:1000,
+            loop:true,
+            loopPreventsSlide: true,
+            observer:true,
+            observeParents:true,
+            allowTouchMove : false,
+            onlyExternal: true,
+            pagination: {
+                el: '.mainslide .swiper-pagination',
+                clickable: false,
+            },
+            on: {
+                init: function(){
+                },
+                slideChangeTransitionStart: function(){
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find(".bg"),0 ,{scale:1, rotate:0.001, ease:Power3.easeOut});
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find("p.sub-tit"),0 ,{top:50, opacity:0, ease:Power3.easeOut});
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find("p.main-tit"),0 ,{delay:0, top:50, opacity:0, ease:Power3.easeOut});
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find("p.info-tit"),0 ,{delay:0, top:50, opacity:0, ease:Power3.easeOut});
+                },
+                slideChangeTransitionEnd: function(){
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find(".bg"),4 ,{scale:1.1, rotate:0, ease:Power3.easeOut});
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find("p.sub-tit"),2 ,{top:0, opacity:1, ease:Power3.easeOut});
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find("p.main-tit"),2 ,{delay:0.2, top:0, opacity:1, ease:Power3.easeOut});
+                    gsap.to($(".mainslide .swiper-container .swiper-slide").eq(this.activeIndex).find("p.info-tit"),2 ,{delay:0.4, top:0, opacity:1, ease:Power3.easeOut});
+                },
+            }
+        });
+	}
+
 });
 
 
@@ -1001,8 +1038,9 @@ $(window).on("load", function() {
 				$(this).html("D-Day");
 				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "red"});
 			} else {
-				$(this).html("이미 종료된 이벤트입니다.");
+				$(this).html("종료");
 				$(this).siblings("div").find("span.percentBar").css({"width": "100%", "background-color": "grey"});
+				$(this).css({"background-color": "#ddd"});
 			}
 		});
 	}

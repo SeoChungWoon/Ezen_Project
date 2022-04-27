@@ -122,10 +122,10 @@ if (pageCnt - 4 > 1 && pageCnt - 4 <= nowPage) {
 						</div>
 						<!-- div.manager-inner -->
 						
+						<div class="memberListFooter dFlex">
 						<%
 						if (proList.size()!=0) {
 						%>
-						<div class="memberListFooter dFlex">
 							<div class="memberListPaging dFlex pagingComm">
 								<div class="memberListPagingPrev">
 									<%
@@ -157,6 +157,7 @@ if (pageCnt - 4 > 1 && pageCnt - 4 <= nowPage) {
 								</div>
 							</div>
 							<!-- div.memberListPaging -->
+							<%} %>
 							<div class="memberListSearch">
 								<select id="mSrh-tag">
 									<option value="pUId">판매자</option>
@@ -168,7 +169,6 @@ if (pageCnt - 4 > 1 && pageCnt - 4 <= nowPage) {
 							<!-- div.memberListSearch -->
 						</div>
 						<!-- div.memberListFooter -->
-						<%} %>
 					</div>
 					<!-- div.manager-cont -->
 				</div>

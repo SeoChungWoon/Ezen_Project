@@ -115,6 +115,9 @@ if (pageCnt - 4 > 1 && pageCnt - 4 <= nowPage) {
 						<!-- div.manager-inner -->
 						
 						<div class="memberListFooter dFlex">
+						<%
+						if (memList.size() != 0) {
+						%>
 							<div class="memberListPaging dFlex pagingComm">
 								<div class="memberListPagingPrev">
 									<%
@@ -146,6 +149,7 @@ if (pageCnt - 4 > 1 && pageCnt - 4 <= nowPage) {
 								</div>
 							</div>
 							<!-- div.memberListPaging -->
+						<% } %>
 							<div class="memberListSearch">
 								<select id="mSrh-tag">
 									<option value="uId">아이디</option>

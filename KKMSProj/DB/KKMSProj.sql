@@ -195,7 +195,7 @@ insert into bbsList (divisions, title,content) values
 
 insert into bbsList (divisions, title,content) values
 ('FAQ','회원가입은 어떻게 하나요?',
-' E-TICKET PC WEB을 통해 회원가입이 가능합니다.
+'E-TICKET PC WEB을 통해 회원가입이 가능합니다.
 
 1. [회원가입] 버튼 선택 > 회원 선택 > 약관동의 
 
@@ -204,6 +204,8 @@ insert into bbsList (divisions, title,content) values
 3. 회원가입 완료
 
 * 글로벌회원은 별도의 본인인증 절차 없이 회원가입이 가능합니다.');
+
+
 
 insert into bbsList (divisions, header, title, wName, content, postDate) values
 ('공지사항','[이벤트]','Hello Spring Event: 설레이는 봄, 전시회 봄','관리자',
@@ -234,41 +236,6 @@ insert into bbsList (divisions, title,content) values
 (WEB, 고객센터 공통)
 
 배송상태가 배송준비중 또는 배송중일 경우 배송지 주소 변경 뿐만 아니라 취소 또한 불가합니다.');
-
-insert into bbsList (divisions, header, title, wName, content, fileName,postDate) values
-('공지사항','[안내]','이용약관 개정안내', '관리자',
-'안녕하세요. E-TICKET입니다.
-
-E-TICKET 서비스 이용 약관이 아래와 같이 개정되오니 참고하시기 바랍니다.
-
- 
-[약관개정]
-
-개정목적 : 회원 종류 별 정의 변경 및 공연서비스 약관 추가 등  
-
-시행일자 : 2022. 05. 10 ~ 
-
-주요내용 :
-
-1. [변경] 제1장 총칙 - 회원 종류 별 정의 수정 
-
-2. [변경] 제10장 공연 서비스 - 예매/수수료/배송/취소/환불/불법거래에 관한 조항 추가 
-
-2. [변경] 공통 - 이용자, 회원에 대한 명칭 통일 
-
- 
-앞으로도 더 큰 만족을 드릴 수 있도록 최선을 다하겠습니다.
-
-감사합니다.',
-'test.gif' ,date_format(now(), '%Y-%m-%d'));
-
-insert into bbsList (divisions, header, title, wName, content, fileName,postDate) values
-('공지사항','[이벤트]','설레이는 봄, 전시회 봄 이벤트 안내','관리자',
-'설레이는 봄 이벤트를 실시 합니다.
-
-이벤트 기간내에 전시회 예매 시 추첨을 통해 2인 예매권을 드립니다.',
-
-'event-spring-booking.png',date_format('2022-04-20', '%Y-%m-%d'));
 
 drop table bbsList;
 
@@ -503,7 +470,6 @@ select * from wishList;
 create table mainslidelist(
 	mNo int auto_increment unique,
     mFileName char(100),
-    mTitle char(30),
     constraint primary key (mFileName)
 );
 

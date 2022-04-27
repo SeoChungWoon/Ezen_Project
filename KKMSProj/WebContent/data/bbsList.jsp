@@ -13,7 +13,7 @@ request.setCharacterEncoding("UTF-8");
 String divisions = "공지사항";
 BoardDAO objDAO = new BoardDAO();
 int cnt = objDAO.BoardCount(divisions);		//데이터 갯수
-int pageSize = 8;
+int pageSize = 7;
 
 String pageNum = request.getParameter("pageNum");
 if(pageNum==null){
@@ -64,7 +64,6 @@ BoardVO objVO = null;
   		<form action="searchRes.jsp" method="get" name="search">
   		<div class="searchArea dFlex">
   			<div class="searchTxt">
-  			<span>Search</span>
   			<select name="searchField" class="searchDV">
   				<option value="0">선택</option>
   				<option value="title">제목</option>
@@ -146,7 +145,6 @@ BoardVO objVO = null;
 		      					</tr>
 		      				
 		      				<%
-		      				
 		      				}
 		      				%>
 		      		
@@ -156,69 +154,42 @@ BoardVO objVO = null;
 		      <!-- div.tblArea 끝 -->
 		      
 		      <div class="footerArea dFlex">
-		      	<div class="pageArea">
-		      		<%
-		      		//처음 페이지 이동 할 때
-		      			if(startPage > pageBlock){
-		      				%>
-		      				<a href="bbsList.jsp?pageNum=<%=startPage-pageBlock %>">&lt;&lt;</a>
-		      				<%
-		      			}else{
-		      				%>
-		      				<a href="javascript:">&lt;&lt;</a>
-		      				<%
-		      			}
-		      		// 이전 페이지 이동 할 때 
-		      		if(nowPage > 1){
-		      		%>
-		      		<a href="bbsList.jsp?pageNum=<%=nowPage-1 %>">&lt;</a>
-		      		<%
-		      			
-		      		}else if(nowPage == startPage){
-		      		%>
-		      		<a href="bbsList.jsp?pageNum=<%=nowPage %>">&lt;</a>
-		      		<%
-		      		}
-		      		
-		      		int pageCnt = 1;
-		      		
-		      		// 페이지 표시
-		      		for(int i = startPage; i <= endPage ; i++){
-		      			pageCnt++;
-		      			if(i == nowPage){		//현재 페이지 일때
-		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=i %>" class="nowPage"><b><%=i %></b></a>
-		      		<%
-		      			}else{		//현재 페이지가 아닐때
-		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=i %>"><%=i %></a>
-		      		<%
-		      			}
-		      		}
-		      		//다음 페이지 이동 할 때
-		      		if(nowPage < pageCount){
-		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=nowPage+1 %>">&gt;</a>
-		      		<%
-		      		}else{
-		      		%>
-		      			<a href="javascript:">&gt;</a>	
-		      		<%
-		      		}
-		      		
-		      		// 끝 페이지로 이동 할 때
-		      		if(endPage < pageCount){
-		      		%>
-		      			<a href="bbsList.jsp?pageNum=<%=startPage+pageBlock %>">&gt;&gt;</a>
-		      		<%
-		      		}else{
-		      		%>
-		      			<a href="javascript:">&gt;&gt;</a>	
-		      		<%
-		      		}
-		      		%>
-		      	</div>
-		      	<!-- div.pageArea -->
+		      	<div class="dFlex pagingComm">
+					<div class="pagingPrev">
+						<%
+						if (startPage > pageBlock) {
+						%>
+						<a href="?pageNum=<%=startPage-pageBlock %>" class="firMove"><span class="blind">맨 처음으로 이동</span></a>
+						<%
+						} else if(nowPage > 1) {
+						%>
+						<a href="?pageNum=<%=nowPage-1 %>" class="prevMove"><span class="blind">이전으로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+					<%
+					for (int i = startPage; i <= endPage; i++) {
+					%>
+					<a href="?pageNum=<%=i %>"
+						class="pageNum <%if (i == nowPage) {%>selected<%}%>"><%=i%></a>
+					<%
+					}
+					%>
+					<div class="pagingNext">
+						<%
+						if (nowPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=nowPage+1 %>" class="nextMove"><span class="blind">다음으로 이동</span></a>
+						<%}
+						if(endPage < pageCount) {
+						%>
+						<a href="?pageNum=<%=startPage+pageBlock %>" class="endMove"><span class="blind">맨 뒤로 이동</span></a>
+						<%
+						}
+						%>
+					</div>
+				</div>
 		      		<%
 		      			}else{
 		      		%>
