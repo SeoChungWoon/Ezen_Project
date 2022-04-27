@@ -95,7 +95,7 @@
 						<div class="adminSubTab">
 							<ul>
 								<li><a href="/adminPage/bbsManager/bbsListAd.jsp">공지게시판</a></li>
-								<li><a href="/adminPage/bbsManager/faqListAd.jsp">FAQ</a></li>
+								<li><a href="/adminPage/bbsManager/faqListAd.jsp">F A Q</a></li>
 							</ul>
 						</div>
 					</div>

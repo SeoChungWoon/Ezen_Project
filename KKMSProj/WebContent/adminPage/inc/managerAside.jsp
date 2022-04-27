@@ -39,7 +39,6 @@
 						<ul>
 							<li><a href="/adminPage/mainManager/slideManager.jsp">업로드 된 슬라이드 이미지파일</a></li>
 							<li><a href="/adminPage/mainManager/slideFileUpload.jsp">슬라이드 이미지 업로드</a></li>
-							<li><a href="javascript:">b</a></li>
 						</ul>
 					</div>
 					<div class="managerMenu">

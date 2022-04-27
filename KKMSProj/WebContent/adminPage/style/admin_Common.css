@@ -60,7 +60,6 @@ div.adminMain-cont {
 
 /* LNB메뉴, 공통 */
 aside.managerAside {
-	border: 1px solid red;
 	width: 220px;
 	padding: 10px;
 }

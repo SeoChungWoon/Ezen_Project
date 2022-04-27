@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+
+/* 메인 관리 CSS */
+.slide-select .imgbox{
+	margin: 5px;
+	height: 200px;
+	
+}
+.slide-select .imgbox img{
+	width: 100%;
+	height: 100%;
+	
+}
+
+.managerPage .manager-cont .manager-inner {
+	height: 100%;
+}
+
+.managerPage .manager-cont .manager-inner table.mainSlideTable {
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.managerPage .manager-cont .manager-inner table.mainSlideTable th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 5px 10px;
+	background: #333;
+	border: none;
+	color: #fff;
+}
+
+.managerPage .manager-cont .manager-inner table.mainSlideTable td {
+	padding: 5px;
+	word-break:break-all;
+}
+
+.managerPage .manager-cont .manager-inner table.mainSlideTable tr {
+	height: 70px;
+	border-bottom: 1px solid #ddd;
+}
+
+.managerPage .manager-cont .manager-inner table.mainSlideTable tr:hover {
+	background: #e1e1e1;
+}
+.manager-inner table.mainSlideTable td.imgView img{
+	width: 350px;
+	height: 200px;
+}
+.manager-inner table.mainSlideTable input{
+	width: 140px;
+	height: 40px;
+	
+	padding: 4px;
+	font-size: 14px;
+}
