@@ -92,69 +92,6 @@ insert into bbsList (divisions, header, title, wName, content, postDate) values
 영국 테이트미술관이 선정한 미술사 최고의 예술가 43인의 특별전. 보는 전시가 아닌, 당신이 곧 작품이 되는 전시',
 date_format('2021-11-11', '%Y-%m-%d'));
 
-insert into bbsList (divisions, header, title, wName, content, postDate) values
-('공지사항', '[안내]', '차지연 & 마이클 리 with 루체오케스트라 - 경주​​ 티켓오픈 안내','관리자',
-'안녕하세요, E-TICKET입니다.
-
-차지연 & 마이클 리 with 루체오케스트라 - 경주​​ 티켓오픈 안내입니다.​
-
-
-공연정보
-공연 기간 : 2022년 03월 31일(목)
-
-공연 시간 : 20시
-
-공연 장소 : 경주예술의전당 화랑홀
-
-티켓 가격 : R석 5만원, S석 4만원, 시야제한석 2만원
-
-관람 시간 : 90분
-
-관람 등급 : 초등학생 이상 관람 가능
-
-공연내용
-뮤지컬 배우 차지연, 마이클리와 루체오케스트라가 함께하는 뮤지컬과 클래식의 만남 ',
-date_format('2022-02-27', '%Y-%m-%d'));
-
-insert into bbsList (divisions, header, title, wName, content, postDate) values
-('공지사항','[이벤트]', '크리스마스 예매 이벤트','관리자',
-'안녕하세요. E-TICKET 입니다.
-
-크리스마스 예매 이벤트를 실시 합니다.
-
-이벤트 기간내에 전시회 예매 시 추첨을 통해 다양한 경품을 드립니다.
-
-
-행사기간 : 2021. 12. 20 ~ 12. 30
-
-
-※참고해주세요
-
-본 이벤트는 ID 1개당 1회 참여만 가능합니다.
-중복으로 참여하시더라도 당첨 확률에는 영향을 미치지 않습니다.
-본 이벤트는 예고없이 사전에 종료될 수 있습니다.
-본 이벤트는 부적절한 행위 확인 시 당첨이 취소될 수 있습니다.
-기타 이벤트 관련 문의사항은 1:1문의 게시판을 이용해주세요.',
-date_format('2021-12-10', '%Y-%m-%d'));
-
-insert into bbsList (divisions, header, title, wName, content, postDate) values
-('공지사항','[안내]','앤서니 브라운의 원더랜드 뮤지엄展 티켓오픈 안내','관리자',
-'안녕하세요. E-TICKET입니다.
-
-앤서니 브라운의 원더랜드 뮤지엄展 티켓오픈 안내입니다.
-
-
-상품소개
-앤서니 브라운의 원더랜드 뮤지엄展
-2022.04.28 - 2022.08.31
-예술의전당 한가람미술관
-관람시간 : 오전 10시 ~ 오후 7시 (입장마감 오후 6시) 매주 월요일 휴관
- 
- 
-할인정보
-1차 얼리버드 가족권 (성인2+어린이, 청소년1) - 26,500원
-1차 얼리버드 대인 - 10,000원
-1차 얼리버드 소인 - 10,000원',date_format('2021-12-10', '%Y-%m-%d'));
 insert into bbsList (divisions, title,content) values
 ('FAQ','휴면계정은 무엇인가요?',
 '휴면계정이란 일정기간(만1년) 동안 회원이 YES24 사이트에 로그인 하지 않았을 경우, 원활한 회원관리를 위해 
@@ -207,7 +144,7 @@ insert into bbsList (divisions, title,content) values
 
 
 
-insert into bbsList (divisions, header, title, wName, content, postDate) values
+insert into bbsList (divisions, header, title, wName, content,fileName, postDate) values
 ('공지사항','[이벤트]','Hello Spring Event: 설레이는 봄, 전시회 봄','관리자',
 '안녕하세요. E-TICKET 입니다.
 
@@ -227,6 +164,7 @@ insert into bbsList (divisions, header, title, wName, content, postDate) values
 본 이벤트는 예고없이 사전에 종료될 수 있습니다.
 본 이벤트는 부적절한 행위 확인 시 당첨이 취소될 수 있습니다.
 기타 이벤트 관련 문의사항은 1:1문의 게시판을 이용해주세요.',
+'event-spring-booking.png',
 date_format('2022-03-28', '%Y-%m-%d'));
 
 insert into bbsList (divisions, title,content) values
@@ -237,6 +175,194 @@ insert into bbsList (divisions, title,content) values
 
 배송상태가 배송준비중 또는 배송중일 경우 배송지 주소 변경 뿐만 아니라 취소 또한 불가합니다.');
 
+insert into bbsList (divisions, header, title, content, postDate) values
+('공지사항','[공지]','개인정보 처리방침 개정안내',
+'안녕하세요, E-TICKET 입니다.
+
+현행 개인정보 처리방침을 아래와 같이 개정하여 공지합니다.
+
+ 
+
+1. 시행 일자 : 2022년 05월 16일
+
+2. 주요 개정 내용
+
+- 개정 조항: 3조 개인정보의 수집항목 및 수집방법
+
+- 개정내용
+
+1) 회원가입별 개인정보 수집항목 세분화
+
+2) 필수/선택 수집항목 현행화
+
+*내용 바로 보기 : http://www.yes24.com//notice/privacypolicy.aspx
+
+ 
+
+감사합니다.',date_format('2022-04-16', '%Y-%m-%d'));
+insert into bbsList (divisions, header, title, content, postDate) values
+('공지사항','[공지]','네이버페이 구매적립 혜택 안내',
+'안녕하세요. E-TICKET입니다.
+
+ 
+
+티켓링크에서 네이버페이로 공연, 전시 상품 예매 시 구매적립 혜택 조건 안내 입니다.
+
+2022년 05월 1일 00시부터 아래와 같이 적용되오니 참고 바랍니다.
+
+ 
+
+구매적립 혜택 : 네이버 페이 결제 시 기본 1%
+
+ 
+
+ 
+
+ 기본 1% 적립
+
+ * 결제금액의 1% (최대 2만원)
+
+
+
+ 첫 등록 적립혜택
+
+ * 계좌 첫 등록 시 500원 적립
+
+ * 통합계좌조회 하고 첫 등록 시 추가 500원 지급
+
+ 
+
+고맙습니다.​',date_format('2022-04-18', '%Y-%m-%d'));
+
+insert into bbsList (divisions, header, title, content, postDate) values
+('공지사항','[공지]','시스템 임시점검(5/8 00:00 ~ 04:00)으로 인한 서비스 일시 중단 안내',
+'​안녕하세요. E-TICKET입니다.
+
+ 
+
+보다 안정적이고 효율적인 서비스 제공을 위한 시스템 임시점검을 아래와 같이 실시합니다. 
+아래 내용을 참고하시어, 이용에 착오 없으시기 바랍니다. ​
+
+ 
+
+
+
+ ■ 점검 내용 : ​시스템 임시점검
+
+ 
+
+ ■ 서비스 점검 일시 : 2022년 5월 1일(화) 00:00 ~ 04:00 (4시간)
+
+ 
+
+ ■ 점검 영향 : 점검 시간동안 예매/취소 및 티켓링크 사이트 이용불가​
+
+ 
+
+ 
+
+* 서비스 재개는 시스템 점검 상황에 따라 변경될 수 있습니다.
+
+ 
+
+서비스 이용에 불편을 드려 죄송합니다.
+
+더욱 안정적인 서비스 제공으로 보답하는 NHN티켓링크가 되겠습니다.
+
+
+감사합니다.​ ​', date_format('2022-04-18', '%Y-%m-%d'));
+
+insert into bbsList (divisions, header, title, content, postDate) values
+('공지사항','[공지]','2022 프란츠클래식 리사이틀 시리즈 - 추교준 피아노 리사이틀​ 티켓오픈 안내',
+'안녕하세요, E-TICKET입니다.
+
+ 
+2022 프란츠클래식 리사이틀 시리즈 - 추교준 피아노 리사이틀​ 티켓오픈 안내입니다. 
+ 
+
+공연정보
+공연 기간 : 2022년 05월 27일(금)
+공연 시간 : 오후 19시30분
+공연 장소 : 프란츠홀
+티켓 가격 : 전석 20,000원
+관람 시간 : 60분
+관람 등급 : 8세이상
+ 
+
+기획사정보
+주최/주관 : 프란츠클래식
+
+후원 : 프란츠홀, 프란츠그라피, 프란츠스튜디오 음악연습실, 프린트카페 대구교대점·중앙로점, 뮤즈피아노 
+
+문의 : 0507 1338 2389',date_format('2022-04-20', '%Y-%m-%d'));
+
+insert into bbsList (divisions, header, title, wName, content, fileName, postDate) values
+('공지사항', '[안내]', '차지연 & 마이클 리 with 루체오케스트라 - 경주​​ 티켓오픈 안내','관리자',
+'안녕하세요, E-TICKET입니다.
+
+차지연 & 마이클 리 with 루체오케스트라 - 경주​​ 티켓오픈 안내입니다.​
+
+
+공연정보
+공연 기간 : 2022년 05월 20일(목)
+
+공연 시간 : 20시
+
+공연 장소 : 경주예술의전당 화랑홀
+
+티켓 가격 : R석 5만원, S석 4만원, 시야제한석 2만원
+
+관람 시간 : 90분
+
+관람 등급 : 초등학생 이상 관람 가능
+
+공연내용
+뮤지컬 배우 차지연, 마이클리와 루체오케스트라가 함께하는 뮤지컬과 클래식의 만남 ',
+'차지연.png',
+date_format('2022-04-22', '%Y-%m-%d'));
+
+insert into bbsList (divisions, header, title, wName, content,fileName, postDate) values
+('공지사항','[이벤트]', '크리스마스 예매 이벤트','관리자',
+'안녕하세요. E-TICKET 입니다.
+
+크리스마스 예매 이벤트를 실시 합니다.
+
+이벤트 기간내에 전시회 예매 시 추첨을 통해 다양한 경품을 드립니다.
+
+
+행사기간 : 2022. 12. 20 ~ 12. 30
+
+
+※참고해주세요
+
+본 이벤트는 ID 1개당 1회 참여만 가능합니다.
+중복으로 참여하시더라도 당첨 확률에는 영향을 미치지 않습니다.
+본 이벤트는 예고없이 사전에 종료될 수 있습니다.
+본 이벤트는 부적절한 행위 확인 시 당첨이 취소될 수 있습니다.
+기타 이벤트 관련 문의사항은 1:1문의 게시판을 이용해주세요.',
+'event-christmas-gift.png',
+date_format('2022-04-24', '%Y-%m-%d'));
+
+insert into bbsList (divisions, header, title, wName, content,fileName, postDate) values
+('공지사항','[안내]','앤서니 브라운의 원더랜드 뮤지엄展 티켓오픈 안내','관리자',
+'안녕하세요. E-TICKET입니다.
+
+앤서니 브라운의 원더랜드 뮤지엄展 티켓오픈 안내입니다.
+
+
+상품소개
+앤서니 브라운의 원더랜드 뮤지엄展
+2022.04.28 - 2022.08.31
+예술의전당 한가람미술관
+관람시간 : 오전 10시 ~ 오후 7시 (입장마감 오후 6시) 매주 월요일 휴관
+ 
+ 
+할인정보
+1차 얼리버드 가족권 (성인2+어린이, 청소년1) - 26,500원
+1차 얼리버드 대인 - 10,000원
+1차 얼리버드 소인 - 10,000원','event-reply-product1 -.jpg',
+date_format('2022-04-26', '%Y-%m-%d'));
+ 
 drop table bbsList;
 
 select * from bbsList order by no limit 0,10;
