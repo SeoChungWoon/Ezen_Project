@@ -39,6 +39,13 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 <link rel="stylesheet" href="/style/style1.css">
 <link rel="stylesheet" href="/style/style2.css">
 <link rel="stylesheet" href="/style/style_calendar.css">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f23450491c4d99c72ee7327bd21ff506"></script>
+<!-- map -->
+<script src="text/javascript" src="/script/map.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+<!-- // map -->
 </head>
 <body>
 	<div id="wrap">
@@ -356,6 +363,12 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 									<p class="img">
 										<img src="/images/<%=mList.getpDetailImg()%>" alt="" />
 									</p>
+									
+									<div class="map-cont">
+										<p class="txt"><span><%=mList.getpContent()%></span></p>
+										
+										<div class="map" id="map"></div>
+									</div>
 								</section>
 								<section class="sec2" id="sec2">
 									<div class="inquiryBox">
@@ -445,7 +458,7 @@ ProListBean mList = (ProListBean) objList.get(pNo1);
 										
 											for (int i = 0; i < objRevList.size(); i++) {
 												ProRevBean revList = (ProRevBean) objRevList.get(i);
-												if(revList.getpRevImg() != null){
+												if(revList.getpRevPhoto() != 0){
 										%>
 													<div class="swiper-slide">
 														<a href="javascript:" class="btn open-modal photoList pPreview" data-target="popup4"><img

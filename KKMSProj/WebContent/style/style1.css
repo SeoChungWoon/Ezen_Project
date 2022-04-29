@@ -819,7 +819,6 @@
 	color: #333;
 	font-size: 18px;
 }
-
 .detailBox .detail-desc>section>div>ul.sec-list+p.tit {
 	margin-top: 60px;
 }
@@ -858,7 +857,28 @@
 	/* 	border: 1px solid #222;	 */
 	margin-top: 30px;
 }
-
+/* map */
+.detailBox .detail-desc>section .map-cont{
+	margin-top: 50px;
+	text-align: center;
+	border-top: 1px solid #222;
+	padding-top: 50px;
+}
+.detailBox .detail-desc>section .map-cont .txt span{
+	position: relative;
+	font-weight: bold;
+	font-size: 24px;
+	background: url("/images/icon-map.png")no-repeat 0 5px / 30px;
+	padding-left: 50px;
+}
+.detailBox .detail-desc>section .map-cont .map-cont{
+	margin-top: 50px;
+	text-align: center;
+}
+.detailBox .detail-desc>section .map-cont #map{
+	width: 500px;
+	height: 400px;
+}
 .detailBox .detail-desc>section .inquiryBox .inquiry-txt .desc-type {
 	display: flex;
 	flex-wrap: nowrap;
